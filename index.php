@@ -18,7 +18,7 @@
     <!-- page title -->
     <title>LexoraTech</title>
     <!-- logo css -->
-   <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
 </head>
 
@@ -61,8 +61,8 @@
                 <div class="container">
                     <div class="mil-left-side mil-tp-transition" id="swupTpLeft">
                         <a href="#top" class="mil-logo mil-scroll-to" data-no-swup>
-                          <!--  <i class="far fa-cube"></i> -->
-                            <img src="img/logo/logo2.png" width="40px" height="38px">&nbsp;&nbsp;
+                            <!--  <i class="far fa-cube"></i> -->
+                            <img src="img/logo/logo2.png" width="60px" height="38px">
                             <span>LexoraTech</span>
                         </a>
                     </div>
@@ -70,9 +70,9 @@
                     <div class="mil-onepage-nav" id="swup-opm">
                         <ul>
                             <li><a href="#services" class="mil-scroll-to" data-no-swup>Services</a></li>
-                            <li><a href="#team" class="mil-scroll-to" data-no-swup>Team</a></li>
+                            <!-- <li><a href="#team" class="mil-scroll-to" data-no-swup>Team</a></li> -->
                             <li><a href="#reviews" class="mil-scroll-to" data-no-swup>Reviews</a></li>
-                            <li><a href="#blog" class="mil-scroll-to" data-no-swup>Blog</a></li>
+                            <!-- <li><a href="#blog" class="mil-scroll-to" data-no-swup>Blog</a></li> -->
                         </ul>
                     </div>
 
@@ -80,7 +80,7 @@
                         <div class="mil-buttons">
                             <a href="contact-stl.php" class="mil-tp-btn"><i class="fal fa-envelope"></i></a>
                             <div class="mil-tp-btn">
-                                <div class="mil-menu-btn"><span></span></div>
+                                <div class=""><span></span></div>
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                                             <li class="mil-has-children">
                                                 <a href="#.">Look</a>
                                                 <ul>
-                                                    
+
                                                     <li class="mil-current"><a href="index.php" target="_blank" data-no-swup>Stylish</a></li>
                                                 </ul>
                                             </li>
@@ -106,15 +106,15 @@
                                                 <a href="#.">Home type</a>
                                                 <ul>
                                                     <li class="mil-current"><a href="index.php">Corporate</a></li>
-                                                   
+
                                                 </ul>
                                             </li>
                                             <li class="mil-has-children">
                                                 <a href="#.">Portfolio</a>
                                                 <ul>
-                                                   
+
                                                     <li><a href="portfolio-2-stl.php">Grid</a></li>
-                                                    
+
                                                 </ul>
                                             </li>
                                             <li class="mil-has-children">
@@ -283,23 +283,23 @@
                             <div class="row mil-jcc">
                                 <div class="col-sm-8 col-lg-4">
                                     <div class="mil-iconbox mil-tac mil-mb60">
-                                        <img src="img/home-1/iconbox/2.svg" alt="icon" class="mil-mb30 mil-up">
+                                        <img src="img/home-1/iconbox/1.png" alt="icon" class="mil-mb30 mil-up">
                                         <h4 class="mil-head4 mil-mb30 mil-up">Expert Team</h4>
-                                        <p class="mil-text-md mil-shortened mil-up">Our team consists of experienced professionals who work with passion, delivering high-quality projects.</p>
+                                        <p class="mil-text-md mil-shortened mil-up">Our Team Is Made Up Of Seasoned Professionals Driven By Passion, Dedicated To Delivering Outstanding, High-Quality Projects.</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-8 col-lg-4">
                                     <div class="mil-iconbox mil-mb60">
-                                        <img src="img/home-1/iconbox/1.svg" alt="icon" class="mil-mb30 mil-up">
+                                        <img src="img/home-1/iconbox/2.png" alt="icon" class="mil-mb30 mil-up">
                                         <h4 class="mil-head4 mil-mb30 mil-up">Innovative Solutions</h4>
-                                        <p class="mil-text-md mil-shortened mil-up">We offer unique and creative approaches that help your business stand out in the market and achieve success.</p>
+                                        <p class="mil-text-md mil-shortened mil-up">We Provide Innovative And Creative Solutions That Empower Your Business To Stand Out In The Market And Achieve Lasting Success.</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-8 col-lg-4">
                                     <div class="mil-iconbox mil-tac mil-mb60">
-                                        <img src="img/home-1/iconbox/3.svg" alt="icon" class="mil-mb30 mil-up">
+                                        <img src="img/home-1/iconbox/3.png" alt="icon" class="mil-mb30 mil-up">
                                         <h4 class="mil-head4 mil-mb30 mil-up">Client Focus</h4>
-                                        <p class="mil-text-md mil-shortened mil-up">We prioritize client needs, deeply understanding them to create tailored solutions for maximum results.</p>
+                                        <p class="mil-text-md mil-shortened mil-up">We Prioritize Client Needs, Deeply Understanding Them To Create Tailored Solutions For Maximum Results.</p>
                                     </div>
                                 </div>
                             </div>
@@ -317,23 +317,24 @@
                                     <ul class="mil-services-list mil-mb160">
                                         <li class="mil-service-item mil-768-mb60 mil-up">
                                             <div class="mil-item-text mil-mb30">
-                                                <h3 class="mil-head3 mil-mb30 mil-up">UI/IX design</h3>
+                                                <h3 class="mil-head3 mil-mb30 mil-up">UI/IX Design</h3>
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Design of intuitive and visually appealing user interfaces for web and mobile applications, focusing on enhancing the user experience and usability.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="service-stl.php" class="mil-stylized-btn mil-c-gone">
+                                                <a href="#" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
                                             </div>
                                         </li>
+
                                         <li class="mil-service-item mil-768-mb60 mil-up">
                                             <div class="mil-item-text mil-mb30">
-                                                <h3 class="mil-head3 mil-mb30 mil-up">Brand strategy</h3>
+                                                <h3 class="mil-head3 mil-mb30 mil-up">Brand Strategy</h3>
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Comprehensive brand development, including logo creation, color scheme selection, and visual style design to ensure a cohesive and memorable brand identity.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="service-stl.php" class="mil-stylized-btn mil-c-gone">
+                                                <a href="#" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -345,12 +346,51 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Creation of impactful advertising campaigns and marketing materials designed to increase brand visibility, engage target audiences, and drive customer acquisition.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="service-stl.php" class="mil-stylized-btn mil-c-gone">
+                                                <a href="#" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
                                             </div>
                                         </li>
+                                        <li class="mil-service-item mil-768-mb60 mil-up">
+                                            <div class="mil-item-text mil-mb30">
+                                                <h3 class="mil-head3 mil-mb30 mil-up">WEB Development</h3>
+                                                <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Development of responsive and high-performance websites and web applications, focusing on clean code, scalability, and seamless functionality to deliver an optimal user experience across devices.</p>
+                                            </div>
+                                            <div class="mil-mb30 mil-up">
+                                                <a href="#" class="mil-stylized-btn mil-c-gone">
+                                                    <i class="fal fa-arrow-up"></i>
+                                                    <span>Read more</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="mil-service-item mil-768-mb60 mil-up">
+                                            <div class="mil-item-text mil-mb30">
+                                                <h3 class="mil-head3 mil-mb30 mil-up">Mobile Application Development</h3>
+                                                <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Design and development of responsive and feature-rich mobile applications for iOS and Android, focusing on seamless performance, intuitive navigation, and an engaging user experience.</p>
+                                            </div>
+                                            <div class="mil-mb30 mil-up">
+                                                <a href="#" class="mil-stylized-btn mil-c-gone">
+                                                    <i class="fal fa-arrow-up"></i>
+                                                    <span>Read more</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li class="mil-service-item mil-768-mb60 mil-up">
+                                            <div class="mil-item-text mil-mb30">
+                                                <h3 class="mil-head3 mil-mb30 mil-up">Software Application Development (POS)</h3>
+                                                <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Design and development of reliable and efficient POS software applications, focusing on streamlined transaction processing, user-friendly interfaces, and robust functionality to enhance business operations.</p>
+                                            </div>
+                                            <div class="mil-mb30 mil-up">
+                                                <a href="#" class="mil-stylized-btn mil-c-gone">
+                                                    <i class="fal fa-arrow-up"></i>
+                                                    <span>Read more</span>
+                                                </a>
+                                            </div>
+                                        </li>
+
+
+
                                     </ul>
                                 </div>
                             </div>
@@ -440,7 +480,7 @@
                     <!-- about end -->
 
                     <!-- team -->
-                    <div class="mil-p-0-130 mil-768-p-160-145" id="team">
+               <!--      <div class="mil-p-0-130 mil-768-p-160-145" id="team">
                         <div class="container">
                             <div class="row mil-aie mil-mb30">
                                 <div class="col-lg-6">
@@ -535,7 +575,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- team end -->
 
                     <!-- reviews -->
@@ -552,10 +592,10 @@
                                             <div class="swiper-slide">
                                                 <div class="mil-review" data-swiper-parallax-scale="0.8">
                                                     <div class="mil-portrait mil-mb30 mil-up">
-                                                        <img src="img/reviews/2.jpg" alt="Client">
+                                                        <img src="img/reviews/cl1.png" alt="Client">
                                                     </div>
-                                                    <h4 class="mil-head4 mil-max-1row-text mil-mb15 mil-up mil-c-gone">Chathuranga</h4>
-                                                    <p class="mil-stylized mil-m2 mil-mb30 mil-up">magaharunupaadama</p>
+                                                    <h4 class="mil-head4 mil-max-1row-text mil-mb15 mil-up mil-c-gone">Missed Lesson Project</h4>
+                                                    <a class="mil-stylized mil-m2 mil-mb30 mil-up" href="https://www.magaharunupaadama.com">magaharunupaadama</a>
                                                     <p class="mil-text-lg mil-m1 mil-up">I had the pleasure of working with this creative agency, and I must say, they truly impressed me. They consistently think outside the box, resulting in impressive and impactful work. I highly recommend this agency for their consistent delivery of exceptional creative solutions.</p>
                                                 </div>
                                             </div>
@@ -604,7 +644,7 @@
                     <!-- reviews end -->
 
                     <!-- partners -->
-                    <div class="mil-p-160-130">
+           <!--          <div class="mil-p-160-130">
                         <div class="container">
                             <div class="row mil-jcb mil-aic">
                                 <div class="col-6 col-md-3 mil-up">
@@ -629,7 +669,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- partners end -->
 
                     <!-- call to action -->
@@ -816,7 +856,7 @@
                                         </span>
                                     </a>
                                 </div>
-                                <div class="col-lg-12">
+                            <!--     <div class="col-lg-12">
                                     <div class="mil-footer-menu-frame mil-mb90 mil-up">
                                         <ul class="mil-footer-menu">
                                             <li><a href="#." class="mil-c-gone">Home</a></li>
@@ -833,11 +873,11 @@
                                             <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-lg-12">
                                     <div class="mil-footer-bottom mil-up">
                                         <p class="mil-text-sm">©2025 LexoraTech. All rights reserved.</p>
-                                        
+
                                     </div>
                                 </div>
                             </div>
