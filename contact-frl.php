@@ -16,7 +16,7 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-friendly.css">
     <!-- page title -->
-    <title>Pixy</title>
+    <title>LexoraTech</title>
 
 </head>
 
@@ -42,7 +42,7 @@
                 <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <p class="mil-head1 mil-m1">pixy.com</p>
+                        <p class="mil-head1 mil-m1">LexoraTech.com</p>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                 <div class="mil-left-side mil-type-1 mil-tp-transition" id="swupTpLeft">
                     <a href="#top" class="mil-logo mil-scroll-to" data-no-swup>
                         <i class="far fa-cube"></i>
-                        <span>Pixy</span>
+                        <span>LexoraTech</span>
                     </a>
                 </div>
                 <div class="mil-buttons-tp-frame mil-c-gone">
@@ -242,8 +242,8 @@
                                     <div class="mil-iconbox mil-mb60">
                                         <i class="fal fa-comment-alt-edit mil-mb30 mil-up"></i>
                                         <h4 class="mil-head4 mil-mb30 mil-up">Write</h4>
-                                        <p class="mil-stylized mil-m1 mil-mb15 mil-up">pixy.inbox@mail.com</p>
-                                        <p class="mil-stylized mil-m1 mil-up">pixy.office.inbox@mail.com</p>
+                                        <p class="mil-stylized mil-m1 mil-mb15 mil-up">LexoraTech.inbox@mail.com</p>
+                                        <p class="mil-stylized mil-m1 mil-up">LexoraTech.office.inbox@mail.com</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-8 col-lg-4">
@@ -372,7 +372,7 @@
     <!-- parallax js -->
     <script src="js/plugins/parallax.js"></script>
 
-    <!-- pixy js -->
+    <!-- LexoraTech js -->
     <script src="js/main.js"></script>
 
 </body>

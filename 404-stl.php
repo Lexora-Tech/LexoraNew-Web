@@ -16,7 +16,7 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
-    <title>Pixy</title>
+    <title>LexoraTech</title>
 
 </head>
 
@@ -40,7 +40,7 @@
                 <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <p class="mil-head1 mil-m1">pixy.com</p>
+                        <p class="mil-head1 mil-m1">LexoraTech.com</p>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     <div class="mil-left-side mil-tp-transition" id="swupTpLeft">
                         <a href="#top" class="mil-logo mil-scroll-to" data-no-swup>
                             <i class="far fa-cube"></i>
-                            <span>Pixy</span>
+                            <span>LexoraTech</span>
                         </a>
                     </div>
 
@@ -293,7 +293,7 @@
     <!-- parallax js -->
     <script src="js/plugins/parallax.js"></script>
 
-    <!-- pixy js -->
+    <!-- LexoraTech js -->
     <script src="js/main.js"></script>
 
 </body>

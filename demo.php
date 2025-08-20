@@ -16,7 +16,7 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-friendly.css">
     <!-- page title -->
-    <title>Pixy</title>
+    <title>LexoraTech</title>
 
 </head>
 
@@ -42,7 +42,7 @@
                 <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <p class="mil-head1 mil-m1">pixy.com</p>
+                        <p class="mil-head1 mil-m1">LexoraTech.com</p>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                 <div class="mil-left-side">
                     <a href="#top" class="mil-logo mil-scroll-to" data-no-swup>
                         <i class="far fa-cube"></i>
-                        <span>Pixy</span>
+                        <span>LexoraTech</span>
                     </a>
                 </div>
                 <div class="mil-buttons-tp-frame mil-c-gone">
@@ -148,7 +148,7 @@
                                 <i class="far fa-hand-peace mil-mb15"></i>
                                 <p class="mil-stylized mil-m2 mil-mb60">Welcome!</p>
                                 <div class="mil-word-frame mil-mb30">
-                                    <h1 class="mil-display1 mil-rubber">Pixy</h1>
+                                    <h1 class="mil-display1 mil-rubber">LexoraTech</h1>
                                     <div class="mil-s-4" style="width:45%; left: -35%"><img src="img/shapes/4.png" alt="shape"></div>
                                 </div>
                                 <h2 class="mil-head2 mil-m3 mil-mb40">Creative portfolio template</h2>
@@ -279,7 +279,7 @@
     <!-- parallax js -->
     <script src="js/plugins/parallax.js"></script>
 
-    <!-- pixy js -->
+    <!-- LexoraTech js -->
     <script src="js/main.js"></script>
 
 </body>

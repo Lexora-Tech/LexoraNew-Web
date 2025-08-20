@@ -16,7 +16,7 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-friendly.css">
     <!-- page title -->
-    <title>Pixy</title>
+    <title>LexoraTech</title>
 
 </head>
 
@@ -42,7 +42,7 @@
                 <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <p class="mil-head1 mil-m1">pixy.com</p>
+                        <p class="mil-head1 mil-m1">LexoraTech.com</p>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                 <div class="mil-left-side mil-type-1 mil-tp-transition" id="swupTpLeft">
                     <a href="#top" class="mil-logo mil-scroll-to" data-no-swup>
                         <i class="far fa-cube"></i>
-                        <span>Pixy</span>
+                        <span>LexoraTech</span>
                     </a>
                 </div>
                 <div class="mil-buttons-tp-frame mil-c-gone">
@@ -491,7 +491,7 @@
                                 <div class="mil-obj-2"></div>
                             </div>
                             <p class="mil-stylized mil-m2 mil-mb60 mil-tac mil-up">Explore our agency</p>
-                            <h2 class="mil-head1 mil-rubber mil-tac mil-mb60 mil-up">Pixy is a <span class="mil-a1">creative</span> agency that transforms <span class="mil-a1">ideas</span> into masterpieces. We craft <span class="mil-a1">design</span> magic, breathe new life into brands, and make the impossible <span class="mil-a1">possible</span>. Choose <span class="mil-a1">Pixy</span> because we are worth it!</h2>
+                            <h2 class="mil-head1 mil-rubber mil-tac mil-mb60 mil-up">LexoraTech is a <span class="mil-a1">creative</span> agency that transforms <span class="mil-a1">ideas</span> into masterpieces. We craft <span class="mil-a1">design</span> magic, breathe new life into brands, and make the impossible <span class="mil-a1">possible</span>. Choose <span class="mil-a1">LexoraTech</span> because we are worth it!</h2>
                             <div class="mil-text-with-button mil-mb60">
                                 <p class="mil-text-sm mil-tar mil-768-tac mil-up">We can talk about ourselves endlessly. <br>You'd better write to us and come visit us. We are always glad to see you!</p>
                                 <span class="mil-up"><a href="contact-frl.php" class="mil-btn mil-a2 mil-c-gone">Write message</a></span>
@@ -640,7 +640,7 @@
     <!-- parallax js -->
     <script src="js/plugins/parallax.js"></script>
 
-    <!-- pixy js -->
+    <!-- LexoraTech js -->
     <script src="js/main.js"></script>
 
 </body>

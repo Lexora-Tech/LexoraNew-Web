@@ -30,7 +30,7 @@
     <!-- parallax js -->
     <script src="js/plugins/parallax.js"></script>
 
-    <!-- pixy js -->
+    <!-- LexoraTech js -->
     <script src="js/main.js"></script>
 
 </body>
