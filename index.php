@@ -99,13 +99,13 @@
                                                 <a href="#.">Look</a>
                                                 <ul>
                                                     
-                                                    <li class="mil-current"><a href="home.php" target="_blank" data-no-swup>Stylish</a></li>
+                                                    <li class="mil-current"><a href="index.php" target="_blank" data-no-swup>Stylish</a></li>
                                                 </ul>
                                             </li>
                                             <li class="mil-has-children">
                                                 <a href="#.">Home type</a>
                                                 <ul>
-                                                    <li class="mil-current"><a href="home.php">Corporate</a></li>
+                                                    <li class="mil-current"><a href="index.php">Corporate</a></li>
                                                    
                                                 </ul>
                                             </li>

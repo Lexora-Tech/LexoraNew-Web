@@ -90,13 +90,13 @@
                                                 <a href="#.">Template style</a>
                                                 <ul>
                                                     <li><a href="home-1.html" target="_blank" data-no-swup>Friendly</a></li>
-                                                    <li class="mil-current"><a href="home.php" target="_blank" data-no-swup>Stylish</a></li>
+                                                    <li class="mil-current"><a href="index.php" target="_blank" data-no-swup>Stylish</a></li>
                                                 </ul>
                                             </li>
                                             <li class="mil-has-children">
                                                 <a href="#.">Home type</a>
                                                 <ul>
-                                                    <li><a href="home.php">Corporate</a></li>
+                                                    <li><a href="index.php">Corporate</a></li>
                                                     <li><a href="home-5.html">Agency</a></li>
                                                     <li><a href="home-6.html">Personal</a></li>
                                                 </ul>
@@ -234,7 +234,7 @@
                                 <div class="mil-text-pad"></div>
                                 <ul class="mil-breadcrumbs mil-mb60 mil-c-gone">
                                     <li>
-                                        <a href="home.php">Home</a>
+                                        <a href="index.php">Home</a>
                                     </li>
                                     <li>
                                         <a href="#.">Contact</a>

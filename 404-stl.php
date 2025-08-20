@@ -90,13 +90,13 @@
                                                 <a href="#.">Template style</a>
                                                 <ul>
                                                     <li><a href="home-1.html" target="_blank" data-no-swup>Friendly</a></li>
-                                                    <li class="mil-current"><a href="home.php" target="_blank" data-no-swup>Stylish</a></li>
+                                                    <li class="mil-current"><a href="index.php" target="_blank" data-no-swup>Stylish</a></li>
                                                 </ul>
                                             </li>
                                             <li class="mil-has-children">
                                                 <a href="#.">Home type</a>
                                                 <ul>
-                                                    <li><a href="home.php">Corporate</a></li>
+                                                    <li><a href="index.php">Corporate</a></li>
                                                     <li><a href="home-5.html">Agency</a></li>
                                                     <li><a href="home-6.html">Personal</a></li>
                                                 </ul>
@@ -244,7 +244,7 @@
                                 <h1 class="mil-display1 mil-rubber mil-mb30">404</h1>
                                 <h1 class="mil-head2 mil-a1 mil-rubber">Looks like you got lost</h1>
                                 <div class="mil-circle-text-frame">
-                                    <a href="home.php" class="mil-circle-text mil-c-gone">
+                                    <a href="index.php" class="mil-circle-text mil-c-gone">
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve" data-value="360" class="mil-rotate">
                                             <defs>
                                                 <path id="circlePath" d="M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 " />

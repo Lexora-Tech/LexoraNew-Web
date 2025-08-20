@@ -83,7 +83,7 @@
                                 <a href="#.">Template style</a>
                                 <ul>
                                     <li><a href="home-1.html" target="_blank" data-no-swup>Friendly</a></li>
-                                    <li><a href="home.php" target="_blank" data-no-swup>Stylish</a></li>
+                                    <li><a href="index.php" target="_blank" data-no-swup>Stylish</a></li>
                                 </ul>
                             </li>
                             <li class="mil-has-children">
@@ -201,7 +201,7 @@
                                     </a>
                                 </div>
                                 <div class="col-lg-6 mil-mb30 mil-up">
-                                    <a href="home.php" class="mil-c-view" data-no-swup target="_blank">
+                                    <a href="index.php" class="mil-c-view" data-no-swup target="_blank">
                                         <img src="img/demo/2.jpg" alt="prebuild homepage" style="width: 100%">
                                     </a>
                                 </div>

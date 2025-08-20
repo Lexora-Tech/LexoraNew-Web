@@ -83,7 +83,7 @@
                                 <a href="#.">Template style</a>
                                 <ul>
                                     <li class="mil-current"><a href="home-1.html" target="_blank" data-no-swup>Friendly</a></li>
-                                    <li><a href="home.php" target="_blank" data-no-swup>Stylish</a></li>
+                                    <li><a href="index.php" target="_blank" data-no-swup>Stylish</a></li>
                                 </ul>
                             </li>
                             <li class="mil-has-children">
