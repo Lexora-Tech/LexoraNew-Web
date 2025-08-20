@@ -146,6 +146,7 @@
                                             <li><a href="#.">Careers</a></li>
                                         </ul>
                                     </div>
+
                                     <div class="mil-blog-part">
                                         <div class="mil-blog-section">
                                             <div class="mil-jcb mil-aic">
@@ -218,6 +219,7 @@
                                             </ul>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -362,7 +364,7 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="mil-counter-item mil-stl mil-mb30 mil-768-mb60 mil-up">
-                                        <h4 class="mil-up">14<span class="mil-a2">+</span></h4>
+                                        <h4 class="mil-up">4<span class="mil-a2">+</span></h4>
                                         <div class="mil-counter-text">
                                             <h5 class="mil-head4 mil-m1 mil-up">Years experience</h5>
                                         </div>
@@ -370,7 +372,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mil-counter-item mil-stl mil-mb30 mil-768-mb60 mil-up">
-                                        <h4 class="mil-up">45<span class="mil-a2">+</span></h4>
+                                        <h4 class="mil-up">25<span class="mil-a2">+</span></h4>
                                         <div class="mil-counter-text">
                                             <h5 class="mil-head4 mil-m1 mil-up">Unique customers</h5>
                                         </div>
@@ -378,7 +380,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mil-counter-item mil-stl mil-mb30 mil-up">
-                                        <h4 class="mil-up">57<span class="mil-a2">+</span></h4>
+                                        <h4 class="mil-up">100<span class="mil-a2">+</span></h4>
                                         <div class="mil-counter-text">
                                             <h5 class="mil-head4 mil-m1 mil-up">Completed projects</h5>
                                         </div>
@@ -552,12 +554,12 @@
                                                     <div class="mil-portrait mil-mb30 mil-up">
                                                         <img src="img/reviews/2.jpg" alt="Client">
                                                     </div>
-                                                    <h4 class="mil-head4 mil-max-1row-text mil-mb15 mil-up mil-c-gone">Paul Trueman</h4>
-                                                    <p class="mil-stylized mil-m2 mil-mb30 mil-up">Envato market</p>
+                                                    <h4 class="mil-head4 mil-max-1row-text mil-mb15 mil-up mil-c-gone">Chathuranga</h4>
+                                                    <p class="mil-stylized mil-m2 mil-mb30 mil-up">magaharunupaadama</p>
                                                     <p class="mil-text-lg mil-m1 mil-up">I had the pleasure of working with this creative agency, and I must say, they truly impressed me. They consistently think outside the box, resulting in impressive and impactful work. I highly recommend this agency for their consistent delivery of exceptional creative solutions.</p>
                                                 </div>
                                             </div>
-                                            <div class="swiper-slide">
+                                            <!-- <div class="swiper-slide">
                                                 <div class="mil-review" data-swiper-parallax-scale="0.8">
                                                     <div class="mil-portrait mil-mb30 mil-up">
                                                         <img src="img/reviews/1.jpg" alt="Client">
@@ -586,7 +588,7 @@
                                                     <p class="mil-stylized mil-m2 mil-mb30 mil-up">Envato market</p>
                                                     <p class="mil-text-lg mil-m1 mil-up">I had the pleasure of working with this creative agency, and I must say, they truly impressed me. They consistently think outside the box, resulting in impressive and impactful work. I highly recommend this agency for their consistent delivery of exceptional creative solutions.</p>
                                                 </div>
-                                            </div>
+                                            </div> -->
 
                                         </div>
                                     </div>
@@ -648,7 +650,7 @@
                     <!-- call to action end -->
 
                     <!-- blog -->
-                    <div class="mil-p-0-160" id="blog">
+                    <!-- <div class="mil-p-0-160" id="blog">
                         <div class="container">
                             <div class="row mil-aie mil-mb30">
                                 <div class="col-md-6">
@@ -764,7 +766,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- blog end -->
 
                     <!-- subscribe -->
@@ -834,7 +836,7 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="mil-footer-bottom mil-up">
-                                        <p class="mil-text-sm">©2025. All rights reserved.</p>
+                                        <p class="mil-text-sm">©2025 LexoraTech. All rights reserved.</p>
                                         
                                     </div>
                                 </div>
