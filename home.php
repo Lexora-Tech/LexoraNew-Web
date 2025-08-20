@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
     <title>LexoraTech</title>
+    <!-- logo css -->
+   <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
 </head>
 
@@ -59,7 +61,8 @@
                 <div class="container">
                     <div class="mil-left-side mil-tp-transition" id="swupTpLeft">
                         <a href="#top" class="mil-logo mil-scroll-to" data-no-swup>
-                            <i class="far fa-cube"></i>
+                          <!--  <i class="far fa-cube"></i> -->
+                            <img src="img/logo/logo2.png" width="40px" height="38px">&nbsp;&nbsp;
                             <span>LexoraTech</span>
                         </a>
                     </div>
@@ -245,7 +248,7 @@
                         <div class="container mil-hero-main mil-relative">
                             <div class="mil-hero-text">
                                 <i class="fal fa-award mil-mb15"></i>
-                                <p class="mil-stylized mil-m2 mil-mb60">The most<br>titled Team</p>
+                                <p class="mil-stylized mil-m2 mil-mb60">Building With Bits</p>
                                 <h1 class="mil-display2 mil-rubber">Creative <br>design <br>Tech</h1>
                                 <div class="mil-circle-text-frame">
                                     <a href="#scroll" class="mil-circle-text mil-scroll-to mil-c-gone" data-no-swup>
