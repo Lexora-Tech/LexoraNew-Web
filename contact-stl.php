@@ -1,3 +1,62 @@
+<?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $message = htmlspecialchars($_POST['message']);
+
+    $companyEmail = "info@yourdomain.com"; // Your company email
+    $fromEmail = "contact@lexoratech.com"; // Server email / domain email
+    $fromName = "Lexora Tech";
+
+    $mail = new PHPMailer(true);
+
+    try {
+        // SMTP settings
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.lexoratech.com'; // your domain SMTP
+        $mail->SMTPAuth   = true;
+        $mail->Username   = $fromEmail;           // your domain email
+        $mail->Password   = 'm2Ece3t;I&N6';       // email password
+        $mail->SMTPSecure = 'tls';
+        $mail->Port       = 587;
+
+        // ===== 1️⃣ Email to company =====
+        $mail->setFrom($fromEmail, $fromName);
+        $mail->addAddress($companyEmail);
+        $mail->addReplyTo($email, $name);
+
+        $mail->isHTML(true);
+        $mail->Subject = "New Contact Form Submission";
+        $mail->Body    = "<b>Name:</b> $name<br><b>Email:</b> $email<br><b>Message:</b><br>$message";
+        $mail->AltBody = "Name: $name\nEmail: $email\nMessage:\n$message";
+
+        $mail->send(); // send to company
+
+        // ===== 2️⃣ Email to client (confirmation) =====
+        $mail->clearAddresses();
+        $mail->addAddress($email);      // send to client
+        $mail->setFrom($fromEmail, $fromName);
+        $mail->Subject = "We Received Your Message";
+        $mail->Body    = "Hi $name,<br><br>Thank you for contacting us. We have received your message and will contact you soon.<br><br>Best Regards,<br>$fromName";
+        $mail->AltBody = "Hi $name,\n\nThank you for contacting us. We have received your message and will contact you soon.\n\nBest Regards,\n$fromName";
+
+        $mail->send(); // send confirmation to client
+
+        echo "<p>✅ Your message has been sent successfully! We will contact you soon.</p>";
+    } catch (Exception $e) {
+        echo "<p>❌ Message could not be sent. Error: {$mail->ErrorInfo}</p>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -15,8 +74,9 @@
     <link rel="stylesheet" href="css/plugins/swiper.min.css">
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
-    <!-- page title -->
-    <title>Pixy</title>
+    <title>LexoraTech</title>
+    <!-- logo css -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
 </head>
 
@@ -30,7 +90,7 @@
         <!-- cursor end -->
 
         <!-- preloader -->
-        <div class="mil-preloader">
+        <!-- <div class="mil-preloader">
             <div class="mil-preloader-animation">
                 <div class="mil-pos-abs mil-animation-1">
                     <p class="mil-head1 mil-m1">Pioneering</p>
@@ -40,11 +100,11 @@
                 <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <p class="mil-head1 mil-m1">pixy.com</p>
+                        <p class="mil-head1 mil-m1">LexoraTech.com</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- preloader end -->
 
         <!-- scroll progress -->
@@ -59,8 +119,9 @@
                 <div class="container">
                     <div class="mil-left-side mil-tp-transition" id="swupTpLeft">
                         <a href="#top" class="mil-logo mil-scroll-to" data-no-swup>
-                            <i class="far fa-cube"></i>
-                            <span>Pixy</span>
+                            <!--  <i class="far fa-cube"></i> -->
+                            <img src="img/logo/logo2.png" width="40px" height="38px">&nbsp;&nbsp;
+                            <span>LexoraTech</span>
                         </a>
                     </div>
 
@@ -124,7 +185,7 @@
                                         </ul>
                                     </div>
                                     <div class="mil-bottom-part">
-                                        <p class="mil-text-sm">©2024. All rights reserved.</p>
+                                        <p class="mil-text-sm">©2025 LexoraTech. All rights reserved.</p>
                                     </div>
                                 </div>
                             </div>
@@ -254,24 +315,24 @@
                                     <div class="mil-iconbox mil-tac mil-mb60">
                                         <i class="fal fa-mobile mil-mb30 mil-up"></i>
                                         <h4 class="mil-head4 mil-mb30 mil-up">Call</h4>
-                                        <p class="mil-stylized mil-m1 mil-mb15 mil-up">Office: +9 (053) XX4 94 82</p>
-                                        <p class="mil-stylized mil-m1 mil-up">Support: +9 (053) XX4 94 82</p>
+                                        <p class="mil-stylized mil-m1 mil-mb15 mil-up">Office: +94 (71) 178 45 12</p>
+                                        <p class="mil-stylized mil-m1 mil-up">Support: +94 (72) 058 10 42</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-8 col-lg-4">
                                     <div class="mil-iconbox mil-mb60">
                                         <i class="fal fa-comment-alt-edit mil-mb30 mil-up"></i>
                                         <h4 class="mil-head4 mil-mb30 mil-up">Write</h4>
-                                        <p class="mil-stylized mil-m1 mil-mb15 mil-up">pixy.inbox@mail.com</p>
-                                        <p class="mil-stylized mil-m1 mil-up">pixy.office.inbox@mail.com</p>
+                                        <p class="mil-stylized mil-m1 mil-mb15 mil-up">contact@lexoratech.com</p>
+                                        <p class="mil-stylized mil-m1 mil-up">info@lexoratech.com</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-8 col-lg-4">
                                     <div class="mil-iconbox mil-tac mil-mb60">
                                         <i class="fal fa-map-marker-alt mil-mb30 mil-up"></i>
                                         <h4 class="mil-head4 mil-mb30 mil-up">visit</h4>
-                                        <p class="mil-stylized mil-m1 mil-mb15 mil-up">300 St. Mary's L, Suite 8060,</p>
-                                        <p class="mil-stylized mil-m1 mil-up">Houston, TX 77079</p>
+                                        <p class="mil-stylized mil-m1 mil-mb15 mil-up">Gampaha Town,</p>
+                                        <p class="mil-stylized mil-m1 mil-up">Sri Lanka, 11000</p>
                                     </div>
                                 </div>
                             </div>
@@ -283,22 +344,24 @@
                     <div class="">
                         <div class="container">
                             <h2 class="mil-display3 mil-rubber mil-mb90 mil-m1 mil-tac mil-up">let's <span class="mil-a1">talk</span></h2>
-                            <form class="mil-stl mil-mb130">
+                            <form class="mil-stl mil-mb130" method="POST" action="">
                                 <div class="row mil-aic">
                                     <div class="col-md-6 mil-mb30 mil-up">
-                                        <input type="text" placeholder="What's your name">
+                                        <input type="text" name="name" placeholder="What's your name" required>
                                     </div>
                                     <div class="col-md-6 mil-mb30 mil-up">
-                                        <input type="text" placeholder="Your Email">
+                                        <input type="email" name="email" placeholder="Your Email" required>
                                     </div>
                                     <div class="col-md-12 mil-mb30 mil-up">
-                                        <textarea placeholder="Tell us about our project"></textarea>
+                                        <textarea name="message" placeholder="Tell us about your project" required></textarea>
                                     </div>
                                     <div class="col-md-6 mil-mb30">
-                                        <p class="mil-text-sm mil-up">*We promise not to disclose your personal information to third parties.</p>
+                                        <p class="mil-text-sm mil-up">
+                                            *We promise not to disclose your personal information to third parties.
+                                        </p>
                                     </div>
                                     <div class="col-md-6 mil-mb30 mil-768-mb0 mil-jce mil-768-jcc mil-up">
-                                        <button class="mil-btn mil-a2 mil-c-gone">Send message</button>
+                                        <button type="submit" class="mil-btn mil-a2 mil-c-gone">Send message</button>
                                     </div>
                                 </div>
                             </form>
@@ -349,8 +412,8 @@
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="mil-footer-bottom mil-up">
-                                        <p class="mil-text-sm">©2024. All rights reserved.</p>
-                                        <p class="mil-text-sm">Design by: <a href="https://themeforest.net/user/millerdigitaldesign/portfolio" class="mil-text-link mil-a2 mil-c-gone">Nazar Miller</a></p>
+                                        <p class="mil-text-sm">©2025 LexoraTech. All rights reserved.</p>
+
                                     </div>
                                 </div>
                             </div>
