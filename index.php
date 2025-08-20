@@ -132,7 +132,7 @@
                                         </ul>
                                     </div>
                                     <div class="mil-bottom-part">
-                                        <p class="mil-text-sm">©2025. All rights reserved.</p>
+                                        <p class="mil-text-sm">©2025 LexoraTech. All rights reserved.</p>
                                     </div>
                                 </div>
                             </div>
