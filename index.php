@@ -32,7 +32,7 @@
         <!-- cursor end -->
 
         <!-- preloader -->
-        <div class="mil-preloader">
+        <!--         <div class="mil-preloader">
             <div class="mil-preloader-animation">
                 <div class="mil-pos-abs mil-animation-1">
                     <p class="mil-head1 mil-m1">Pioneering</p>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- preloader end -->
 
         <!-- scroll progress -->
@@ -80,7 +80,7 @@
                         <div class="mil-buttons">
                             <a href="contact-stl.php" class="mil-tp-btn"><i class="fal fa-envelope"></i></a>
                             <div class="mil-tp-btn">
-                                <div class=""><span></span></div>
+                                <div class="mil-menu-btn"><span></span></div>
                             </div>
                         </div>
                     </div>
@@ -95,20 +95,11 @@
                                 <div class="mil-left-side">
                                     <div class="mil-menu-part mil-inner-scroll" id="swupMenu">
                                         <ul class="mil-main-menu mil-c-gone">
-                                            <li class="mil-has-children">
+                                            <!--  <li class="mil-has-children">
                                                 <a href="#.">Look</a>
-                                                <ul>
 
-                                                    <li class="mil-current"><a href="index.php" target="_blank" data-no-swup>Stylish</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="mil-has-children">
-                                                <a href="#.">Home type</a>
-                                                <ul>
-                                                    <li class="mil-current"><a href="index.php">Corporate</a></li>
+                                            </li> -->
 
-                                                </ul>
-                                            </li>
                                             <li class="mil-has-children">
                                                 <a href="#.">Portfolio</a>
                                                 <ul>
@@ -120,13 +111,12 @@
                                             <li class="mil-has-children">
                                                 <a href="#.">Pages</a>
                                                 <ul>
+                                                    <li><a href="services-stl.php">Services</a></li>
                                                     <li><a href="team-stl.php">Team</a></li>
                                                     <li><a href="contact-stl.php">Contact</a></li>
-                                                    <li><a href="services-stl.php">Services</a></li>
-                                                    <li><a href="service-stl.php">Service single</a></li>
-                                                    <li><a href="blog-stl.php">Blog</a></li>
-                                                    <li><a href="publication-stl.html">Publication</a></li>
-                                                    <li><a href="404-stl.php">404</a></li>
+                                                    <!-- <li><a href="">Publication</a></li>
+                                                    <li><a href="">Blog</a></li> -->
+
                                                 </ul>
                                             </li>
                                         </ul>
@@ -142,80 +132,18 @@
                                         <ul class="mil-links">
                                             <li><a href="#.">Privacy policy</a></li>
                                             <li><a href="#.">Therms and conditions</a></li>
-                                            <li><a href="#.">Site map</a></li>
                                             <li><a href="#.">Careers</a></li>
                                         </ul>
                                     </div>
 
                                     <div class="mil-blog-part">
-                                        <div class="mil-blog-section">
-                                            <div class="mil-jcb mil-aic">
-                                                <h4 class="mil-head4 mil-mb30">Latest from blog</h4>
-                                                <div class="mil-sb-nav mil-mb30">
-                                                    <div class="mil-slider-btn mil-sb-prev mil-c-gone"><i class="fal fa-arrow-left"></i></div>
-                                                    <div class="mil-slider-btn mil-sb-next mil-c-gone"><i class="fal fa-arrow-right"></i></div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-container mil-blog-slider-sm">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide">
-                                                        <a href="publication-stl.html" class="mil-blog-card-sm mil-c-gone">
-                                                            <div class="mil-cover">
-                                                                <div class="mil-hover-frame">
-                                                                    <img src="img/blog/9.jpg" alt="cover">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mil-text-frame">
-                                                                <h4 class="mil-head6 mil-max-1row-text">How to Become a Graphic Designer in 10 Simple Steps</h4>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <a href="publication-stl.html" class="mil-blog-card-sm mil-c-gone">
-                                                            <div class="mil-cover">
-                                                                <div class="mil-hover-frame">
-                                                                    <img src="img/blog/10.jpg" alt="cover">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mil-text-frame">
-                                                                <h4 class="mil-head6 mil-max-1row-text">10 Essential Tools Every Graphic Designer Should Master</h4>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <a href="publication-stl.html" class="mil-blog-card-sm mil-c-gone">
-                                                            <div class="mil-cover">
-                                                                <div class="mil-hover-frame">
-                                                                    <img src="img/blog/11.jpg" alt="cover">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mil-text-frame">
-                                                                <h4 class="mil-head6 mil-max-1row-text">The Ultimate Guide to UI/UX Design for Beginners</h4>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <a href="publication-stl.html" class="mil-blog-card-sm mil-c-gone">
-                                                            <div class="mil-cover">
-                                                                <div class="mil-hover-frame">
-                                                                    <img src="img/blog/12.jpg" alt="cover">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mil-text-frame">
-                                                                <h4 class="mil-head6 mil-max-1row-text">How to Create Stunning Visuals with Minimal Effort</h4>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="mil-menu-social">
-                                            <ul class="mil-social mil-c-gone">
-                                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
+                                            <ul class="social-icons" style="display:flex; justify-content:flex-end; gap:15px; list-style:none; padding:0; margin:0;">
+                                                <li><a href="https://www.facebook.com/people/LexoraTech/61573037507493/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-facebook-f"></i></a></li>
+                                                <li><a href="https://www.instagram.com/lexora_tech/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-instagram"></i></a></li>
+                                                <li><a href="https://www.linkedin.com/in/lexora-tech-133b7434a/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a></li>
+                                                <li><a href="https://www.youtube.com/channel/UCA-NVZ5FieP8uE1nYyfhRSw" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-youtube"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -321,7 +249,7 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Design of intuitive and visually appealing user interfaces for web and mobile applications, focusing on enhancing the user experience and usability.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="#" class="mil-stylized-btn mil-c-gone">
+                                                <a href="services-stl.php" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -334,7 +262,7 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Comprehensive brand development, including logo creation, color scheme selection, and visual style design to ensure a cohesive and memorable brand identity.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="#" class="mil-stylized-btn mil-c-gone">
+                                                <a href="services-stl.php" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -346,7 +274,7 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Creation of impactful advertising campaigns and marketing materials designed to increase brand visibility, engage target audiences, and drive customer acquisition.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="#" class="mil-stylized-btn mil-c-gone">
+                                                <a href="services-stl.php" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -358,7 +286,7 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Development of responsive and high-performance websites and web applications, focusing on clean code, scalability, and seamless functionality to deliver an optimal user experience across devices.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="#" class="mil-stylized-btn mil-c-gone">
+                                                <a href="services-stl.php" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -370,7 +298,7 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Design and development of responsive and feature-rich mobile applications for iOS and Android, focusing on seamless performance, intuitive navigation, and an engaging user experience.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="#" class="mil-stylized-btn mil-c-gone">
+                                                <a href="services-stl.php" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -382,7 +310,7 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Design and development of reliable and efficient POS software applications, focusing on streamlined transaction processing, user-friendly interfaces, and robust functionality to enhance business operations.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="#" class="mil-stylized-btn mil-c-gone">
+                                                <a href="services-stl.php" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -441,7 +369,7 @@
                             </div>
                             <div class="mil-image-box">
                                 <div class="mil-image-frame">
-                                    <img src="img/home-4/1.jpg" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
+                                    <img src="img/home-4/1.png" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
                                     <div class="mil-overlay"></div>
                                 </div>
                             </div>
@@ -480,7 +408,7 @@
                     <!-- about end -->
 
                     <!-- team -->
-               <!--      <div class="mil-p-0-130 mil-768-p-160-145" id="team">
+                    <!--      <div class="mil-p-0-130 mil-768-p-160-145" id="team">
                         <div class="container">
                             <div class="row mil-aie mil-mb30">
                                 <div class="col-lg-6">
@@ -644,7 +572,7 @@
                     <!-- reviews end -->
 
                     <!-- partners -->
-           <!--          <div class="mil-p-160-130">
+                    <!--          <div class="mil-p-160-130">
                         <div class="container">
                             <div class="row mil-jcb mil-aic">
                                 <div class="col-6 col-md-3 mil-up">
@@ -819,27 +747,31 @@
                                     <input type="text" placeholder="Enter your email">
                                     <button type="submit"><i class="fal fa-arrow-right"></i></button>
                                 </form>
+                                <br>
+                                <p class="mil-text-sm mil-up">By clicking the submit button, you agree to the <br><a href="contact-stl.php" class="mil-text-link mil-a2 mil-c-gone">
+                                        rules for processing personal data</a>.</p>
                             </div>
                             <div class="mil-image-box">
                                 <div class="mil-image-frame">
                                     <!-- image background<img src="img/home-4/2.jpg" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">-->
                                     <video class="mil-scale-img" data-value-1="1" data-value-2="1.1" autoplay="autoplay" loop="loop" muted="" playsinline="" oncontextmenu="return false;" preload="auto">
-                                        <source src="img/home-4/3.mp4">
+                                        <source src="img/home-4/video.mp4">
                                     </video>
                                     <div class="mil-overlay"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row mil-aic mil-jcb mil-no-g">
+                        <!--   <div class="row mil-aic mil-jcb mil-no-g">
                             <div class="col-lg-6">
                                 <div class="mil-button-pad mil-a1 mil-jst" style="display: block"></div>
                             </div>
                             <div class="col-lg-6 mil-992-gone">
                                 <div class="mil-text-pad">
-                                    <p class="mil-text-sm mil-up">By clicking the submit button, you agree to the <br><a href="contact-stl.php" class="mil-text-link mil-a2 mil-c-gone">rules for processing personal data</a>.</p>
+                                    <p class="mil-text-sm mil-up">By clicking the submit button, you agree to the <br><a href="contact-stl.php" class="mil-text-link mil-a2 mil-c-gone">
+                                        rules for processing personal data</a>.</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- subscribe end -->
 
@@ -856,7 +788,7 @@
                                         </span>
                                     </a>
                                 </div>
-                            <!--     <div class="col-lg-12">
+                                <!--     <div class="col-lg-12">
                                     <div class="mil-footer-menu-frame mil-mb90 mil-up">
                                         <ul class="mil-footer-menu">
                                             <li><a href="#." class="mil-c-gone">Home</a></li>
@@ -874,9 +806,22 @@
                                         </ul>
                                     </div>
                                 </div> -->
+                                <div class="col-lg-6">
+                                    <div class="footer-column" style="flex:1 1 220px; min-width:200px; text-align:right;">
+                                        <h5 style="font-weight:700; margin-bottom:15px; color:#fff; font-family: Georgia, 'Times New Roman', serif;">Follow Us</h5>
+                                        <ul class="social-icons" style="display:flex; justify-content:flex-end; gap:15px; list-style:none; padding:0; margin:0;">
+                                            <li><a href="https://www.facebook.com/people/LexoraTech/61573037507493/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="https://www.instagram.com/lexora_tech/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/in/lexora-tech-133b7434a/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="https://www.youtube.com/channel/UCA-NVZ5FieP8uE1nYyfhRSw" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-youtube"></i></a></li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
                                 <div class="col-lg-12">
-                                    <div class="mil-footer-bottom mil-up">
-                                        <p class="mil-text-sm">©2025 LexoraTech. All rights reserved.</p>
+                                    <div class="mil-footer-bottom mil-up" style="font-weight: bold;">
+                                        <p class="mil-text-sm">©2025 LexoraTech All Rights Reserved</p>
 
                                     </div>
                                 </div>
@@ -884,6 +829,9 @@
 
                         </div>
                     </footer>
+
+
+
                     <!-- footer end -->
 
                 </div>
@@ -910,6 +858,8 @@
     <script src="js/plugins/swiper.min.js"></script>
     <!-- parallax js -->
     <script src="js/plugins/parallax.js"></script>
+    <!-- FontAwesome for Icons -->
+    <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
 
     <!-- LexoraTech js -->
     <script src="js/main.js"></script>

@@ -82,14 +82,14 @@
                             <li class="mil-has-children">
                                 <a href="#.">Template style</a>
                                 <ul>
-                                    <li class="mil-current"><a href="home-1.html" target="_blank" data-no-swup>Friendly</a></li>
+                                    <li class="mil-current"><a href="index.php" target="_blank" data-no-swup>Friendly</a></li>
                                     <li><a href="index.php" target="_blank" data-no-swup>Stylish</a></li>
                                 </ul>
                             </li>
                             <li class="mil-has-children">
                                 <a href="#.">Home type</a>
                                 <ul>
-                                    <li><a href="home-1.html">Corporate</a></li>
+                                    <li><a href="index.php">Corporate</a></li>
                                     <li><a href="home-2.html">Agency</a></li>
                                     <li><a href="home-3.html">Personal</a></li>
                                 </ul>
@@ -207,7 +207,7 @@
                                 <div class="mil-text-pad"></div>
                                 <ul class="mil-breadcrumbs mil-mb60 mil-c-gone">
                                     <li>
-                                        <a href="home-1.html">Home</a>
+                                        <a href="index.php">Home</a>
                                     </li>
                                     <li>
                                         <a href="#.">Services</a>

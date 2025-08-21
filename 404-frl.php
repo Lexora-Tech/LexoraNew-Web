@@ -82,14 +82,14 @@
                             <li class="mil-has-children">
                                 <a href="#.">Template style</a>
                                 <ul>
-                                    <li class="mil-current"><a href="home-1.html" target="_blank" data-no-swup>Friendly</a></li>
+                                    <li class="mil-current"><a href="index.php" target="_blank" data-no-swup>Friendly</a></li>
                                     <li><a href="index.php" target="_blank" data-no-swup>Stylish</a></li>
                                 </ul>
                             </li>
                             <li class="mil-has-children">
                                 <a href="#.">Home type</a>
                                 <ul>
-                                    <li><a href="home-1.html">Corporate</a></li>
+                                    <li><a href="index.php">Corporate</a></li>
                                     <li><a href="home-2.html">Agency</a></li>
                                     <li><a href="home-3.html">Personal</a></li>
                                 </ul>
@@ -212,7 +212,7 @@
                                     <div class="mil-s-4"><img src="img/shapes/4.png" alt="shape"></div>
                                 </div>
                                 <h1 class="mil-head2 mil-m3 mil-rubber mil-mb50">Looks like you got lost</h1>
-                                <a href="home-1.html" class="mil-btn mil-btn-border mil-c-gone">Back to homepage</a>
+                                <a href="index.php" class="mil-btn mil-btn-border mil-c-gone">Back to homepage</a>
                             </div>
                             <div class="mil-shapes mil-scale-img" data-value-1=".7" data-value-2="1.11">
                                 <div class="mil-s-1"><img src="img/shapes/1.png" alt="shape"></div>

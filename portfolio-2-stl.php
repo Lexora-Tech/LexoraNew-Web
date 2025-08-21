@@ -89,7 +89,7 @@
                                             <li class="mil-has-children">
                                                 <a href="#.">Template style</a>
                                                 <ul>
-                                                    <li><a href="home-1.html" target="_blank" data-no-swup>Friendly</a></li>
+                                                    <li><a href="index.php" target="_blank" data-no-swup>Friendly</a></li>
                                                     <li><a href="index.php" target="_blank" data-no-swup>Stylish</a></li>
                                                 </ul>
                                             </li>
@@ -234,7 +234,7 @@
                                 <div class="mil-text-pad"></div>
                                 <ul class="mil-breadcrumbs mil-mb60 mil-c-gone">
                                     <li>
-                                        <a href="home-1.html">Home</a>
+                                        <a href="index.php">Home</a>
                                     </li>
                                     <li>
                                         <a href="#.">Portfolio</a>

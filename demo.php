@@ -82,14 +82,14 @@
                             <li class="mil-has-children">
                                 <a href="#.">Template style</a>
                                 <ul>
-                                    <li><a href="home-1.html" target="_blank" data-no-swup>Friendly</a></li>
+                                    <li><a href="index.php" target="_blank" data-no-swup>Friendly</a></li>
                                     <li><a href="index.php" target="_blank" data-no-swup>Stylish</a></li>
                                 </ul>
                             </li>
                             <li class="mil-has-children">
                                 <a href="#.">Home type</a>
                                 <ul>
-                                    <li><a href="home-1.html" target="_blank" data-no-swup>Corporate</a></li>
+                                    <li><a href="index.php" target="_blank" data-no-swup>Corporate</a></li>
                                     <li><a href="home-2.html" target="_blank" data-no-swup>Agency</a></li>
                                     <li><a href="home-3.html" target="_blank" data-no-swup>Personal</a></li>
                                 </ul>
@@ -191,12 +191,12 @@
                                     <h2 class="mil-head1 mil-mb60 mil-up">Prebuild <span class="mil-a2">Homepages</span></h2>
                                 </div>
                                 <div class="col-md-5">
-                                    <p class="mil-stylized mil-m1 mil-tar mil-768-tal mil-mb60 mil-up"><a href="home-1.html" class="mil-arrow-link mil-c-gone" data-no-swup target="_blank">View demo</a></p>
+                                    <p class="mil-stylized mil-m1 mil-tar mil-768-tal mil-mb60 mil-up"><a href="index.php" class="mil-arrow-link mil-c-gone" data-no-swup target="_blank">View demo</a></p>
                                 </div>
                             </div>
                             <div class="row mil-mb60">
                                 <div class="col-lg-6 mil-mb30 mil-up">
-                                    <a href="home-1.html" class="mil-c-view" data-no-swup target="_blank">
+                                    <a href="index.php" class="mil-c-view" data-no-swup target="_blank">
                                         <img src="img/demo/1.jpg" alt="prebuild homepage" style="width: 100%; filter: brightness(97%)">
                                     </a>
                                 </div>
