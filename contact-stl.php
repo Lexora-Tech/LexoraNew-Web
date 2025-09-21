@@ -1,62 +1,3 @@
-<?php
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $message = htmlspecialchars($_POST['message']);
-
-    $companyEmail = "info@yourdomain.com"; // Your company email
-    $fromEmail = "contact@lexoratech.com"; // Server email / domain email
-    $fromName = "Lexora Tech";
-
-    $mail = new PHPMailer(true);
-
-    try {
-        // SMTP settings
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.lexoratech.com'; // your domain SMTP
-        $mail->SMTPAuth   = true;
-        $mail->Username   = $fromEmail;           // your domain email
-        $mail->Password   = 'm2Ece3t;I&N6';       // email password
-        $mail->SMTPSecure = 'tls';
-        $mail->Port       = 587;
-
-        // ===== 1️⃣ Email to company =====
-        $mail->setFrom($fromEmail, $fromName);
-        $mail->addAddress($companyEmail);
-        $mail->addReplyTo($email, $name);
-
-        $mail->isHTML(true);
-        $mail->Subject = "New Contact Form Submission";
-        $mail->Body    = "<b>Name:</b> $name<br><b>Email:</b> $email<br><b>Message:</b><br>$message";
-        $mail->AltBody = "Name: $name\nEmail: $email\nMessage:\n$message";
-
-        $mail->send(); // send to company
-
-        // ===== 2️⃣ Email to client (confirmation) =====
-        $mail->clearAddresses();
-        $mail->addAddress($email);      // send to client
-        $mail->setFrom($fromEmail, $fromName);
-        $mail->Subject = "We Received Your Message";
-        $mail->Body    = "Hi $name,<br><br>Thank you for contacting us. We have received your message and will contact you soon.<br><br>Best Regards,<br>$fromName";
-        $mail->AltBody = "Hi $name,\n\nThank you for contacting us. We have received your message and will contact you soon.\n\nBest Regards,\n$fromName";
-
-        $mail->send(); // send confirmation to client
-
-        echo "<p>✅ Your message has been sent successfully! We will contact you soon.</p>";
-    } catch (Exception $e) {
-        echo "<p>❌ Message could not be sent. Error: {$mail->ErrorInfo}</p>";
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -273,7 +214,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="">
                         <div class="container">
                             <h2 class="mil-display3 mil-rubber mil-mb90 mil-m1 mil-tac mil-up">let's <span class="mil-a1">talk</span></h2>
-                            <form class="mil-stl mil-mb130" method="POST" action="">
+                            <form class="mil-stl mil-mb130" method="POST" action="send_email.php">
                                 <div class="row mil-aic">
                                     <div class="col-md-6 mil-mb30 mil-up">
                                         <input type="text" name="name" placeholder="What's your name" required>
