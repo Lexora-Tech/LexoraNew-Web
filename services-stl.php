@@ -101,10 +101,10 @@
                                             </li> -->
 
                                             <li class="mil-has-children">
-                                                <a href="#.">Portfolio</a>
+                                                <a href="#.">Home</a>
                                                 <ul>
 
-                                                    <li><a href="portfolio-2-stl.php">Grid</a></li>
+                                                    <li><a href="index.php">Landing</a></li>
 
                                                 </ul>
                                             </li>
@@ -112,7 +112,7 @@
                                                 <a href="#.">Pages</a>
                                                 <ul>
                                                     <li><a href="services-stl.php">Services</a></li>
-                                                    <li><a href="team-stl.php">Team</a></li>
+                                                    <!-- <li><a href="team-stl.php">Team</a></li> -->
                                                     <li><a href="contact-stl.php">Contact</a></li>
                                                     <!-- <li><a href="">Publication</a></li>
                                                     <li><a href="">Blog</a></li> -->
@@ -142,7 +142,7 @@
                                             <ul class="social-icons" style="display:flex; justify-content:flex-end; gap:15px; list-style:none; padding:0; margin:0;">
                                                 <li><a href="https://www.facebook.com/people/LexoraTech/61573037507493/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-facebook-f"></i></a></li>
                                                 <li><a href="https://www.instagram.com/lexora_tech/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-instagram"></i></a></li>
-                                                <li><a href="https://www.linkedin.com/in/lexora-tech-133b7434a/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a></li>
+                                                <li><a href="https://www.linkedin.com/company/lexoratech" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a></li>
                                                 <li><a href="https://www.youtube.com/channel/UCA-NVZ5FieP8uE1nYyfhRSw" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-youtube"></i></a></li>
                                             </ul>
                                         </div>
@@ -374,7 +374,7 @@
                                         <ul class="social-icons" style="display:flex; justify-content:flex-end; gap:15px; list-style:none; padding:0; margin:0;">
                                             <li><a href="https://www.facebook.com/people/LexoraTech/61573037507493/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-facebook-f"></i></a></li>
                                             <li><a href="https://www.instagram.com/lexora_tech/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-instagram"></i></a></li>
-                                            <li><a href="https://www.linkedin.com/in/lexora-tech-133b7434a/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/company/lexoratech" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a></li>
                                             <li><a href="https://www.youtube.com/channel/UCA-NVZ5FieP8uE1nYyfhRSw" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-youtube"></i></a></li>
                                         </ul>
                                     </div>
