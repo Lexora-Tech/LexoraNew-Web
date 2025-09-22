@@ -69,7 +69,7 @@
 
                     <div class="mil-buttons-tp-frame mil-c-gone">
                         <div class="mil-buttons">
-                            <a href="contact-stl.php" class="mil-tp-btn"><i class="fal fa-envelope"></i></a>
+                            <a href="contact.php" class="mil-tp-btn"><i class="fal fa-envelope"></i></a>
                             <div class="mil-tp-btn">
                                 <div class="mil-menu-btn"><span></span></div>
                             </div>
@@ -113,11 +113,11 @@
                                                 <a href="#.">Pages</a>
                                                 <ul>
                                                     <li><a href="team-stl.php">Team</a></li>
-                                                    <li><a href="contact-stl.php">Contact</a></li>
-                                                    <li><a href="services-stl.php">Services</a></li>
+                                                    <li><a href="contact.php">Contact</a></li>
+                                                    <li><a href="services.php">Services</a></li>
                                                     <li><a href="service-stl.php">Service single</a></li>
-                                                    <li><a href="blog-stl.php">Blog</a></li>
-                                                    <li><a href="publication-stl.html">Publication</a></li>
+                                                    <li><a href="blog.php">Blog</a></li>
+                                                    <li><a href="publications.php">Publication</a></li>
                                                     <li><a href="404-stl.php">404</a></li>
                                                 </ul>
                                             </li>
@@ -150,7 +150,7 @@
                                             <div class="swiper-container mil-blog-slider-sm">
                                                 <div class="swiper-wrapper">
                                                     <div class="swiper-slide">
-                                                        <a href="publication-stl.html" class="mil-blog-card-sm mil-c-gone">
+                                                        <a href="publications.php" class="mil-blog-card-sm mil-c-gone">
                                                             <div class="mil-cover">
                                                                 <div class="mil-hover-frame">
                                                                     <img src="img/blog/9.jpg" alt="cover">
@@ -162,7 +162,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="swiper-slide">
-                                                        <a href="publication-stl.html" class="mil-blog-card-sm mil-c-gone">
+                                                        <a href="publications.php" class="mil-blog-card-sm mil-c-gone">
                                                             <div class="mil-cover">
                                                                 <div class="mil-hover-frame">
                                                                     <img src="img/blog/10.jpg" alt="cover">
@@ -174,7 +174,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="swiper-slide">
-                                                        <a href="publication-stl.html" class="mil-blog-card-sm mil-c-gone">
+                                                        <a href="publications.php" class="mil-blog-card-sm mil-c-gone">
                                                             <div class="mil-cover">
                                                                 <div class="mil-hover-frame">
                                                                     <img src="img/blog/11.jpg" alt="cover">
@@ -186,7 +186,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="swiper-slide">
-                                                        <a href="publication-stl.html" class="mil-blog-card-sm mil-c-gone">
+                                                        <a href="publications.php" class="mil-blog-card-sm mil-c-gone">
                                                             <div class="mil-cover">
                                                                 <div class="mil-hover-frame">
                                                                     <img src="img/blog/12.jpg" alt="cover">
@@ -470,7 +470,7 @@
                             <h2 class="mil-head1 mil-rubber mil-tac mil-mb60 mil-up">LexoraTech is a <span class="mil-a1">creative</span> agency that transforms <span class="mil-a1">ideas</span> into masterpieces. We craft <span class="mil-a1">design</span> magic, breathe new life into brands, and make the impossible <span class="mil-a1">possible</span>. Choose <span class="mil-a1">LexoraTech</span> because we are worth it!</h2>
                             <div class="mil-text-with-button mil-mb60">
                                 <p class="mil-text-sm mil-tar mil-768-tac mil-up">We can talk about ourselves endlessly. <br>You'd better write to us and come visit us. We are always glad to see you!</p>
-                                <span class="mil-up"><a href="contact-stl.php" class="mil-btn mil-a2 mil-c-gone">Write message</a></span>
+                                <span class="mil-up"><a href="contact.php" class="mil-btn mil-a2 mil-c-gone">Write message</a></span>
                             </div>
                         </div>
                         <div class="mil-tapes-frame">
@@ -535,7 +535,7 @@
                                 </div>
                                 <div class="col-lg-6 mil-992-gone">
                                     <div class="mil-text-pad">
-                                        <p class="mil-text-sm mil-up">We accept your requests 24/7. Feel free to <a href="contact-stl.php" class="mil-text-link mil-a2 mil-c-gone">write to us</a> whenever it is convenient for you</p>
+                                        <p class="mil-text-sm mil-up">We accept your requests 24/7. Feel free to <a href="contact.php" class="mil-text-link mil-a2 mil-c-gone">write to us</a> whenever it is convenient for you</p>
                                     </div>
                                 </div>
                             </div>
@@ -547,7 +547,7 @@
                         <div class="container">
                             <div class="row mil-no-g">
                                 <div class="col-lg-6 mil-up">
-                                    <a href="contact-stl.php" class="mil-footer-contact mil-mb90">
+                                    <a href="contact.php" class="mil-footer-contact mil-mb90">
                                         <h6 class="mil-footer-link mil-rubber mil-m1">Let’s TALK</h6>
                                         <span class="mil-stylized-btn mil-c-gone">
                                             <i class="fal fa-arrow-up"></i>
