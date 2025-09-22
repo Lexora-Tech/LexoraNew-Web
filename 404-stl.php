@@ -69,7 +69,7 @@
 
                     <div class="mil-buttons-tp-frame mil-c-gone">
                         <div class="mil-buttons">
-                            <a href="contact-stl.php" class="mil-tp-btn"><i class="fal fa-envelope"></i></a>
+                            <a href="contact.php" class="mil-tp-btn"><i class="fal fa-envelope"></i></a>
                             <div class="mil-tp-btn">
                                 <div class="mil-menu-btn"><span></span></div>
                             </div>
@@ -113,11 +113,11 @@
                                                 <a href="#.">Pages</a>
                                                 <ul>
                                                     <li><a href="team-stl.php">Team</a></li>
-                                                    <li><a href="contact-stl.php">Contact</a></li>
-                                                    <li><a href="services-stl.php">Services</a></li>
+                                                    <li><a href="contact.php">Contact</a></li>
+                                                    <li><a href="services.php">Services</a></li>
                                                     <li><a href="service-stl.php">Service single</a></li>
                                                     <li><a href="blog.php">Blog</a></li>
-                                                    <li><a href="publication-stl.html">Publication</a></li>
+                                                    <li><a href="publications.php">Publication</a></li>
                                                     <li class="mil-current"><a href="404-stl.php">404</a></li>
                                                 </ul>
                                             </li>
@@ -150,7 +150,7 @@
                                             <div class="swiper-container mil-blog-slider-sm">
                                                 <div class="swiper-wrapper">
                                                     <div class="swiper-slide">
-                                                        <a href="publication-stl.html" class="mil-blog-card-sm mil-c-gone">
+                                                        <a href="publications.php" class="mil-blog-card-sm mil-c-gone">
                                                             <div class="mil-cover">
                                                                 <div class="mil-hover-frame">
                                                                     <img src="img/blog/9.jpg" alt="cover">
@@ -162,7 +162,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="swiper-slide">
-                                                        <a href="publication-stl.html" class="mil-blog-card-sm mil-c-gone">
+                                                        <a href="publications.php" class="mil-blog-card-sm mil-c-gone">
                                                             <div class="mil-cover">
                                                                 <div class="mil-hover-frame">
                                                                     <img src="img/blog/10.jpg" alt="cover">
@@ -174,7 +174,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="swiper-slide">
-                                                        <a href="publication-stl.html" class="mil-blog-card-sm mil-c-gone">
+                                                        <a href="publications.php" class="mil-blog-card-sm mil-c-gone">
                                                             <div class="mil-cover">
                                                                 <div class="mil-hover-frame">
                                                                     <img src="img/blog/11.jpg" alt="cover">
@@ -186,7 +186,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="swiper-slide">
-                                                        <a href="publication-stl.html" class="mil-blog-card-sm mil-c-gone">
+                                                        <a href="publications.php" class="mil-blog-card-sm mil-c-gone">
                                                             <div class="mil-cover">
                                                                 <div class="mil-hover-frame">
                                                                     <img src="img/blog/12.jpg" alt="cover">

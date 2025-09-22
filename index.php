@@ -79,7 +79,7 @@
 
                     <div class="mil-buttons-tp-frame mil-c-gone">
                         <div class="mil-buttons">
-                            <a href="contact-stl.php" class="mil-tp-btn"><i class="fal fa-envelope"></i></a>
+                            <a href="contact.php" class="mil-tp-btn"><i class="fal fa-envelope"></i></a>
                             <div class="mil-tp-btn">
                                 <div class="mil-menu-btn"><span></span></div>
                             </div>
@@ -112,9 +112,10 @@
                                             <li class="mil-has-children">
                                                 <a href="#.">Pages</a>
                                                 <ul>
-                                                    <li><a href="services-stl.php">Services</a></li>
+                                                    <li><a href="services.php">Services</a></li>
                                                    <!--  <li><a href="team-stl.php">Team</a></li> -->
-                                                    <li><a href="contact-stl.php">Contact</a></li>
+                                                    <li><a href="contact.php">Contact</a></li>
+                                                    <li><a href="blog.php">Blog</a></li>
                                                     <!-- <li><a href="">Publication</a></li>
                                                     <li><a href="">Blog</a></li> -->
 
@@ -250,7 +251,7 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Design of intuitive and visually appealing user interfaces for web and mobile applications, focusing on enhancing the user experience and usability.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="services-stl.php" class="mil-stylized-btn mil-c-gone">
+                                                <a href="services.php" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -263,7 +264,7 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Comprehensive brand development, including logo creation, color scheme selection, and visual style design to ensure a cohesive and memorable brand identity.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="services-stl.php" class="mil-stylized-btn mil-c-gone">
+                                                <a href="services.php" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -275,7 +276,7 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Creation of impactful advertising campaigns and marketing materials designed to increase brand visibility, engage target audiences, and drive customer acquisition.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="services-stl.php" class="mil-stylized-btn mil-c-gone">
+                                                <a href="services.php" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -287,7 +288,7 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Development of responsive and high-performance websites and web applications, focusing on clean code, scalability, and seamless functionality to deliver an optimal user experience across devices.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="services-stl.php" class="mil-stylized-btn mil-c-gone">
+                                                <a href="services.php" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -299,7 +300,7 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Design and development of responsive and feature-rich mobile applications for iOS and Android, focusing on seamless performance, intuitive navigation, and an engaging user experience.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="services-stl.php" class="mil-stylized-btn mil-c-gone">
+                                                <a href="services.php" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -311,7 +312,7 @@
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Design and development of reliable and efficient POS software applications, focusing on streamlined transaction processing, user-friendly interfaces, and robust functionality to enhance business operations.</p>
                                             </div>
                                             <div class="mil-mb30 mil-up">
-                                                <a href="services-stl.php" class="mil-stylized-btn mil-c-gone">
+                                                <a href="services.php" class="mil-stylized-btn mil-c-gone">
                                                     <i class="fal fa-arrow-up"></i>
                                                     <span>Read more</span>
                                                 </a>
@@ -377,11 +378,11 @@
                         </div>
                         <div class="row mil-aic mil-jcb mil-no-g">
                             <div class="col-lg-4 mil-992-gone">
-                                <p class="mil-text-sm mil-up">We accept your requests 24/7. Feel free to <a href="contact-stl.php" class="mil-text-link mil-a2 mil-c-gone">write to us</a> whenever it is convenient for you</p>
+                                <p class="mil-text-sm mil-up">We accept your requests 24/7. Feel free to <a href="contact.php" class="mil-text-link mil-a2 mil-c-gone">write to us</a> whenever it is convenient for you</p>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mil-button-pad mil-a2">
-                                    <span class="mil-up"><a href="contact-stl.php" class="mil-btn mil-btn-border mil-m1 mil-c-gone">Get in touch</a></span>
+                                    <span class="mil-up"><a href="contact.php" class="mil-btn mil-btn-border mil-m1 mil-c-gone">Get in touch</a></span>
                                 </div>
                             </div>
                         </div>
@@ -643,7 +644,7 @@
                                                     <div class="mil-date">29.08.24</div>
                                                 </div>
                                             </div>
-                                            <a href="publication-stl.html" class="mil-descr mil-c-gone">
+                                            <a href="publications.php" class="mil-descr mil-c-gone">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">How to Become a Graphic Designer in 10 Simple Steps</h4>
                                                     <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
@@ -668,7 +669,7 @@
                                                     <div class="mil-date">29.08.24</div>
                                                 </div>
                                             </div>
-                                            <a href="publication-stl.html" class="mil-descr mil-c-gone">
+                                            <a href="publications.php" class="mil-descr mil-c-gone">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">10 Essential Tools Every Graphic Designer Should Master</h4>
                                                     <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
@@ -693,7 +694,7 @@
                                                     <div class="mil-date">29.08.24</div>
                                                 </div>
                                             </div>
-                                            <a href="publication-stl.html" class="mil-descr mil-c-gone">
+                                            <a href="publications.php" class="mil-descr mil-c-gone">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">From Concept to Creation: The Design Process Explained</h4>
                                                     <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
@@ -718,7 +719,7 @@
                                                     <div class="mil-date">29.08.24</div>
                                                 </div>
                                             </div>
-                                            <a href="publication-stl.html" class="mil-descr mil-c-gone">
+                                            <a href="publications.php" class="mil-descr mil-c-gone">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">The Ultimate Guide to UI/UX Design for Beginners</h4>
                                                     <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
@@ -749,7 +750,7 @@
                                     <button type="submit"><i class="fal fa-arrow-right"></i></button>
                                 </form>
                                 <br>
-                                <p class="mil-text-sm mil-up">By clicking the submit button, you agree to the <br><a href="contact-stl.php" class="mil-text-link mil-a2 mil-c-gone">
+                                <p class="mil-text-sm mil-up">By clicking the submit button, you agree to the <br><a href="contact.php" class="mil-text-link mil-a2 mil-c-gone">
                                         rules for processing personal data</a>.</p>
                             </div>
                             <div class="mil-image-box">
@@ -768,7 +769,7 @@
                             </div>
                             <div class="col-lg-6 mil-992-gone">
                                 <div class="mil-text-pad">
-                                    <p class="mil-text-sm mil-up">By clicking the submit button, you agree to the <br><a href="contact-stl.php" class="mil-text-link mil-a2 mil-c-gone">
+                                    <p class="mil-text-sm mil-up">By clicking the submit button, you agree to the <br><a href="contact.php" class="mil-text-link mil-a2 mil-c-gone">
                                         rules for processing personal data</a>.</p>
                                 </div>
                             </div>
@@ -781,7 +782,7 @@
                         <div class="container">
                             <div class="row mil-no-g">
                                 <div class="col-lg-6 mil-up">
-                                    <a href="contact-stl.php" class="mil-footer-contact mil-mb90">
+                                    <a href="contact.php" class="mil-footer-contact mil-mb90">
                                         <h6 class="mil-footer-link mil-rubber mil-m1">Let’s TALK</h6>
                                         <span class="mil-stylized-btn mil-c-gone">
                                             <i class="fal fa-arrow-up"></i>
