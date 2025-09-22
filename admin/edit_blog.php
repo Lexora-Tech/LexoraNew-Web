@@ -14,33 +14,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $p2 = $_POST['p2'];
     $conclusion = $_POST['conclusion'];
 
-    $update_sql = "UPDATE blogs 
-               SET title='$title', 
-                   heading='$heading', 
-                   headingbrief='$headingbrief', 
-                   p1='$p1', 
-                   p2='$p2', 
-                   conclusion='$conclusion' 
-               WHERE id=$id";
+    // Start building SQL
+    $fields = "title='$title', heading='$heading', headingbrief='$headingbrief', p1='$p1', p2='$p2', conclusion='$conclusion'";
 
+    // Handle cover image
     if (!empty($_FILES['cover_image']['name'])) {
         $cover = time() . "_cover_" . basename($_FILES["cover_image"]["name"]);
-        move_uploaded_file($_FILES["cover_image"]["tmp_name"], "../uploads/" . $cover);
-        $update_sql .= ", cover_image='$cover'";
-    }
-    if (!empty($_FILES['image1']['name'])) {
-        $img1 = time() . "_img1_" . basename($_FILES["image1"]["name"]);
-        move_uploaded_file($_FILES["image1"]["tmp_name"], "../uploads/" . $img1);
-        $update_sql .= ", image1='$img1'";
-    }
-    if (!empty($_FILES['image2']['name'])) {
-        $img2 = time() . "_img2_" . basename($_FILES["image2"]["name"]);
-        move_uploaded_file($_FILES["image2"]["tmp_name"], "../uploads/" . $img2);
-        $update_sql .= ", image2='$img2'";
+        if (move_uploaded_file($_FILES["cover_image"]["tmp_name"], "../uploads/" . $cover)) {
+            $fields .= ", cover_image='$cover'";
+        } else {
+            echo "Failed to upload cover image";
+        }
     }
 
-    mysqli_query($conn, $update_sql);
-    header("Location: dashboard.php");
+    // Handle image1
+    if (!empty($_FILES['image1']['name'])) {
+        $img1 = (time()+1) . "_img1_" . basename($_FILES["image1"]["name"]);
+        if (move_uploaded_file($_FILES["image1"]["tmp_name"], "../uploads/" . $img1)) {
+            $fields .= ", image1='$img1'";
+        } else {
+            echo "Failed to upload image1";
+        }
+    }
+
+    // Handle image2
+    if (!empty($_FILES['image2']['name'])) {
+        $img2 = (time()+2) . "_img2_" . basename($_FILES["image2"]["name"]);
+        if (move_uploaded_file($_FILES["image2"]["tmp_name"], "../uploads/" . $img2)) {
+            $fields .= ", image2='$img2'";
+        } else {
+            echo "Failed to upload image2";
+        }
+    }
+
+    // Execute the update
+    $update_sql = "UPDATE blogs SET $fields WHERE id=$id";
+    if (mysqli_query($conn, $update_sql)) {
+        header("Location: dashboard.php");
+        exit;
+    } else {
+        echo "Error updating blog: " . mysqli_error($conn);
+    }
 }
 ?>
 <!DOCTYPE html>
