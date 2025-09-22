@@ -16,8 +16,14 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
         <tr><th>ID</th><th>Title</th><th>Cover</th><th>Date</th><th>Actions</th></tr>
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
         <tr>
+            
             <td><?= $row['id']; ?></td>
             <td><?= $row['title']; ?></td>
+            <td><?= $row['heading']; ?></td>
+            <td><?= $row['headingbrief']; ?></td>
+            <td><?= $row['p1']; ?></td>
+            <td><?= $row['p2']; ?></td>
+            <td><?= $row['conclusion']; ?></td>
             <td><img src="../uploads/<?= $row['cover_image']; ?>" width="80"></td>
             <td><?= $row['created_at']; ?></td>
             <td>

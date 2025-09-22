@@ -4,7 +4,11 @@ include("../includes/auth.php");
 
 if (isset($_POST['submit'])) {
     $title = $_POST['title'];
-    $description = $_POST['description'];
+    $heading = $_POST['heading'];
+    $headingbrief = $_POST['headingbrief'];
+    $p1 = $_POST['p1'];
+    $p2 = $_POST['p2'];
+    $conclusion = $_POST['conclusion'];
 
     $target_dir = "../uploads/";
 
@@ -16,8 +20,8 @@ if (isset($_POST['submit'])) {
     move_uploaded_file($_FILES["image1"]["tmp_name"], $target_dir . $image1);
     move_uploaded_file($_FILES["image2"]["tmp_name"], $target_dir . $image2);
 
-    $sql = "INSERT INTO blogs (title, description, cover_image, image1, image2) 
-            VALUES ('$title', '$description', '$cover_image', '$image1', '$image2')";
+    $sql = "INSERT INTO blogs (title, heading,headingbrief,p1,p2,conclusion, cover_image, image1, image2) 
+            VALUES ('$title','$heading','$headingbrief', '$p1','$p2', '$conclusion','$cover_image', '$image1', '$image2')";
 
     if (mysqli_query($conn, $sql)) {
         header("Location: dashboard.php");

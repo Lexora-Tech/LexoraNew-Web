@@ -5,8 +5,18 @@
 <body>
   <h2>Add New Blog</h2>
   <form action="upload.php" method="POST" enctype="multipart/form-data">
+
     <input type="text" name="title" placeholder="Blog Title" required><br><br>
-    <textarea name="description" placeholder="Blog Description" required></textarea><br><br>
+
+    <input type="text" name="heading" placeholder="Blog Heading" required><br><br>
+
+    <input type="text" name="headingbrief" placeholder="Blog Heading Brief" required><br><br>
+
+    <textarea name="p1" placeholder="Blog Para 1" required></textarea><br><br>
+    <textarea name="p2" placeholder="Blog Para 2" required></textarea><br><br>
+
+    <textarea name="conclusion" placeholder="Conclusion" required></textarea><br><br>
+
     <label>Cover Image:</label><br>
     <input type="file" name="cover_image" accept="image/*" required><br><br>
     <label>Image 1:</label><br>
