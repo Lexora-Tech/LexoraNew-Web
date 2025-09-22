@@ -248,7 +248,7 @@
                                                     <div class="mil-date">29.08.24</div>
                                                 </div>
                                             </div>
-                                            <a href="publications.php" class="mil-descr mil-c-gone">
+                                            <a href="publication.php" class="mil-descr mil-c-gone">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">How to Become a Graphic Designer in 10 Simple Steps</h4>
                                                     <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
@@ -273,7 +273,7 @@
                                                     <div class="mil-date">29.08.24</div>
                                                 </div>
                                             </div>
-                                            <a href="publications.php" class="mil-descr mil-c-gone">
+                                            <a href="publication.php" class="mil-descr mil-c-gone">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">10 Essential Tools Every Graphic Designer Should Master</h4>
                                                     <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
@@ -298,7 +298,7 @@
                                                     <div class="mil-date">29.08.24</div>
                                                 </div>
                                             </div>
-                                            <a href="publications.php" class="mil-descr mil-c-gone">
+                                            <a href="publication.php" class="mil-descr mil-c-gone">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">From Concept to Creation: The Design Process Explained</h4>
                                                     <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
@@ -323,7 +323,7 @@
                                                     <div class="mil-date">29.08.24</div>
                                                 </div>
                                             </div>
-                                            <a href="publications.php" class="mil-descr mil-c-gone">
+                                            <a href="publication.php" class="mil-descr mil-c-gone">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">The Ultimate Guide to UI/UX Design for Beginners</h4>
                                                     <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
