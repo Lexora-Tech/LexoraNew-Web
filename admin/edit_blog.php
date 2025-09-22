@@ -26,32 +26,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($_FILES['cover_image']['name'])) {
         $cover = time() . "_cover_" . basename($_FILES["cover_image"]["name"]);
         move_uploaded_file($_FILES["cover_image"]["tmp_name"], "../uploads/" . $cover);
-        $update_sql = "UPDATE blogs SET title='$title', 
-                   heading='$heading', 
-                   headingbrief='$headingbrief', 
-                   p1='$p1', 
-                   p2='$p2', 
-                   conclusion='$conclusion', cover_image='$cover' WHERE id=$id";
+        $update_sql .= ", cover_image='$cover'";
     }
     if (!empty($_FILES['image1']['name'])) {
         $img1 = time() . "_img1_" . basename($_FILES["image1"]["name"]);
         move_uploaded_file($_FILES["image1"]["tmp_name"], "../uploads/" . $img1);
-        $update_sql = "UPDATE blogs SET title='$title', 
-                   heading='$heading', 
-                   headingbrief='$headingbrief', 
-                   p1='$p1', 
-                   p2='$p2', 
-                   conclusion='$conclusion', image1='$img1' WHERE id=$id";
+        $update_sql .= ", image1='$img1'";
     }
     if (!empty($_FILES['image2']['name'])) {
         $img2 = time() . "_img2_" . basename($_FILES["image2"]["name"]);
         move_uploaded_file($_FILES["image2"]["tmp_name"], "../uploads/" . $img2);
-        $update_sql = "UPDATE blogs SET title='$title', 
-                   heading='$heading', 
-                   headingbrief='$headingbrief', 
-                   p1='$p1', 
-                   p2='$p2', 
-                   conclusion='$conclusion', image2='$img2' WHERE id=$id";
+        $update_sql .= ", image2='$img2'";
     }
 
     mysqli_query($conn, $update_sql);
