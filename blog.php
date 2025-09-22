@@ -116,7 +116,7 @@
                                                     <li><a href="contact-stl.php">Contact</a></li>
                                                     <li><a href="services-stl.php">Services</a></li>
                                                     <li><a href="service-stl.php">Service single</a></li>
-                                                    <li class="mil-current"><a href="blog-stl.php">Blog</a></li>
+                                                    <li class="mil-current"><a href="blog.php">Blog</a></li>
                                                     <li><a href="publication-stl.html">Publication</a></li>
                                                     <li><a href="404-stl.php">404</a></li>
                                                 </ul>

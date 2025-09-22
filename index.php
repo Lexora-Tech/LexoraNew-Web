@@ -72,7 +72,8 @@
                             <li><a href="#services" class="mil-scroll-to" data-no-swup>Services</a></li>
                             <!-- <li><a href="#team" class="mil-scroll-to" data-no-swup>Team</a></li> -->
                             <li><a href="#reviews" class="mil-scroll-to" data-no-swup>Reviews</a></li>
-                            <!-- <li><a href="#blog" class="mil-scroll-to" data-no-swup>Blog</a></li> -->
+                            <li><a href="blog.php"  data-no-swup>Blog</a></li>
+
                         </ul>
                     </div>
 
@@ -626,7 +627,7 @@
                                     <h2 class="mil-head1 mil-mb60 mil-up">Latest from <span class="mil-a2">Blog</span></h2>
                                 </div>
                                 <div class="col-md-6">
-                                    <p class="mil-stylized mil-m1 mil-tar mil-768-tal mil-mb60 mil-up"><a href="blog-stl.php" class="mil-arrow-link mil-c-gone">View all publications</a></p>
+                                    <p class="mil-stylized mil-m1 mil-tar mil-768-tal mil-mb60 mil-up"><a href="blog.php" class="mil-arrow-link mil-c-gone">View all publications</a></p>
                                 </div>
                             </div>
                             <div class="swiper-container mil-blog-slider">

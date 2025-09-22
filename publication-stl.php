@@ -116,7 +116,7 @@
                                                     <li><a href="contact-stl.php">Contact</a></li>
                                                     <li><a href="services-stl.php">Services</a></li>
                                                     <li><a href="service-stl.php">Service single</a></li>
-                                                    <li><a href="blog-stl.php">Blog</a></li>
+                                                    <li><a href="blog.php">Blog</a></li>
                                                     <li class="mil-current"><a href="publication-stl.html">Publication</a></li>
                                                     <li><a href="404-stl.php">404</a></li>
                                                 </ul>
@@ -234,7 +234,7 @@
                                 <div class="mil-text-pad"></div>
                                 <ul class="mil-breadcrumbs mil-mb60 mil-c-gone">
                                     <li>
-                                        <a href="blog-stl.php">Blog</a>
+                                        <a href="blog.php">Blog</a>
                                     </li>
                                     <li>
                                         <a href="#.">publication</a>
@@ -294,7 +294,7 @@
                                     <h2 class="mil-head1 mil-mb60 mil-up">Similar <span class="mil-a2">Publications</span></h2>
                                 </div>
                                 <div class="col-md-6">
-                                    <p class="mil-stylized mil-m1 mil-tar mil-768-tal mil-mb60 mil-up"><a href="blog-stl.php" class="mil-arrow-link mil-c-gone">View all publications</a></p>
+                                    <p class="mil-stylized mil-m1 mil-tar mil-768-tal mil-mb60 mil-up"><a href="blog.php" class="mil-arrow-link mil-c-gone">View all publications</a></p>
                                 </div>
                             </div>
                             <div class="swiper-container mil-blog-slider">
