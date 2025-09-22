@@ -20,10 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
+    <title>Admin Login | LexoraTech</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
     <style>
         /* Reset for consistency */
         * {
@@ -43,17 +45,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             height: 100vh;
             color: #e2e8f0;
         }
+
         @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .login-container {
             background: rgba(30, 41, 59, 0.9);
             padding: 2rem;
             border-radius: 14px;
-            box-shadow: 0px 8px 25px rgba(0,0,0,0.5);
+            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.5);
             width: 100%;
             max-width: 360px;
             text-align: center;
@@ -62,8 +73,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .login-container h2 {
@@ -93,6 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             outline: none;
             transition: border 0.3s;
         }
+
         form input:focus {
             border: 1px solid #3b82f6;
         }
@@ -105,6 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
         }
+
         form button:hover {
             background: #1d4ed8;
             transform: translateY(-2px);
@@ -123,6 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <h2>Admin Login</h2>
@@ -135,4 +156,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p class="footer-text">© <?php echo date("Y"); ?> LexoraTech(Pvt)Ltd</p>
     </div>
 </body>
+
 </html>
