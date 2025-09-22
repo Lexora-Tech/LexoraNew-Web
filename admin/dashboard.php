@@ -13,7 +13,7 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
     <hr>
     <h3>All Blogs</h3>
     <table border="1" cellpadding="10">
-        <tr><th>ID</th><th>Title</th><th>Cover</th><th>Date</th><th>Actions</th></tr>
+        <tr><th>ID</th><th>Title</th><th>Heading</th><th>Heading Brief</th><th>Para 1</th><th>Para 2</th><th>Conclusion</th><th>Cover</th><th>Date</th><th>Actions</th></tr>
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
         <tr>
             
