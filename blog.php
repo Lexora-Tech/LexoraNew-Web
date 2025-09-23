@@ -16,7 +16,8 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
-    <title>LexoraTech</title>
+    <title>LexoraTech | Blog</title>
+     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
 </head>
 
@@ -54,7 +55,7 @@
         <!-- scroll progress end -->
 
         <!-- fixed elements -->
-          <div class="mil-fixed">
+        <div class="mil-fixed">
             <div class="mil-top-panel-2">
                 <div class="container">
                     <div class="mil-left-side mil-tp-transition" id="swupTpLeft">
@@ -70,7 +71,7 @@
                             <li><a href="#services" class="mil-scroll-to" data-no-swup>Services</a></li>
                             <!-- <li><a href="#team" class="mil-scroll-to" data-no-swup>Team</a></li> -->
                             <li><a href="#reviews" class="mil-scroll-to" data-no-swup>Reviews</a></li>
-                            <li><a href="blog.php"  data-no-swup>Blog</a></li>
+                            <li><a href="blog.php" data-no-swup>Blog</a></li>
 
                         </ul>
                     </div>
@@ -111,7 +112,7 @@
                                                 <a href="#.">Pages</a>
                                                 <ul>
                                                     <li><a href="services.php">Services</a></li>
-                                                   <!--  <li><a href="team-stl.php">Team</a></li> -->
+                                                    <!--  <li><a href="team-stl.php">Team</a></li> -->
                                                     <li><a href="contact.php">Contact</a></li>
                                                     <li><a href="blog.php">Blog</a></li>
                                                     <!-- <li><a href="">Publication</a></li>
@@ -198,8 +199,10 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="swiper-container mil-blog-slider">
                                 <div class="swiper-wrapper mil-c-swipe mil-c-light">
+                                    <!-- Start Swiper -->
                                     <div class="swiper-slide">
                                         <div class="mil-blog-card">
                                             <div class="mil-cover mil-up">
@@ -225,294 +228,115 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="mil-blog-card">
-                                            <div class="mil-cover mil-up">
-                                                <div class="mil-hover-frame">
-                                                    <img src="img/blog/10.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                                </div>
-                                                <div class="mil-badges">
-                                                    <div class="mil-category">Branding</div>
-                                                    <div class="mil-date">29.08.24</div>
-                                                </div>
-                                            </div>
-                                            <a href="publication.php" class="mil-descr mil-c-gone">
-                                                <div class="mil-text-frame">
-                                                    <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">10 Essential Tools Every Graphic Designer Should Master</h4>
-                                                    <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                </div>
-                                                <div class="mil-up mil-768-gone">
-                                                    <div class="mil-stylized-btn">
-                                                        <i class="fal fa-arrow-up"></i>
-                                                        <span>Read more</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
+                                    <!--  End Swiper -->
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- popular end -->
+
+                        <!-- blog -->
+                        <div class="mil-p-0-100">
+                            <div class="container">
+                                <div class="row mil-aie mil-mb30">
+                                    <div class="col-md-6">
+                                        <h2 class="mil-head1 mil-mb60 mil-up">Latest <span class="mil-a2">Publications</span></h2>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="mil-blog-card">
+                                </div>
+                                <div class="row">
+                                    <!--  Start Latest Blog Posts -->
+                                    <div class="col-lg-12">
+                                        <div class="mil-blog-card mil-type-2 mil-mb60">
                                             <div class="mil-cover mil-up">
                                                 <div class="mil-hover-frame">
                                                     <img src="img/blog/11.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
                                                 </div>
                                                 <div class="mil-badges">
-                                                    <div class="mil-category">Art</div>
+                                                    <div class="mil-category">design</div>
                                                     <div class="mil-date">29.08.24</div>
                                                 </div>
                                             </div>
                                             <a href="publication.php" class="mil-descr mil-c-gone">
                                                 <div class="mil-text-frame">
-                                                    <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">From Concept to Creation: The Design Process Explained</h4>
-                                                    <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                </div>
-                                                <div class="mil-up mil-768-gone">
-                                                    <div class="mil-stylized-btn">
-                                                        <i class="fal fa-arrow-up"></i>
-                                                        <span>Read more</span>
+                                                    <h4 class="mil-head3 mil-max-2row-text mil-mb30 mil-up">How to Become a Graphic Designer in 10 Simple Steps</h4>
+                                                    <p class="mil-text-md mil-max-2row-text mil-mb40 mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
+                                                    <div class="mil-up">
+                                                        <div class="mil-btn mil-a2 mil-c-gone">Read more</div>
                                                     </div>
                                                 </div>
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="mil-blog-card">
-                                            <div class="mil-cover mil-up">
-                                                <div class="mil-hover-frame">
-                                                    <img src="img/blog/12.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                                </div>
-                                                <div class="mil-badges">
-                                                    <div class="mil-category">Interior</div>
-                                                    <div class="mil-date">29.08.24</div>
-                                                </div>
-                                            </div>
-                                            <a href="publication.php" class="mil-descr mil-c-gone">
-                                                <div class="mil-text-frame">
-                                                    <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">The Ultimate Guide to UI/UX Design for Beginners</h4>
-                                                    <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                </div>
-                                                <div class="mil-up mil-768-gone">
-                                                    <div class="mil-stylized-btn">
-                                                        <i class="fal fa-arrow-up"></i>
-                                                        <span>Read more</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
+
+                                    <!--  End Latest Blog Posts  -->
+
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- popular end -->
+                        <!-- blog end -->
 
-                    <!-- blog -->
-                    <div class="mil-p-0-100">
+                        <!-- pagination -->
+                        <div class="mil-p-0-160">
+                            <div class="container">
+                                <div class="mil-blog-pagination">
+                                    <ul>
+                                        <li><a href="#."><i class="far fa-arrow-left"></i></a></li>
+                                        <li class="mil-active"><a href="#.">1</a></li>
+                                        <li><a href="#.">2</a></li>
+                                        <li><a href="#.">...</a></li>
+                                        <li><a href="#."><i class="far fa-arrow-right"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- pagination end -->
+
+                        <!-- subscribe -->
                         <div class="container">
-                            <div class="row mil-aie mil-mb30">
-                                <div class="col-md-6">
-                                    <h2 class="mil-head1 mil-mb60 mil-up">Latest <span class="mil-a2">Publications</span></h2>
+                            <div class="mil-half-container mil-stl mil-reverse mil-up">
+                                <div class="mil-text-box mil-g-m4 mil-p-160-160">
+                                    <p class="mil-stylized mil-m2 mil-mb60 mil-up">Newsletter</p>
+                                    <h2 class="mil-display3 mil-rubber mil-mb60 mil-up">Subscribe <span class="mil-a2">our</span> <br>newsletter</h2>
+                                    <form class="mil-subscribe-form mil-up mil-c-gone">
+                                        <input type="text" placeholder="Enter your email">
+                                        <button type="submit"><i class="fal fa-arrow-right"></i></button>
+                                    </form>
+                                </div>
+                                <div class="mil-image-box">
+                                    <div class="mil-image-frame">
+                                        <img src="img/home-4/2.jpg" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
+                                        <div class="mil-overlay"></div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="mil-blog-card mil-type-2 mil-mb60">
-                                        <div class="mil-cover mil-up">
-                                            <div class="mil-hover-frame">
-                                                <img src="img/blog/11.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                            </div>
-                                            <div class="mil-badges">
-                                                <div class="mil-category">design</div>
-                                                <div class="mil-date">29.08.24</div>
-                                            </div>
-                                        </div>
-                                        <a href="publication.php" class="mil-descr mil-c-gone">
-                                            <div class="mil-text-frame">
-                                                <h4 class="mil-head3 mil-max-2row-text mil-mb30 mil-up">How to Become a Graphic Designer in 10 Simple Steps</h4>
-                                                <p class="mil-text-md mil-max-2row-text mil-mb40 mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                <div class="mil-up">
-                                                    <div class="mil-btn mil-a2 mil-c-gone">Read more</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                            <div class="row mil-aic mil-jcb mil-no-g">
+                                <div class="col-lg-6">
+                                    <div class="mil-button-pad mil-a1 mil-jst" style="display: block"></div>
                                 </div>
-                                <div class="col-lg-12">
-                                    <div class="mil-blog-card mil-type-2 mil-mb60">
-                                        <div class="mil-cover mil-up">
-                                            <div class="mil-hover-frame">
-                                                <img src="img/blog/13.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                            </div>
-                                            <div class="mil-badges">
-                                                <div class="mil-category">design</div>
-                                                <div class="mil-date">29.08.24</div>
-                                            </div>
-                                        </div>
-                                        <a href="publication.php" class="mil-descr mil-c-gone">
-                                            <div class="mil-text-frame">
-                                                <h4 class="mil-head3 mil-max-2row-text mil-mb30 mil-up">The Ultimate Guide to UI/UX Design for Beginners</h4>
-                                                <p class="mil-text-md mil-max-2row-text mil-mb40 mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                <div class="mil-up">
-                                                    <div class="mil-btn mil-a2 mil-c-gone">Read more</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="mil-blog-card mil-type-2 mil-mb60">
-                                        <div class="mil-cover mil-up">
-                                            <div class="mil-hover-frame">
-                                                <img src="img/blog/14.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                            </div>
-                                            <div class="mil-badges">
-                                                <div class="mil-category">design</div>
-                                                <div class="mil-date">29.08.24</div>
-                                            </div>
-                                        </div>
-                                        <a href="publication.php" class="mil-descr mil-c-gone">
-                                            <div class="mil-text-frame">
-                                                <h4 class="mil-head3 mil-max-2row-text mil-mb30 mil-up">From Concept to Creation: The Design Process Explained</h4>
-                                                <p class="mil-text-md mil-max-2row-text mil-mb40 mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                <div class="mil-up">
-                                                    <div class="mil-btn mil-a2 mil-c-gone">Read more</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="mil-blog-card mil-type-2 mil-mb60">
-                                        <div class="mil-cover mil-up">
-                                            <div class="mil-hover-frame">
-                                                <img src="img/blog/12.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                            </div>
-                                            <div class="mil-badges">
-                                                <div class="mil-category">design</div>
-                                                <div class="mil-date">29.08.24</div>
-                                            </div>
-                                        </div>
-                                        <a href="publication.php" class="mil-descr mil-c-gone">
-                                            <div class="mil-text-frame">
-                                                <h4 class="mil-head3 mil-max-2row-text mil-mb30 mil-up">How to Become a Graphic Designer in 10 Simple Steps</h4>
-                                                <p class="mil-text-md mil-max-2row-text mil-mb40 mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                <div class="mil-up">
-                                                    <div class="mil-btn mil-a2 mil-c-gone">Read more</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="mil-blog-card mil-type-2 mil-mb60">
-                                        <div class="mil-cover mil-up">
-                                            <div class="mil-hover-frame">
-                                                <img src="img/blog/15.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                            </div>
-                                            <div class="mil-badges">
-                                                <div class="mil-category">design</div>
-                                                <div class="mil-date">29.08.24</div>
-                                            </div>
-                                        </div>
-                                        <a href="publication.php" class="mil-descr mil-c-gone">
-                                            <div class="mil-text-frame">
-                                                <h4 class="mil-head3 mil-max-2row-text mil-mb30 mil-up">The Ultimate Guide to UI/UX Design for Beginners</h4>
-                                                <p class="mil-text-md mil-max-2row-text mil-mb40 mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                <div class="mil-up">
-                                                    <div class="mil-btn mil-a2 mil-c-gone">Read more</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="mil-blog-card mil-type-2 mil-mb60">
-                                        <div class="mil-cover mil-up">
-                                            <div class="mil-hover-frame">
-                                                <img src="img/blog/16.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                            </div>
-                                            <div class="mil-badges">
-                                                <div class="mil-category">design</div>
-                                                <div class="mil-date">29.08.24</div>
-                                            </div>
-                                        </div>
-                                        <a href="publication.php" class="mil-descr mil-c-gone">
-                                            <div class="mil-text-frame">
-                                                <h4 class="mil-head3 mil-max-2row-text mil-mb30 mil-up">From Concept to Creation: The Design Process Explained</h4>
-                                                <p class="mil-text-md mil-max-2row-text mil-mb40 mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                <div class="mil-up">
-                                                    <div class="mil-btn mil-a2 mil-c-gone">Read more</div>
-                                                </div>
-                                            </div>
-                                        </a>
+                                <div class="col-lg-6 mil-992-gone">
+                                    <div class="mil-text-pad">
+                                        <p class="mil-text-sm mil-up">By clicking the submit button, you agree to the <br><a href="contact.php" class="mil-text-link mil-a2 mil-c-gone">rules for processing personal data</a>.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- blog end -->
+                        <!-- subscribe end -->
 
-                    <!-- pagination -->
-                    <div class="mil-p-0-160">
-                        <div class="container">
-                            <div class="mil-blog-pagination">
-                                <ul>
-                                    <li><a href="#."><i class="far fa-arrow-left"></i></a></li>
-                                    <li class="mil-active"><a href="#.">1</a></li>
-                                    <li><a href="#.">2</a></li>
-                                    <li><a href="#.">...</a></li>
-                                    <li><a href="#."><i class="far fa-arrow-right"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- pagination end -->
-
-                    <!-- subscribe -->
-                    <div class="container">
-                        <div class="mil-half-container mil-stl mil-reverse mil-up">
-                            <div class="mil-text-box mil-g-m4 mil-p-160-160">
-                                <p class="mil-stylized mil-m2 mil-mb60 mil-up">Newsletter</p>
-                                <h2 class="mil-display3 mil-rubber mil-mb60 mil-up">Subscribe <span class="mil-a2">our</span> <br>newsletter</h2>
-                                <form class="mil-subscribe-form mil-up mil-c-gone">
-                                    <input type="text" placeholder="Enter your email">
-                                    <button type="submit"><i class="fal fa-arrow-right"></i></button>
-                                </form>
-                            </div>
-                            <div class="mil-image-box">
-                                <div class="mil-image-frame">
-                                    <img src="img/home-4/2.jpg" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
-                                    <div class="mil-overlay"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mil-aic mil-jcb mil-no-g">
-                            <div class="col-lg-6">
-                                <div class="mil-button-pad mil-a1 mil-jst" style="display: block"></div>
-                            </div>
-                            <div class="col-lg-6 mil-992-gone">
-                                <div class="mil-text-pad">
-                                    <p class="mil-text-sm mil-up">By clicking the submit button, you agree to the <br><a href="contact.php" class="mil-text-link mil-a2 mil-c-gone">rules for processing personal data</a>.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- subscribe end -->
-
-                    <!-- footer -->
-                    <footer class="mil-footer mil-p-160-160">
-                        <div class="container">
-                            <div class="row mil-no-g">
-                                <div class="col-lg-6 mil-up">
-                                    <a href="portfolio-1-stl.html" class="mil-footer-contact mil-mb90">
-                                        <h6 class="mil-footer-link mil-rubber mil-m1">Portfolio</h6>
-                                        <span class="mil-stylized-btn mil-c-gone">
-                                            <i class="fal fa-arrow-up"></i>
-                                            <span>Portfolio</span>
-                                        </span>
-                                    </a>
-                                </div>
-                                <div class="col-lg-12">
+                        <!-- footer -->
+                        <footer class="mil-footer mil-p-160-160">
+                            <div class="container">
+                                <div class="row mil-no-g">
+                                    <div class="col-lg-6 mil-up">
+                                        <a href="contact.php" class="mil-footer-contact mil-mb90">
+                                            <h6 class="mil-footer-link mil-rubber mil-m1">Let’s TALK</h6>
+                                            <span class="mil-stylized-btn mil-c-gone">
+                                                <i class="fal fa-arrow-up"></i>
+                                                <span>Read more</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <!--     <div class="col-lg-12">
                                     <div class="mil-footer-menu-frame mil-mb90 mil-up">
                                         <ul class="mil-footer-menu">
                                             <li><a href="#." class="mil-c-gone">Home</a></li>
@@ -529,46 +353,61 @@
                                             <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
                                         </ul>
                                     </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="mil-footer-bottom mil-up">
-                                        <p class="mil-text-sm">©2024. All rights reserved.</p>
-                                        <p class="mil-text-sm">Design by: <a href="https://themeforest.net/user/millerdigitaldesign/portfolio" class="mil-text-link mil-a2 mil-c-gone">Nazar Miller</a></p>
+                                </div> -->
+                                    <div class="col-lg-6">
+                                        <div class="footer-column" style="flex:1 1 220px; min-width:200px; text-align:right;">
+                                            <h5 style="font-weight:700; margin-bottom:15px; color:#fff; font-family: Georgia, 'Times New Roman', serif;">Follow Us</h5>
+                                            <ul class="social-icons" style="display:flex; justify-content:flex-end; gap:15px; list-style:none; padding:0; margin:0;">
+                                                <li><a href="https://www.facebook.com/people/LexoraTech/61573037507493/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-facebook-f"></i></a></li>
+                                                <li><a href="https://www.instagram.com/lexora_tech/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-instagram"></i></a></li>
+                                                <li><a href="https://www.linkedin.com/company/lexoratech" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a></li>
+                                                <li><a href="https://www.youtube.com/channel/UCA-NVZ5FieP8uE1nYyfhRSw" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-youtube"></i></a></li>
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mil-footer-bottom mil-up" style="font-weight: bold;">
+                                            <p class="mil-text-sm">©2025 LexoraTech All Rights Reserved</p>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                        </div>
-                    </footer>
-                    <!-- footer end -->
+                            </div>
+                        </footer>
+
+
+                        <!-- footer end -->
+
+                    </div>
+                    <!-- content -->
 
                 </div>
-                <!-- content -->
-
             </div>
+            <!-- page transition -->
+
         </div>
-        <!-- page transition -->
+        <!-- wrapper end -->
 
-    </div>
-    <!-- wrapper end -->
+        <!-- swup js -->
+        <script src="js/plugins/swup.min.js"></script>
+        <!-- gsap js -->
+        <script src="js/plugins/gsap.min.js"></script>
+        <!-- scroll smoother -->
+        <script src="js/plugins/ScrollSmoother.min.js"></script>
+        <!-- scroll trigger js -->
+        <script src="js/plugins/ScrollTrigger.min.js"></script>
+        <!-- scroll to js -->
+        <script src="js/plugins/ScrollTo.min.js"></script>
+        <!-- swiper js -->
+        <script src="js/plugins/swiper.min.js"></script>
+        <!-- parallax js -->
+        <script src="js/plugins/parallax.js"></script>
 
-    <!-- swup js -->
-    <script src="js/plugins/swup.min.js"></script>
-    <!-- gsap js -->
-    <script src="js/plugins/gsap.min.js"></script>
-    <!-- scroll smoother -->
-    <script src="js/plugins/ScrollSmoother.min.js"></script>
-    <!-- scroll trigger js -->
-    <script src="js/plugins/ScrollTrigger.min.js"></script>
-    <!-- scroll to js -->
-    <script src="js/plugins/ScrollTo.min.js"></script>
-    <!-- swiper js -->
-    <script src="js/plugins/swiper.min.js"></script>
-    <!-- parallax js -->
-    <script src="js/plugins/parallax.js"></script>
-
-    <!-- LexoraTech js -->
-    <script src="js/main.js"></script>
+        <!-- LexoraTech js -->
+        <script src="js/main.js"></script>
 
 </body>
 

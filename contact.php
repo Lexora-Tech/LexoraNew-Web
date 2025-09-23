@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/plugins/swiper.min.css">
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
-    <title>LexoraTech</title>
+    <title>LexoraTech | Contact</title>
     <!-- logo css -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 

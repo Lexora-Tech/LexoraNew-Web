@@ -16,7 +16,8 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
-    <title>LexoraTech</title>
+    <title>LexoraTech | Publication</title>
+     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
 </head>
 
