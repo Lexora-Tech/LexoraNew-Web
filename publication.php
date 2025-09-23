@@ -1,3 +1,11 @@
+<?php
+include("includes/db.php");
+$id = $_GET['id'];
+$result = mysqli_query($conn, "SELECT * FROM blogs WHERE id=$id");
+$blog = mysqli_fetch_assoc($result);
+$result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMIT 8");
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -180,7 +188,7 @@
                                     </li>
                                 </ul>
                                 <!-- Title -->
-                                <h1 class="mil-display3 mil-rubber">How to Create Stunning Visuals with Minimal Effort</h1>
+                                <h1 class="mil-display3 mil-rubber"><?= $blog['title']; ?></h1>
                                 <!-- Title -->
                             </div>
                         </div>
@@ -193,45 +201,43 @@
                             <div class="row mil-jcc mil-aic">
                                 <div class="col-lg-12 mil-mb160">
                                     <div class="mil-project-img mil-land mil-up">
-                                        <img src="img/blog/14.jpg" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                        <!-- cover img -->
+                                        <img src="uploads/<?= $blog['cover_image']; ?>" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                        <!-- cover img  -->
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
-                                    <!-- Heading Brief -->
-                                    <p class="mil-text-xl mil-m1 mil-mb60 mil-up">In today's visually driven world, creating eye-catching visuals is essential.
-                                        Fortunately, you don't need to be a graphic designer to achieve stunning results with minimal effort. Here's how you can do it.</p>
+                                    <!-- Heading -->
+                                    <p class="mil-text-xl mil-m1 mil-mb60 mil-up"><?= $blog['heading']; ?></p>
+                                    <!-- Heading -->
 
-                                    <p class="mil-text-md mil-mb90 mil-up">Start by using online design tools like Canva and Crello, which offer a wide range of
-                                        customizable templates for social media posts, presentations, and more. These tools make it easy to create polished visuals
-                                        without any design expertise. Additionally, websites like Unsplash and Pexels provide high-quality free stock photos,
-                                        and platforms like Icons8 offer free icons and illustrations to enhance your designs.</p>
+                                    <!-- Heading Brief -->
+                                    <p class="mil-text-md mil-mb90 mil-up"><?= $blog['headingbrief']; ?></p>
                                     <!-- Heading Brief -->
                                     <div class="row mil-mb60">
                                         <div class="col-lg-6">
                                             <div class="mil-project-img mil-land mil-up mil-mb30">
-                                                <img src="img/blog/9.jpg" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                                <img src="uploads/<?= $blog['image1']; ?>" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mil-project-img mil-land mil-up mil-mb30">
-                                                <img src="img/blog/11.jpg" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                                <img src="uploads/<?= $blog['image2']; ?>" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
                                             </div>
                                         </div>
                                     </div>
                                     <!-- 	Paragraph One -->
-                                    <p class="mil-text-md mil-mb30 mil-up">Keep your designs simple and uncluttered. Focus on a single message and use white space effectively. Stick to a consistent color scheme that aligns with your brand; tools like Coolors can help generate harmonious palettes. Limit your typography to two or three fonts for readability and visual appeal. Google Fonts offers a variety of free fonts that can enhance your designs.</p>
+                                    <p class="mil-text-md mil-mb30 mil-up"><?= $blog['p1']; ?></p>
                                     <!-- 	Paragraph One -->
 
                                     <!-- Paragraph Two -->
-                                    <p class="mil-text-md mil-mb90 mil-up">Optimize your visuals for different platforms by using the correct dimensions and formats. Ensure your content is mobile-friendly with clear, legible text and fast-loading images. Automation can also save time: tools like Photoshop's batch processing feature allow you to apply edits to multiple images at once. Scheduling tools like Buffer or Hootsuite help you plan posts in advance, ensuring consistent posting without extra effort.</p>
+                                    <p class="mil-text-md mil-mb90 mil-up"><?= $blog['p2']; ?></p>
                                     <!-- Paragraph Two -->
 
 
                                     <h3 class="mil-head4 mil-mb30 mil-up">Conclusion</h3>
                                     <!-- Conclusion -->
-                                    <p class="mil-text-md mil-up">By leveraging online tools, mastering basic design principles, optimizing for various platforms,
-                                        and automating tasks, you can create professional-quality visuals with minimal effort.
-                                        Implement these tips today and watch your content stand out!</p>
+                                    <p class="mil-text-md mil-up"><?= $blog['conclusion']; ?></p>
                                     <!--   Conclusion -->
                                 </div>
                             </div>
@@ -252,31 +258,36 @@
                             </div>
                             <div class="swiper-container mil-blog-slider">
                                 <div class="swiper-wrapper mil-c-swipe mil-c-light">
-                                    <div class="swiper-slide">
-                                        <div class="mil-blog-card">
-                                            <div class="mil-cover mil-up">
-                                                <div class="mil-hover-frame">
-                                                    <img src="img/blog/10.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                                </div>
-                                                <div class="mil-badges">
-                                                    <div class="mil-category">design</div>
-                                                    <div class="mil-date">29.08.24</div>
-                                                </div>
-                                            </div>
-                                            <a href="publication.php" class="mil-descr mil-c-gone">
-                                                <div class="mil-text-frame">
-                                                    <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">How to Become a Graphic Designer in 10 Simple Steps</h4>
-                                                    <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                </div>
-                                                <div class="mil-up mil-768-gone">
-                                                    <div class="mil-stylized-btn">
-                                                        <i class="fal fa-arrow-up"></i>
-                                                        <span>Read more</span>
+
+                                    <?php while ($row = mysqli_fetch_assoc($result3)) { ?>
+                                        <!-- card -->
+                                        <div class="swiper-slide">
+                                            <div class="mil-blog-card">
+                                                <div class="mil-cover mil-up">
+                                                    <div class="mil-hover-frame">
+                                                        <img src="img/blog/10.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                                    </div>
+                                                    <div class="mil-badges">
+                                                        
+                                                        <div class="mil-date"><?= date("M d, Y", strtotime($row['created_at'])) ?></div>
                                                     </div>
                                                 </div>
-                                            </a>
+                                                <a href="publication.php?id=<?= $row['id']; ?>" class="mil-descr mil-c-gone">
+                                                    <div class="mil-text-frame">
+                                                        <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up"><?= $row['title']; ?></h4>
+                                                        <p class="mil-text-md mil-max-2row-text mil-up"><?= $row['heading']; ?></p>
+                                                    </div>
+                                                    <div class="mil-up mil-768-gone">
+                                                        <div class="mil-stylized-btn">
+                                                            <i class="fal fa-arrow-up"></i>
+                                                            <span>Read more</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <!-- card -->
+                                    <?php } ?>
 
                                 </div>
                             </div>
@@ -316,19 +327,19 @@
                     <!-- subscribe end -->
 
                     <!-- footer -->
-                     <footer class="mil-footer mil-p-160-160">
-                            <div class="container">
-                                <div class="row mil-no-g">
-                                    <div class="col-lg-6 mil-up">
-                                        <a href="contact.php" class="mil-footer-contact mil-mb90">
-                                            <h6 class="mil-footer-link mil-rubber mil-m1">Let’s TALK</h6>
-                                            <span class="mil-stylized-btn mil-c-gone">
-                                                <i class="fal fa-arrow-up"></i>
-                                                <span>Read more</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <!--     <div class="col-lg-12">
+                    <footer class="mil-footer mil-p-160-160">
+                        <div class="container">
+                            <div class="row mil-no-g">
+                                <div class="col-lg-6 mil-up">
+                                    <a href="contact.php" class="mil-footer-contact mil-mb90">
+                                        <h6 class="mil-footer-link mil-rubber mil-m1">Let’s TALK</h6>
+                                        <span class="mil-stylized-btn mil-c-gone">
+                                            <i class="fal fa-arrow-up"></i>
+                                            <span>Read more</span>
+                                        </span>
+                                    </a>
+                                </div>
+                                <!--     <div class="col-lg-12">
                                     <div class="mil-footer-menu-frame mil-mb90 mil-up">
                                         <ul class="mil-footer-menu">
                                             <li><a href="#." class="mil-c-gone">Home</a></li>
@@ -346,29 +357,29 @@
                                         </ul>
                                     </div>
                                 </div> -->
-                                    <div class="col-lg-6">
-                                        <div class="footer-column" style="flex:1 1 220px; min-width:200px; text-align:right;">
-                                            <h5 style="font-weight:700; margin-bottom:15px; color:#fff; font-family: Georgia, 'Times New Roman', serif;">Follow Us</h5>
-                                            <ul class="social-icons" style="display:flex; justify-content:flex-end; gap:15px; list-style:none; padding:0; margin:0;">
-                                                <li><a href="https://www.facebook.com/people/LexoraTech/61573037507493/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-facebook-f"></i></a></li>
-                                                <li><a href="https://www.instagram.com/lexora_tech/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-instagram"></i></a></li>
-                                                <li><a href="https://www.linkedin.com/company/lexoratech" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a></li>
-                                                <li><a href="https://www.youtube.com/channel/UCA-NVZ5FieP8uE1nYyfhRSw" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-youtube"></i></a></li>
+                                <div class="col-lg-6">
+                                    <div class="footer-column" style="flex:1 1 220px; min-width:200px; text-align:right;">
+                                        <h5 style="font-weight:700; margin-bottom:15px; color:#fff; font-family: Georgia, 'Times New Roman', serif;">Follow Us</h5>
+                                        <ul class="social-icons" style="display:flex; justify-content:flex-end; gap:15px; list-style:none; padding:0; margin:0;">
+                                            <li><a href="https://www.facebook.com/people/LexoraTech/61573037507493/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="https://www.instagram.com/lexora_tech/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/company/lexoratech" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="https://www.youtube.com/channel/UCA-NVZ5FieP8uE1nYyfhRSw" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-youtube"></i></a></li>
 
 
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="mil-footer-bottom mil-up" style="font-weight: bold;">
-                                            <p class="mil-text-sm">©2025 LexoraTech All Rights Reserved</p>
-
-                                        </div>
+                                        </ul>
                                     </div>
                                 </div>
+                                <div class="col-lg-12">
+                                    <div class="mil-footer-bottom mil-up" style="font-weight: bold;">
+                                        <p class="mil-text-sm">©2025 LexoraTech All Rights Reserved</p>
 
+                                    </div>
+                                </div>
                             </div>
-                        </footer>
+
+                        </div>
+                    </footer>
 
                     <!-- footer end -->
 
