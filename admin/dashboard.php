@@ -177,21 +177,51 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
             background: rgba(0, 0, 0, 0.03)
         }
 
+        .actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         .actions a {
-            margin-right: 8px;
-            padding: 6px 10px;
+            flex: 1;
+            min-width: 70px;
+            text-align: center;
+            padding: 8px 0;
             border-radius: 4px;
             font-size: 13px;
             color: #fff;
-            text-decoration: none
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.2s;
         }
 
-        .actions a:first-child {
-            background: var(--success)
+        /* Edit button */
+        .actions a.edit-btn {
+            background: var(--success);
         }
 
-        .actions a:last-child {
-            background: var(--danger)
+        .actions a.edit-btn:hover {
+            background: #059669;
+        }
+
+        /* Delete button */
+        .actions a.delete-btn {
+            background: var(--danger);
+        }
+
+        .actions a.delete-btn:hover {
+            background: #dc2626;
+        }
+
+        /* Share button */
+        .actions a.share-btn {
+            background: var(--primary);
+        }
+
+        .actions a.share-btn:hover {
+            background: var(--primary-dark);
         }
 
         /* Mobile Cards */
@@ -289,6 +319,120 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
                 display: block
             }
         }
+
+        /* Toast Styles */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 10px;
+            z-index: 2000;
+        }
+
+        .toast {
+            padding: 12px 16px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 240px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 0.3s forwards;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .toast.info {
+            background: #2563eb;
+        }
+
+        .toast.success {
+            background: #16a34a;
+        }
+
+        .toast.error {
+            background: #dc2626;
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .toast-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast-icon {
+            font-size: 18px;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .toast-progress {
+            height: 3px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .toast-progress-bar {
+            height: 100%;
+            background: #fff;
+            width: 100%;
+            transform-origin: left;
+            animation: shrink linear forwards;
+            animation-play-state: running;
+        }
+
+        .toast:hover .toast-progress-bar {
+            animation-play-state: paused;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes shrink {
+            from {
+                transform: scaleX(1);
+            }
+
+            to {
+                transform: scaleX(0);
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut 0.4s forwards;
+        }
     </style>
 </head>
 
@@ -338,9 +482,9 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
                             <td><img src="../uploads/<?= $row['cover_image'] ?>" width="80"></td>
                             <td><?= date("M d, Y", strtotime($row['created_at'])) ?></td>
                             <td class="actions">
-                                <a href="edit_blog.php?id=<?= $row['id'] ?>">Edit</a>
+                                <a href="edit_blog.php?id=<?= $row['id'] ?>" class="edit-btn">Edit</a>
                                 <a href="#" class="delete-btn" data-id="<?= $row['id'] ?>">Delete</a>
-                                <a class="share-btn" href="#" data-link="../publication.php?id=<?= $row['id'] ?>">Share</a>
+                                <a class="share-btn" href="#" data-link="/LexoraNew-Web/publication.php?id=<?= $row['id'] ?>">Share</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -366,15 +510,19 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
                         <p><b>Conclusion:</b> <?= $row['conclusion'] ?></p>
                         <img src="../uploads/<?= $row['cover_image'] ?>" width="100">
                         <div class="actions">
-                            <a href="edit_blog.php?id=<?= $row['id'] ?>">Edit</a>
+                            <a href="edit_blog.php?id=<?= $row['id'] ?>" class="edit-btn">Edit</a>
                             <a href="#" class="delete-btn" data-id="<?= $row['id'] ?>">Delete</a>
-                            <a class="share-btn" href="#" data-link="../publication.php?id=<?= $row['id'] ?>">Share</a>
+                            <a class="share-btn" href="#" data-link="/LexoraNew-Web/publication.php?id=<?= $row['id'] ?>">Share</a>
                         </div>
                     </div>
                 </div>
             <?php } ?>
         </div>
     </main>
+
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
 
     <!-- Delete Confirmation Modal -->
     <div class="modal" id="deleteModal">
@@ -428,13 +576,65 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
             window.location.href = 'delete_blog.php?id=' + blogIdToDelete;
         };
 
+        const toastIcons = {
+            success: "✅",
+            error: "❌",
+            info: "🔗"
+        };
+        const TOAST_DURATION = 3000;
+
+        function showToast(message, type = "info") {
+            const container = document.getElementById("toastContainer");
+            const toast = document.createElement("div");
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `
+                <div class="toast-content">
+                  <div class="toast-left">
+                    <span class="toast-icon">${toastIcons[type]}</span>
+                    <span>${message}</span>
+                  </div>
+                  <button class="toast-close">&times;</button>
+                </div>
+                <div class="toast-progress">
+                  <div class="toast-progress-bar" style="animation-duration:${TOAST_DURATION}ms"></div>
+                </div>
+            `;
+            container.appendChild(toast);
+
+            let autoRemove = setTimeout(() => fadeOutToast(toast), TOAST_DURATION);
+
+            toast.addEventListener("mouseenter", () => clearTimeout(autoRemove));
+            toast.addEventListener("mouseleave", () => {
+                autoRemove = setTimeout(() => fadeOutToast(toast), getRemainingTime(toast));
+            });
+
+            toast.querySelector(".toast-close").addEventListener("click", () => {
+                clearTimeout(autoRemove);
+                fadeOutToast(toast);
+            });
+        }
+
+        function fadeOutToast(toast) {
+            toast.classList.add("fade-out");
+            toast.addEventListener("animationend", () => toast.remove());
+        }
+
+        function getRemainingTime(toast) {
+            const bar = toast.querySelector(".toast-progress-bar");
+            const computed = getComputedStyle(bar);
+            const width = parseFloat(computed.width);
+            const totalWidth = parseFloat(getComputedStyle(toast.querySelector(".toast-progress")).width);
+            return (width / totalWidth) * TOAST_DURATION;
+        }
+
+        // Share link copy with toast
         document.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', e => {
                 e.preventDefault();
                 const link = btn.getAttribute('data-link');
                 navigator.clipboard.writeText(window.location.origin + "/" + link)
-                    .then(() => alert("Link copied to clipboard!"))
-                    .catch(err => console.error("Failed to copy:", err));
+                    .then(() => showToast("Link copied to clipboard!", "info"))
+                    .catch(() => showToast("Failed to copy link!", "error"));
             });
         });
     </script>
