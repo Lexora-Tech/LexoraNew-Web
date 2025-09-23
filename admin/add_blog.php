@@ -7,7 +7,7 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
 
 <head>
   <meta charset="UTF-8">
-  <title>Admin Add Blog | LexoraTech</title>
+  <title>LexoraTech | Admin Add Blog</title>
   <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
   <style>
     body {
@@ -250,7 +250,7 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
 <body>
   <div class="container">
     <div class="header-bar">
-      <a href="dashboard.php" class="back-link">⬅ Back to Dashboard</a>
+      <a href="dashboard.php" class="back-link">⬅ Back To Dashboard</a>
       <label class="switch">
         <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
         <span class="slider"></span>
@@ -313,7 +313,7 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
   <?php if ($success): ?>
     <div class="modal" id="successModal">
       <div class="modal-content">
-        <h3>✅ Blog added successfully!</h3>
+        <h3>✅ Blog Added Successfully</h3>
         <button onclick="redirectDashboard()">Close</button>
       </div>
     </div>

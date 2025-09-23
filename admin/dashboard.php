@@ -9,7 +9,7 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
 
 <head>
     <meta charset="UTF-8">
-    <title>Admin Dashboard | LexoraTech</title>
+    <title>LexoraTech | Admin Dashboard</title>
     <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
     <style>
         /* --- common styles --- */
@@ -527,7 +527,7 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
     <!-- Delete Confirmation Modal -->
     <div class="modal" id="deleteModal">
         <div class="modal-content">
-            <h3>⚠️ Are you sure you want to delete this blog?</h3>
+            <h3>⚠️ Are You Sure You Want To Delete This Blog?</h3>
             <div>
                 <button class="yes" id="confirmYes">Yes</button>
                 <button class="no" id="confirmNo">No</button>
@@ -633,8 +633,8 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
                 e.preventDefault();
                 const link = btn.getAttribute('data-link');
                 navigator.clipboard.writeText(window.location.origin + "/" + link)
-                    .then(() => showToast("Link copied to clipboard!", "info"))
-                    .catch(() => showToast("Failed to copy link!", "error"));
+                    .then(() => showToast("Link Copied To Clipboard!", "info"))
+                    .catch(() => showToast("Failed To Copy Link!", "error"));
             });
         });
     </script>
