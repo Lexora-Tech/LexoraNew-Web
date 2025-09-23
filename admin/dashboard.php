@@ -340,6 +340,7 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
                             <td class="actions">
                                 <a href="edit_blog.php?id=<?= $row['id'] ?>">Edit</a>
                                 <a href="#" class="delete-btn" data-id="<?= $row['id'] ?>">Delete</a>
+                                <a class="share-btn" href="#" data-link="../publication.php?id=<?= $row['id'] ?>">Share</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -367,6 +368,7 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
                         <div class="actions">
                             <a href="edit_blog.php?id=<?= $row['id'] ?>">Edit</a>
                             <a href="#" class="delete-btn" data-id="<?= $row['id'] ?>">Delete</a>
+                            <a class="share-btn" href="#" data-link="../publication.php?id=<?= $row['id'] ?>">Share</a>
                         </div>
                     </div>
                 </div>
@@ -425,6 +427,16 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
         document.getElementById('confirmYes').onclick = () => {
             window.location.href = 'delete_blog.php?id=' + blogIdToDelete;
         };
+
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', e => {
+                e.preventDefault();
+                const link = btn.getAttribute('data-link');
+                navigator.clipboard.writeText(window.location.origin + "/" + link)
+                    .then(() => alert("Link copied to clipboard!"))
+                    .catch(err => console.error("Failed to copy:", err));
+            });
+        });
     </script>
 </body>
 
