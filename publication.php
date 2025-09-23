@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
     <title>LexoraTech | Publication</title>
-     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
 </head>
 
@@ -55,7 +55,7 @@
         <!-- scroll progress end -->
 
         <!-- fixed elements -->
-          <div class="mil-fixed">
+        <div class="mil-fixed">
             <div class="mil-top-panel-2">
                 <div class="container">
                     <div class="mil-left-side mil-tp-transition" id="swupTpLeft">
@@ -71,7 +71,7 @@
                             <li><a href="#services" class="mil-scroll-to" data-no-swup>Services</a></li>
                             <!-- <li><a href="#team" class="mil-scroll-to" data-no-swup>Team</a></li> -->
                             <li><a href="#reviews" class="mil-scroll-to" data-no-swup>Reviews</a></li>
-                            <li><a href="blog.php"  data-no-swup>Blog</a></li>
+                            <li><a href="blog.php" data-no-swup>Blog</a></li>
 
                         </ul>
                     </div>
@@ -112,7 +112,7 @@
                                                 <a href="#.">Pages</a>
                                                 <ul>
                                                     <li><a href="services.php">Services</a></li>
-                                                   <!--  <li><a href="team-stl.php">Team</a></li> -->
+                                                    <!--  <li><a href="team-stl.php">Team</a></li> -->
                                                     <li><a href="contact.php">Contact</a></li>
                                                     <li><a href="blog.php">Blog</a></li>
                                                     <!-- <li><a href="">Publication</a></li>
@@ -179,7 +179,9 @@
                                         <a href="#.">publication</a>
                                     </li>
                                 </ul>
+                                <!-- Title -->
                                 <h1 class="mil-display3 mil-rubber">How to Create Stunning Visuals with Minimal Effort</h1>
+                                <!-- Title -->
                             </div>
                         </div>
                     </div>
@@ -195,10 +197,15 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
-                                    <p class="mil-text-xl mil-m1 mil-mb60 mil-up">In today's visually driven world, creating eye-catching visuals is essential. Fortunately, you don't need to be a graphic designer to achieve stunning results with minimal effort. Here's how you can do it.</p>
+                                    <!-- Heading Brief -->
+                                    <p class="mil-text-xl mil-m1 mil-mb60 mil-up">In today's visually driven world, creating eye-catching visuals is essential.
+                                        Fortunately, you don't need to be a graphic designer to achieve stunning results with minimal effort. Here's how you can do it.</p>
 
-                                    <p class="mil-text-md mil-mb90 mil-up">Start by using online design tools like Canva and Crello, which offer a wide range of customizable templates for social media posts, presentations, and more. These tools make it easy to create polished visuals without any design expertise. Additionally, websites like Unsplash and Pexels provide high-quality free stock photos, and platforms like Icons8 offer free icons and illustrations to enhance your designs.</p>
-
+                                    <p class="mil-text-md mil-mb90 mil-up">Start by using online design tools like Canva and Crello, which offer a wide range of
+                                        customizable templates for social media posts, presentations, and more. These tools make it easy to create polished visuals
+                                        without any design expertise. Additionally, websites like Unsplash and Pexels provide high-quality free stock photos,
+                                        and platforms like Icons8 offer free icons and illustrations to enhance your designs.</p>
+                                    <!-- Heading Brief -->
                                     <div class="row mil-mb60">
                                         <div class="col-lg-6">
                                             <div class="mil-project-img mil-land mil-up mil-mb30">
@@ -211,14 +218,21 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <!-- 	Paragraph One -->
                                     <p class="mil-text-md mil-mb30 mil-up">Keep your designs simple and uncluttered. Focus on a single message and use white space effectively. Stick to a consistent color scheme that aligns with your brand; tools like Coolors can help generate harmonious palettes. Limit your typography to two or three fonts for readability and visual appeal. Google Fonts offers a variety of free fonts that can enhance your designs.</p>
+                                    <!-- 	Paragraph One -->
 
+                                    <!-- Paragraph Two -->
                                     <p class="mil-text-md mil-mb90 mil-up">Optimize your visuals for different platforms by using the correct dimensions and formats. Ensure your content is mobile-friendly with clear, legible text and fast-loading images. Automation can also save time: tools like Photoshop's batch processing feature allow you to apply edits to multiple images at once. Scheduling tools like Buffer or Hootsuite help you plan posts in advance, ensuring consistent posting without extra effort.</p>
+                                    <!-- Paragraph Two -->
+
 
                                     <h3 class="mil-head4 mil-mb30 mil-up">Conclusion</h3>
-
-                                    <p class="mil-text-md mil-up">By leveraging online tools, mastering basic design principles, optimizing for various platforms, and automating tasks, you can create professional-quality visuals with minimal effort. Implement these tips today and watch your content stand out!</p>
+                                    <!-- Conclusion -->
+                                    <p class="mil-text-md mil-up">By leveraging online tools, mastering basic design principles, optimizing for various platforms,
+                                        and automating tasks, you can create professional-quality visuals with minimal effort.
+                                        Implement these tips today and watch your content stand out!</p>
+                                    <!--   Conclusion -->
                                 </div>
                             </div>
                         </div>
@@ -263,81 +277,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="mil-blog-card">
-                                            <div class="mil-cover mil-up">
-                                                <div class="mil-hover-frame">
-                                                    <img src="img/blog/13.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                                </div>
-                                                <div class="mil-badges">
-                                                    <div class="mil-category">Branding</div>
-                                                    <div class="mil-date">29.08.24</div>
-                                                </div>
-                                            </div>
-                                            <a href="publication.php" class="mil-descr mil-c-gone">
-                                                <div class="mil-text-frame">
-                                                    <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">10 Essential Tools Every Graphic Designer Should Master</h4>
-                                                    <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                </div>
-                                                <div class="mil-up mil-768-gone">
-                                                    <div class="mil-stylized-btn">
-                                                        <i class="fal fa-arrow-up"></i>
-                                                        <span>Read more</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="mil-blog-card">
-                                            <div class="mil-cover mil-up">
-                                                <div class="mil-hover-frame">
-                                                    <img src="img/blog/16.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                                </div>
-                                                <div class="mil-badges">
-                                                    <div class="mil-category">Art</div>
-                                                    <div class="mil-date">29.08.24</div>
-                                                </div>
-                                            </div>
-                                            <a href="publication.php" class="mil-descr mil-c-gone">
-                                                <div class="mil-text-frame">
-                                                    <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">From Concept to Creation: The Design Process Explained</h4>
-                                                    <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                </div>
-                                                <div class="mil-up mil-768-gone">
-                                                    <div class="mil-stylized-btn">
-                                                        <i class="fal fa-arrow-up"></i>
-                                                        <span>Read more</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="mil-blog-card">
-                                            <div class="mil-cover mil-up">
-                                                <div class="mil-hover-frame">
-                                                    <img src="img/blog/15.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                                </div>
-                                                <div class="mil-badges">
-                                                    <div class="mil-category">Interior</div>
-                                                    <div class="mil-date">29.08.24</div>
-                                                </div>
-                                            </div>
-                                            <a href="publication.php" class="mil-descr mil-c-gone">
-                                                <div class="mil-text-frame">
-                                                    <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">The Ultimate Guide to UI/UX Design for Beginners</h4>
-                                                    <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                </div>
-                                                <div class="mil-up mil-768-gone">
-                                                    <div class="mil-stylized-btn">
-                                                        <i class="fal fa-arrow-up"></i>
-                                                        <span>Read more</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -376,19 +316,19 @@
                     <!-- subscribe end -->
 
                     <!-- footer -->
-                    <footer class="mil-footer mil-p-160-160">
-                        <div class="container">
-                            <div class="row mil-no-g">
-                                <div class="col-lg-6 mil-up">
-                                    <a href="contact.php" class="mil-footer-contact mil-mb90">
-                                        <h6 class="mil-footer-link mil-rubber mil-m1">Let’s TALK</h6>
-                                        <span class="mil-stylized-btn mil-c-gone">
-                                            <i class="fal fa-arrow-up"></i>
-                                            <span>Read more</span>
-                                        </span>
-                                    </a>
-                                </div>
-                                <div class="col-lg-12">
+                     <footer class="mil-footer mil-p-160-160">
+                            <div class="container">
+                                <div class="row mil-no-g">
+                                    <div class="col-lg-6 mil-up">
+                                        <a href="contact.php" class="mil-footer-contact mil-mb90">
+                                            <h6 class="mil-footer-link mil-rubber mil-m1">Let’s TALK</h6>
+                                            <span class="mil-stylized-btn mil-c-gone">
+                                                <i class="fal fa-arrow-up"></i>
+                                                <span>Read more</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <!--     <div class="col-lg-12">
                                     <div class="mil-footer-menu-frame mil-mb90 mil-up">
                                         <ul class="mil-footer-menu">
                                             <li><a href="#." class="mil-c-gone">Home</a></li>
@@ -405,17 +345,31 @@
                                             <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
                                         </ul>
                                     </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="mil-footer-bottom mil-up">
-                                        <p class="mil-text-sm">©2024. All rights reserved.</p>
-                                        <p class="mil-text-sm">Design by: <a href="https://themeforest.net/user/millerdigitaldesign/portfolio" class="mil-text-link mil-a2 mil-c-gone">Nazar Miller</a></p>
+                                </div> -->
+                                    <div class="col-lg-6">
+                                        <div class="footer-column" style="flex:1 1 220px; min-width:200px; text-align:right;">
+                                            <h5 style="font-weight:700; margin-bottom:15px; color:#fff; font-family: Georgia, 'Times New Roman', serif;">Follow Us</h5>
+                                            <ul class="social-icons" style="display:flex; justify-content:flex-end; gap:15px; list-style:none; padding:0; margin:0;">
+                                                <li><a href="https://www.facebook.com/people/LexoraTech/61573037507493/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-facebook-f"></i></a></li>
+                                                <li><a href="https://www.instagram.com/lexora_tech/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-instagram"></i></a></li>
+                                                <li><a href="https://www.linkedin.com/company/lexoratech" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a></li>
+                                                <li><a href="https://www.youtube.com/channel/UCA-NVZ5FieP8uE1nYyfhRSw" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-youtube"></i></a></li>
+
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="mil-footer-bottom mil-up" style="font-weight: bold;">
+                                            <p class="mil-text-sm">©2025 LexoraTech All Rights Reserved</p>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                        </div>
-                    </footer>
+                            </div>
+                        </footer>
+
                     <!-- footer end -->
 
                 </div>
