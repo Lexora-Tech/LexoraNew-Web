@@ -1,3 +1,9 @@
+<?php
+include("includes/db.php");
+$result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMIT 8");
+$result2 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -17,7 +23,7 @@
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
     <title>LexoraTech | Blog</title>
-     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
 </head>
 
@@ -202,33 +208,37 @@
 
                             <div class="swiper-container mil-blog-slider">
                                 <div class="swiper-wrapper mil-c-swipe mil-c-light">
-                                    <!-- Start Swiper -->
-                                    <div class="swiper-slide">
-                                        <div class="mil-blog-card">
-                                            <div class="mil-cover mil-up">
-                                                <div class="mil-hover-frame">
-                                                    <img src="img/blog/9.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                                </div>
-                                                <div class="mil-badges">
-                                                    <div class="mil-category">design</div>
-                                                    <div class="mil-date">29.08.24</div>
-                                                </div>
-                                            </div>
-                                            <a href="publication.php" class="mil-descr mil-c-gone">
-                                                <div class="mil-text-frame">
-                                                    <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up">How to Become a Graphic Designer in 10 Simple Steps</h4>
-                                                    <p class="mil-text-md mil-max-2row-text mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                </div>
-                                                <div class="mil-up mil-768-gone">
-                                                    <div class="mil-stylized-btn">
-                                                        <i class="fal fa-arrow-up"></i>
-                                                        <span>Read more</span>
+
+                                    <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+                                        <!-- Start Swiper -->
+                                        <div class="swiper-slide">
+                                            <div class="mil-blog-card">
+                                                <div class="mil-cover mil-up">
+                                                    <div class="mil-hover-frame">
+                                                        <img src="uploads/<?= $row['cover_image']; ?>" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                                    </div>
+                                                    <div class="mil-badges">
+
+                                                        <div class="mil-date"><?= date("M d, Y", strtotime($row['created_at'])) ?></div>
                                                     </div>
                                                 </div>
-                                            </a>
+                                                <a href="publication.php?id=<?= $row['id']; ?>" class="mil-descr mil-c-gone">
+                                                    <div class="mil-text-frame">
+                                                        <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up"><?= $row['title']; ?></h4>
+                                                        <p class="mil-text-md mil-max-2row-text mil-up"><?= $row['heading']; ?></p>
+                                                    </div>
+                                                    <div class="mil-up mil-768-gone">
+                                                        <div class="mil-stylized-btn">
+                                                            <i class="fal fa-arrow-up"></i>
+                                                            <span>Read more</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!--  End Swiper -->
+                                        <!--  End Swiper -->
+                                    <?php } ?>
+
 
                                 </div>
                             </div>
@@ -245,31 +255,34 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <!--  Start Latest Blog Posts -->
-                                    <div class="col-lg-12">
-                                        <div class="mil-blog-card mil-type-2 mil-mb60">
-                                            <div class="mil-cover mil-up">
-                                                <div class="mil-hover-frame">
-                                                    <img src="img/blog/11.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                                </div>
-                                                <div class="mil-badges">
-                                                    <div class="mil-category">design</div>
-                                                    <div class="mil-date">29.08.24</div>
-                                                </div>
-                                            </div>
-                                            <a href="publication.php" class="mil-descr mil-c-gone">
-                                                <div class="mil-text-frame">
-                                                    <h4 class="mil-head3 mil-max-2row-text mil-mb30 mil-up">How to Become a Graphic Designer in 10 Simple Steps</h4>
-                                                    <p class="mil-text-md mil-max-2row-text mil-mb40 mil-up">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos optio, beatae, eos necessitatibus nisi. Nam cupiditate consectetur nostrum qui! Repellat natus nulla, nisi aliquid, asperiores impedit tempora sequi est reprehenderit cumque explicabo, dicta. Rem nihil ullam totam ea voluptas quibusdam repudiandae.</p>
-                                                    <div class="mil-up">
-                                                        <div class="mil-btn mil-a2 mil-c-gone">Read more</div>
+
+                                    <?php while ($row = mysqli_fetch_assoc($result2)) { ?>
+                                        <!--  Start Latest Blog Posts -->
+                                        <div class="col-lg-12">
+                                            <div class="mil-blog-card mil-type-2 mil-mb60">
+                                                <div class="mil-cover mil-up">
+                                                    <div class="mil-hover-frame">
+                                                        <img src="uploads/<?= $row['cover_image']; ?>" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                                    </div>
+                                                    <div class="mil-badges">
+                                                        
+                                                        <div class="mil-date"><?= date("M d, Y", strtotime($row['created_at'])) ?></div>
                                                     </div>
                                                 </div>
-                                            </a>
+                                                <a href="publication.php?id=<?= $row['id']; ?>" class="mil-descr mil-c-gone">
+                                                    <div class="mil-text-frame">
+                                                        <h4 class="mil-head3 mil-max-2row-text mil-mb30 mil-up"><?= $row['title']; ?></h4>
+                                                        <p class="mil-text-md mil-max-2row-text mil-mb40 mil-up"><?= $row['heading']; ?></p>
+                                                        <div class="mil-up">
+                                                            <div class="mil-btn mil-a2 mil-c-gone">Read more</div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <!--  End Latest Blog Posts  -->
+                                    <?php } ?>
 
-                                    <!--  End Latest Blog Posts  -->
 
                                 </div>
                             </div>
