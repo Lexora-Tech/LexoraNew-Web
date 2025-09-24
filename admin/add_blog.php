@@ -257,7 +257,7 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
       </label>
     </div>
     <h2>Add New Blog</h2>
-    <form action="upload.php" method="POST" enctype="multipart/form-data">
+    <form id="blog-form" action="upload.php" method="POST" enctype="multipart/form-data">
       <div class="form-grid">
         <!-- Left: Content -->
         <div class="form-section">
@@ -314,7 +314,7 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
       <!-- Progress bar end -->
 
 
-      <button type="submit" class="btn" name="submit">Upload Blog</button>
+      <button type="submit" class="btn" name="submit" onclick="loader()">Upload Blog</button>
     </form>
   </div>
 
@@ -363,10 +363,8 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
       window.location.href = "dashboard.php";
     }
 
-
-
  function loader() {
-            const formData = new FormData(document.getElementById('video-form'));
+            const formData = new FormData(document.getElementById('blog-form'));
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'add_blog.php', true);
 
