@@ -527,7 +527,7 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
     <!-- Delete Confirmation Modal -->
     <div class="modal" id="deleteModal">
         <div class="modal-content">
-            <h3>⚠️ Are You Sure You Want To Delete This Blog?</h3>
+            <h3>Are You Sure You Want To Delete This Blog?</h3>
             <div>
                 <button class="yes" id="confirmYes">Yes</button>
                 <button class="no" id="confirmNo">No</button>

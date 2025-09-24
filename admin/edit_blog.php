@@ -354,7 +354,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn">💾 Update Blog</button>
+            <button type="submit" class="btn">Update Blog</button>
         </form>
     </div>
 
@@ -362,7 +362,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php if ($success): ?>
         <div class="modal" id="successModal">
             <div class="modal-content">
-                <h3>✅ Blog Updated Successfully</h3>
+                <h3>Blog Updated Successfully</h3>
                 <button onclick="redirectDashboard()">Close</button>
             </div>
         </div>

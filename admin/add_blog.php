@@ -250,7 +250,7 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
 <body>
   <div class="container">
     <div class="header-bar">
-      <a href="dashboard.php" class="back-link">⬅ Back To Dashboard</a>
+      <a href="dashboard.php" class="back-link">Back To Dashboard</a>
       <label class="switch">
         <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
         <span class="slider"></span>
@@ -305,7 +305,16 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
           </div>
         </div>
       </div>
-      <button type="submit" class="btn" name="submit">💾 Upload Blog</button>
+      <!-- Progress bar start -->
+      <div class="mt-2" id="progress-container1">
+        <div id="progress-bar1">0%</div>
+      </div>
+      <p id="upload-success1">Blog Uploaded Successfully</p>
+      <p id="upload-error1"></p>
+      <!-- Progress bar end -->
+
+
+      <button type="submit" class="btn" name="submit">Upload Blog</button>
     </form>
   </div>
 
@@ -313,7 +322,7 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
   <?php if ($success): ?>
     <div class="modal" id="successModal">
       <div class="modal-content">
-        <h3>✅ Blog Added Successfully</h3>
+        <h3>Blog Added Successfully</h3>
         <button onclick="redirectDashboard()">Close</button>
       </div>
     </div>
@@ -353,6 +362,39 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
     function redirectDashboard() {
       window.location.href = "dashboard.php";
     }
+
+
+
+ function loader() {
+            const formData = new FormData(document.getElementById('video-form'));
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'add_blog.php', true);
+
+            xhr.upload.onprogress = function(e) {
+                if (e.lengthComputable) {
+                    const percentComplete = (e.loaded / e.total) * 100;
+                    document.getElementById('progress-container1').style.display = 'block';
+                    document.getElementById('progress-bar1').style.width = percentComplete + '%';
+                    document.getElementById('progress-bar1').innerText = Math.round(percentComplete) + '%';
+                }
+            };
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('upload-success1').style.display = 'block';
+                    document.getElementById('upload-error1').style.display = 'none';
+                    setTimeout(() => {
+                        location.reload(); // Reload the page after success
+                    }, 2000);
+                } else {
+                    document.getElementById('upload-error1').innerText = 'Upload failed: ' + xhr.responseText;
+                    document.getElementById('upload-error1').style.display = 'block';
+                }
+            };
+
+            xhr.send(formData);
+        }
+
   </script>
 </body>
 
