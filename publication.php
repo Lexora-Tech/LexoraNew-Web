@@ -265,7 +265,7 @@ $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMI
                                             <div class="mil-blog-card">
                                                 <div class="mil-cover mil-up">
                                                     <div class="mil-hover-frame">
-                                                        <img src="img/blog/10.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                                        <img src="uploads/<?= $row['cover_image']; ?>" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
                                                     </div>
                                                     <div class="mil-badges">
                                                         
