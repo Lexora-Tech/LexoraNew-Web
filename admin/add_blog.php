@@ -245,8 +245,7 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
       background: var(--primary-dark);
     }
   </style>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  
 </head>
 
 <body>
@@ -308,11 +307,11 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
         </div>
       </div>
       <!-- Progress bar start -->
-      <div class="mt-2" id="progress-container1">
+      <!-- <div class="mt-2" id="progress-container1">
         <div id="progress-bar1">0%</div>
       </div>
       <p id="upload-success1">Blog Uploaded Successfully</p>
-      <p id="upload-error1"></p>
+      <p id="upload-error1"></p> -->
       <!-- Progress bar end -->
 
 
@@ -365,7 +364,7 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
       window.location.href = "dashboard.php";
     }
 
- function loader() {
+ /* function loader() {
             const formData = new FormData(document.getElementById('blog-form'));
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'upload.php', true);
@@ -393,11 +392,10 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
             };
 
             xhr.send(formData);
-        }
+        } */
 
   </script>
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+      
 </body>
 
 </html>

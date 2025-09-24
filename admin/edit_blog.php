@@ -295,7 +295,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <div class="header-bar">
-            <a href="dashboard.php" class="back-link">⬅ Back To Dashboard</a>
+            <a href="dashboard.php" class="back-link">Back To Dashboard</a>
             <label class="switch">
                 <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
                 <span class="slider"></span>
