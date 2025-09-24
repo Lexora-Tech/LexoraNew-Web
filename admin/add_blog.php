@@ -245,6 +245,8 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
       background: var(--primary-dark);
     }
   </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -366,7 +368,7 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
  function loader() {
             const formData = new FormData(document.getElementById('blog-form'));
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'add_blog.php', true);
+            xhr.open('POST', 'upload.php', true);
 
             xhr.upload.onprogress = function(e) {
                 if (e.lengthComputable) {
@@ -394,6 +396,8 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
         }
 
   </script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>
