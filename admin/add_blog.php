@@ -244,28 +244,8 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
     .modal-content button:hover {
       background: var(--primary-dark);
     }
-    #progress-container {
-  width: 100%;
-  background: #e2e8f0;
-  border-radius: 8px;
-  overflow: hidden;
-  height: 24px;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-}
-
-#progress-bar {
-  height: 100%;
-  width: 0;
-  background: var(--primary);
-  color: #fff;
-  text-align: center;
-  line-height: 24px;
-  font-size: 14px;
-  transition: width 0.3s ease;
-}
-
   </style>
-
+  
 </head>
 
 <body>
@@ -326,17 +306,13 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
           </div>
         </div>
       </div>
-
-
-      <!-- Progress bar -->
-      <div id="progress-container" style="display:none; margin-top:1rem;">
-        <div id="progress-bar">0%</div>
+      <!-- Progress bar start -->
+      <!-- <div class="mt-2" id="progress-container1">
+        <div id="progress-bar1">0%</div>
       </div>
-      <p id="upload-success" style="display:none; color:green; font-weight:600;">✅ Blog Uploaded Successfully</p>
-      <p id="upload-error" style="display:none; color:red; font-weight:600;"></p>
-
-      <button type="button" class="btn" id="uploadBtn">Upload Blog</button>
-
+      <p id="upload-success1">Blog Uploaded Successfully</p>
+      <p id="upload-error1"></p> -->
+      <!-- Progress bar end -->
 
 
       <button type="submit" class="btn" name="submit" onclick="loader()">Upload Blog</button>
@@ -388,51 +364,38 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
       window.location.href = "dashboard.php";
     }
 
-    document.getElementById("uploadBtn").addEventListener("click", function (e) {
-  e.preventDefault();
-  
-  const form = document.getElementById("blog-form");
-  const formData = new FormData(form);
-  const xhr = new XMLHttpRequest();
+ /* function loader() {
+            const formData = new FormData(document.getElementById('blog-form'));
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'upload.php', true);
 
-  // Reset messages
-  document.getElementById("upload-success").style.display = "none";
-  document.getElementById("upload-error").style.display = "none";
+            xhr.upload.onprogress = function(e) {
+                if (e.lengthComputable) {
+                    const percentComplete = (e.loaded / e.total) * 100;
+                    document.getElementById('progress-container1').style.display = 'block';
+                    document.getElementById('progress-bar1').style.width = percentComplete + '%';
+                    document.getElementById('progress-bar1').innerText = Math.round(percentComplete) + '%';
+                }
+            };
 
-  xhr.open("POST", "upload.php", true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('upload-success1').style.display = 'block';
+                    document.getElementById('upload-error1').style.display = 'none';
+                    setTimeout(() => {
+                        location.reload(); // Reload the page after success
+                    }, 2000);
+                } else {
+                    document.getElementById('upload-error1').innerText = 'Upload failed: ' + xhr.responseText;
+                    document.getElementById('upload-error1').style.display = 'block';
+                }
+            };
 
-  // Progress bar update
-  xhr.upload.onprogress = function (e) {
-    if (e.lengthComputable) {
-      const percentComplete = (e.loaded / e.total) * 100;
-      document.getElementById("progress-container").style.display = "block";
-      document.getElementById("progress-bar").style.width = percentComplete + "%";
-      document.getElementById("progress-bar").innerText = Math.round(percentComplete) + "%";
-    }
-  };
-
-  xhr.onload = function () {
-    if (xhr.status === 200) {
-      document.getElementById("upload-success").style.display = "block";
-      setTimeout(() => {
-        window.location.href = "dashboard.php?success=1"; // Redirect after success
-      }, 1500);
-    } else {
-      document.getElementById("upload-error").innerText = "❌ Upload failed: " + xhr.responseText;
-      document.getElementById("upload-error").style.display = "block";
-    }
-  };
-
-  xhr.onerror = function () {
-    document.getElementById("upload-error").innerText = "❌ Network Error!";
-    document.getElementById("upload-error").style.display = "block";
-  };
-
-  xhr.send(formData);
-});
+            xhr.send(formData);
+        } */
 
   </script>
-
+      
 </body>
 
 </html>
