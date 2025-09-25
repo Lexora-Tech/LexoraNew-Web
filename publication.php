@@ -268,7 +268,6 @@ $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMI
                                                         <img src="uploads/<?= $row['cover_image']; ?>" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
                                                     </div>
                                                     <div class="mil-badges">
-                                                        
                                                         <div class="mil-date"><?= date("M d, Y", strtotime($row['created_at'])) ?></div>
                                                     </div>
                                                 </div>
