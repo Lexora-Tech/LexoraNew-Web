@@ -1,8 +1,8 @@
  <?php
 $host = 'localhost';
 $db = 'lexokbxm_admin';
-$user = 'lexokbxm_user';
-$pass = 'Lexora12345@#';
+$user = 'root';
+$pass = 'ThikkaMac12345@#';
 
 $conn = new mysqli($host, $user, $pass, $db);
 

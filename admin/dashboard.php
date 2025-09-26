@@ -628,13 +628,39 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
         }
 
         // Share link copy with toast
+
         document.querySelectorAll('.share-btn').forEach(btn => {
-            btn.addEventListener('click', e => {
+            btn.addEventListener('click', async e => {
                 e.preventDefault();
-                const link = btn.getAttribute('data-link');
-                navigator.clipboard.writeText(window.location.origin + "/" + link)
-                    .then(() => showToast("Link Copied To Clipboard!", "info"))
-                    .catch(() => showToast("Failed To Copy Link!", "error"));
+
+                // Build the long link from current domain + data-link
+                const longUrl = window.location.origin + "/" + btn.getAttribute('data-link');
+
+                try {
+                    // Send to Cloudflare Worker
+                    const resp = await fetch("https://shortener.lexoratech.workers.dev", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            url: longUrl
+                        })
+                    });
+
+                    const data = await resp.json();
+
+                    if (data.shortUrl) {
+                        // Copy short link to clipboard
+                        await navigator.clipboard.writeText(data.shortUrl);
+                        showToast("Short Link Copied To Clipboard!", "info");
+                    } else {
+                        showToast("Error Creating Short Link!", "error");
+                    }
+                } catch (err) {
+                    console.error(err);
+                    showToast("Failed To Copy Link!", "error");
+                }
             });
         });
     </script>
