@@ -105,7 +105,7 @@
                                                 <a href="#.">Portfolio</a>
                                                 <ul>
                                                     <li><a href="portfolio-1-stl.html">Grid type 1</a></li>
-                                                    <li><a href="portfolio-2-stl.php">Grid type 2</a></li>
+                                                    <li><a href="portfolio.php">Grid type 2</a></li>
                                                     <li><a href="portfolio-3-stl.html">Grid type 3</a></li>
                                                 </ul>
                                             </li>
@@ -240,7 +240,7 @@
                                         <a href="#.">Project</a>
                                     </li>
                                 </ul>
-                                <h1 class="mil-display2 mil-rubber">Projection</h1>
+                                <h1 class="mil-display2 mil-rubber">Cyberfeature</h1>
                             </div>
                         </div>
                     </div>
@@ -250,9 +250,20 @@
                     <div id="scroll">
                         <div class="container">
                             <div class="row mil-jcb mil-aic">
-                                <div class="col-lg-12 mil-mb160">
-                                    <div class="mil-project-img mil-land mil-up">
-                                        <img src="img/works/2/1-s.jpg" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                <div class="col-lg-6 mil-mb160">
+                                    <div class="mil-project-img mil-port mil-up">
+                                        <img src="img/works/1/1-s.jpg" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 mil-mb160">
+                                    <p class="mil-stylized mil-m2 mil-mb60 mil-up">About project</p>
+                                    <h2 class="mil-head1 mil-mb60 mil-up">Design That <br><span class="mil-a1">Speaks</span> Volumes</h2>
+                                    <p class="mil-text-md mil-mb60 mil-up">Ducimus, expedita magnam assumenda in alias modi, ipsam. Dolor maxime iusto, labore dicta obcaecati, vero recusandae deleniti inventore commodi ex! Temporibus fuga quisquam deserunt nobis cum minima ipsa voluptatibus quasi aspernatur accusantium et saepe porro rem dolorem ad neque eaque vel, perspiciatis doloribus earum. Pariatur omnis labore sit, facilis tempora repudiandae earum illo ducimus ullam quaerat, repellendus! Voluptatum dolor, sint fugiat a!</p>
+                                    <div class="mil-team-quote mil-up">
+                                        <div class="mil-portrait">
+                                            <img src="img/team/ceo.jpg" alt="SEO portrait">
+                                        </div>
+                                        <p class="mil-text-md mil-m1"><span class="mil-bold">Passionately Creating</span> Design Wonders: <br><span class="mil-bold">Unleashing</span> Boundless Creativity</p>
                                     </div>
                                 </div>
                             </div>
@@ -285,18 +296,37 @@
                     </div>
                     <div class="mil-p-0-130">
                         <div class="container">
-                            <div class="row mil-jcb">
-                                <div class="col-lg-12">
-                                    <h2 class="mil-head2 mil-mb60 mil-up"><span class="mil-a2">About</span> project</h2>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="mil-project-img mil-square mil-mb30 mil-up">
+                                        <img src="img/works/1/2-s.jpg" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                    </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <p class="mil-text-md mil-mb30 mil-up">Ducimus, expedita magnam assumenda in alias modi, ipsam. Dolor maxime iusto, labore dicta obcaecati, vero recusandae deleniti inventore commodi ex! Temporibus fuga quisquam deserunt nobis cum minima ipsa voluptatibus quasi aspernatur accusantium et saepe porro rem dolorem ad neque eaque vel, perspiciatis doloribus earum. Pariatur omnis labore sit, facilis tempora repudiandae earum illo ducimus ullam quaerat, repellendus! Voluptatum dolor, sint fugiat a!</p>
-                                    <p class="mil-text-md mil-mb30 mil-up">Pariatur omnis labore sit, facilis tempora repudiandae earum illo ducimus ullam quaerat, repellendus! Voluptatum dolor, sint fugiat a!</p>
+                                    <div class="mil-project-img mil-square mil-mb30 mil-up">
+                                        <img src="img/works/1/3-s.jpg" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                    </div>
                                 </div>
-                                <div class="col-lg-5">
-                                    <p class="mil-text-md mil-mb30 mil-up">Temporibus fuga quisquam deserunt nobis cum minima ipsa voluptatibus quasi aspernatur accusantium et saepe porro rem dolorem ad neque eaque vel, perspiciatis doloribus earum. Pariatur omnis labore sit, facilis tempora repudiandae earum illo ducimus ullam quaerat, repellendus! Voluptatum dolor, sint fugiat a!</p>
+                                <div class="col-lg-6">
+                                    <div class="mil-project-img mil-square mil-mb30 mil-up">
+                                        <img src="img/works/1/4-s.jpg" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mil-project-img mil-square mil-mb30 mil-up">
+                                        <img src="img/works/1/5-s.jpg" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                    </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="mil-p-0-160">
+                        <div class="container mil-relative">
+                            <div class="mil-objects">
+                                <div class="mil-obj-1"></div>
+                                <div class="mil-obj-2"></div>
+                            </div>
+                            <h2 class="mil-head1 mil-rubber mil-taс mil-up">Transforming <span class="mil-a1">Ideas</span> into Stunning Visual Narratives that <span class="mil-a2">Captivate</span> and Connect</h2>
                         </div>
                     </div>
                     <!-- details end -->
@@ -306,13 +336,13 @@
                         <div class="mil-half-container mil-stl mil-up">
                             <div class="mil-text-box mil-g-m4 mil-p-160-160">
                                 <p class="mil-stylized mil-a1 mil-mb60 mil-up">Next project</p>
-                                <h2 class="mil-display3 mil-mb60 mil-m1 mil-up">Ultrahole</h2>
+                                <h2 class="mil-display3 mil-mb60 mil-m1 mil-up">Projection</h2>
                                 <p class="mil-text-md mil-deco-text mil-shortened mil-mb60 mil-up">Pariatur omnis labore sit, facilis tempora repudiandae earum</p>
-                                <div class="mil-up"><a href="project-3-stl.php" class="mil-btn mil-btn-border mil-m1 mil-c-gone">View project</a></div>
+                                <div class="mil-up"><a href="project-2-stl.php" class="mil-btn mil-btn-border mil-m1 mil-c-gone">View project</a></div>
                             </div>
                             <div class="mil-image-box">
                                 <div class="mil-image-frame">
-                                    <img src="img/works/3/1-s.jpg" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
+                                    <img src="img/works/2/1-s.jpg" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
                                     <div class="mil-overlay"></div>
                                 </div>
                             </div>
