@@ -96,11 +96,11 @@
                                     <div class="mil-work-card mil-stl mil-mb30">
                                         <div class="mil-cover mil-port mil-up">
                                             <div class="mil-hover-frame">
-                                                <img src="img/works/5/1-s.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                                <img src="img/works/1/cl1.png" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
                                             </div>
                                         </div>
                                         <div class="mil-hover-overlay">
-                                            <a href="project-5-stl.php" class="mil-descr">
+                                            <a href="project1.php" class="mil-descr">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-1row-text mil-m1 mil-c-gone">Missed Lesson Project</h4>
                                                 </div>
@@ -120,7 +120,7 @@
                                             </div>
                                         </div>
                                         <div class="mil-hover-overlay">
-                                            <a href="project-2-stl.php" class="mil-descr">
+                                            <a href="#" class="mil-descr">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-1row-text mil-m1 mil-c-gone">Coming Soon</h4>
                                                 </div>
@@ -136,11 +136,11 @@
                                     <div class="mil-work-card mil-stl mil-mb30">
                                         <div class="mil-cover mil-land mil-up">
                                             <div class="mil-hover-frame">
-                                                <img src="img/works/12/1-s.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                                <img src="img/works/3/1-s.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
                                             </div>
                                         </div>
                                         <div class="mil-hover-overlay">
-                                            <a href="project-3-stl.php" class="mil-descr">
+                                            <a href="#" class="mil-descr">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-1row-text mil-m1 mil-c-gone">Coming Soon</h4>
                                                 </div>
@@ -153,8 +153,8 @@
                                             </a>
                                         </div>
                                     </div>
-                                    
-                                   
+
+
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mil-work-card mil-stl mil-mb30">
@@ -164,7 +164,7 @@
                                             </div>
                                         </div>
                                         <div class="mil-hover-overlay">
-                                            <a href="project-4-stl.php" class="mil-descr">
+                                            <a href="#" class="mil-descr">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-1row-text mil-m1 mil-c-gone">Coming Soon</h4>
                                                 </div>
@@ -180,11 +180,11 @@
                                     <div class="mil-work-card mil-stl mil-mb30">
                                         <div class="mil-cover mil-port mil-up">
                                             <div class="mil-hover-frame">
-                                                <img src="img/works/1/1-s.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                                <img src="img/works/5/1-s.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
                                             </div>
                                         </div>
                                         <div class="mil-hover-overlay">
-                                            <a href="project1.php" class="mil-descr">
+                                            <a href="#" class="mil-descr">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-1row-text mil-m1 mil-c-gone">Coming Soon</h4>
                                                 </div>
@@ -200,11 +200,11 @@
                                     <div class="mil-work-card mil-stl mil-mb30">
                                         <div class="mil-cover mil-square mil-up">
                                             <div class="mil-hover-frame">
-                                                <img src="img/works/11/1-s.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                                <img src="img/works/6/1-s.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
                                             </div>
                                         </div>
                                         <div class="mil-hover-overlay">
-                                            <a href="project-5-stl.php" class="mil-descr">
+                                            <a href="#" class="mil-descr">
                                                 <div class="mil-text-frame">
                                                     <h4 class="mil-head4 mil-max-1row-text mil-m1 mil-c-gone">Coming Soon</h4>
                                                 </div>
@@ -217,8 +217,8 @@
                                             </a>
                                         </div>
                                     </div>
-                                    
-                                   
+
+
                                 </div>
                             </div>
                         </div>
@@ -232,7 +232,7 @@
                                 <div class="mil-obj-1"></div>
                                 <div class="mil-obj-2"></div>
                             </div>
-                            <p class="mil-stylized mil-m2 mil-mb60 mil-tac mil-up">Explore our agency</p>
+                            <p class="mil-stylized mil-m2 mil-mb60 mil-tac mil-up">Explore Our Company</p>
                             <h2 class="mil-head1 mil-rubber mil-tac mil-mb60 mil-up">LexoraTech is a <span class="mil-a1">creative</span> agency that transforms <span class="mil-a1">ideas</span> into masterpieces. We craft <span class="mil-a1">design</span> magic, breathe new life into brands, and make the impossible <span class="mil-a1">possible</span>. Choose <span class="mil-a1">LexoraTech</span> because we are worth it!</h2>
                             <div class="mil-text-with-button mil-mb60">
                                 <p class="mil-text-sm mil-tar mil-768-tac mil-up">We can talk about ourselves endlessly. <br>You'd better write to us and come visit us. We are always glad to see you!</p>
@@ -241,31 +241,31 @@
                         </div>
                         <div class="mil-tapes-frame">
                             <div class="mil-tape-1 mil-parallax-x-img" data-value-1="0" data-value-2="20%">
-                                <div class="mil-btn mil-btn-border">Reliable Service</div>
-                                <div class="mil-btn mil-btn-border">Custom Solutions</div>
-                                <div class="mil-btn mil-btn-border">24/7 Availability</div>
-                                <div class="mil-btn mil-btn-border">Expert Guidance</div>
-                                <div class="mil-btn mil-btn-border">Innovative Approach</div>
-                                <div class="mil-btn mil-btn-border">Satisfaction Guaranteed</div>
-                                <div class="mil-btn mil-btn-border">Industry Experience</div>
-                                <div class="mil-btn mil-btn-border">Expert Guidance</div>
+                                <div class="mil-btn mil-btn-border">Scalable Solutions</div>
+                                <div class="mil-btn mil-btn-border">Agile Development</div>
+                                <div class="mil-btn mil-btn-border">24/7 Support</div>
+                                <div class="mil-btn mil-btn-border">Cloud Integration</div>
+                                <div class="mil-btn mil-btn-border">User-Centric Design</div>
+                                <div class="mil-btn mil-btn-border">Data Security</div>
+                                <div class="mil-btn mil-btn-border">Seamless Deployment</div>
+                                <div class="mil-btn mil-btn-border">Continuous Innovation</div>
                             </div>
                             <div class="mil-tape-2 mil-parallax-x-img" data-value-1="0" data-value-2="-20%">
-                                <h4 class="mil-head4">Comprehensive Support</h4>
+                                <h4 class="mil-head4">End-to-End Development</h4>
                                 <h4 class="mil-head4">Cutting-Edge Technology</h4>
-                                <h4 class="mil-head4">Tailored Strategies</h4>
-                                <h4 class="mil-head4">Proven Track Record</h4>
-                                <h4 class="mil-head4">Sustainable Practices</h4>
-                                <h4 class="mil-head4">Global Reach</h4>
-                                <h4 class="mil-head4">Cost Efficiency</h4>
-                                <h4 class="mil-head4">Proven Track Record</h4>
+                                <h4 class="mil-head4">Custom-Built Platforms</h4>
+                                <h4 class="mil-head4">Proven Expertise</h4>
+                                <h4 class="mil-head4">Future-Ready Solutions</h4>
+                                <h4 class="mil-head4">Global Scalability</h4>
+                                <h4 class="mil-head4">Cost-Effective Delivery</h4>
+                                <h4 class="mil-head4">Long-Term Partnership</h4>
                             </div>
                         </div>
                     </div>
                     <!-- call to action end -->
 
                     <!-- partners -->
-                    <div class="mil-p-0-130">
+                    <!-- <div class="mil-p-0-130">
                         <div class="container">
                             <div class="row mil-jcb mil-aic">
                                 <div class="col-6 col-md-3 mil-up">
@@ -290,7 +290,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- partners end -->
 
                     <div>

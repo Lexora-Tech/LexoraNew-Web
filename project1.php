@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
     <title>LexoraTech</title>
-      <!-- logo css -->
+    <!-- logo css -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
 </head>
@@ -32,7 +32,7 @@
         <!-- cursor end -->
 
         <!-- preloader -->
-        <div class="mil-preloader">
+        <!--  <div class="mil-preloader">
             <div class="mil-preloader-animation">
                 <div class="mil-pos-abs mil-animation-1">
                     <p class="mil-head1 mil-m1">Pioneering</p>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- preloader end -->
 
         <!-- scroll progress -->
@@ -56,169 +56,9 @@
         <!-- scroll progress end -->
 
         <!-- fixed elements -->
-        <div class="mil-fixed">
-            <div class="mil-top-panel-2">
-                <div class="container">
-                    <div class="mil-left-side mil-tp-transition" id="swupTpLeft">
-                        <a href="#top" class="mil-logo mil-scroll-to" data-no-swup>
-                            <i class="far fa-cube"></i>
-                            <span>LexoraTech</span>
-                        </a>
-                    </div>
-
-                    <div class="mil-onepage-nav" id="swup-opm">
-                    </div>
-
-                    <div class="mil-buttons-tp-frame mil-c-gone">
-                        <div class="mil-buttons">
-                            <a href="contact.php" class="mil-tp-btn"><i class="fal fa-envelope"></i></a>
-                            <div class="mil-tp-btn">
-                                <div class="mil-menu-btn"><span></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mil-menu-frame mil-menu-frame-2">
-                <div class="mil-menu-window">
-                    <div class="container">
-                        <div class="row mil-no-g">
-                            <div class="col-lg-6">
-                                <div class="mil-left-side">
-                                    <div class="mil-menu-part mil-inner-scroll" id="swupMenu">
-                                        <ul class="mil-main-menu mil-c-gone">
-                                            <li class="mil-has-children">
-                                                <a href="#.">Template style</a>
-                                                <ul>
-                                                    <li><a href="index.php" target="_blank" data-no-swup>Friendly</a></li>
-                                                    <li class="mil-current"><a href="index.php" target="_blank" data-no-swup>Stylish</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="mil-has-children">
-                                                <a href="#.">Home type</a>
-                                                <ul>
-                                                    <li><a href="index.php">Corporate</a></li>
-                                                    <li><a href="home-5.html">Agency</a></li>
-                                                    <li><a href="home-6.html">Personal</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="mil-has-children">
-                                                <a href="#.">Portfolio</a>
-                                                <ul>
-                                                    <li><a href="portfolio-1-stl.html">Grid type 1</a></li>
-                                                    <li><a href="portfolio.php">Grid type 2</a></li>
-                                                    <li><a href="portfolio-3-stl.html">Grid type 3</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="mil-has-children">
-                                                <a href="#.">Pages</a>
-                                                <ul>
-                                                    <li><a href="team-stl.php">Team</a></li>
-                                                    <li><a href="contact.php">Contact</a></li>
-                                                    <li><a href="services.php">Services</a></li>
-                                                    <li><a href="service-stl.php">Service single</a></li>
-                                                    <li><a href="blog.php">Blog</a></li>
-                                                    <li><a href="publication.php">Publication</a></li>
-                                                    <li><a href="404-stl.php">404</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="mil-bottom-part">
-                                        <p class="mil-text-sm">©2024. All rights reserved.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="mil-right-side">
-                                    <div class="mil-links-part">
-                                        <ul class="mil-links">
-                                            <li><a href="#.">Privacy policy</a></li>
-                                            <li><a href="#.">Therms and conditions</a></li>
-                                            <li><a href="#.">Site map</a></li>
-                                            <li><a href="#.">Careers</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="mil-blog-part">
-                                        <div class="mil-blog-section">
-                                            <div class="mil-jcb mil-aic">
-                                                <h4 class="mil-head4 mil-mb30">Latest from blog</h4>
-                                                <div class="mil-sb-nav mil-mb30">
-                                                    <div class="mil-slider-btn mil-sb-prev mil-c-gone"><i class="fal fa-arrow-left"></i></div>
-                                                    <div class="mil-slider-btn mil-sb-next mil-c-gone"><i class="fal fa-arrow-right"></i></div>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-container mil-blog-slider-sm">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide">
-                                                        <a href="publication.php" class="mil-blog-card-sm mil-c-gone">
-                                                            <div class="mil-cover">
-                                                                <div class="mil-hover-frame">
-                                                                    <img src="img/blog/9.jpg" alt="cover">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mil-text-frame">
-                                                                <h4 class="mil-head6 mil-max-1row-text">How to Become a Graphic Designer in 10 Simple Steps</h4>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <a href="publication.php" class="mil-blog-card-sm mil-c-gone">
-                                                            <div class="mil-cover">
-                                                                <div class="mil-hover-frame">
-                                                                    <img src="img/blog/10.jpg" alt="cover">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mil-text-frame">
-                                                                <h4 class="mil-head6 mil-max-1row-text">10 Essential Tools Every Graphic Designer Should Master</h4>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <a href="publication.php" class="mil-blog-card-sm mil-c-gone">
-                                                            <div class="mil-cover">
-                                                                <div class="mil-hover-frame">
-                                                                    <img src="img/blog/11.jpg" alt="cover">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mil-text-frame">
-                                                                <h4 class="mil-head6 mil-max-1row-text">The Ultimate Guide to UI/UX Design for Beginners</h4>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <a href="publication.php" class="mil-blog-card-sm mil-c-gone">
-                                                            <div class="mil-cover">
-                                                                <div class="mil-hover-frame">
-                                                                    <img src="img/blog/12.jpg" alt="cover">
-                                                                </div>
-                                                            </div>
-                                                            <div class="mil-text-frame">
-                                                                <h4 class="mil-head6 mil-max-1row-text">How to Create Stunning Visuals with Minimal Effort</h4>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mil-menu-social">
-                                            <ul class="mil-social mil-c-gone">
-                                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                                <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php
+        include "header.php";
+        ?>
         <!-- fixed elements end -->
 
         <!-- page transition -->
@@ -236,13 +76,13 @@
                                 <div class="mil-text-pad"></div>
                                 <ul class="mil-breadcrumbs mil-mb60 mil-c-gone">
                                     <li>
-                                        <a href="portfolio-1-stl.html">Portfolio</a>
+                                        <a href="portfolio.php">Portfolio</a>
                                     </li>
                                     <li>
                                         <a href="#.">Project</a>
                                     </li>
                                 </ul>
-                                <h1 class="mil-display2 mil-rubber">Cyberfeature</h1>
+                                <h1 class="mil-display2 mil-rubber">Missed Lesson Project</h1>
                             </div>
                         </div>
                     </div>
@@ -254,18 +94,22 @@
                             <div class="row mil-jcb mil-aic">
                                 <div class="col-lg-6 mil-mb160">
                                     <div class="mil-project-img mil-port mil-up">
-                                        <img src="img/works/1/1-s.jpg" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                        <img src="img/works/1/cl1.png" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
                                     </div>
                                 </div>
                                 <div class="col-lg-5 mil-mb160">
                                     <p class="mil-stylized mil-m2 mil-mb60 mil-up">About project</p>
-                                    <h2 class="mil-head1 mil-mb60 mil-up">Design That <br><span class="mil-a1">Speaks</span> Volumes</h2>
-                                    <p class="mil-text-md mil-mb60 mil-up">Ducimus, expedita magnam assumenda in alias modi, ipsam. Dolor maxime iusto, labore dicta obcaecati, vero recusandae deleniti inventore commodi ex! Temporibus fuga quisquam deserunt nobis cum minima ipsa voluptatibus quasi aspernatur accusantium et saepe porro rem dolorem ad neque eaque vel, perspiciatis doloribus earum. Pariatur omnis labore sit, facilis tempora repudiandae earum illo ducimus ullam quaerat, repellendus! Voluptatum dolor, sint fugiat a!</p>
+                                    <h2 class="mil-head1 mil-mb60 mil-up">Safe Future<br>For <span class="mil-a1">Children</span></h2>
+                                    <p class="mil-text-md mil-mb60 mil-up">Magaharunupaadama is a child-focused initiative dedicated to creating a safe future
+                                        for children in Sri Lanka. With a vision of protecting children from crimes and minimizing their negative impact, the organization
+                                        works to empower youth, parents, and
+                                        educators. Their mission brings together communities and institutions to foster knowledge, skills,
+                                        and values needed for a safe and supportive environment.</p>
                                     <div class="mil-team-quote mil-up">
                                         <div class="mil-portrait">
-                                            <img src="img/team/ceo.jpg" alt="SEO portrait">
+                                            <img src="img/team/companyLogo.jpg" alt="SEO portrait">
                                         </div>
-                                        <p class="mil-text-md mil-m1"><span class="mil-bold">Passionately Creating</span> Design Wonders: <br><span class="mil-bold">Unleashing</span> Boundless Creativity</p>
+                                        <p class="mil-text-md mil-m1"><span class="mil-bold">LexoraTech<!-- </span> Design Wonders<br><span class="mil-bold">Unleashing</span> Boundless Creativity --></p>
                                     </div>
                                 </div>
                             </div>
@@ -278,25 +122,21 @@
                                     <div class="row">
                                         <div class="col-lg-4 mil-mb60">
                                             <h6 class="mil-head4 mil-mb30 mil-up">Client</h6>
-                                            <p class="mil-text-md mil-up">Envato Market</p>
-                                            <p class="mil-text-md mil-up"><a href="#." class="mil-text-link mil-a2" data-no-swup>Visit website</a></p>
+                                            <p class="mil-text-md mil-up">Mr.Chathuranga</p>
+                                           <!--  <p class="mil-text-md mil-up"><a href="#." class="mil-text-link mil-a2" data-no-swup>Visit website</a></p> -->
                                         </div>
                                         <div class="col-lg-4 mil-mb60">
                                             <h6 class="mil-head4 mil-mb30 mil-up">Date</h6>
-                                            <p class="mil-text-md mil-up">From April 2024</p>
-                                            <p class="mil-text-md mil-up">To January 2025</p>
+                                            <p class="mil-text-md mil-up">From January 25th 2025</p>
+                                            <p class="mil-text-md mil-up">To February 05th 2025</p>
                                         </div>
-                                        <div class="col-lg-4 mil-mb60">
-                                            <h6 class="mil-head4 mil-mb30 mil-up">Executors</h6>
-                                            <p class="mil-text-md mil-up">Emma Miller</p>
-                                            <p class="mil-text-md mil-up">Paul Trueman</p>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mil-p-0-130">
+                    <!-- <div class="mil-p-0-130">
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -321,7 +161,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="mil-p-0-160">
                         <div class="container mil-relative">
                             <div class="mil-objects">
@@ -337,14 +177,14 @@
                     <div class="container">
                         <div class="mil-half-container mil-stl mil-up">
                             <div class="mil-text-box mil-g-m4 mil-p-160-160">
-                                <p class="mil-stylized mil-a1 mil-mb60 mil-up">Next project</p>
+                                <p class="mil-stylized mil-a1 mil-mb60 mil-up">View project</p>
                                 <h2 class="mil-display3 mil-mb60 mil-m1 mil-up">Projection</h2>
-                                <p class="mil-text-md mil-deco-text mil-shortened mil-mb60 mil-up">Pariatur omnis labore sit, facilis tempora repudiandae earum</p>
-                                <div class="mil-up"><a href="project-2-stl.php" class="mil-btn mil-btn-border mil-m1 mil-c-gone">View project</a></div>
+                                <p class="mil-text-md mil-deco-text mil-shortened mil-mb60 mil-up">Where Safety Meets Innovation</p>
+                                <div class="mil-up"><a href="https://www.magaharunupaadama.com" class="mil-btn mil-btn-border mil-m1 mil-c-gone">Visit Project</a></div>
                             </div>
                             <div class="mil-image-box">
                                 <div class="mil-image-frame">
-                                    <img src="img/works/2/1-s.jpg" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
+                                    <img src="img/works/1/img1.png" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
                                     <div class="mil-overlay"></div>
                                 </div>
                             </div>
@@ -363,46 +203,10 @@
                     <!-- next project end -->
 
                     <!-- footer -->
-                    <footer class="mil-footer mil-p-160-160">
-                        <div class="container">
-                            <div class="row mil-no-g">
-                                <div class="col-lg-6 mil-up">
-                                    <a href="contact.php" class="mil-footer-contact mil-mb90">
-                                        <h6 class="mil-footer-link mil-rubber mil-m1">Let’s TALK</h6>
-                                        <span class="mil-stylized-btn mil-c-gone">
-                                            <i class="fal fa-arrow-up"></i>
-                                            <span>Read more</span>
-                                        </span>
-                                    </a>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="mil-footer-menu-frame mil-mb90 mil-up">
-                                        <ul class="mil-footer-menu">
-                                            <li><a href="#." class="mil-c-gone">Home</a></li>
-                                            <li><a href="#." class="mil-c-gone">Services</a></li>
-                                            <li><a href="#." class="mil-c-gone">About</a></li>
-                                            <li><a href="#." class="mil-c-gone">Portfolio</a></li>
-                                            <li><a href="#." class="mil-c-gone">Contact</a></li>
-                                        </ul>
-                                        <ul class="mil-social mil-c-gone">
-                                            <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                            <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                            <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                            <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                            <li><a href="#." target="_blank" data-no-swup><i class="far fa-circle"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="mil-footer-bottom mil-up">
-                                        <p class="mil-text-sm">©2024. All rights reserved.</p>
-                                        <p class="mil-text-sm">Design by: <a href="https://themeforest.net/user/millerdigitaldesign/portfolio" class="mil-text-link mil-a2 mil-c-gone">Nazar Miller</a></p>
-                                    </div>
-                                </div>
-                            </div>
+                    <?php
+                    include "footer.php";
+                    ?>
 
-                        </div>
-                    </footer>
                     <!-- footer end -->
 
                 </div>

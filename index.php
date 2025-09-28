@@ -515,7 +515,7 @@
                             <h2 class="mil-head1 mil-rubber mil-tac mil-mb60 mil-up">LexoraTech is a <span class="mil-a1">creative</span> company that transforms <span class="mil-a1">ideas</span> into masterpieces. We craft <span class="mil-a1">design</span> magic, breathe new life into brands, and make the impossible <span class="mil-a1">possible</span>. Choose <span class="mil-a1">LexoraTech</span> because we are worth it!</h2>
                             <div class="mil-text-with-button mil-mb60">
                                 <p class="mil-text-sm mil-tar mil-768-tac mil-up">We've been working for several years to build a portfolio <br>that truly reflects our diversity.</p>
-                                <span class="mil-up"><a href="portfolio-1-stl.html" class="mil-btn mil-btn-border mil-m1 mil-c-gone">View portfolio</a></span>
+                                <span class="mil-up"><a href="portfolio.php" class="mil-btn mil-btn-border mil-m1 mil-c-gone">View portfolio</a></span>
                             </div>
                         </div>
                     </div>

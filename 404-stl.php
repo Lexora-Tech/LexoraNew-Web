@@ -104,7 +104,7 @@
                                             <li class="mil-has-children">
                                                 <a href="#.">Portfolio</a>
                                                 <ul>
-                                                    <li><a href="portfolio-1-stl.html">Grid type 1</a></li>
+                                                    <li><a href="portfolio.php">Grid type 1</a></li>
                                                     <li><a href="portfolio.php">Grid type 2</a></li>
                                                     <li><a href="portfolio-3-stl.html">Grid type 3</a></li>
                                                 </ul>
