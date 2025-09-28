@@ -47,7 +47,7 @@
                                             <a href="#.">Home</a>
                                             <ul>
 
-                                                <li><a href="index">Landing</a></li>
+                                                <li><a href="index.php">Landing</a></li>
 
                                             </ul>
                                         </li>
@@ -67,7 +67,7 @@
                                             <a href="#.">Blog</a>
                                             <ul>
 
-                                                <li><a href="blog.php">Blog</a></li>
+                                                <li><a href="blog.php">Blogs</a></li>
 
                                             </ul>
                                         </li>
