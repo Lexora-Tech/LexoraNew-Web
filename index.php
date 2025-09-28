@@ -60,7 +60,7 @@
             <div class="mil-top-panel-2">
                 <div class="container">
                     <div class="mil-left-side mil-tp-transition" id="swupTpLeft">
-                        <a href="#top" class="mil-logo mil-scroll-to" data-no-swup>
+                        <a href="index.php" class="mil-logo mil-scroll-to" data-no-swup>
                             <!--  <i class="far fa-cube"></i> -->
                             <img src="img/logo/logo2.png" width="60px" height="38px">
                             <span>LexoraTech</span>

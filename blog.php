@@ -37,7 +37,7 @@ $result2 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
         <!-- cursor end -->
 
         <!-- preloader -->
-        <div class="mil-preloader">
+       <!--  <div class="mil-preloader">
             <div class="mil-preloader-animation">
                 <div class="mil-pos-abs mil-animation-1">
                     <p class="mil-head1 mil-m1">Pioneering</p>
@@ -51,7 +51,7 @@ $result2 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- preloader end -->
 
         <!-- scroll progress -->
