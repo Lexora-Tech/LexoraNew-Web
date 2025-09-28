@@ -212,7 +212,7 @@ $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMI
                                     <!-- Heading -->
 
                                     <!-- Heading Brief -->
-                                    <p class="mil-text-md mil-mb90 mil-up"><?= $blog['headingbrief']; ?></p>
+                                    <p class="mil-text-xl mil-mb90 mil-up"><?= $blog['headingbrief']; ?></p>
                                     <!-- Heading Brief -->
                                     <div class="row mil-mb60">
                                         <div class="col-lg-6">
@@ -227,17 +227,17 @@ $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMI
                                         </div>
                                     </div>
                                     <!-- 	Paragraph One -->
-                                    <p class="mil-text-md mil-mb30 mil-up"><?= $blog['p1']; ?></p>
+                                    <p class="mil-text-xl mil-mb30 mil-up"><?= $blog['p1']; ?></p>
                                     <!-- 	Paragraph One -->
 
                                     <!-- Paragraph Two -->
-                                    <p class="mil-text-md mil-mb90 mil-up"><?= $blog['p2']; ?></p>
+                                    <p class="mil-text-xl mil-mb90 mil-up"><?= $blog['p2']; ?></p>
                                     <!-- Paragraph Two -->
 
 
                                     <h3 class="mil-head4 mil-mb30 mil-up">Conclusion</h3>
                                     <!-- Conclusion -->
-                                    <p class="mil-text-md mil-up"><?= $blog['conclusion']; ?></p>
+                                    <p class="mil-text-xl mil-up"><?= $blog['conclusion']; ?></p>
                                     <!--   Conclusion -->
                                 </div>
                             </div>
