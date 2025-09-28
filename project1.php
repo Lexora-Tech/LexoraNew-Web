@@ -184,7 +184,7 @@
                             </div>
                             <div class="mil-image-box">
                                 <div class="mil-image-frame">
-                                    <img src="img/works/1/img1.png" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
+                                    <img src="img/works/1/img1.jpg" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
                                     <div class="mil-overlay"></div>
                                 </div>
                             </div>
