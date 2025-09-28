@@ -185,7 +185,7 @@ $result2 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
                                         <a href="#.">Blog</a>
                                     </li>
                                 </ul>
-                                <h1 class="mil-display2 mil-rubber">Newsletter</h1>
+                                <h1 class="mil-display2 mil-rubber">Blog</h1>
                             </div>
                         </div>
                     </div>

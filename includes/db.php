@@ -1,4 +1,4 @@
- <?php
+<?php
 $host = 'localhost';
 $db = 'lexokbxm_admin';
 $user = 'lexokbxm_user';

@@ -1,0 +1,9 @@
+# Ignore uploads folder
+/uploads
+
+# Common ignores
+*.log
+/node_modules
+/vendor
+.idea
+.DS_Store
