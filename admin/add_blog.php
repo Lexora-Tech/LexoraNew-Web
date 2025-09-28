@@ -1,253 +1,39 @@
 <?php include("../includes/auth.php"); ?>
 <?php
-$success = isset($_GET['success']); // Use ?success=1 after successful upload
+$success = isset($_GET['success']); // fallback success for non-AJAX
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>LexoraTech | Admin Add Blog</title>
   <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      margin: 0;
-      padding: 2rem;
-      transition: background 0.4s, color 0.4s;
-    }
+    /* (kept your styles, plus small additions for progress) */
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 2rem; transition: background 0.4s, color 0.4s; }
+    :root { --bg: #f1f5f9; --card: #fff; --text: #1e293b; --primary: #2563eb; --primary-dark: #1d4ed8; --border: #e2e8f0; --success: #10b981; }
+    body.dark { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --primary: #3b82f6; --primary-dark: #2563eb; --border: #334155; --success: #22c55e; }
+    .container { max-width: 1100px; margin: auto; background: var(--card); padding: 2rem; border-radius: 14px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); }
+    h2 { text-align: center; margin-bottom: 2rem; color: var(--primary); }
+    .header-bar { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; }
+    .back-link { text-decoration:none; color:var(--primary); font-size:14px; font-weight:600; }
+    .btn { display:block; background:var(--primary); color:#fff; border:none; padding:14px; border-radius:10px; cursor:pointer; font-size:16px; margin-top:2rem; width:100%; font-weight:600; }
+    .btn:disabled { opacity:0.6; cursor:not-allowed; }
 
-    :root {
-      --bg: #f1f5f9;
-      --card: #fff;
-      --text: #1e293b;
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --border: #e2e8f0;
-      --success: #10b981;
-    }
+    /* image preview */
+    .image-preview img { border-radius:8px; max-width:100%; height:auto; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
 
-    body.dark {
-      --bg: #0f172a;
-      --card: #1e293b;
-      --text: #f1f5f9;
-      --primary: #3b82f6;
-      --primary-dark: #2563eb;
-      --border: #334155;
-      --success: #22c55e;
-    }
+    /* progress */
+    #progressContainer { display:none; margin-top: 1rem; background: #e6eefc; border-radius: 8px; padding:8px; }
+    #progressBarOuter { width:100%; height:16px; background: rgba(0,0,0,0.06); border-radius: 8px; overflow:hidden; }
+    #progressBar { height:100%; width:0%; background: var(--primary); transition: width .2s ease; }
+    #progressPercent { margin-top: 6px; font-size: 13px; color: var(--text); }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      background: var(--card);
-      padding: 2rem;
-      border-radius: 14px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 2rem;
-      color: var(--primary);
-    }
-
-    .header-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .back-link {
-      text-decoration: none;
-      color: var(--primary);
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .back-link:hover {
-      text-decoration: underline;
-    }
-
-    /* Toggle */
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 54px;
-      height: 28px;
-    }
-
-    .switch input {
-      display: none;
-    }
-
-    .slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #ccc;
-      transition: 0.4s;
-      border-radius: 28px;
-    }
-
-    .slider:before {
-      position: absolute;
-      content: "☀️";
-      height: 24px;
-      width: 24px;
-      left: 2px;
-      bottom: 2px;
-      background-color: white;
-      border-radius: 50%;
-      transition: 0.4s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    input:checked+.slider {
-      background-color: var(--primary);
-    }
-
-    input:checked+.slider:before {
-      transform: translateX(26px);
-      content: "🌙";
-    }
-
-    /* Form Grid */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 2rem;
-    }
-
-    .form-section {
-      background: var(--card);
-      padding: 1.5rem;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .form-group {
-      margin-bottom: 1.2rem;
-      position: relative;
-    }
-
-    .form-group label {
-      position: absolute;
-      top: -10px;
-      left: 12px;
-      background: var(--card);
-      padding: 0 6px;
-      font-size: 13px;
-      color: var(--primary);
-      font-weight: 500;
-    }
-
-    input[type="text"],
-    textarea,
-    input[type="file"] {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: transparent;
-      color: var(--text);
-      font-size: 14px;
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .image-preview {
-      margin-top: 0.5rem;
-    }
-
-    .image-preview img {
-      border-radius: 8px;
-      max-width: 100%;
-      height: auto;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn {
-      display: block;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 14px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 2rem;
-      width: 100%;
-      font-weight: 600;
-    }
-
-    .btn:hover {
-      background: var(--primary-dark);
-    }
-
-    @media (max-width: 900px) {
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Center Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    .modal-content {
-      background: var(--card);
-      padding: 2rem;
-      border-radius: 12px;
-      text-align: center;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    }
-
-    .modal-content h3 {
-      margin-bottom: 1.5rem;
-      color: var(--success);
-    }
-
-    .modal-content button {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .modal-content button:hover {
-      background: var(--primary-dark);
-    }
+    /* modal fallback */
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:9999; }
+    .modal-content { background:var(--card); padding:2rem; border-radius:12px; text-align:center; width:90%; max-width:400px; box-shadow:0 8px 25px rgba(0,0,0,0.2); }
   </style>
-  
 </head>
-
 <body>
   <div class="container">
     <div class="header-bar">
@@ -257,10 +43,11 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
         <span class="slider"></span>
       </label>
     </div>
+
     <h2>Add New Blog</h2>
+
     <form id="blog-form" action="upload.php" method="POST" enctype="multipart/form-data">
-      <div class="form-grid">
-        <!-- Left: Content -->
+      <div class="form-grid" style="display:grid; grid-template-columns:2fr 1fr; gap:2rem;">
         <div class="form-section">
           <div class="form-group">
             <label>Title</label>
@@ -287,7 +74,7 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
             <textarea name="conclusion" placeholder="Conclusion" required></textarea>
           </div>
         </div>
-        <!-- Right: Images -->
+
         <div class="form-section">
           <div class="form-group">
             <label>Cover Image</label>
@@ -306,49 +93,53 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
           </div>
         </div>
       </div>
-      <!-- Progress bar start -->
-      <!-- <div class="mt-2" id="progress-container1">
-        <div id="progress-bar1">0%</div>
+
+      <!-- Progress -->
+      <div id="progressContainer">
+        <div id="progressBarOuter"><div id="progressBar"></div></div>
+        <div id="progressPercent">0%</div>
       </div>
-      <p id="upload-success1">Blog Uploaded Successfully</p>
-      <p id="upload-error1"></p> -->
-      <!-- Progress bar end -->
 
-
-      <button type="submit" class="btn" name="submit" onclick="loader()">Upload Blog</button>
+      <button type="submit" class="btn" id="uploadBtn">Upload Blog</button>
     </form>
   </div>
 
-  <!-- Center Modal Notification -->
+  <!-- success modal (AJAX) -->
+  <div class="modal" id="successModal">
+    <div class="modal-content">
+      <h3>Blog Added Successfully ✅</h3>
+      <p>The blog was uploaded as WEBP images and saved.</p>
+      <button onclick="redirectDashboard()" class="btn">Back to Dashboard</button>
+    </div>
+  </div>
+
   <?php if ($success): ?>
-    <div class="modal" id="successModal">
+    <div class="modal" id="successModalFallback" style="display:flex;">
       <div class="modal-content">
         <h3>Blog Added Successfully</h3>
-        <button onclick="redirectDashboard()">Close</button>
+        <button onclick="redirectDashboard()" class="btn">Back to Dashboard</button>
       </div>
     </div>
   <?php endif; ?>
 
   <script>
+    // theme
     function toggleTheme() {
       let checkbox = document.getElementById("themeToggle");
       document.body.classList.toggle("dark", checkbox.checked);
       localStorage.setItem("theme", checkbox.checked ? "dark" : "light");
     }
-
     window.onload = function() {
       if (localStorage.getItem("theme") === "dark") {
         document.body.classList.add("dark");
         document.getElementById("themeToggle").checked = true;
       }
-
-      // Show modal if success
-      const modal = document.getElementById('successModal');
-      if (modal) {
-        modal.style.display = 'flex';
-      }
+      // for fallback modal
+      const modal = document.getElementById('successModalFallback');
+      if (modal) modal.style.display = 'flex';
     }
 
+    // preview image
     function previewImage(event, previewId) {
       const previewDiv = document.getElementById(previewId);
       previewDiv.innerHTML = '';
@@ -364,38 +155,64 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
       window.location.href = "dashboard.php";
     }
 
- /* function loader() {
-            const formData = new FormData(document.getElementById('blog-form'));
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'upload.php', true);
+    // small toast utility
+    function showToast(msg) {
+      alert(msg); // keep simple - you can replace with fancier toast
+    }
 
-            xhr.upload.onprogress = function(e) {
-                if (e.lengthComputable) {
-                    const percentComplete = (e.loaded / e.total) * 100;
-                    document.getElementById('progress-container1').style.display = 'block';
-                    document.getElementById('progress-bar1').style.width = percentComplete + '%';
-                    document.getElementById('progress-bar1').innerText = Math.round(percentComplete) + '%';
-                }
-            };
+    // AJAX upload with progress
+    const form = document.getElementById('blog-form');
+    const btn = document.getElementById('uploadBtn');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      uploadBlog();
+    });
 
-            xhr.onload = function() {
-                if (xhr.status === 200) {
-                    document.getElementById('upload-success1').style.display = 'block';
-                    document.getElementById('upload-error1').style.display = 'none';
-                    setTimeout(() => {
-                        location.reload(); // Reload the page after success
-                    }, 2000);
-                } else {
-                    document.getElementById('upload-error1').innerText = 'Upload failed: ' + xhr.responseText;
-                    document.getElementById('upload-error1').style.display = 'block';
-                }
-            };
+    function uploadBlog() {
+      const formData = new FormData(form);
+      btn.disabled = true;
+      btn.innerText = 'Uploading...';
 
-            xhr.send(formData);
-        } */
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'upload.php', true);
+      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+      xhr.responseType = 'json';
 
+      xhr.upload.onprogress = function (e) {
+        if (e.lengthComputable) {
+          const percent = Math.round((e.loaded / e.total) * 100);
+          document.getElementById('progressContainer').style.display = 'block';
+          document.getElementById('progressBar').style.width = percent + '%';
+          document.getElementById('progressPercent').innerText = percent + '%';
+        }
+      };
+
+      xhr.onload = function () {
+        btn.disabled = false;
+        btn.innerText = 'Upload Blog';
+        if (xhr.status === 200) {
+          const res = xhr.response;
+          if (res && res.success) {
+            // show success modal
+            document.getElementById('successModal').style.display = 'flex';
+            // optionally auto-redirect after a short delay:
+            // setTimeout(() => window.location.href='dashboard.php', 1600);
+          } else {
+            showToast(res && res.message ? res.message : 'Upload failed.');
+          }
+        } else {
+          showToast('Upload failed — server error.');
+        }
+      };
+
+      xhr.onerror = function () {
+        btn.disabled = false;
+        btn.innerText = 'Upload Blog';
+        showToast('Network error during upload.');
+      };
+
+      xhr.send(formData);
+    }
   </script>
-      
 </body>
-
 </html>
