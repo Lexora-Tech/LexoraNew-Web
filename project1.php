@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
     <title>LexoraTech</title>
+      <!-- logo css -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
 </head>
 
