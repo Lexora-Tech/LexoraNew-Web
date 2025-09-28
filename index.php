@@ -115,21 +115,21 @@
                             <div class="row mil-jcc">
                                 <div class="col-sm-8 col-lg-4">
                                     <div class="mil-iconbox mil-tac mil-mb60">
-                                        <img src="img/home-1/iconbox/1.png" alt="icon" class="mil-mb30 mil-up">
+                                        <img src="img/logo/1.png" alt="icon" class="mil-mb30 mil-up">
                                         <h4 class="mil-head4 mil-mb30 mil-up">Expert Team</h4>
                                         <p class="mil-text-md mil-shortened mil-up">Our Team Is Made Up Of Seasoned Professionals Driven By Passion, Dedicated To Delivering Outstanding, High-Quality Projects.</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-8 col-lg-4">
                                     <div class="mil-iconbox mil-mb60">
-                                        <img src="img/home-1/iconbox/2.png" alt="icon" class="mil-mb30 mil-up">
+                                        <img src="img/logo/2.png" alt="icon" class="mil-mb30 mil-up">
                                         <h4 class="mil-head4 mil-mb30 mil-up">Innovative Solutions</h4>
                                         <p class="mil-text-md mil-shortened mil-up">We Provide Innovative And Creative Solutions That Empower Your Business To Stand Out In The Market And Achieve Lasting Success.</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-8 col-lg-4">
                                     <div class="mil-iconbox mil-tac mil-mb60">
-                                        <img src="img/home-1/iconbox/3.png" alt="icon" class="mil-mb30 mil-up">
+                                        <img src="img/logo/3.png" alt="icon" class="mil-mb30 mil-up">
                                         <h4 class="mil-head4 mil-mb30 mil-up">Client Focus</h4>
                                         <p class="mil-text-md mil-shortened mil-up">We Prioritize Client Needs, Deeply Understanding Them To Create Tailored Solutions For Maximum Results.</p>
                                     </div>
