@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mail($to, $subject, $body, $headers)) {
         // Redirect after success
-        header("Location: index.html");
+        header("Location: index.php");
         exit();
     } else {
         // Redirect after failure
