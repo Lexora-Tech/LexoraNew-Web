@@ -409,7 +409,8 @@ $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMI
 
     <!-- LexoraTech js -->
     <script src="js/main.js"></script>
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3130344952697641"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
