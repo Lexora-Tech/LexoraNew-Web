@@ -180,7 +180,7 @@
                                 <p class="mil-stylized mil-a1 mil-mb60 mil-up">View project</p>
                                 <h2 class="mil-display3 mil-mb60 mil-m1 mil-up">Projection</h2>
                                 <p class="mil-text-md mil-deco-text mil-shortened mil-mb60 mil-up">Where Safety Meets Innovation</p>
-                                <div class="mil-up"><a href="https://www.magaharunupaadama.com" class="mil-btn mil-btn-border mil-m1 mil-c-gone">Visit Project</a></div>
+                                <div class="mil-up"><a href="https://magaharunupaadama.com" class="mil-btn mil-btn-border mil-m1 mil-c-gone">Visit Project</a></div>
                             </div>
                             <div class="mil-image-box">
                                 <div class="mil-image-frame">
