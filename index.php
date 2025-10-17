@@ -427,40 +427,27 @@
                                                         <img src="img/reviews/cl1.png" alt="Client">
                                                     </div>
                                                     <h4 class="mil-head4 mil-max-1row-text mil-mb15 mil-up mil-c-gone">Missed Lesson Project</h4>
-                                                    <a class="mil-stylized mil-m2 mil-mb30 mil-up" href="https://www.magaharunupaadama.com">magaharunupaadama</a>
-                                                    <p class="mil-text-lg mil-m1 mil-up">I had the pleasure of working with this creative agency, and I must say, they truly impressed me. They consistently think outside the box, resulting in impressive and impactful work. I highly recommend this agency for their consistent delivery of exceptional creative solutions.</p>
-                                                </div>
-                                            </div>
-                                            <!-- <div class="swiper-slide">
-                                                <div class="mil-review" data-swiper-parallax-scale="0.8">
-                                                    <div class="mil-portrait mil-mb30 mil-up">
-                                                        <img src="img/reviews/1.jpg" alt="Client">
-                                                    </div>
-                                                    <h4 class="mil-head4 mil-max-1row-text mil-mb15 mil-up mil-c-gone">Emma Newman</h4>
-                                                    <p class="mil-stylized mil-m2 mil-mb30 mil-up">Envato market</p>
-                                                    <p class="mil-text-lg mil-m1 mil-up">This creative agency stands out with their exceptional talent and expertise. Their ability to think outside the box and bring unique ideas to life is truly impressive. With meticulous attention to detail, they consistently deliver visually stunning and impactful work.</p>
+                                                    <a class="mil-stylized mil-m2 mil-mb30 mil-up" href="https://magaharunupaadama.com">magaharunupaadama</a>
+                                                    <p class="mil-text-lg mil-m1 mil-up">I had the pleasure of working with this creative agency, and I must say, they truly impressed me.
+                                                        They consistently think outside the box, resulting in impressive and impactful work.
+                                                        I highly recommend this agency for their consistent delivery of exceptional creative solutions.</p>
                                                 </div>
                                             </div>
                                             <div class="swiper-slide">
                                                 <div class="mil-review" data-swiper-parallax-scale="0.8">
                                                     <div class="mil-portrait mil-mb30 mil-up">
-                                                        <img src="img/reviews/3.jpg" alt="Client">
+                                                        <img src="img/reviews/cl2.png" alt="Client">
                                                     </div>
-                                                    <h4 class="mil-head4 mil-max-1row-text mil-mb15 mil-up mil-c-gone">Viktoria Freeman</h4>
-                                                    <p class="mil-stylized mil-m2 mil-mb30 mil-up">Envato market</p>
-                                                    <p class="mil-text-lg mil-m1 mil-up">This creative agency stands out with their exceptional talent and expertise. Their ability to think outside the box and bring unique ideas to life is truly impressive. With meticulous attention to detail, they consistently deliver visually stunning and impactful work.</p>
+                                                    <h4 class="mil-head4 mil-max-1row-text mil-mb15 mil-up mil-c-gone">Sri Lanka's First EAP Service Project</h4>
+                                                    <p class="mil-stylized mil-m2 mil-mb30 mil-up" href="https://innermentalwellness.com/">Inner Mental Wellness</p>
+                                                    <p class="mil-text-lg mil-m1 mil-up">I had the pleasure of working with Inner Mental Wellness, and I must say, they truly exceeded my expectations.
+                                                        Their professionalism, empathy, and innovative approach to mental health support are remarkable.
+                                                        They genuinely care about their clients’ well-being and deliver meaningful, impactful solutions.
+                                                        I highly recommend them for their dedication and compassionate service.</p>
                                                 </div>
                                             </div>
-                                            <div class="swiper-slide">
-                                                <div class="mil-review" data-swiper-parallax-scale="0.8">
-                                                    <div class="mil-portrait mil-mb30 mil-up">
-                                                        <img src="img/reviews/4.jpg" alt="Client">
-                                                    </div>
-                                                    <h4 class="mil-head4 mil-max-1row-text mil-mb15 mil-up mil-c-gone">Oscar Oldman</h4>
-                                                    <p class="mil-stylized mil-m2 mil-mb30 mil-up">Envato market</p>
-                                                    <p class="mil-text-lg mil-m1 mil-up">I had the pleasure of working with this creative agency, and I must say, they truly impressed me. They consistently think outside the box, resulting in impressive and impactful work. I highly recommend this agency for their consistent delivery of exceptional creative solutions.</p>
-                                                </div>
-                                            </div> -->
+
+
 
                                         </div>
                                     </div>
@@ -715,7 +702,7 @@
     <!-- LexoraTech js -->
     <script src="js/main.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3130344952697641"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

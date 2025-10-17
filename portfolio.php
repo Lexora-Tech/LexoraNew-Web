@@ -160,13 +160,13 @@
                                     <div class="mil-work-card mil-stl mil-mb30">
                                         <div class="mil-cover mil-land mil-up">
                                             <div class="mil-hover-frame">
-                                                <img src="img/works/4/1-s.jpg" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                                <img src="img/works/4/c2.png" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
                                             </div>
                                         </div>
                                         <div class="mil-hover-overlay">
-                                            <a href="#" class="mil-descr">
+                                            <a href="project2.php" class="mil-descr">
                                                 <div class="mil-text-frame">
-                                                    <h4 class="mil-head4 mil-max-1row-text mil-m1 mil-c-gone">Coming Soon</h4>
+                                                    <h4 class="mil-head4 mil-max-1row-text mil-m1 mil-c-gone">Sri Lanka's First EAP Service Project</h4>
                                                 </div>
                                                 <div class="mil-768-gone mil-c-gone">
                                                     <div class="mil-stylized-btn mil-a1">

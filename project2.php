@@ -82,7 +82,7 @@
                                         <a href="#.">Project</a>
                                     </li>
                                 </ul>
-                                <h1 class="mil-display2 mil-rubber">Missed Lesson Project</h1>
+                                <h1 class="mil-display2 mil-rubber">Sri Lanka's First EAP Service Project</h1>
                             </div>
                         </div>
                     </div>
@@ -94,17 +94,18 @@
                             <div class="row mil-jcb mil-aic">
                                 <div class="col-lg-6 mil-mb160">
                                     <div class="mil-project-img mil-port mil-up">
-                                        <img src="img/works/1/cl1.png" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                        <img src="img/works/4/p2.png" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
                                     </div>
                                 </div>
                                 <div class="col-lg-5 mil-mb160">
                                     <p class="mil-stylized mil-m2 mil-mb60 mil-up">About project</p>
-                                    <h2 class="mil-head1 mil-mb60 mil-up">Safe Future<br>For <span class="mil-a1">Children</span></h2>
-                                    <p class="mil-text-md mil-mb60 mil-up">Magaharunupaadama is a child-focused initiative dedicated to creating a safe future
-                                        for children in Sri Lanka. With a vision of protecting children from crimes and minimizing their negative impact, the organization
-                                        works to empower youth, parents, and
-                                        educators. Their mission brings together communities and institutions to foster knowledge, skills,
-                                        and values needed for a safe and supportive environment.</p>
+                                    <h2 class="mil-head1 mil-mb60 mil-up">Peace Of Mind<br>Piece<span class="mil-a1"> Of Life</span></h2>
+                                    <p class="mil-text-md mil-mb60 mil-up">Inner Mental Wellness is a pioneering mental health organization dedicated to
+                                        promoting emotional well-being and psychological resilience in Sri Lanka.
+                                        With a vision to create a healthier, more mindful society, the organization provides confidential
+                                        counseling, Employee Assistance Programs, and wellness solutions.
+                                        Their mission empowers individuals and organizations to prioritize mental health, break stigma,
+                                        and build balanced, fulfilling lives.</p>
                                     <div class="mil-team-quote mil-up">
                                         <div class="mil-portrait">
                                             <img src="img/team/companyLogo.jpg" alt="SEO portrait">
@@ -123,14 +124,14 @@
                                         <div class="col-lg-4 mil-mb60">
                                             <h6 class="mil-head4 mil-mb30 mil-up">Client</h6>
                                             <p class="mil-text-md mil-up">Mr.Chathuranga Rajapaksha</p>
-                                           <!--  <p class="mil-text-md mil-up"><a href="#." class="mil-text-link mil-a2" data-no-swup>Visit website</a></p> -->
+                                            <!--  <p class="mil-text-md mil-up"><a href="#." class="mil-text-link mil-a2" data-no-swup>Visit website</a></p> -->
                                         </div>
                                         <div class="col-lg-4 mil-mb60">
                                             <h6 class="mil-head4 mil-mb30 mil-up">Date</h6>
-                                            <p class="mil-text-md mil-up">From January 25th 2025</p>
-                                            <p class="mil-text-md mil-up">To February 05th 2025</p>
+                                            <p class="mil-text-md mil-up">From October 4th 2025</p>
+                                            <p class="mil-text-md mil-up">To October 10th 2025</p>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +181,7 @@
                                 <p class="mil-stylized mil-a1 mil-mb60 mil-up">View project</p>
                                 <h2 class="mil-display3 mil-mb60 mil-m1 mil-up">Projection</h2>
                                 <p class="mil-text-md mil-deco-text mil-shortened mil-mb60 mil-up">Where Safety Meets Innovation</p>
-                                <div class="mil-up"><a href="https://magaharunupaadama.com" class="mil-btn mil-btn-border mil-m1 mil-c-gone">Visit Project</a></div>
+                                <div class="mil-up"><a href="https://innermentalwellness.com" class="mil-btn mil-btn-border mil-m1 mil-c-gone">Visit Project</a></div>
                             </div>
                             <div class="mil-image-box">
                                 <div class="mil-image-frame">
@@ -237,7 +238,7 @@
     <!-- LexoraTech js -->
     <script src="js/main.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3130344952697641"
-    crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
