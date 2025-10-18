@@ -129,7 +129,7 @@
                                         </p>
                                     </div>
                                     <div class="mil-counter-item mil-mb160 mil-up">
-                                        <h4 class="mil-up">250<span class="mil-a2">+</span></h4>
+                                        <h4 class="mil-up">100<span class="mil-a2">+</span></h4>
                                         <div class="mil-counter-text">
                                             <h5 class="mil-head4 mil-m1 mil-up">Successful Campaigns Launched</h5>
                                         </div>

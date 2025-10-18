@@ -81,7 +81,7 @@
                             <div class="row mil-jcc">
                                 <div class="col-sm-8 col-lg-4">
                                     <div class="mil-iconbox mil-tac mil-mb60">
-                                        <img src="img/logo/pos1.png" alt="icon" class="mil-mb30 mil-up">
+                                        <img src="img/logo/1.png" alt="icon" class="mil-mb30 mil-up">
                                         <h4 class="mil-head4 mil-mb30 mil-up">Custom POS Solutions</h4>
                                         <p class="mil-text-md mil-shortened mil-up">
                                             We design POS systems tailored to your operations — from retail and restaurants to salons and enterprises — integrating every feature your business needs to run smoothly.
@@ -90,7 +90,7 @@
                                 </div>
                                 <div class="col-sm-8 col-lg-4">
                                     <div class="mil-iconbox mil-mb60">
-                                        <img src="img/logo/pos2.png" alt="icon" class="mil-mb30 mil-up">
+                                        <img src="img/logo/2.png" alt="icon" class="mil-mb30 mil-up">
                                         <h4 class="mil-head4 mil-mb30 mil-up">Seamless Integration</h4>
                                         <p class="mil-text-md mil-shortened mil-up">
                                             Connect your POS with inventory, CRM, accounting, and online stores for real-time synchronization across every sales channel.
@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="col-sm-8 col-lg-4">
                                     <div class="mil-iconbox mil-tac mil-mb60">
-                                        <img src="img/logo/pos3.png" alt="icon" class="mil-mb30 mil-up">
+                                        <img src="img/logo/3.png" alt="icon" class="mil-mb30 mil-up">
                                         <h4 class="mil-head4 mil-mb30 mil-up">Secure & Scalable</h4>
                                         <p class="mil-text-md mil-shortened mil-up">
                                             Built with top-tier security and scalable architecture, our POS systems grow with your business — ensuring smooth operations from one store to hundreds.
@@ -130,7 +130,7 @@
                                         </p>
                                     </div>
                                     <div class="mil-counter-item mil-mb160 mil-up">
-                                        <h4 class="mil-up">150<span class="mil-a2">+</span></h4>
+                                        <h4 class="mil-up">100<span class="mil-a2">+</span></h4>
                                         <div class="mil-counter-text">
                                             <h5 class="mil-head4 mil-m1 mil-up">Successful POS Deployments</h5>
                                         </div>
