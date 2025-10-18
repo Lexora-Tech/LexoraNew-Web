@@ -103,7 +103,7 @@
                                             <li class="mil-up">Interaction Design</li>
                                         </ul>
                                         <div class="mil-mb30 mil-up">
-                                            <a href="" class="mil-stylized-btn mil-c-gone">
+                                            <a href="ui-ux-design.php" class="mil-stylized-btn mil-c-gone">
                                                 <i class="fal fa-arrow-up"></i>
                                                 <span>Read more</span>
                                             </a>
@@ -121,7 +121,7 @@
                                             <li class="mil-up">Brand Communication</li>
                                         </ul>
                                         <div class="mil-mb30 mil-up">
-                                            <a href="" class="mil-stylized-btn mil-c-gone">
+                                            <a href="brand-strategy.php" class="mil-stylized-btn mil-c-gone">
                                                 <i class="fal fa-arrow-up"></i>
                                                 <span>Read more</span>
                                             </a>
@@ -139,7 +139,7 @@
                                             <li class="mil-up">Paid Advertising</li>
                                         </ul>
                                         <div class="mil-mb30 mil-up">
-                                            <a href="" class="mil-stylized-btn mil-c-gone">
+                                            <a href="marketing-and-smm.php" class="mil-stylized-btn mil-c-gone">
                                                 <i class="fal fa-arrow-up"></i>
                                                 <span>Read more</span>
                                             </a>
@@ -158,7 +158,7 @@
                                             <li class="mil-up">Maintenance and Support</li>
                                         </ul>
                                         <div class="mil-mb30 mil-up">
-                                            <a href="" class="mil-stylized-btn mil-c-gone">
+                                            <a href="web-development.php" class="mil-stylized-btn mil-c-gone">
                                                 <i class="fal fa-arrow-up"></i>
                                                 <span>Read more</span>
                                             </a>
@@ -178,7 +178,7 @@
                                             <li class="mil-up">App Maintenance & Support</li>
                                         </ul>
                                         <div class="mil-mb30 mil-up">
-                                            <a href="" class="mil-stylized-btn mil-c-gone">
+                                            <a href="mobile-development.php" class="mil-stylized-btn mil-c-gone">
                                                 <i class="fal fa-arrow-up"></i>
                                                 <span>Read more</span>
                                             </a>
@@ -199,7 +199,7 @@
                                             <li class="mil-up">Support & Maintenance</li>
                                         </ul>
                                         <div class="mil-mb30 mil-up">
-                                            <a href="" class="mil-stylized-btn mil-c-gone">
+                                            <a href="pos-development.php" class="mil-stylized-btn mil-c-gone">
                                                 <i class="fal fa-arrow-up"></i>
                                                 <span>Read more</span>
                                             </a>

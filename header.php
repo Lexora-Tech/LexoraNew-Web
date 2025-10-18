@@ -11,10 +11,10 @@
 
                 <div class="mil-onepage-nav" id="swup-opm">
                     <ul>
-                        <li><a href="#services" class="mil-scroll-to" data-no-swup>Services</a></li>
+                        <li><a href="services.php" class="" data-no-swup>Services</a></li>
                         <!-- <li><a href="#team" class="mil-scroll-to" data-no-swup>Team</a></li> -->
                         <li><a href="#reviews" class="mil-scroll-to" data-no-swup>Reviews</a></li>
-                         <li><a href="portfolio.php" data-no-swup>Projects</a></li>
+                        <li><a href="portfolio.php" data-no-swup>Projects</a></li>
                         <li><a href="blog.php" data-no-swup>Blog</a></li>
 
                     </ul>
