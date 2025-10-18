@@ -83,8 +83,8 @@
                             <div class="mil-right-side">
                                 <div class="mil-links-part">
                                     <ul class="mil-links">
-                                        <li><a href="#.">Privacy policy</a></li>
-                                        <li><a href="#.">Therms and conditions</a></li>
+                                        <li><a href="privacy-policy.php">Privacy policy</a></li>
+                                        <li><a href="terms-and-conditons.php">Therms and conditions</a></li>
                                         <li><a href="#.">Careers</a></li>
                                     </ul>
                                 </div>
