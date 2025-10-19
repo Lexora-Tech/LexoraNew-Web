@@ -9,7 +9,7 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
 
 <head>
     <meta charset="UTF-8">
-    <title>LexoraTech | Admin Dashboard</title>
+    <title>Lexora Tech | Admin Dashboard</title>
     <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
     <style>
         /* --- common styles --- */
@@ -638,7 +638,7 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
 
                 try {
                     // Send to Cloudflare Worker
-                    const resp = await fetch("https://shortener.lexoratech.workers.dev", {
+                    const resp = await fetch("https://shortener.Lexora Tech.workers.dev", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"

@@ -7,7 +7,7 @@ $success = isset($_GET['success']); // Use ?success=1 after successful upload
 
 <head>
   <meta charset="UTF-8">
-  <title>LexoraTech | Admin Add Blog</title>
+  <title>Lexora Tech | Admin Add Blog</title>
   <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
   <style>
     /* --- Keep your original styles --- */

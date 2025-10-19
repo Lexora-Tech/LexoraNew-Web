@@ -15,7 +15,7 @@
     <!-- main style -->
     <link rel="stylesheet" href="css/style-stylish.css">
 
-    <title>LexoraTech | Privacy Policy</title>
+    <title>Lexora Tech | Privacy Policy</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 </head>
 
@@ -66,9 +66,9 @@
 
                                 <!-- Intro Paragraph -->
                                 <p style="font-size: 16px; margin-top: 10px; margin-bottom: 25px; font-weight: bold;">
-                                    Thank you for visiting <strong>LexoraTech</strong> ("we", "us", "our"). This Privacy Policy explains how we
+                                    Thank you for visiting <strong>Lexora Tech</strong> ("we", "us", "our"). This Privacy Policy explains how we
                                     collect, use, disclose, and protect personal information when you use our website
-                                    <a href="https://lexoratech.com/" style="color: #007bff; text-decoration: none;">LexoraTech</a>
+                                    <a href="https://Lexora Tech.com/" style="color: #007bff; text-decoration: none;">Lexora Tech</a>
                                     and related services. By accessing or using our website, you agree to the collection and use of
                                     information in accordance with this policy.
                                 </p>
@@ -138,7 +138,7 @@
                                 <p style="font-size: 16px; margin-bottom: 10px;">We will not sell your personal information. We may share information in the following limited circumstances:</p>
                                 <ul style="font-size: 16px; margin-left: 25px; margin-bottom: 25px; font-weight: bold;">
                                     <li><strong>Service providers and processors:</strong> We may share information with third parties who perform services on our behalf (e.g., hosting, analytics, email delivery, payment processors). These service providers are contractually limited from using your information for other purposes.</li>
-                                    <li><strong>Legal requirements:</strong> We may disclose information if required by law, subpoena, or to respond to a government request or to protect the rights, property, or safety of LexoraTech, our users, or others.</li>
+                                    <li><strong>Legal requirements:</strong> We may disclose information if required by law, subpoena, or to respond to a government request or to protect the rights, property, or safety of Lexora Tech, our users, or others.</li>
                                     <li><strong>Business transfers:</strong> If we merge, are acquired, or sell a portion of our assets, user information may be transferred as part of that transaction (we will notify affected users where required by law).</li>
                                 </ul>
 
@@ -166,7 +166,7 @@
                                 <p style="font-size: 16px; margin-bottom: 25px; font-weight: bold;">Our site may contain links to third-party websites. This Privacy Policy does not apply to those sites. We encourage you to read the privacy policies of any third-party sites you visit.</p>
 
                                 <h4 style="font-size: 28px;  margin-top: 40px; margin-bottom: 20px;">10. International Transfers</h4>
-                                <p style="font-size: 16px; margin-bottom: 25px; font-weight: bold;">LexoraTech is based in Sri Lanka. Information collected through the site may be processed and stored in Sri Lanka or in other countries. By using the site, you consent to the transfer of your information to countries that may have different data protection laws.</p>
+                                <p style="font-size: 16px; margin-bottom: 25px; font-weight: bold;">Lexora Tech is based in Sri Lanka. Information collected through the site may be processed and stored in Sri Lanka or in other countries. By using the site, you consent to the transfer of your information to countries that may have different data protection laws.</p>
 
                                 <h4 style="font-size: 28px;  margin-top: 40px; margin-bottom: 20px;">11. Changes to This Policy</h4>
                                 <p style="font-size: 16px; margin-bottom: 25px; font-weight: bold;">We may update this Privacy Policy from time to time. If we make material changes, we will post the updated policy on the site and update the “Effective date” at the top. Your continued use of the site after changes constitutes acceptance of the updated policy.</p>
@@ -174,7 +174,7 @@
                                 <h4 style="font-size: 28px;  margin-top: 40px; margin-bottom: 20px;">12. Contact Us</h4>
                                 <p style="font-size: 16px; margin-bottom: 10px; font-weight: bold;">If you have questions, concerns or requests about this Privacy Policy or our data practices, please contact us:</p>
                                 <p style="font-size: 16px; margin-bottom: 0; font-weight: bold;">
-                                    <strong>Email : </strong>info@lexoratech.com<br>
+                                    <strong>Email : </strong>info@Lexora Tech.com<br>
                                     <strong>Phone : </strong>Support: +94 (72) 058 10 42<br>
                                     <strong>Address : </strong>Gampaha Town, Sri Lanka, 11000
                                 </p>

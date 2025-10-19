@@ -24,7 +24,7 @@ $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMI
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
-    <title>LexoraTech | Publication</title>
+    <title>Lexora Tech | Publication</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
 </head>
@@ -49,7 +49,7 @@ $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMI
                 <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <p class="mil-head1 mil-m1">LexoraTech.com</p>
+                        <p class="mil-head1 mil-m1">Lexora Tech.com</p>
                     </div>
                 </div>
             </div>
@@ -258,7 +258,7 @@ $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMI
     <!-- parallax js -->
     <script src="js/plugins/parallax.js"></script>
 
-    <!-- LexoraTech js -->
+    <!-- Lexora Tech js -->
     <script src="js/main.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3130344952697641"
         crossorigin="anonymous"></script>

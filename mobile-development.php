@@ -16,7 +16,7 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
-    <title>LexoraTech | Mobile App Development</title>
+    <title>Lexora Tech | Mobile App Development</title>
     <!-- logo css -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
@@ -120,12 +120,12 @@
                             <div class="row mil-jcb">
                                 <div class="col-md-5">
                                     <p class="mil-text-md mil-mb60 mil-up">
-                                        At LexoraTech, we create mobile applications that do more than function — they connect, engage, and inspire.
+                                        At Lexora Tech, we create mobile applications that do more than function — they connect, engage, and inspire.
                                         Our mobile development team blends technology and creativity to deliver apps that stand out in today’s digital-first world.
                                     </p>
                                     <div class="mil-team-quote mil-mb60 mil-up">
                                         <div class="mil-portrait">
-                                            <img src="img/team/companyLogo.jpg" alt="LexoraTech logo">
+                                            <img src="img/team/companyLogo.jpg" alt="Lexora Tech logo">
                                         </div>
                                         <p class="mil-text-md mil-m1">
                                             <span class="mil-bold">Building Smart</span> Mobile Solutions: <br>

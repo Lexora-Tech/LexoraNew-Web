@@ -16,7 +16,7 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
-    <title>LexoraTech | POS Development</title>
+    <title>Lexora Tech | POS Development</title>
     <!-- logo css -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
@@ -117,12 +117,12 @@
                             <div class="row mil-jcb">
                                 <div class="col-md-5">
                                     <p class="mil-text-md mil-mb60 mil-up">
-                                        At LexoraTech, we build POS systems that go beyond transactions —
+                                        At Lexora Tech, we build POS systems that go beyond transactions —
                                         they simplify operations, improve customer experience, and deliver insights that drive business growth.
                                     </p>
                                     <div class="mil-team-quote mil-mb60 mil-up">
                                         <div class="mil-portrait">
-                                            <img src="img/team/companyLogo.jpg" alt="LexoraTech logo">
+                                            <img src="img/team/companyLogo.jpg" alt="Lexora Tech logo">
                                         </div>
                                         <p class="mil-text-md mil-m1">
                                             <span class="mil-bold">Smart. Secure. Scalable.</span><br>
@@ -159,7 +159,7 @@
                                     </p>
 
                                     <p class="mil-text-md mil-mb60 mil-up">
-                                        From single-outlet solutions to enterprise-grade POS networks, LexoraTech delivers systems that optimize sales, automate reports, and provide real-time business intelligence.
+                                        From single-outlet solutions to enterprise-grade POS networks, Lexora Tech delivers systems that optimize sales, automate reports, and provide real-time business intelligence.
                                     </p>
                                 </div>
                             </div>

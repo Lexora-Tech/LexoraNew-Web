@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>LexoraTech | Admin Edit Blog</title>
+<title>Lexora Tech | Admin Edit Blog</title>
 <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
 <style>
     body {

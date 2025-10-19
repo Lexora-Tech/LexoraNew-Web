@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-Name: 		 LexoraTech
+Name: 		 Lexora Tech
 Version:     1.0
 Developer:   Nazar Miller (millerDigitalDesign)
 Portfolio:   https://themeforest.net/user/millerdigitaldesign/portfolio?ref=MillerDigitalDesign

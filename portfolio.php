@@ -16,7 +16,7 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
-    <title>LexoraTech | Projects</title>
+    <title>Lexora Tech | Projects</title>
     <!-- logo css -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
@@ -42,7 +42,7 @@
                 <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <p class="mil-head1 mil-m1">LexoraTech.com</p>
+                        <p class="mil-head1 mil-m1">Lexora Tech.com</p>
                     </div>
                 </div>
             </div>
@@ -233,7 +233,7 @@
                                 <div class="mil-obj-2"></div>
                             </div>
                             <p class="mil-stylized mil-m2 mil-mb60 mil-tac mil-up">Explore Our Company</p>
-                            <h2 class="mil-head1 mil-rubber mil-tac mil-mb60 mil-up">LexoraTech is a <span class="mil-a1">creative</span> agency that transforms <span class="mil-a1">ideas</span> into masterpieces. We craft <span class="mil-a1">design</span> magic, breathe new life into brands, and make the impossible <span class="mil-a1">possible</span>. Choose <span class="mil-a1">LexoraTech</span> because we are worth it!</h2>
+                            <h2 class="mil-head1 mil-rubber mil-tac mil-mb60 mil-up">Lexora Tech is a <span class="mil-a1">creative</span> agency that transforms <span class="mil-a1">ideas</span> into masterpieces. We craft <span class="mil-a1">design</span> magic, breathe new life into brands, and make the impossible <span class="mil-a1">possible</span>. Choose <span class="mil-a1">Lexora Tech</span> because we are worth it!</h2>
                             <div class="mil-text-with-button mil-mb60">
                                 <p class="mil-text-sm mil-tar mil-768-tac mil-up">We can talk about ourselves endlessly. <br>You'd better write to us and come visit us. We are always glad to see you!</p>
                                 <span class="mil-up"><a href="contact.php" class="mil-btn mil-a2 mil-c-gone">Write message</a></span>
@@ -340,7 +340,7 @@
     <!-- parallax js -->
     <script src="js/plugins/parallax.js"></script>
 
-    <!-- LexoraTech js -->
+    <!-- Lexora Tech js -->
     <script src="js/main.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3130344952697641"
     crossorigin="anonymous"></script>

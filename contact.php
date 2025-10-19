@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/plugins/swiper.min.css">
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
-    <title>LexoraTech | Contact</title>
+    <title>Lexora Tech | Contact</title>
     <!-- logo css -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
@@ -41,7 +41,7 @@
                 <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <p class="mil-head1 mil-m1">LexoraTech.com</p>
+                        <p class="mil-head1 mil-m1">Lexora Tech.com</p>
                     </div>
                 </div>
             </div>
@@ -103,8 +103,8 @@
                                     <div class="mil-iconbox mil-mb60">
                                         <i class="fal fa-comment-alt-edit mil-mb30 mil-up"></i>
                                         <h4 class="mil-head4 mil-mb30 mil-up">Write</h4>
-                                        <p class="mil-stylized mil-m1 mil-mb15 mil-up">contact@lexoratech.com</p>
-                                        <p class="mil-stylized mil-m1 mil-up">info@lexoratech.com</p>
+                                        <p class="mil-stylized mil-m1 mil-mb15 mil-up">contact@Lexora Tech.com</p>
+                                        <p class="mil-stylized mil-m1 mil-up">info@Lexora Tech.com</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-8 col-lg-4">
@@ -190,7 +190,7 @@
     <!-- parallax js -->
     <script src="js/plugins/parallax.js"></script>
 
-    <!-- LexoraTech js -->
+    <!-- Lexora Tech js -->
     <script src="js/main.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3130344952697641"
     crossorigin="anonymous"></script>

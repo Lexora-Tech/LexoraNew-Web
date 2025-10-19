@@ -4,9 +4,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = htmlspecialchars($_POST["email"]);
     $message = htmlspecialchars($_POST["message"]);
 
-    $to = "contact@lexoratech.com"; // domain email
+    $to = "contact@Lexora Tech.com"; // domain email
     $subject = "New Form Submission from $name";
-    $headers = "From: no-reply@lexoratech.com\r\n";
+    $headers = "From: no-reply@Lexora Tech.com\r\n";
     $headers .= "Reply-To: $email\r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 

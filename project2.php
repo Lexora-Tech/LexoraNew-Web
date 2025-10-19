@@ -16,7 +16,7 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
-    <title>LexoraTech</title>
+    <title>Lexora Tech</title>
     <!-- logo css -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
@@ -42,7 +42,7 @@
                 <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <p class="mil-head1 mil-m1">LexoraTech.com</p>
+                        <p class="mil-head1 mil-m1">Lexora Tech.com</p>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                                         <div class="mil-portrait">
                                             <img src="img/team/companyLogo.jpg" alt="SEO portrait">
                                         </div>
-                                        <p class="mil-text-md mil-m1"><span class="mil-bold">LexoraTech<!-- </span> Design Wonders<br><span class="mil-bold">Unleashing</span> Boundless Creativity --></p>
+                                        <p class="mil-text-md mil-m1"><span class="mil-bold">Lexora Tech<!-- </span> Design Wonders<br><span class="mil-bold">Unleashing</span> Boundless Creativity --></p>
                                     </div>
                                 </div>
                             </div>
@@ -235,7 +235,7 @@
     <!-- parallax js -->
     <script src="js/plugins/parallax.js"></script>
 
-    <!-- LexoraTech js -->
+    <!-- Lexora Tech js -->
     <script src="js/main.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3130344952697641"
         crossorigin="anonymous"></script>

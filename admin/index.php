@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login | LexoraTech</title>
+    <title>Admin Login | Lexora Tech</title>
     <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
     <style>
         /* Reset for consistency */
@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Login</button>
         </form>
         <?php if (isset($error)) echo "<p class='error'>$error</p>"; ?>
-        <p class="footer-text">© <?php echo date("Y"); ?> LexoraTech(Pvt)Ltd</p>
+        <p class="footer-text">© <?php echo date("Y"); ?> Lexora Tech(Pvt)Ltd</p>
     </div>
 </body>
 

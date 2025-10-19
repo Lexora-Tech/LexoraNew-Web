@@ -16,7 +16,7 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
-    <title>LexoraTech</title>
+    <title>Lexora Tech</title>
     <!-- logo css -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
@@ -42,7 +42,7 @@
                 <div class="mil-pos-abs mil-animation-2">
                     <div class="mil-reveal-frame">
                         <p class="mil-reveal-box"></p>
-                        <p class="mil-head1 mil-m1">LexoraTech.com</p>
+                        <p class="mil-head1 mil-m1">Lexora Tech.com</p>
                     </div>
                 </div>
             </div>
@@ -269,7 +269,7 @@
                             <div class="mil-text-box mil-g-m4 mil-p-160-160">
                                 <p class="mil-stylized mil-m2 mil-mb60 mil-up">Contact</p>
                                 <h2 class="mil-display3 mil-mb60 mil-m1 mil-up">Let’s <span class="mil-a1">make </span> <br>an <span class="mil-a1">impact </span><br>together.</h2>
-                                <p class="mil-text-md mil-deco-text mil-shortened mil-up">Welcome to <span class="mil-a2">LexoraTech</span> where your ideas come to life. We specialize in crafting unique brands, captivating advertising campaigns, and effective digital strategies.</p>
+                                <p class="mil-text-md mil-deco-text mil-shortened mil-up">Welcome to <span class="mil-a2">Lexora Tech</span> where your ideas come to life. We specialize in crafting unique brands, captivating advertising campaigns, and effective digital strategies.</p>
                             </div>
                             <div class="mil-image-box">
                                 <div class="mil-image-frame">
@@ -300,7 +300,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <h2 class="mil-head1 mil-mb60 mil-up">Discover <br>Our <span class="mil-a2">company</span></h2>
-                                    <p class="mil-text-sm mil-deco-text mil-mb60 mil-up">Welcome to <span class="mil-a2">LexoraTech</span> where your ideas come to life. We specialize in crafting unique brands, captivating advertising campaigns, and effective digital strategies.</p>
+                                    <p class="mil-text-sm mil-deco-text mil-mb60 mil-up">Welcome to <span class="mil-a2">Lexora Tech</span> where your ideas come to life. We specialize in crafting unique brands, captivating advertising campaigns, and effective digital strategies.</p>
                                 </div>
                                 <div class="col-lg-6">
                                     <p class="mil-text-md mil-mb30 mil-up">Our team of talented designers, copywriters, and marketers works with passion and dedication to make your business stand out. We take the time to understand your vision and tailor our approach to ensure your message resonates with your target audience.</p>
@@ -499,7 +499,7 @@
                                 <div class="mil-obj-2"></div>
                             </div>
                             <p class="mil-stylized mil-m2 mil-mb60 mil-tac mil-up">Explore our company</p>
-                            <h2 class="mil-head1 mil-rubber mil-tac mil-mb60 mil-up">LexoraTech is a <span class="mil-a1">creative</span> company that transforms <span class="mil-a1">ideas</span> into masterpieces. We craft <span class="mil-a1">design</span> magic, breathe new life into brands, and make the impossible <span class="mil-a1">possible</span>. Choose <span class="mil-a1">LexoraTech</span> because we are worth it!</h2>
+                            <h2 class="mil-head1 mil-rubber mil-tac mil-mb60 mil-up">Lexora Tech is a <span class="mil-a1">creative</span> company that transforms <span class="mil-a1">ideas</span> into masterpieces. We craft <span class="mil-a1">design</span> magic, breathe new life into brands, and make the impossible <span class="mil-a1">possible</span>. Choose <span class="mil-a1">Lexora Tech</span> because we are worth it!</h2>
                             <div class="mil-text-with-button mil-mb60">
                                 <p class="mil-text-sm mil-tar mil-768-tac mil-up">We've been working for several years to build a portfolio <br>that truly reflects our diversity.</p>
                                 <span class="mil-up"><a href="portfolio.php" class="mil-btn mil-btn-border mil-m1 mil-c-gone">View portfolio</a></span>
@@ -699,7 +699,7 @@
     <!-- FontAwesome for Icons -->
     <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
 
-    <!-- LexoraTech js -->
+    <!-- Lexora Tech js -->
     <script src="js/main.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3130344952697641"
         crossorigin="anonymous"></script>

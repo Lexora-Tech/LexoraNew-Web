@@ -16,7 +16,7 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
-    <title>LexoraTech | Marketing & SMM</title>
+    <title>Lexora Tech | Marketing & SMM</title>
     <!-- logo css -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
@@ -116,12 +116,12 @@
                             <div class="row mil-jcb">
                                 <div class="col-md-5">
                                     <p class="mil-text-md mil-mb60 mil-up">
-                                        At LexoraTech, we blend creativity and analytics to help brands build meaningful online connections.
+                                        At Lexora Tech, we blend creativity and analytics to help brands build meaningful online connections.
                                         Our marketing and SMM experts ensure your business not only gains visibility — but real engagement, conversions, and growth.
                                     </p>
                                     <div class="mil-team-quote mil-mb60 mil-up">
                                         <div class="mil-portrait">
-                                            <img src="img/team/companyLogo.jpg" alt="LexoraTech logo">
+                                            <img src="img/team/companyLogo.jpg" alt="Lexora Tech logo">
                                         </div>
                                         <p class="mil-text-md mil-m1">
                                             <span class="mil-bold">Crafting Strategies</span> That Convert: <br>
@@ -159,7 +159,7 @@
                                     </p>
 
                                     <p class="mil-text-md mil-mb60 mil-up">
-                                        Whether you're a startup building awareness or an established brand scaling campaigns, LexoraTech helps you grow stronger online — one post, click, and conversation at a time.
+                                        Whether you're a startup building awareness or an established brand scaling campaigns, Lexora Tech helps you grow stronger online — one post, click, and conversation at a time.
                                     </p>
                                 </div>
                             </div>

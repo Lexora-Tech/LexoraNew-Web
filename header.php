@@ -5,7 +5,7 @@
                     <a href="index.php" class="mil-logo" data-no-swup>
                         <!--  <i class="far fa-cube"></i> -->
                         <img src="img/logo/logo2.png" width="60px" height="38px">
-                        <span>LexoraTech</span>
+                        <span>Lexora Tech</span>
                     </a>
                 </div>
 
@@ -75,7 +75,7 @@
                                     </ul>
                                 </div>
                                 <div class="mil-bottom-part">
-                                    <p class="mil-text-sm">©2025 LexoraTech. All rights reserved.</p>
+                                    <p class="mil-text-sm">©2025 Lexora Tech. All rights reserved.</p>
                                 </div>
                             </div>
                         </div>
@@ -93,9 +93,9 @@
 
                                     <div class="mil-menu-social">
                                         <ul class="social-icons" style="display:flex; justify-content:flex-end; gap:15px; list-style:none; padding:0; margin:0;">
-                                            <li><a href="https://www.facebook.com/people/LexoraTech/61573037507493/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="https://www.facebook.com/people/Lexora Tech/61573037507493/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-facebook-f"></i></a></li>
                                             <li><a href="https://www.instagram.com/lexora_tech/" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-instagram"></i></a></li>
-                                            <li><a href="https://www.linkedin.com/company/lexoratech" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/company/Lexora Tech" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-linkedin-in"></i></a></li>
                                             <li><a href="https://www.youtube.com/channel/UCA-NVZ5FieP8uE1nYyfhRSw" target="_blank" style="color:rgba(255,255,255,0.7); font-size:1.2rem; transition:0.3s; text-decoration:none;"><i class="fab fa-youtube"></i></a></li>
                                         </ul>
                                     </div>

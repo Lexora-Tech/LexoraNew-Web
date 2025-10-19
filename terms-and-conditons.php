@@ -15,7 +15,7 @@
     <!-- main style -->
     <link rel="stylesheet" href="css/style-stylish.css">
 
-    <title>LexoraTech | Terms & Conditions</title>
+    <title>Lexora Tech | Terms & Conditions</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 </head>
 
@@ -66,8 +66,8 @@
 
                                 <!-- Intro -->
                                 <p style="font-size: 16px; margin-top: 10px; margin-bottom: 25px; font-weight: bold;">
-                                    Welcome to <strong>LexoraTech</strong> (“we”, “us”, “our”). These Terms and Conditions (“Terms”) govern your use of our website
-                                    <a href="https://lexoratech.com/" style="color: #007bff; text-decoration: none;">LexoraTech</a>
+                                    Welcome to <strong>Lexora Tech</strong> (“we”, “us”, “our”). These Terms and Conditions (“Terms”) govern your use of our website
+                                    <a href="https://Lexora Tech.com/" style="color: #007bff; text-decoration: none;">Lexora Tech</a>
                                     and related services. By accessing or using our website, you agree to comply with and be bound by these Terms. If you do not agree, please do not use our website.
                                 </p>
 
@@ -86,7 +86,7 @@
                                 <!-- Section 2 -->
                                 <h4 style="font-size: 28px; margin-top: 40px; margin-bottom: 20px;">2. Intellectual Property</h4>
                                 <p style="font-size: 16px; margin-bottom: 25px; font-weight: bold;">
-                                    All content on this website, including text, graphics, logos, icons, images, and software, is the property of LexoraTech or its licensors and is protected by copyright and other intellectual property laws.
+                                    All content on this website, including text, graphics, logos, icons, images, and software, is the property of Lexora Tech or its licensors and is protected by copyright and other intellectual property laws.
                                     You may not reproduce, distribute, modify, or create derivative works from any content without prior written consent.
                                 </p>
 
@@ -102,7 +102,7 @@
                                 <!-- Section 4 -->
                                 <h4 style="font-size: 28px; margin-top: 40px; margin-bottom: 20px;">4. Third-Party Links</h4>
                                 <p style="font-size: 16px; margin-bottom: 25px; font-weight: bold;">
-                                    Our website may contain links to third-party websites or services that are not owned or controlled by LexoraTech. We are not responsible for the content, privacy policies, or practices of any third-party sites. You acknowledge and agree that LexoraTech shall not be liable for any damages arising from your use of such sites.
+                                    Our website may contain links to third-party websites or services that are not owned or controlled by Lexora Tech. We are not responsible for the content, privacy policies, or practices of any third-party sites. You acknowledge and agree that Lexora Tech shall not be liable for any damages arising from your use of such sites.
                                 </p>
 
                                 <!-- Section 5 -->
@@ -114,13 +114,13 @@
                                 <!-- Section 6 -->
                                 <h4 style="font-size: 28px; margin-top: 40px; margin-bottom: 20px;">6. Limitation of Liability</h4>
                                 <p style="font-size: 16px; margin-bottom: 25px; font-weight: bold;">
-                                    To the fullest extent permitted by law, LexoraTech and its affiliates shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of the website or reliance on its content.
+                                    To the fullest extent permitted by law, Lexora Tech and its affiliates shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of the website or reliance on its content.
                                 </p>
 
                                 <!-- Section 7 -->
                                 <h4 style="font-size: 28px; margin-top: 40px; margin-bottom: 20px;">7. Indemnification</h4>
                                 <p style="font-size: 16px; margin-bottom: 25px; font-weight: bold;">
-                                    You agree to indemnify and hold harmless LexoraTech, its affiliates, employees, and partners from any claims, losses, damages, liabilities, or expenses arising from your use of the website or violation of these Terms.
+                                    You agree to indemnify and hold harmless Lexora Tech, its affiliates, employees, and partners from any claims, losses, damages, liabilities, or expenses arising from your use of the website or violation of these Terms.
                                 </p>
 
                                 <!-- Section 8 -->
@@ -145,7 +145,7 @@
                                 <h4 style="font-size: 28px; margin-top: 40px; margin-bottom: 20px;">11. Contact Us</h4>
                                 <p style="font-size: 16px; margin-bottom: 10px; font-weight: bold;">If you have any questions or concerns about these Terms, please contact us:</p>
                                 <p style="font-size: 16px; margin-bottom: 0; font-weight: bold;">
-                                   <strong>Email : </strong>info@lexoratech.com<br>
+                                   <strong>Email : </strong>info@Lexora Tech.com<br>
                                     <strong>Phone : </strong>Support: +94 (72) 058 10 42<br>
                                     <strong>Address : </strong>Gampaha Town, Sri Lanka, 11000
                                 </p>

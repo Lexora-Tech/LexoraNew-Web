@@ -16,7 +16,7 @@
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
-    <title>LexoraTech | Brand Strategy</title>
+    <title>Lexora Tech | Brand Strategy</title>
     <!-- logo css -->
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
@@ -120,12 +120,12 @@
                             <div class="row mil-jcb">
                                 <div class="col-md-5">
                                     <p class="mil-text-md mil-mb60 mil-up">
-                                        At LexoraTech, we believe a strong brand isn’t built by chance — it’s crafted through strategy, creativity, and clear vision.
+                                        At Lexora Tech, we believe a strong brand isn’t built by chance — it’s crafted through strategy, creativity, and clear vision.
                                         Our brand strategy services help businesses define who they are, what they stand for, and how they communicate that meaningfully to the world.
                                     </p>
                                     <div class="mil-team-quote mil-mb60 mil-up">
                                         <div class="mil-portrait">
-                                            <img src="img/team/companyLogo.jpg" alt="LexoraTech logo">
+                                            <img src="img/team/companyLogo.jpg" alt="Lexora Tech logo">
                                         </div>
                                         <p class="mil-text-md mil-m1">
                                             <span class="mil-bold">Building Memorable</span> Brands: <br>
