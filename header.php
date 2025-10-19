@@ -5,7 +5,7 @@
                     <a href="index.php" class="mil-logo" data-no-swup>
                         <!--  <i class="far fa-cube"></i> -->
                         <img src="img/logo/logo2.png" width="60px" height="38px">
-                        <span>Lexora Tech</span>
+                        <span>LexoraTech</span>
                     </a>
                 </div>
 
