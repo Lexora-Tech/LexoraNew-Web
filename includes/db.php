@@ -1,7 +1,7 @@
  <?php
 $host = 'localhost';
-$db = 'lexokbxm_admin';
-$user = 'lexokbxm_user';
+$db = 'magaqmco_lexoraadmin';
+$user = 'magaqmco_lexora';
 $pass = 'Lexora12345@#';
 
 $conn = new mysqli($host, $user, $pass, $db);
