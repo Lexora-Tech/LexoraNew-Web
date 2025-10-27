@@ -638,7 +638,7 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
 
                 try {
                     // Send to Cloudflare Worker
-                    const resp = await fetch("https://shortener.Lexora Tech.workers.dev", {
+                    const resp = await fetch("https://shortener.Lexoratech.workers.dev", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
