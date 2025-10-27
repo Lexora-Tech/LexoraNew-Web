@@ -379,7 +379,7 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
                 const longUrl = window.location.origin + "/" + btn.getAttribute('data-link');
 
                 try {
-                    // Cloudflare worker shortener (keeps existing logic)
+                    // Send to Cloudflare Worker
                     const resp = await fetch("https://shortener.Lexora Tech.workers.dev", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
