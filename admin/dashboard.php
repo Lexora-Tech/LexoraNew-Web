@@ -13,7 +13,11 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
     <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
     <style>
         /* --- common styles --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -56,34 +60,94 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
-        header h2 { color: var(--primary); }
+        header h2 {
+            color: var(--primary);
+        }
 
-        .nav-links { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
 
-        .btn { padding: 8px 14px; border-radius: 6px; text-decoration: none; font-size: 14px; }
+        .btn {
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+        }
 
-        .btn-primary { background: var(--primary); color: #fff; }
-        .btn-danger { background: var(--danger); color: #fff; }
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+        }
 
-        main { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+        .btn-danger {
+            background: var(--danger);
+            color: #fff;
+        }
 
-        h3 { margin-bottom: 1rem; }
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h3 {
+            margin-bottom: 1rem;
+        }
 
         /* Toggle Switch */
-        .switch { position: relative; display: inline-block; width: 54px; height: 28px; }
-        .switch input { display: none; }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 54px;
+            height: 28px;
+        }
+
+        .switch input {
+            display: none;
+        }
+
         .slider {
-            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #ccc; transition: .4s; border-radius: 28px;
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 28px;
         }
+
         .slider:before {
-            position: absolute; content: "☀️"; height: 24px; width: 24px; left: 2px; bottom: 2px;
-            background: white; border-radius: 50%; transition: .4s; font-size: 14px;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,.2);
+            position: absolute;
+            content: "☀️";
+            height: 24px;
+            width: 24px;
+            left: 2px;
+            bottom: 2px;
+            background: white;
+            border-radius: 50%;
+            transition: .4s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
         }
-        input:checked + .slider { background-color: var(--primary); box-shadow: 0 0 8px var(--primary); }
-        input:checked + .slider:before { transform: translateX(26px); content: "🌙"; }
+
+        input:checked+.slider {
+            background-color: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+            content: "🌙";
+        }
 
         /* --- Card Grid (used on all screen sizes) --- */
         .card-grid {
@@ -98,27 +162,59 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
             border: 1px solid var(--border);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
             display: flex;
             flex-direction: column;
             transition: transform 0.18s ease, box-shadow 0.18s ease;
         }
 
-        .blog-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
 
         .card-cover {
             width: 100%;
             height: 160px;
             object-fit: cover;
-            background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02));
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02));
         }
 
-        .card-content { padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto; }
+        .card-content {
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1 1 auto;
+        }
 
-        .card-title { color: var(--primary); font-size: 17px; font-weight: 600; margin-bottom: 2px; }
-        .card-heading { font-size: 14px; color: var(--text); font-weight: 600; }
-        .card-brief { font-size: 13px; color: rgba(30,41,59,0.85); line-height: 1.4; max-height: 3.2rem; overflow: hidden; text-overflow: ellipsis; }
-        .card-date { font-size: 12px; color: gray; margin-top: 4px; }
+        .card-title {
+            color: var(--primary);
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .card-heading {
+            font-size: 14px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .card-brief {
+            font-size: 13px;
+            color: rgba(30, 41, 59, 0.85);
+            line-height: 1.4;
+            max-height: 3.2rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-date {
+            font-size: 12px;
+            color: gray;
+            margin-top: 4px;
+        }
 
         /* Hidden extra details (expandable) */
         .card-details {
@@ -129,9 +225,18 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
             gap: 8px;
             line-height: 1.4;
         }
-        .blog-card.expanded .card-details { display: block; }
 
-        .card-meta { display:flex; gap:8px; align-items:center; justify-content:space-between; margin-top: 6px; }
+        .blog-card.expanded .card-details {
+            display: block;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
 
         .card-actions {
             margin-top: 10px;
@@ -153,58 +258,214 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
             transition: transform .12s ease;
         }
 
-        .card-actions a:active { transform: translateY(1px); }
+        .card-actions a:active {
+            transform: translateY(1px);
+        }
 
-        .edit-btn { background: var(--success); }
-        .edit-btn:hover { background: #059669; }
-        .delete-btn { background: var(--danger); }
-        .delete-btn:hover { background: #dc2626; }
-        .share-btn { background: var(--primary); }
-        .share-btn:hover { background: var(--primary-dark); }
+        .edit-btn {
+            background: var(--success);
+        }
+
+        .edit-btn:hover {
+            background: #059669;
+        }
+
+        .delete-btn {
+            background: var(--danger);
+        }
+
+        .delete-btn:hover {
+            background: #dc2626;
+        }
+
+        .share-btn {
+            background: var(--primary);
+        }
+
+        .share-btn:hover {
+            background: var(--primary-dark);
+        }
 
         /* Make the whole card clickable (except the action buttons) - visual hint */
-        .blog-card .click-hint { font-size: 12px; color: rgba(30,41,59,0.5); }
+        .blog-card .click-hint {
+            font-size: 12px;
+            color: rgba(30, 41, 59, 0.5);
+        }
 
         /* Modal */
         .modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
         }
+
         .modal-content {
-            background: var(--card); padding: 20px; border-radius: 10px; text-align: center;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2); max-width: 380px; width: 90%;
+            background: var(--card);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            max-width: 380px;
+            width: 90%;
         }
-        .modal-content h3 { margin-bottom: 15px; color: var(--danger); }
+
+        .modal-content h3 {
+            margin-bottom: 15px;
+            color: var(--danger);
+        }
+
         .modal-content button {
-            padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
             margin: 0 8px;
         }
-        .modal-content .yes { background: var(--danger); color: #fff; }
-        .modal-content .no { background: var(--success); color: #fff; }
+
+        .modal-content .yes {
+            background: var(--danger);
+            color: #fff;
+        }
+
+        .modal-content .no {
+            background: var(--success);
+            color: #fff;
+        }
 
         /* Toast */
-        .toast-container { position: fixed; bottom: 20px; right: 20px; display:flex; flex-direction:column-reverse; gap:10px; z-index:2000; }
-        .toast { padding: 12px 16px 16px; border-radius:8px; font-size:14px; display:flex; flex-direction:column; gap:10px; min-width:240px; opacity:0; transform:translateY(20px); animation: slideIn .28s forwards; color:#fff; box-shadow:0 4px 12px rgba(0,0,0,0.18); }
-        .toast.info{ background: #2563eb; } .toast.success{ background:#16a34a;} .toast.error{ background:#dc2626;}
-        .toast-content { display:flex; align-items:center; justify-content:space-between; gap:10px; }
-        .toast-left { display:flex; align-items:center; gap:8px; }
-        .toast-icon { font-size:18px; }
-        .toast-close { background:none; border:none; color:#fff; font-size:16px; cursor:pointer; }
-        .toast-progress { height:3px; width:100%; background: rgba(255,255,255,0.4); border-radius:2px; overflow:hidden; }
-        .toast-progress-bar { height:100%; background:#fff; width:100%; transform-origin:left; animation: shrink linear forwards; animation-play-state: running; }
-        .toast:hover .toast-progress-bar { animation-play-state: paused; }
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 10px;
+            z-index: 2000;
+        }
 
-        @keyframes slideIn { to { opacity:1; transform: translateY(0);} }
-        @keyframes fadeOut { to { opacity:0; transform: translateY(-20px); } }
-        @keyframes shrink { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+        .toast {
+            padding: 12px 16px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 240px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn .28s forwards;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+        }
 
-        .fade-out { animation: fadeOut .4s forwards; }
+        .toast.info {
+            background: #2563eb;
+        }
+
+        .toast.success {
+            background: #16a34a;
+        }
+
+        .toast.error {
+            background: #dc2626;
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .toast-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toast-icon {
+            font-size: 18px;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .toast-progress {
+            height: 3px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .toast-progress-bar {
+            height: 100%;
+            background: #fff;
+            width: 100%;
+            transform-origin: left;
+            animation: shrink linear forwards;
+            animation-play-state: running;
+        }
+
+        .toast:hover .toast-progress-bar {
+            animation-play-state: paused;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes shrink {
+            from {
+                transform: scaleX(1);
+            }
+
+            to {
+                transform: scaleX(0);
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut .4s forwards;
+        }
 
         /* Responsive tweaks */
         @media (max-width: 480px) {
-            .card-grid { gap: 12px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-            .card-cover { height: 140px; }
-            .card-title { font-size: 16px; }
+            .card-grid {
+                gap: 12px;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+
+            .card-cover {
+                height: 140px;
+            }
+
+            .card-title {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -287,7 +548,10 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
                 card.classList.toggle('expanded');
                 // smooth scroll small cards into view on mobile when expanded
                 if (card.classList.contains('expanded')) {
-                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    card.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
                 }
             });
         });
@@ -325,8 +589,13 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
         };
 
         // Toast utils
-        const toastIcons = { success: "✅", error: "❌", info: "🔗" };
+        const toastIcons = {
+            success: "✅",
+            error: "❌",
+            info: "🔗"
+        };
         const TOAST_DURATION = 3000;
+
         function showToast(message, type = "info") {
             const container = document.getElementById("toastContainer");
             const toast = document.createElement("div");
@@ -380,10 +649,14 @@ $result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
 
                 try {
                     // Send to Cloudflare Worker
-                    const resp = await fetch("https://shortener.Lexora Tech.workers.dev", {
+                    const resp = await fetch("https://shortener.lexoratech.workers.dev", {
                         method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ url: longUrl })
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            url: longUrl
+                        })
                     });
 
                     const data = await resp.json();
