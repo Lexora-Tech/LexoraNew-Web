@@ -16,6 +16,7 @@
                         <li><a href="#reviews" class="mil-scroll-to" data-no-swup>Reviews</a></li>
                         <li><a href="portfolio.php" data-no-swup>Projects</a></li>
                         <li><a href="blog.php" data-no-swup>Blog</a></li>
+                         <li><a href="about.php" data-no-swup>About Us</a></li>
 
                     </ul>
                 </div>

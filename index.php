@@ -284,7 +284,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="mil-button-pad mil-a2">
-                                    <span class="mil-up"><a href="contact.php" class="mil-btn mil-btn-border mil-m1 mil-c-gone">Get in touch</a></span>
+                                    <span class="mil-up"><a href="quote.php" class="mil-btn mil-btn-border mil-m1 mil-c-gone">Get a Quote</a></span>
                                 </div>
                             </div>
                         </div>
