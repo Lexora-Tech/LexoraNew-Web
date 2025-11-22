@@ -43,35 +43,94 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // 5. Send Email to Admin (You)
         $to = "praveenlakshan021@gmail.com"; // REPLACE WITH YOUR EMAIL
-        $subject = "New Quote Request from " . $name;
+        $subject = "New Quote Request From " . $name;
         
         // Email Content (HTML)
-        $email_message = "
-        <html>
-        <head>
-          <title>New Project Inquiry</title>
-        </head>
-        <body>
-          <h2>New Quote Request</h2>
-          <p><strong>Name:</strong> $name</p>
-          <p><strong>Email:</strong> $email</p>
-          <p><strong>Phone:</strong> $phone</p>
-          <p><strong>Company:</strong> $company</p>
-          <p><strong>Budget:</strong> $budget</p>
-          <hr>
-          <h3>Services Requested:</h3>
-          <p>$services_string</p>
-          <hr>
-          <h3>Message:</h3>
-          <p>$message</p>
-        </body>
-        </html>
-        ";
+       $email_message = "
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+            .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+            .header { background-color: #121212; padding: 30px; text-align: center; border-bottom: 4px solid #ffb400; }
+            .header h1 { color: #ffffff; margin: 0; font-size: 24px; letter-spacing: 1px; }
+            .content { padding: 30px; color: #333333; line-height: 1.6; }
+            .label { font-size: 12px; color: #999999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; display: block; }
+            .value { font-size: 16px; color: #121212; font-weight: 600; margin-bottom: 20px; display: block; }
+            .info-grid { display: table; width: 100%; margin-bottom: 20px; }
+            .info-row { display: table-row; }
+            .info-cell { display: table-cell; width: 50%; padding-bottom: 15px; vertical-align: top; }
+            .budget-badge { background-color: #121212; color: #ffb400; padding: 5px 10px; border-radius: 4px; font-size: 14px; font-weight: bold; }
+            .message-box { background-color: #f9f9f9; padding: 20px; border-radius: 4px; border-left: 4px solid #ffb400; margin-top: 10px; }
+            .services-list { color: #555; font-style: italic; }
+            .footer { background-color: #f4f4f4; padding: 20px; text-align: center; font-size: 12px; color: #888888; }
+            .btn { display: inline-block; background-color: #ffb400; color: #000000; padding: 12px 25px; text-decoration: none; border-radius: 30px; font-weight: bold; margin-top: 20px; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='header'>
+                <h1>New Project Inquiry</h1>
+            </div>
+
+            <div class='content'>
+                
+                <p style='font-size: 18px; margin-bottom: 30px;'>
+                    You have received a new quote request from <strong>$name</strong>.
+                </p>
+
+                <div class='info-grid'>
+                    <div class='info-row'>
+                        <div class='info-cell'>
+                            <span class='label'>Email Address</span>
+                            <span class='value'><a href='mailto:$email' style='color: #121212; text-decoration: none;'>$email</a></span>
+                        </div>
+                        <div class='info-cell'>
+                            <span class='label'>Phone Number</span>
+                            <span class='value'>$phone</span>
+                        </div>
+                    </div>
+                    <div class='info-row'>
+                        <div class='info-cell'>
+                            <span class='label'>Company / Org</span>
+                            <span class='value'>$company</span>
+                        </div>
+                        <div class='info-cell'>
+                            <span class='label'>Estimated Budget</span>
+                            <span class='budget-badge'>$budget</span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style='border: 0; border-top: 1px solid #eeeeee; margin: 20px 0;'>
+
+                <span class='label'>Services Requested</span>
+                <p class='value services-list'>$services_string</p>
+
+                <span class='label'>Project Description</span>
+                <div class='message-box'>
+                    $message
+                </div>
+
+                <div style='text-align: center;'>
+                    <a href='mailto:$email?subject=Re: Your Quote Request - Lexora Tech' class='btn'>Reply to Client</a>
+                </div>
+
+            </div>
+
+            <div class='footer'>
+                <p>&copy; " . date("Y") . " Lexora Tech Website. All rights reserved.</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    ";
 
         // Headers for HTML email
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= "From: website@lexoratech.com" . "\r\n"; // Ideally use a domain email
+        $headers .= "From: no-reply@lexoratech.com" . "\r\n"; // Ideally use a domain email
 
         // Send
         mail($to, $subject, $email_message, $headers);
