@@ -45,84 +45,135 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $to = "praveenlakshan021@gmail.com"; // REPLACE WITH YOUR EMAIL
         $subject = "New Quote Request From " . $name;
         
-        // Email Content (HTML)
-       $email_message = "
+    // --- Professional Email Template ---
+    
+    // Get current date/time for the record
+    $submission_date = date("F j, Y, g:i a"); 
+
+    $email_message = "
     <!DOCTYPE html>
-    <html>
+    <html lang='en'>
     <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>New Lead: $name</title>
         <style>
-            body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
-            .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-            .header { background-color: #121212; padding: 30px; text-align: center; border-bottom: 4px solid #ffb400; }
-            .header h1 { color: #ffffff; margin: 0; font-size: 24px; letter-spacing: 1px; }
-            .content { padding: 30px; color: #333333; line-height: 1.6; }
-            .label { font-size: 12px; color: #999999; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; display: block; }
-            .value { font-size: 16px; color: #121212; font-weight: 600; margin-bottom: 20px; display: block; }
-            .info-grid { display: table; width: 100%; margin-bottom: 20px; }
-            .info-row { display: table-row; }
-            .info-cell { display: table-cell; width: 50%; padding-bottom: 15px; vertical-align: top; }
-            .budget-badge { background-color: #121212; color: #ffb400; padding: 5px 10px; border-radius: 4px; font-size: 14px; font-weight: bold; }
-            .message-box { background-color: #f9f9f9; padding: 20px; border-radius: 4px; border-left: 4px solid #ffb400; margin-top: 10px; }
-            .services-list { color: #555; font-style: italic; }
-            .footer { background-color: #f4f4f4; padding: 20px; text-align: center; font-size: 12px; color: #888888; }
-            .btn { display: inline-block; background-color: #ffb400; color: #000000; padding: 12px 25px; text-decoration: none; border-radius: 30px; font-weight: bold; margin-top: 20px; }
+            /* Reset styles for email clients */
+            body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+            table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+            img { -ms-interpolation-mode: bicubic; }
+            
+            /* General Styles */
+            body { margin: 0; padding: 0; width: 100% !important; height: 100% !important; background-color: #f4f4f4; font-family: 'Arial', sans-serif; color: #333333; }
+            .email-container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 0px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+            
+            /* Typography */
+            h1 { font-size: 22px; font-weight: 700; margin: 0; color: #121212; }
+            h2 { font-size: 16px; font-weight: 600; margin: 0 0 10px 0; color: #ffb400; text-transform: uppercase; letter-spacing: 1px; }
+            p { margin: 0 0 15px 0; line-height: 1.6; font-size: 14px; }
+            
+            /* Data Tables */
+            .data-table { width: 100%; border-collapse: collapse; }
+            .data-table td { padding: 12px 0; vertical-align: top; border-bottom: 1px solid #eeeeee; }
+            .data-label { width: 35%; font-weight: bold; color: #666666; font-size: 13px; text-transform: uppercase; }
+            .data-value { width: 65%; color: #000000; font-size: 15px; font-weight: 500; }
+            
+            /* Components */
+            .budget-tag { display: inline-block; background-color: #121212; color: #ffb400; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 14px; }
+            .btn-reply { display: inline-block; padding: 12px 25px; background-color: #ffb400; color: #000000; text-decoration: none; font-weight: bold; border-radius: 4px; margin-top: 20px; }
+            
+            /* Footer */
+            .footer { padding: 30px; text-align: center; font-size: 12px; color: #999999; background-color: #f4f4f4; }
         </style>
     </head>
     <body>
-        <div class='container'>
-            <div class='header'>
-                <h1>New Project Inquiry</h1>
-            </div>
 
-            <div class='content'>
-                
-                <p style='font-size: 18px; margin-bottom: 30px;'>
-                    You have received a new quote request from <strong>$name</strong>.
-                </p>
-
-                <div class='info-grid'>
-                    <div class='info-row'>
-                        <div class='info-cell'>
-                            <span class='label'>Email Address</span>
-                            <span class='value'><a href='mailto:$email' style='color: #121212; text-decoration: none;'>$email</a></span>
-                        </div>
-                        <div class='info-cell'>
-                            <span class='label'>Phone Number</span>
-                            <span class='value'>$phone</span>
-                        </div>
-                    </div>
-                    <div class='info-row'>
-                        <div class='info-cell'>
-                            <span class='label'>Company / Org</span>
-                            <span class='value'>$company</span>
-                        </div>
-                        <div class='info-cell'>
-                            <span class='label'>Estimated Budget</span>
-                            <span class='budget-badge'>$budget</span>
-                        </div>
-                    </div>
-                </div>
-
-                <hr style='border: 0; border-top: 1px solid #eeeeee; margin: 20px 0;'>
-
-                <span class='label'>Services Requested</span>
-                <p class='value services-list'>$services_string</p>
-
-                <span class='label'>Project Description</span>
-                <div class='message-box'>
-                    $message
-                </div>
-
-                <div style='text-align: center;'>
-                    <a href='mailto:$email?subject=Re: Your Quote Request - Lexora Tech' class='btn'>Reply to Client</a>
-                </div>
-
-            </div>
-
-            <div class='footer'>
-                <p>&copy; " . date("Y") . " Lexora Tech Website. All rights reserved.</p>
-            </div>
+        <div style='display:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;'>
+            New quote request from $name ($company). Budget: $budget.
         </div>
+
+        <table border='0' cellpadding='0' cellspacing='0' width='100%'>
+            <tr>
+                <td align='center' style='padding: 40px 0;'>
+                    
+                    <table class='email-container' border='0' cellpadding='0' cellspacing='0' width='600'>
+                        
+                        <tr>
+                            <td style='background-color: #121212; padding: 30px; text-align: center; border-bottom: 4px solid #ffb400;'>
+                                <h1 style='color: #ffffff; letter-spacing: 2px;'>LEXORA TECH</h1>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style='padding: 40px 30px 20px 30px;'>
+                                <p style='font-size: 18px; color: #333;'><strong>New Project Inquiry</strong></p>
+                                <p style='color: #666;'>You have received a new lead via the website quote form. Here are the project details submitted on $submission_date.</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style='padding: 0 30px;'>
+                                <h2>Client Details</h2>
+                                <table class='data-table' border='0' cellpadding='0' cellspacing='0'>
+                                    <tr>
+                                        <td class='data-label'>Full Name</td>
+                                        <td class='data-value'>$name</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='data-label'>Email</td>
+                                        <td class='data-value'><a href='mailto:$email' style='color:#000; text-decoration:none;'>$email</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class='data-label'>Phone</td>
+                                        <td class='data-value'>$phone</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='data-label'>Company</td>
+                                        <td class='data-value'>$company</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style='padding: 30px 30px;'>
+                                <h2>Project Scope</h2>
+                                <table class='data-table' border='0' cellpadding='0' cellspacing='0'>
+                                    <tr>
+                                        <td class='data-label' style='border-bottom: none;'>Services</td>
+                                        <td class='data-value' style='border-bottom: none; line-height: 1.6;'>$services_string</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='2' style='padding-top: 15px; border-bottom: none;'>
+                                            <span class='budget-tag'>Budget: $budget</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style='padding: 0 30px 40px 30px;'>
+                                <h2>Message / Notes</h2>
+                                <div style='background-color: #f9f9f9; padding: 20px; border-left: 4px solid #ffb400; border-radius: 4px; font-style: italic; color: #555;'>
+                                    \"$message\"
+                                </div>
+                                <div style='text-align: center;'>
+                                    <a href='mailto:$email?subject=Re: Project Inquiry - Lexora Tech' class='btn-reply'>Reply to Client</a>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+                    <div class='footer'>
+                        <p>&copy; " . date("Y") . " Lexora Tech Internal System.<br>
+                        This is an automated notification.</p>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+
     </body>
     </html>
     ";
