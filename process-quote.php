@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->query($sql) === TRUE) {
         
         // 5. Send Email to Admin (You)
-        $to = "praveenlakshan021@gmail.com"; // REPLACE WITH YOUR EMAIL
+        $to = "info@lexoratech.com"; // REPLACE WITH YOUR EMAIL
         $subject = "New Quote Request From " . $name;
         
     // --- Professional Email Template ---
@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <tr>
                             <td style='padding: 40px 30px 20px 30px;'>
                                 <p style='font-size: 18px; color: #333;'><strong>New Project Inquiry</strong></p>
-                                <p style='color: #666;'>You have received a new lead via the website quote form. Here are the project details submitted on $submission_date.</p>
+                                <p style='color: #666;'>You Have Received A New Lead Via The Website Quote Form. Here Are The Project Details Submitted On $submission_date.</p>
                             </td>
                         </tr>
 
@@ -159,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     \"$message\"
                                 </div>
                                 <div style='text-align: center;'>
-                                    <a href='mailto:$email?subject=Re: Project Inquiry - Lexora Tech' class='btn-reply'>Reply to Client</a>
+                                    <a href='mailto:$email?subject=Re: Project Inquiry - Lexora Tech' class='btn-reply'>Reply To Client</a>
                                 </div>
                             </td>
                         </tr>
