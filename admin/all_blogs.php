@@ -13,10 +13,12 @@ $where_clause = "";
 
 if (isset($_GET['search']) && !empty($_GET['search'])) {
     $search_term = mysqli_real_escape_string($conn, $_GET['search']);
+    // Search in Title or Heading
     $where_clause = "WHERE title LIKE '%$search_term%' OR heading LIKE '%$search_term%'";
 }
 
 // 1. Get Total Count (For Pagination Calculation)
+// We need to know the total matching rows to calculate how many pages exist
 $count_sql = "SELECT COUNT(*) as total FROM blogs $where_clause";
 $count_query = mysqli_query($conn, $count_sql);
 $count_data = mysqli_fetch_assoc($count_query);
@@ -24,11 +26,12 @@ $total_records = $count_data['total'];
 $total_pages = ceil($total_records / $limit);
 
 // 2. Fetch Data (With Limit & Offset)
+// This query fetches only the 20 rows for the current page
 $sql = "SELECT * FROM blogs $where_clause ORDER BY created_at DESC LIMIT $offset, $limit";
 $result = mysqli_query($conn, $sql);
 $count_current = mysqli_num_rows($result);
 
-// Helper function to keep search params in links
+// Helper function to keep search params in pagination links
 function get_page_link($p, $s) {
     $link = "?page=" . $p;
     if (!empty($s)) {
@@ -156,6 +159,7 @@ function get_page_link($p, $s) {
         }
         .act-btn:hover { color: var(--primary); border-color: var(--primary); }
 
+        /* Pagination Footer */
         .table-footer { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 13px; }
         .pagination { display: flex; gap: 5px; }
         .page-link { 
@@ -292,7 +296,7 @@ function get_page_link($p, $s) {
                             </thead>
                             <tbody>
                                 <?php 
-                                if ($count > 0) {
+                                if ($count_current > 0) {
                                     while ($row = mysqli_fetch_assoc($result)) { 
                                 ?>
                                     <tr id="row-<?= $row['id'] ?>">
@@ -354,8 +358,6 @@ function get_page_link($p, $s) {
 
                             <!-- Page Numbers -->
                             <?php 
-                            // Simple logic to show pages. For many pages, you might want "..." logic.
-                            // Showing max 5 pages centered around current page for simplicity
                             $start = max(1, $page - 2);
                             $end = min($total_pages, $page + 2);
                             
