@@ -1,8 +1,19 @@
 <?php
 include("includes/db.php");
+
+// 1. Get the Blog ID
 $id = $_GET['id'];
+
+// 2. INCREMENT VIEW COUNT (The Magic Part)
+// This runs instantly before loading the page content
+$update_views_sql = "UPDATE blogs SET views = views + 1 WHERE id = $id";
+mysqli_query($conn, $update_views_sql);
+
+// 3. Fetch Blog Details
 $result = mysqli_query($conn, "SELECT * FROM blogs WHERE id=$id");
 $blog = mysqli_fetch_assoc($result);
+
+// 4. Fetch Similar Blogs
 $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMIT 8");
 ?>
 
@@ -24,7 +35,7 @@ $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMI
     <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
-    <title>Lexora Tech | Publication</title>
+    <title>Lexora Tech | <?= $blog['title']; ?></title>
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
 </head>
@@ -37,24 +48,6 @@ $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMI
         <!-- cursor -->
         <div class="mil-cursor-follower"></div>
         <!-- cursor end -->
-
-        <!-- preloader -->
-       <!--  <div class="mil-preloader">
-            <div class="mil-preloader-animation">
-                <div class="mil-pos-abs mil-animation-1">
-                    <p class="mil-head1 mil-m1">Pioneering</p>
-                    <p class="mil-head1 mil-a2">Creative</p>
-                    <p class="mil-head1 mil-m1">Excellence</p>
-                </div>
-                <div class="mil-pos-abs mil-animation-2">
-                    <div class="mil-reveal-frame">
-                        <p class="mil-reveal-box"></p>
-                        <p class="mil-head1 mil-m1">Lexora Tech.com</p>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- preloader end -->
 
         <!-- scroll progress -->
         <div class="mil-progress-track">
@@ -128,9 +121,9 @@ $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMI
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- 	Paragraph One -->
+                                    <!--    Paragraph One -->
                                     <p class="mil-text-xl mil-mb30 mil-up"><?= $blog['p1']; ?></p>
-                                    <!-- 	Paragraph One -->
+                                    <!--    Paragraph One -->
 
                                     <!-- Paragraph Two -->
                                     <p class="mil-text-xl mil-mb90 mil-up"><?= $blog['p2']; ?></p>

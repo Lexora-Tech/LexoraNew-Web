@@ -2,677 +2,571 @@
 include("../includes/auth.php");
 include("../includes/db.php");
 
-$result = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at DESC");
+// 1. Handle Search Logic
+$search_term = "";
+$sql = "SELECT * FROM blogs ORDER BY created_at DESC"; // Default: Show all
+
+if (isset($_GET['search']) && !empty($_GET['search'])) {
+    $search_term = mysqli_real_escape_string($conn, $_GET['search']);
+    // Filter by Title or Heading
+    $sql = "SELECT * FROM blogs WHERE title LIKE '%$search_term%' OR heading LIKE '%$search_term%' ORDER BY created_at DESC";
+}
+
+$result = mysqli_query($conn, $sql);
+
+// 2. Fetch Global Stats (Constant, not affected by search)
+// Total Blogs Count
+$count_query = mysqli_query($conn, "SELECT COUNT(*) as count FROM blogs");
+$count_data = mysqli_fetch_assoc($count_query);
+$total_blogs_stat = $count_data['count'];
+
+// Total Views Count
+$view_query = mysqli_query($conn, "SELECT SUM(views) as total_views FROM blogs");
+$view_data = mysqli_fetch_assoc($view_query);
+$real_total_views = $view_data['total_views'] ? $view_data['total_views'] : 0;
+
+// Helper to format numbers
+function format_number($n) {
+    if ($n < 1000) return $n;
+    $suffix = ['','k','M','G','T'];
+    $power = floor(log($n, 1000));
+    return round($n / (1000 ** $power), 1) . $suffix[$power];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Lexora Tech | Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Lexora Tech</title>
     <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* --- common styles --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            transition: 0.3s;
-        }
-
+        /* --- VARIABLES & RESET --- */
         :root {
-            --bg: #f1f5f9;
-            --card: #fff;
-            --text: #1e293b;
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
+            --primary: #ffb400; /* Lexora Gold */
+            --primary-hover: #e5a300;
+            --bg-body: #f8f9fa;
+            --bg-sidebar: #121212;
+            --bg-card: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
             --border: #e2e8f0;
-            --success: #10b981;
             --danger: #ef4444;
+            --success: #10b981;
+            --sidebar-width: 260px;
+            --header-height: 70px;
         }
 
         body.dark {
-            --bg: #0f172a;
-            --card: #1e293b;
-            --text: #f1f5f9;
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --border: #334155;
-            --success: #22c55e;
-            --danger: #f87171;
+            --bg-body: #0b0b0b;
+            --bg-sidebar: #000000;
+            --bg-card: #1e1e1e;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #333333;
         }
 
-        header {
-            padding: 1rem 2rem;
-            background: var(--card);
-            border-bottom: 1px solid var(--border);
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        body { background: var(--bg-body); color: var(--text-main); transition: 0.3s ease; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- LAYOUT STRUCTURE --- */
+        .dashboard-container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            min-height: 100vh;
         }
 
-        header h2 {
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--bg-sidebar);
+            color: #fff;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            border-right: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s ease;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+
+        .brand img { height: 32px; width: auto; }
+        .brand span { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
+
+        .menu-label { font-size: 12px; text-transform: uppercase; color: #666; margin-bottom: 10px; padding-left: 10px; font-weight: 600; letter-spacing: 1px; }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #a0a0a0;
+            transition: 0.3s;
+            margin-bottom: 5px;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255, 180, 0, 0.1);
             color: var(--primary);
         }
 
-        .nav-links {
+        .nav-item i { width: 20px; text-align: center; font-size: 16px; }
+
+        .sidebar-footer { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        /* --- MAIN CONTENT AREA --- */
+        .main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        /* --- HEADER --- */
+        header {
+            height: var(--header-height);
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            display: flex;
             align-items: center;
-        }
-
-        .btn {
-            padding: 8px 14px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: #fff;
-        }
-
-        .btn-danger {
-            background: var(--danger);
-            color: #fff;
-        }
-
-        main {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        h3 {
-            margin-bottom: 1rem;
-        }
-
-        /* Toggle Switch */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 54px;
-            height: 28px;
-        }
-
-        .switch input {
-            display: none;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
+            justify-content: space-between;
+            padding: 0 30px;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 28px;
+            z-index: 90;
         }
 
-        .slider:before {
-            position: absolute;
-            content: "☀️";
-            height: 24px;
-            width: 24px;
-            left: 2px;
-            bottom: 2px;
-            background: white;
-            border-radius: 50%;
-            transition: .4s;
-            font-size: 14px;
+        .header-left h2 { font-size: 20px; font-weight: 600; }
+        .date-display { font-size: 13px; color: var(--text-muted); }
+
+        /* Updated Search Box to Form */
+        .search-box {
+            background: var(--bg-body);
+            padding: 8px 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--border);
+            width: 300px;
+        }
+        .search-button { background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 0; font-size: 14px; }
+        .search-box input { border: none; background: transparent; outline: none; color: var(--text-main); width: 100%; }
+        .search-box:focus-within { border-color: var(--primary); }
+
+        .header-right { display: flex; align-items: center; gap: 20px; }
+
+        .user-profile { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        .avatar { width: 35px; height: 35px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-weight: bold; }
+        .user-info { display: flex; flex-direction: column; line-height: 1.2; }
+        .user-name { font-size: 14px; font-weight: 600; }
+        .user-role { font-size: 11px; color: var(--text-muted); }
+
+        /* --- DASHBOARD WIDGETS --- */
+        .content-wrapper { padding: 30px; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: 0.3s;
+        }
+        
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--primary); }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+            font-size: 20px;
         }
 
-        input:checked+.slider {
-            background-color: var(--primary);
-            box-shadow: 0 0 8px var(--primary);
-        }
+        .stat-icon.blue { background: rgba(37, 99, 235, 0.1); color: #2563eb; }
+        .stat-icon.green { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+        .stat-icon.gold { background: rgba(255, 180, 0, 0.1); color: #ffb400; }
 
-        input:checked+.slider:before {
-            transform: translateX(26px);
-            content: "🌙";
-        }
+        .stat-info h4 { font-size: 24px; font-weight: 700; margin-bottom: 2px; }
+        .stat-info p { font-size: 13px; color: var(--text-muted); }
 
-        /* --- Card Grid (used on all screen sizes) --- */
+        /* --- BLOG GRID --- */
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .btn-add { background: var(--primary); color: #000; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn-add:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 18px;
-            align-items: start;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
         }
 
         .blog-card {
-            background: var(--card);
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
+            transition: 0.3s;
+            position: relative;
         }
 
         .blog-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
         }
 
-        .card-cover {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.02));
+        .card-image-wrapper { position: relative; height: 180px; overflow: hidden; }
+        .card-cover { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .blog-card:hover .card-cover { transform: scale(1.05); }
+        
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            backdrop-filter: blur(4px);
         }
 
-        .card-content {
-            padding: 14px;
+        .card-body { padding: 20px; }
+        .blog-date { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; display: block; }
+        .blog-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--text-main); line-height: 1.4; }
+        .blog-brief { font-size: 14px; color: var(--text-muted); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 20px; }
+
+        .card-footer {
+            padding: 15px 20px;
+            border-top: 1px solid var(--border);
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-            flex: 1 1 auto;
-        }
-
-        .card-title {
-            color: var(--primary);
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .card-heading {
-            font-size: 14px;
-            color: var(--text);
-            font-weight: 600;
-        }
-
-        .card-brief {
-            font-size: 13px;
-            color: rgba(30, 41, 59, 0.85);
-            line-height: 1.4;
-            max-height: 3.2rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .card-date {
-            font-size: 12px;
-            color: gray;
-            margin-top: 4px;
-        }
-
-        /* Hidden extra details (expandable) */
-        .card-details {
-            margin-top: 8px;
-            font-size: 14px;
-            color: var(--text);
-            display: none;
-            gap: 8px;
-            line-height: 1.4;
-        }
-
-        .blog-card.expanded .card-details {
-            display: block;
-        }
-
-        .card-meta {
-            display: flex;
-            gap: 8px;
-            align-items: center;
             justify-content: space-between;
-            margin-top: 6px;
-        }
-
-        .card-actions {
-            margin-top: 10px;
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .card-actions a {
-            padding: 8px 10px;
-            border-radius: 6px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            min-width: 76px;
-            text-align: center;
-            transition: transform .12s ease;
-        }
-
-        .card-actions a:active {
-            transform: translateY(1px);
-        }
-
-        .edit-btn {
-            background: var(--success);
-        }
-
-        .edit-btn:hover {
-            background: #059669;
-        }
-
-        .delete-btn {
-            background: var(--danger);
-        }
-
-        .delete-btn:hover {
-            background: #dc2626;
-        }
-
-        .share-btn {
-            background: var(--primary);
-        }
-
-        .share-btn:hover {
-            background: var(--primary-dark);
-        }
-
-        /* Make the whole card clickable (except the action buttons) - visual hint */
-        .blog-card .click-hint {
-            font-size: 12px;
-            color: rgba(30, 41, 59, 0.5);
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
             align-items: center;
-            z-index: 1000;
+            background: rgba(0,0,0,0.02);
         }
 
-        .modal-content {
-            background: var(--card);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            max-width: 380px;
-            width: 90%;
+        .actions { display: flex; gap: 10px; }
+        .btn-icon { width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); color: var(--text-muted); transition: 0.3s; cursor: pointer; background: var(--bg-card); }
+        .btn-icon:hover { color: var(--primary); border-color: var(--primary); }
+        .btn-icon.delete:hover { color: var(--danger); border-color: var(--danger); }
+
+        /* --- THEME TOGGLE --- */
+        .theme-switch { position: relative; width: 40px; height: 20px; cursor: pointer; }
+        .theme-switch input { display: none; }
+        .slider { position: absolute; inset: 0; background: #ccc; border-radius: 20px; transition: .4s; }
+        .slider:before { content: ""; position: absolute; height: 16px; width: 16px; left: 2px; bottom: 2px; background: white; border-radius: 50%; transition: .4s; }
+        input:checked + .slider { background: var(--primary); }
+        input:checked + .slider:before { transform: translateX(20px); }
+
+        /* --- MODAL & TOAST --- */
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+        .modal-content { background: var(--bg-card); padding: 30px; border-radius: 16px; width: 90%; max-width: 400px; text-align: center; border: 1px solid var(--border); }
+        .modal-btns { margin-top: 20px; display: flex; justify-content: center; gap: 15px; }
+        .btn-modal { padding: 10px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; }
+        .btn-yes { background: var(--danger); color: #fff; }
+        .btn-no { background: var(--border); color: var(--text-main); }
+        
+        .toast-container { position: fixed; bottom: 30px; right: 30px; z-index: 2000; display: flex; flex-direction: column; gap: 10px; }
+        .toast { background: #333; color: #fff; padding: 15px 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 10px; animation: slideIn 0.3s ease; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-100%); position: fixed; }
+            .sidebar.active { transform: translateX(0); }
+            .main-content { margin-left: 0; }
+            .search-box { display: none; }
+            .menu-toggle { display: block; font-size: 24px; cursor: pointer; margin-right: 15px; }
         }
-
-        .modal-content h3 {
-            margin-bottom: 15px;
-            color: var(--danger);
-        }
-
-        .modal-content button {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            margin: 0 8px;
-        }
-
-        .modal-content .yes {
-            background: var(--danger);
-            color: #fff;
-        }
-
-        .modal-content .no {
-            background: var(--success);
-            color: #fff;
-        }
-
-        /* Toast */
-        .toast-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column-reverse;
-            gap: 10px;
-            z-index: 2000;
-        }
-
-        .toast {
-            padding: 12px 16px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            min-width: 240px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: slideIn .28s forwards;
-            color: #fff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-        }
-
-        .toast.info {
-            background: #2563eb;
-        }
-
-        .toast.success {
-            background: #16a34a;
-        }
-
-        .toast.error {
-            background: #dc2626;
-        }
-
-        .toast-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .toast-left {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .toast-icon {
-            font-size: 18px;
-        }
-
-        .toast-close {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .toast-progress {
-            height: 3px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 2px;
-            overflow: hidden;
-        }
-
-        .toast-progress-bar {
-            height: 100%;
-            background: #fff;
-            width: 100%;
-            transform-origin: left;
-            animation: shrink linear forwards;
-            animation-play-state: running;
-        }
-
-        .toast:hover .toast-progress-bar {
-            animation-play-state: paused;
-        }
-
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes shrink {
-            from {
-                transform: scaleX(1);
-            }
-
-            to {
-                transform: scaleX(0);
-            }
-        }
-
-        .fade-out {
-            animation: fadeOut .4s forwards;
-        }
-
-        /* Responsive tweaks */
-        @media (max-width: 480px) {
-            .card-grid {
-                gap: 12px;
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            }
-
-            .card-cover {
-                height: 140px;
-            }
-
-            .card-title {
-                font-size: 16px;
-            }
-        }
+        @media (min-width: 769px) { .menu-toggle { display: none; } }
     </style>
 </head>
 
 <body>
-    <header>
-        <h2>Welcome, <?php echo $_SESSION['admin']; ?></h2>
-        <div class="nav-links">
-            <a href="add_blog.php" class="btn btn-primary">➕ Add Blog</a>
-            <a href="logout.php" class="btn btn-danger">🚪 Logout</a>
-            <label class="switch">
-                <input type="checkbox" id="themeToggle">
-                <span class="slider"></span>
-            </label>
-        </div>
-    </header>
 
-    <main>
-        <h3>All Blogs</h3>
+    <div class="dashboard-container">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <img src="../img/logo/logo.jpg" alt="Logo">
+                <span>Lexora Admin</span>
+            </div>
 
-        <!-- Card Grid (desktop + mobile use same grid) -->
-        <div class="table-desktop">
-            <div class="card-grid">
-                <?php mysqli_data_seek($result, 0);
-                while ($row = mysqli_fetch_assoc($result)) { ?>
-                    <div class="blog-card" data-id="<?= htmlspecialchars($row['id'], ENT_QUOTES) ?>">
-                        <img src="../uploads/<?= htmlspecialchars($row['cover_image'], ENT_QUOTES) ?>" alt="Cover image for <?= htmlspecialchars($row['title'], ENT_QUOTES) ?>" class="card-cover">
-                        <div class="card-content">
-                            <div>
-                                <div class="card-title"><?= htmlspecialchars($row['title']) ?></div>
-                                <div class="card-heading"><?= htmlspecialchars($row['heading']) ?></div>
-                            </div>
+            <div class="menu-label">Main Menu</div>
+            <a href="#" class="nav-item active">
+              <i class="fas fa-tachometer-alt"></i> <span>Dashboard</span>
+            </a>
+            <a href="all_blogs.php" class="nav-item">
+                <i class="fas fa-layer-group"></i> <span>All Blogs</span>
+            </a>
+            <a href="add_blog.php" class="nav-item">
+                <i class="fas fa-plus-circle"></i> <span>Add New</span>
+            </a>
 
-                            <div class="card-brief"><?= htmlspecialchars($row['headingbrief']) ?></div>
+            <div class="menu-label" style="margin-top: 20px;">System</div>
+            <a href="settings.php" class="nav-item">
+                <i class="fas fa-cog"></i> <span>Settings</span>
+            </a>
+            <a href="quote_requests.php" class="nav-item">
+                <i class="fas fa-envelope"></i> <span>Inquiries</span>
+            </a>
 
-                            <div class="card-meta">
-                                <div class="click-hint">Tap card to expand</div>
-                                <div class="card-date"><?= date("M d, Y", strtotime($row['created_at'])) ?></div>
-                            </div>
+            <div class="sidebar-footer">
+                <a href="logout.php" class="nav-item" style="color: var(--danger);">
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                </a>
+            </div>
+        </aside>
 
-                            <div class="card-details">
-                                <p><b>ID:</b> <?= htmlspecialchars($row['id']) ?></p>
-                                <p><b>P1:</b> <?= nl2br(htmlspecialchars($row['p1'])) ?></p>
-                                <p><b>P2:</b> <?= nl2br(htmlspecialchars($row['p2'])) ?></p>
-                                <p><b>Conclusion:</b> <?= nl2br(htmlspecialchars($row['conclusion'])) ?></p>
-                            </div>
+        <div class="main-content">
+            
+            <header>
+                <div class="header-left" style="display:flex; align-items:center;">
+                    <i class="fas fa-bars menu-toggle" id="menuToggle"></i>
+                    <div>
+                        <h2>Dashboard</h2>
+                        <span class="date-display"><?php echo date("l, F j, Y"); ?></span>
+                    </div>
+                </div>
 
-                            <div class="card-actions">
-                                <a href="edit_blog.php?id=<?= $row['id'] ?>" class="edit-btn">Edit</a>
-                                <a href="#" class="delete-btn" data-id="<?= $row['id'] ?>">Delete</a>
-                                <a class="share-btn" href="#" data-link="publication.php?id=<?= $row['id'] ?>">Share</a>
-                            </div>
+                <div class="header-right">
+                    
+                    <!-- UPDATED SEARCH FORM -->
+                    <form class="search-box" method="GET" action="">
+                        <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+                        <input type="text" name="search" placeholder="Search Blogs..." value="<?= htmlspecialchars($search_term) ?>">
+                    </form>
+                    
+                    <label class="theme-switch">
+                        <input type="checkbox" id="themeToggle">
+                        <span class="slider"></span>
+                    </label>
+
+                    <div class="user-profile">
+                        <div class="user-info">
+                            <span class="user-name"><?php echo $_SESSION['admin']; ?></span>
+                            <span class="user-role">Administrator</span>
+                        </div>
+                        <div class="avatar">
+                            <?php echo strtoupper(substr($_SESSION['admin'], 0, 1)); ?>
                         </div>
                     </div>
-                <?php } ?>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon gold">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4><?php echo $total_blogs_stat; ?></h4>
+                            <p>Total Blogs</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4><?php echo format_number($real_total_views); ?></h4>
+                            <p>Total Views</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>Active</h4>
+                            <p>System Status</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-header">
+                    <h3><?php echo empty($search_term) ? "Recent Publications" : "Search Results for '" . htmlspecialchars($search_term) . "'"; ?></h3>
+                    <a href="add_blog.php" class="btn-add">
+                        <i class="fas fa-plus"></i> Create Blog
+                    </a>
+                </div>
+
+                <?php if(mysqli_num_rows($result) == 0): ?>
+                    <div style="text-align:center; padding:40px; color:var(--text-muted);">
+                        <i class="fas fa-folder-open" style="font-size:30px; margin-bottom:10px; display:block;"></i>
+                        No blogs found.
+                    </div>
+                <?php else: ?>
+                    <div class="card-grid">
+                        <?php 
+                        mysqli_data_seek($result, 0);
+                        while ($row = mysqli_fetch_assoc($result)) { 
+                        ?>
+                            <div class="blog-card">
+                                <div class="card-image-wrapper">
+                                    <span class="card-badge">Published</span>
+                                    <img src="../uploads/<?= htmlspecialchars($row['cover_image'], ENT_QUOTES) ?>" class="card-cover">
+                                </div>
+                                <div class="card-body">
+                                    <span class="blog-date">
+                                        <i class="far fa-calendar-alt"></i> <?= date("M d, Y", strtotime($row['created_at'])) ?>
+                                        <span style="float:right; font-size:11px; opacity:0.7;">
+                                            <i class="fas fa-eye"></i> <?= format_number($row['views']) ?>
+                                        </span>
+                                    </span>
+                                    <h4 class="blog-title"><?= htmlspecialchars($row['title']) ?></h4>
+                                    <p class="blog-brief"><?= htmlspecialchars($row['headingbrief']) ?></p>
+                                </div>
+                                <div class="card-footer">
+                                    <div style="font-size:12px; color:var(--text-muted);">ID: #<?= $row['id'] ?></div>
+                                    <div class="actions">
+                                        <a href="edit_blog.php?id=<?= $row['id'] ?>" class="btn-icon" title="Edit">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        <div class="btn-icon delete" title="Delete" data-id="<?= $row['id'] ?>">
+                                            <i class="fas fa-trash"></i>
+                                        </div>
+                                        <div class="btn-icon share-btn" title="Share" data-link="publication.php?id=<?= $row['id'] ?>">
+                                            <i class="fas fa-share-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php endif; ?>
+
             </div>
         </div>
-    </main>
+    </div>
 
-    <!-- Toast Container -->
     <div id="toastContainer" class="toast-container"></div>
 
-    <!-- Delete Confirmation Modal -->
     <div class="modal" id="deleteModal">
         <div class="modal-content">
-            <h3>Are You Sure You Want To Delete This Blog?</h3>
-            <div>
-                <button class="yes" id="confirmYes">Yes</button>
-                <button class="no" id="confirmNo">No</button>
+            <i class="fas fa-exclamation-circle" style="font-size: 40px; color: var(--danger); margin-bottom: 15px;"></i>
+            <h3 style="margin-bottom: 10px;">Delete Blog?</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">This action cannot be undone. Are you sure?</p>
+            <div class="modal-btns">
+                <button class="btn-modal btn-no" id="confirmNo">Cancel</button>
+                <button class="btn-modal btn-yes" id="confirmYes">Delete</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Expand/collapse cards (works across desktop & mobile)
-        document.querySelectorAll('.blog-card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                // if clicked an action button, don't toggle expand
-                if (e.target.closest('.card-actions')) return;
-                card.classList.toggle('expanded');
-                // smooth scroll small cards into view on mobile when expanded
-                if (card.classList.contains('expanded')) {
-                    card.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center'
-                    });
-                }
+        // Sidebar Toggle for Mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        
+        if(menuToggle){
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('active');
             });
-        });
-
-        // Theme toggle
-        const toggle = document.getElementById("themeToggle");
-        if (localStorage.getItem("theme") === "dark") {
-            document.body.classList.add("dark");
-            toggle.checked = true;
         }
-        toggle.addEventListener("change", () => {
-            if (toggle.checked) {
-                document.body.classList.add("dark");
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById("themeToggle");
+        const body = document.body;
+        
+        // Check saved theme
+        if (localStorage.getItem("theme") === "dark") {
+            body.classList.add("dark");
+            themeToggle.checked = true;
+        }
+
+        themeToggle.addEventListener("change", () => {
+            if (themeToggle.checked) {
+                body.classList.add("dark");
                 localStorage.setItem("theme", "dark");
             } else {
-                document.body.classList.remove("dark");
+                body.classList.remove("dark");
                 localStorage.setItem("theme", "light");
             }
         });
 
-        // Delete confirmation modal
-        let blogIdToDelete = null;
-        document.querySelectorAll('.delete-btn').forEach(btn => {
-            btn.addEventListener('click', e => {
-                e.preventDefault();
-                blogIdToDelete = btn.getAttribute('data-id');
+        // Delete Modal Logic
+        let deleteId = null;
+        document.querySelectorAll('.delete').forEach(btn => {
+            btn.addEventListener('click', () => {
+                deleteId = btn.getAttribute('data-id');
                 document.getElementById('deleteModal').style.display = 'flex';
             });
         });
-        document.getElementById('confirmNo').onclick = () => {
+
+        document.getElementById('confirmNo').addEventListener('click', () => {
             document.getElementById('deleteModal').style.display = 'none';
-        };
-        document.getElementById('confirmYes').onclick = () => {
-            window.location.href = 'delete_blog.php?id=' + blogIdToDelete;
-        };
+        });
 
-        // Toast utils
-        const toastIcons = {
-            success: "✅",
-            error: "❌",
-            info: "🔗"
-        };
-        const TOAST_DURATION = 3000;
+        document.getElementById('confirmYes').addEventListener('click', () => {
+            window.location.href = `delete_blog.php?id=${deleteId}`;
+        });
 
-        function showToast(message, type = "info") {
-            const container = document.getElementById("toastContainer");
-            const toast = document.createElement("div");
-            toast.className = `toast ${type}`;
-            toast.innerHTML = `
-                <div class="toast-content">
-                  <div class="toast-left">
-                    <span class="toast-icon">${toastIcons[type]}</span>
-                    <span>${message}</span>
-                  </div>
-                  <button class="toast-close">&times;</button>
-                </div>
-                <div class="toast-progress">
-                  <div class="toast-progress-bar" style="animation-duration:${TOAST_DURATION}ms"></div>
-                </div>
-            `;
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('deleteModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Toast Logic (Simplified for the Professional Look)
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
             container.appendChild(toast);
-
-            let autoRemove = setTimeout(() => fadeOutToast(toast), TOAST_DURATION);
-
-            toast.addEventListener("mouseenter", () => clearTimeout(autoRemove));
-            toast.addEventListener("mouseleave", () => {
-                autoRemove = setTimeout(() => fadeOutToast(toast), getRemainingTime(toast));
-            });
-
-            toast.querySelector(".toast-close").addEventListener("click", () => {
-                clearTimeout(autoRemove);
-                fadeOutToast(toast);
-            });
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
         }
 
-        function fadeOutToast(toast) {
-            toast.classList.add("fade-out");
-            toast.addEventListener("animationend", () => toast.remove());
-        }
-
-        function getRemainingTime(toast) {
-            const bar = toast.querySelector(".toast-progress-bar");
-            const computed = getComputedStyle(bar);
-            const width = parseFloat(computed.width);
-            const totalWidth = parseFloat(getComputedStyle(toast.querySelector(".toast-progress")).width);
-            return (width / totalWidth) * TOAST_DURATION;
-        }
-
-        // Share link copy with toast
+        // Share Button Logic
         document.querySelectorAll('.share-btn').forEach(btn => {
-            btn.addEventListener('click', async e => {
+            btn.addEventListener('click', (e) => {
                 e.preventDefault();
-
-                const longUrl = window.location.origin + "/" + btn.getAttribute('data-link');
-
-                try {
-                    // Send to Cloudflare Worker
-                    const resp = await fetch("https://shortener.lexoratech.workers.dev", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            url: longUrl
-                        })
-                    });
-
-                    const data = await resp.json();
-                    if (data.shortUrl) {
-                        await navigator.clipboard.writeText(data.shortUrl);
-                        showToast("Short Link Copied To Clipboard!", "info");
-                    } else {
-                        showToast("Error Creating Short Link!", "error");
-                    }
-                } catch (err) {
-                    console.error(err);
-                    showToast("Failed To Copy Link!", "error");
-                }
+                const link = window.location.origin + "/" + btn.getAttribute('data-link');
+                navigator.clipboard.writeText(link).then(() => {
+                    showToast("Link copied to clipboard!");
+                });
             });
         });
     </script>
 </body>
-
 </html>
