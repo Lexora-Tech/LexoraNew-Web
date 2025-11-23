@@ -2,19 +2,40 @@
 include("../includes/auth.php");
 include("../includes/db.php");
 
-// --- SEARCH LOGIC ---
+// --- CONFIGURATION ---
+$limit = 20; // Limit rows per page
+$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$offset = ($page - 1) * $limit;
+
+// --- SEARCH & FILTER LOGIC ---
 $search_term = "";
+$where_clause = "";
+
 if (isset($_GET['search']) && !empty($_GET['search'])) {
     $search_term = mysqli_real_escape_string($conn, $_GET['search']);
-    // Filter by Title or Heading
-    $sql = "SELECT * FROM blogs WHERE title LIKE '%$search_term%' OR heading LIKE '%$search_term%' ORDER BY created_at DESC";
-} else {
-    // Default: Show all
-    $sql = "SELECT * FROM blogs ORDER BY created_at DESC";
+    $where_clause = "WHERE title LIKE '%$search_term%' OR heading LIKE '%$search_term%'";
 }
 
+// 1. Get Total Count (For Pagination Calculation)
+$count_sql = "SELECT COUNT(*) as total FROM blogs $where_clause";
+$count_query = mysqli_query($conn, $count_sql);
+$count_data = mysqli_fetch_assoc($count_query);
+$total_records = $count_data['total'];
+$total_pages = ceil($total_records / $limit);
+
+// 2. Fetch Data (With Limit & Offset)
+$sql = "SELECT * FROM blogs $where_clause ORDER BY created_at DESC LIMIT $offset, $limit";
 $result = mysqli_query($conn, $sql);
-$count = mysqli_num_rows($result);
+$count_current = mysqli_num_rows($result);
+
+// Helper function to keep search params in links
+function get_page_link($p, $s) {
+    $link = "?page=" . $p;
+    if (!empty($s)) {
+        $link .= "&search=" . urlencode($s);
+    }
+    return $link;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,7 +123,10 @@ $count = mysqli_num_rows($result);
             background: var(--bg-body); color: var(--text-main); outline: none; transition: 0.3s;
         }
         .search-filter input:focus { border-color: var(--primary); }
-        .search-filter i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
+        .search-button {
+            position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+            background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 0; font-size: 14px;
+        }
 
         .btn-new {
             background: var(--primary); color: #000; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; transition: 0.3s;
@@ -127,16 +151,20 @@ $count = mysqli_num_rows($result);
 
         .action-btns { display: flex; gap: 8px; }
         
-        /* UPDATED BUTTON STYLES */
         .act-btn {
-            width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); color: var(--text-muted); transition: 0.2s; cursor: pointer; background: transparent;
+            width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); color: var(--text-muted); transition: 0.2s; cursor: pointer; background: transparent; text-decoration: none;
         }
         .act-btn:hover { color: var(--primary); border-color: var(--primary); }
 
         .table-footer { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 13px; }
         .pagination { display: flex; gap: 5px; }
-        .page-link { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; }
-        .page-link.active { background: var(--primary); color: #000; border-color: var(--primary); }
+        .page-link { 
+            width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; 
+            border: 1px solid var(--border); border-radius: 6px; cursor: pointer; text-decoration: none; color: var(--text-main);
+            transition: 0.2s;
+        }
+        .page-link:hover { border-color: var(--primary); color: var(--primary); }
+        .page-link.active { background: var(--primary); color: #000; border-color: var(--primary); font-weight: bold; }
 
         /* --- MODAL --- */
         .modal {
@@ -187,13 +215,13 @@ $count = mysqli_num_rows($result);
         
         <aside class="sidebar" id="sidebar">
             <div class="brand">
-                <img src="../img/logo/logo.jpg" alt="Logo">
+                <img src="../img/logo/logo.png" alt="Logo">
                 <span>Lexora Admin</span>
             </div>
 
             <div class="menu-label">Main Menu</div>
             <a href="dashboard.php" class="nav-item">
-                 <i class="fas fa-tachometer-alt"></i> <span>Dashboard</span>
+                <i class="fas fa-grid-2"></i> <span>Dashboard</span>
             </a>
             <a href="#" class="nav-item active">
                 <i class="fas fa-layer-group"></i> <span>All Blogs</span>
@@ -241,9 +269,9 @@ $count = mysqli_num_rows($result);
                 <div class="table-container">
                     
                     <div class="toolbar">
-                        <!-- SEARCH FORM (UPDATED) -->
+                        <!-- SEARCH FORM -->
                         <form class="search-filter" method="GET" action="">
-                            <i class="fas fa-search"></i>
+                            <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
                             <input type="text" name="search" placeholder="Search blog titles..." value="<?= htmlspecialchars($search_term) ?>">
                         </form>
                         
@@ -314,12 +342,38 @@ $count = mysqli_num_rows($result);
                         </table>
                     </div>
 
+                    <!-- PAGINATION -->
                     <div class="table-footer">
-                        <span>Showing <?php echo $count; ?> results</span>
+                        <span>Showing <?= $count_current ?> of <?= $total_records ?> results</span>
                         <div class="pagination">
-                            <div class="page-link"><i class="fas fa-chevron-left"></i></div>
-                            <div class="page-link active">1</div>
-                            <div class="page-link"><i class="fas fa-chevron-right"></i></div>
+                            
+                            <!-- Prev Link -->
+                            <?php if($page > 1): ?>
+                                <a href="<?= get_page_link($page-1, $search_term) ?>" class="page-link"><i class="fas fa-chevron-left"></i></a>
+                            <?php endif; ?>
+
+                            <!-- Page Numbers -->
+                            <?php 
+                            // Simple logic to show pages. For many pages, you might want "..." logic.
+                            // Showing max 5 pages centered around current page for simplicity
+                            $start = max(1, $page - 2);
+                            $end = min($total_pages, $page + 2);
+                            
+                            if ($start > 1) echo '<span class="page-link" style="border:none;">...</span>';
+                            
+                            for($i = $start; $i <= $end; $i++): 
+                            ?>
+                                <a href="<?= get_page_link($i, $search_term) ?>" class="page-link <?= $i==$page ? 'active' : '' ?>"><?= $i ?></a>
+                            <?php endfor; 
+                            
+                            if ($end < $total_pages) echo '<span class="page-link" style="border:none;">...</span>';
+                            ?>
+
+                            <!-- Next Link -->
+                            <?php if($page < $total_pages): ?>
+                                <a href="<?= get_page_link($page+1, $search_term) ?>" class="page-link"><i class="fas fa-chevron-right"></i></a>
+                            <?php endif; ?>
+                            
                         </div>
                     </div>
 

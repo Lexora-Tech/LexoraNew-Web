@@ -4,11 +4,13 @@ include("../includes/db.php");
 
 // 1. Handle Search Logic
 $search_term = "";
-$sql = "SELECT * FROM blogs ORDER BY created_at DESC"; // Default: Show all
+
+// UPDATE: Added LIMIT 12 to show only recent posts by default
+$sql = "SELECT * FROM blogs ORDER BY created_at DESC LIMIT 12"; 
 
 if (isset($_GET['search']) && !empty($_GET['search'])) {
     $search_term = mysqli_real_escape_string($conn, $_GET['search']);
-    // Filter by Title or Heading
+    // Search results show ALL matches (not limited) so you can find old posts
     $sql = "SELECT * FROM blogs WHERE title LIKE '%$search_term%' OR heading LIKE '%$search_term%' ORDER BY created_at DESC";
 }
 
@@ -320,7 +322,7 @@ function format_number($n) {
         <!-- SIDEBAR -->
         <aside class="sidebar" id="sidebar">
             <div class="brand">
-                <img src="../img/logo/logo.jpg" alt="Logo">
+                <img src="../img/logo/logo.png" alt="Logo">
                 <span>Lexora Admin</span>
             </div>
 
@@ -366,7 +368,7 @@ function format_number($n) {
                     <!-- UPDATED SEARCH FORM -->
                     <form class="search-box" method="GET" action="">
                         <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
-                        <input type="text" name="search" placeholder="Search Blogs..." value="<?= htmlspecialchars($search_term) ?>">
+                        <input type="text" name="search" placeholder="Search blogs..." value="<?= htmlspecialchars($search_term) ?>">
                     </form>
                     
                     <label class="theme-switch">

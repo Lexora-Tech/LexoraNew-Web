@@ -10,10 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $message_body = $_POST['message'];
 
     // --- CONFIGURATION ---
-    // REPLACE THIS with your actual website URL (e.g., https://lexoratech.com)
-    // Email clients need a full HTTP link to show images.
+    // REPLACE THIS with your actual website URL
     $domain_url = "https://lexoratech.com"; 
-    $logo_url = $domain_url . "/img/logo/logo.png"; 
+    $logo_url = $domain_url . "/img/logo/logo.jpg"; 
 
     // --- HTML EMAIL TEMPLATE ---
     $final_message = "
@@ -30,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             /* Header */
             .header { background-color: #121212; padding: 30px 20px; text-align: center; border-bottom: 4px solid #ffb400; }
-            .logo { max-width: 150px; height: auto; }
             
             /* Body */
             .content { padding: 40px 30px; color: #333333; line-height: 1.6; font-size: 16px; }
@@ -50,14 +48,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <body>
         <div class='wrapper'>
             <div class='webkit'>
+                <!-- Header with Logo & Text Side-by-Side -->
                 <div class='header'>
-                    <img src='$logo_url' alt='Lexora Tech' class='logo' style='display:block; margin:0 auto; color: #ffffff; font-size: 20px; font-weight:bold;'>
+                    <table align='center' border='0' cellpadding='0' cellspacing='0' style='margin: 0 auto;'>
+                        <tr>
+                            <td style='vertical-align: middle; padding-right: 15px;'>
+                                <img src='$logo_url' alt='Logo' width='50' style='display:block; border:0; height:auto; border-radius:50%;'>
+                            </td>
+                            <td style='vertical-align: middle; color: #ffffff; font-size: 24px; font-weight: bold; letter-spacing: 1px;'>
+                                Lexora Tech
+                            </td>
+                        </tr>
+                    </table>
                 </div>
 
+                <!-- Main Message Content -->
                 <div class='content'>
                     " . nl2br($message_body) . "
                 </div>
 
+                <!-- Footer -->
                 <div class='footer'>
                     <p>&copy; " . date("Y") . " Lexora Tech. All rights reserved.</p>
                     <p>
@@ -72,7 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </html>";
 
     // --- HEADERS ---
-    // This ensures the email looks like it comes from your official domain
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
     $headers .= "From: Lexora Tech <info@lexoratech.com>" . "\r\n";
