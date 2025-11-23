@@ -219,13 +219,13 @@ function get_page_link($p, $s) {
         
         <aside class="sidebar" id="sidebar">
             <div class="brand">
-                <img src="../img/logo/logo.png" alt="Logo">
+                <img src="../img/logo/logo.jpg" alt="Logo">
                 <span>Lexora Admin</span>
             </div>
 
             <div class="menu-label">Main Menu</div>
             <a href="dashboard.php" class="nav-item">
-                <i class="fas fa-grid-2"></i> <span>Dashboard</span>
+                <i class="fas fa-tachometer-alt"></i> <span>Dashboard</span>
             </a>
             <a href="#" class="nav-item active">
                 <i class="fas fa-layer-group"></i> <span>All Blogs</span>
