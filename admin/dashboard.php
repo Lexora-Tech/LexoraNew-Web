@@ -319,7 +319,6 @@ function format_number($n) {
 
     <div class="dashboard-container">
         
-        <!-- SIDEBAR -->
         <aside class="sidebar" id="sidebar">
             <div class="brand">
                 <img src="../img/logo/logo.jpg" alt="Logo">
@@ -365,7 +364,6 @@ function format_number($n) {
 
                 <div class="header-right">
                     
-                    <!-- UPDATED SEARCH FORM -->
                     <form class="search-box" method="GET" action="">
                         <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
                         <input type="text" name="search" placeholder="Search blogs..." value="<?= htmlspecialchars($search_term) ?>">
@@ -559,14 +557,46 @@ function format_number($n) {
             }, 3000);
         }
 
-        // Share Button Logic
+        // Share Button Logic (Updated with Cloudflare Worker)
         document.querySelectorAll('.share-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
+            btn.addEventListener('click', async (e) => {
                 e.preventDefault();
-                const link = window.location.origin + "/" + btn.getAttribute('data-link');
-                navigator.clipboard.writeText(link).then(() => {
-                    showToast("Link copied to clipboard!");
-                });
+                
+                // 1. Get the original long URL
+                const longUrl = window.location.origin + "/" + btn.getAttribute('data-link');
+                
+                // 2. Show loading toast
+                showToast("Generating short link...");
+
+                try {
+                    // 3. Call Cloudflare Worker
+                    const resp = await fetch("https://shortener.lexoratech.workers.dev", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            url: longUrl
+                        })
+                    });
+
+                    const data = await resp.json();
+
+                    // 4. Handle success or fallback
+                    if (data.shortUrl) {
+                        await navigator.clipboard.writeText(data.shortUrl);
+                        showToast("Short Link Copied!");
+                    } else {
+                        // Fallback if worker returns error
+                        await navigator.clipboard.writeText(longUrl);
+                        showToast("Error. Long link copied.");
+                    }
+                } catch (err) {
+                    console.error(err);
+                    // Fallback if network fails
+                    await navigator.clipboard.writeText(longUrl);
+                    showToast("Network error. Long link copied.");
+                }
             });
         });
     </script>

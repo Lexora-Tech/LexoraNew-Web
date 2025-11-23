@@ -16,19 +16,43 @@
                         <li><a href="#reviews" class="mil-scroll-to" data-no-swup>Reviews</a></li>
                         <li><a href="portfolio.php" data-no-swup>Projects</a></li>
                         <li><a href="blog.php" data-no-swup>Blog</a></li>
-                         <li><a href="about.php" data-no-swup>About Us</a></li>
+                        <li><a href="about.php" data-no-swup>About Us</a></li>
+
 
                     </ul>
                 </div>
 
                 <div class="mil-buttons-tp-frame mil-c-gone">
                     <div class="mil-buttons">
+
+                        <a href="quote.php" class="mil-btn mil-m1 mil-c-gone"
+                            style="margin-right: 15px; 
+                  background: none; /* Glass Tint */
+                  backdrop-filter: none;           /* Blur Effect */
+                  -webkit-backdrop-filter: none;   
+                  color: #ffffff; 
+                  border: none; 
+                  padding: 8px 15px;          /* Adjusted for rectangle balance */
+                  font-size: 10px;            /* Small Text */
+                  line-height: 0px;
+                  text-transform: uppercase; 
+                  letter-spacing: 1px;      
+                  border-radius: 4px;         /* Sharp Rectangle */
+                  font-weight: 700;
+                  display: inline-flex; 
+                  align-items: center;
+                  transition: 0.3s;">
+                            Get a Quote
+                        </a>
+
                         <a href="contact.php" class="mil-tp-btn"><i class="fal fa-envelope"></i></a>
+
                         <div class="mil-tp-btn">
                             <div class="mil-menu-btn"><span></span></div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -59,7 +83,7 @@
                                                 <li><a href="services.php">Services</a></li>
                                                 <!--  <li><a href="team-stl.php">Team</a></li> -->
                                                 <li><a href="contact.php">Contact</a></li>
-
+                                                <li><a href="about.php">About Us</a></li>
                                                 <!-- <li><a href="">Publication</a></li>
                                                     <li><a href="">Blog</a></li> -->
 

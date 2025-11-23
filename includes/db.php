@@ -4,7 +4,7 @@
     $user = 'magaqmco_lexora';
     $pass = 'Lexora12345@#';
 
-   /*  $db = 'blog_system';
+/*     $db = 'blog_system';
     $user = 'root';
     $pass = 'JapL050514'; */
 
