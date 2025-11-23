@@ -275,7 +275,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="glass-badge">
                     <i class="fas fa-shield-alt"></i> Admin Portal
                 </div>
-                <img src="../img/logo/logoWhite.png" alt="Lexora" style="height: 10px; margin-bottom: 30px; opacity: 0.9;">
+                <img src="../img/logo/logoWhite.png" alt="Lexora" style="height: 100px; margin-bottom: 30px; opacity: 0.9;">
                  <h1>Administration Center</h1>
                 <p>Experience Unparalleled Control Over Your Complex Digital Ecosystem Through Our Robust, Enterprise-Grade, And Fully Secure Administrative Interface.</p>
             </div>

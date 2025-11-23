@@ -1,5 +1,6 @@
 # Ignore uploads folder
 /uploads
+/includes/db.php
 
 # Common ignores
 *.log
@@ -9,3 +10,4 @@
 .DS_Store
 
 .404-stl.php
+
