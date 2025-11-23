@@ -790,7 +790,7 @@ function getInitials($name)
 
     <div class="dashboard-container">
         <aside class="sidebar" id="sidebar">
-            <div class="brand"> <img src="../img/logo/logo.png" alt="Logo"><span>Lexora Admin</span></div>
+            <div class="brand"> <img src="../img/logo/logo.jpg" alt="Logo"><span>Lexora Admin</span></div>
             <div class="menu-label">Main Menu</div>
             <a href="dashboard.php" class="nav-item"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
             <a href="all_blogs.php" class="nav-item"><i class="fas fa-layer-group"></i> <span>All Blogs</span></a>

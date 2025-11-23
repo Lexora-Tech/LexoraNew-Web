@@ -322,7 +322,7 @@ function format_number($n) {
         <!-- SIDEBAR -->
         <aside class="sidebar" id="sidebar">
             <div class="brand">
-                <img src="../img/logo/logo.png" alt="Logo">
+                <img src="../img/logo/logo.jpg" alt="Logo">
                 <span>Lexora Admin</span>
             </div>
 
