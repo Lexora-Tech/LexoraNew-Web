@@ -18,7 +18,6 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 }
 
 // 1. Get Total Count (For Pagination Calculation)
-// We need to know the total matching rows to calculate how many pages exist
 $count_sql = "SELECT COUNT(*) as total FROM blogs $where_clause";
 $count_query = mysqli_query($conn, $count_sql);
 $count_data = mysqli_fetch_assoc($count_query);
@@ -26,7 +25,6 @@ $total_records = $count_data['total'];
 $total_pages = ceil($total_records / $limit);
 
 // 2. Fetch Data (With Limit & Offset)
-// This query fetches only the 20 rows for the current page
 $sql = "SELECT * FROM blogs $where_clause ORDER BY created_at DESC LIMIT $offset, $limit";
 $result = mysqli_query($conn, $sql);
 $count_current = mysqli_num_rows($result);
@@ -38,6 +36,14 @@ function get_page_link($p, $s) {
         $link .= "&search=" . urlencode($s);
     }
     return $link;
+}
+
+// --- NEW: Helper to format view counts (e.g., 1.5k) ---
+function format_number($n) {
+    if ($n < 1000) return $n;
+    $suffix = ['','k','M','G','T'];
+    $power = floor(log($n, 1000));
+    return round($n / (1000 ** $power), 1) . $suffix[$power];
 }
 ?>
 <!DOCTYPE html>
@@ -151,6 +157,10 @@ function get_page_link($p, $s) {
         .blog-id { font-size: 11px; color: var(--text-muted); }
 
         .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; background: rgba(16, 185, 129, 0.1); color: var(--success); display: inline-block; }
+        
+        /* New View Count Style */
+        .view-count { display: flex; align-items: center; gap: 6px; font-weight: 600; color: var(--text-muted); font-size: 13px; }
+        .view-count i { color: #64748b; }
 
         .action-btns { display: flex; gap: 8px; }
         
@@ -273,7 +283,6 @@ function get_page_link($p, $s) {
                 <div class="table-container">
                     
                     <div class="toolbar">
-                        <!-- SEARCH FORM -->
                         <form class="search-filter" method="GET" action="">
                             <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
                             <input type="text" name="search" placeholder="Search blog titles..." value="<?= htmlspecialchars($search_term) ?>">
@@ -290,7 +299,7 @@ function get_page_link($p, $s) {
                                 <tr>
                                     <th>Blog Details</th>
                                     <th>Status</th>
-                                    <th>Date Published</th>
+                                    <th>Views</th> <th>Date Published</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -312,6 +321,12 @@ function get_page_link($p, $s) {
                                         <td>
                                             <span class="status-badge">Published</span>
                                         </td>
+                                        <td>
+                                            <div class="view-count">
+                                                <i class="fas fa-eye"></i>
+                                                <?= format_number($row['views']) ?>
+                                            </div>
+                                        </td>
                                         <td style="color: var(--text-muted);">
                                             <?= date("M d, Y", strtotime($row['created_at'])) ?>
                                         </td>
@@ -320,7 +335,6 @@ function get_page_link($p, $s) {
                                                 <a href="edit_blog.php?id=<?= $row['id'] ?>" class="act-btn" title="Edit">
                                                     <i class="fas fa-pen"></i>
                                                 </a>
-                                                <!-- Delete Button -->
                                                 <button type="button" class="act-btn delete-trigger" data-id="<?= $row['id'] ?>" title="Delete">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
@@ -333,7 +347,7 @@ function get_page_link($p, $s) {
                                 <?php 
                                     }
                                 } else {
-                                    echo "<tr><td colspan='4' style='text-align:center; padding: 40px; color:var(--text-muted);'>";
+                                    echo "<tr><td colspan='5' style='text-align:center; padding: 40px; color:var(--text-muted);'>";
                                     if(!empty($search_term)) {
                                         echo "No blogs found matching '<b>" . htmlspecialchars($search_term) . "</b>'. <a href='all_blogs.php' style='color:var(--primary);'>View All</a>";
                                     } else {
@@ -346,17 +360,14 @@ function get_page_link($p, $s) {
                         </table>
                     </div>
 
-                    <!-- PAGINATION -->
                     <div class="table-footer">
                         <span>Showing <?= $count_current ?> of <?= $total_records ?> results</span>
                         <div class="pagination">
                             
-                            <!-- Prev Link -->
                             <?php if($page > 1): ?>
                                 <a href="<?= get_page_link($page-1, $search_term) ?>" class="page-link"><i class="fas fa-chevron-left"></i></a>
                             <?php endif; ?>
 
-                            <!-- Page Numbers -->
                             <?php 
                             $start = max(1, $page - 2);
                             $end = min($total_pages, $page + 2);
@@ -371,7 +382,6 @@ function get_page_link($p, $s) {
                             if ($end < $total_pages) echo '<span class="page-link" style="border:none;">...</span>';
                             ?>
 
-                            <!-- Next Link -->
                             <?php if($page < $total_pages): ?>
                                 <a href="<?= get_page_link($page+1, $search_term) ?>" class="page-link"><i class="fas fa-chevron-right"></i></a>
                             <?php endif; ?>
