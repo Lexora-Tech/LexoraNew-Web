@@ -2,19 +2,19 @@
 <html lang="zxx">
 
 <head>
-
+    <base href="https://lexoratech.com/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- grid css -->
-    <link rel="stylesheet" href="/css/plugins/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
     <!-- font awesome css -->
     <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
     <!-- swiper css -->
-    <link rel="stylesheet" href="/css/plugins/swiper.min.css">
+    <link rel="stylesheet" href="css/plugins/swiper.min.css">
     <!-- okai css -->
-    <link rel="stylesheet" href="/css/style-stylish.css">
+    <link rel="stylesheet" href="css/style-stylish.css">
     <!-- page title -->
     <title>Lexora Tech</title>
     <!-- logo css -->
@@ -683,24 +683,24 @@
     <!-- wrapper end -->
 
     <!-- swup js -->
-    <script src="/js/plugins/swup.min.js"></script>
+    <script src="js/plugins/swup.min.js"></script>
     <!-- gsap js -->
-    <script src="/js/plugins/gsap.min.js"></script>
+    <script src="js/plugins/gsap.min.js"></script>
     <!-- scroll smoother -->
-    <script src="/js/plugins/ScrollSmoother.min.js"></script>
+    <script src="js/plugins/ScrollSmoother.min.js"></script>
     <!-- scroll trigger js -->
-    <script src="/js/plugins/ScrollTrigger.min.js"></script>
+    <script src="js/plugins/ScrollTrigger.min.js"></script>
     <!-- scroll to js -->
-    <script src="/js/plugins/ScrollTo.min.js"></script>
+    <script src="js/plugins/ScrollTo.min.js"></script>
     <!-- swiper js -->
-    <script src="/js/plugins/swiper.min.js"></script>
+    <script src="js/plugins/swiper.min.js"></script>
     <!-- parallax js -->
-    <script src="/js/plugins/parallax.js"></script>
+    <script src="js/plugins/parallax.js"></script>
     <!-- FontAwesome for Icons -->
     <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
 
     <!-- Lexora Tech js -->
-    <script src="/js/main.js"></script>
+    <script src="js/main.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3130344952697641"
         crossorigin="anonymous"></script>
 </body>
