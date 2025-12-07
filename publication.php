@@ -13,10 +13,7 @@ $result = mysqli_query($conn, "SELECT * FROM blogs WHERE id=$id");
 $blog = mysqli_fetch_assoc($result);
 
 // Redirect if blog not found
-if (!$blog) {
-    header("Location: blog.php");
-    exit();
-}
+if (!$blog) { header("Location: blog.php"); exit(); }
 
 // 4. Fetch Similar Blogs
 $result3 = mysqli_query($conn, "SELECT * FROM blogs WHERE id != $id ORDER BY created_at DESC LIMIT 6");
@@ -27,8 +24,7 @@ $share_title = urlencode($blog['title']);
 $share_url = urlencode($current_url);
 
 // --- HELPER: ESTIMATE READ TIME ---
-function estimateReadTime($text)
-{
+function estimateReadTime($text) {
     $word_count = str_word_count(strip_tags($text));
     $minutes = floor($word_count / 200);
     return max(1, $minutes) . ' min read';
@@ -47,19 +43,26 @@ function estimateReadTime($text)
     <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
     <link rel="stylesheet" href="css/plugins/swiper.min.css">
     <link rel="stylesheet" href="css/style-stylish.css">
-
+    
     <title>Lexora Tech | <?= $blog['title']; ?></title>
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
-    <style>
+   <style>
+     /* --- 1. DARK MODE BASE --- */
+ body { background-color: #000; color: #ccc; }
 
-    </style>
+/* --- 2. READING PROGRESS BAR --- */
+.read-progress-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: transparent; z-index: 9999;
+}
+.read-progress-bar {
+    height: 100%; background: #ffb400; width: 0%; transition: width 0.1s;
+}
+   </style>
 
 </head>
 
 <body>
-
-    
 
     <div class="read-progress-container">
         <div class="read-progress-bar" id="myBar"></div>
@@ -67,9 +70,7 @@ function estimateReadTime($text)
 
     <div id="smooth-wrapper" class="mil-page-wrapper">
         <div class="mil-cursor-follower"></div>
-        <div class="mil-progress-track">
-            <div class="mil-progress"></div>
-        </div>
+        <div class="mil-progress-track"><div class="mil-progress"></div></div>
 
         <?php include "header.php"; ?>
 
@@ -87,14 +88,14 @@ function estimateReadTime($text)
                                     <div class="text-center">
                                         <div class="blog-meta-badge">Article</div>
                                         <h1 class="blog-title-main"><?= $blog['title']; ?></h1>
-
+                                        
                                         <div class="blog-info-row justify-content-center">
                                             <span><i class="far fa-calendar"></i> <?= date("M d, Y", strtotime($blog['created_at'])) ?></span>
                                             <span><i class="far fa-clock"></i> <?= estimateReadTime($blog['p1'] . $blog['p2']); ?></span>
                                             <span><i class="far fa-eye"></i> <?= $blog['views']; ?> Views</span>
                                         </div>
                                     </div>
-
+                                    
                                     <div class="mil-scale-img" data-value-1="1.1" data-value-2="1">
                                         <img src="uploads/<?= $blog['cover_image']; ?>" alt="<?= $blog['title']; ?>" class="main-cover-img">
                                     </div>
@@ -107,7 +108,7 @@ function estimateReadTime($text)
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-8 content-wrapper">
-
+                                    
                                     <p class="blog-text-lead mil-up"><?= $blog['headingbrief']; ?></p>
 
                                     <div class="mil-mb60 mil-up">
@@ -134,24 +135,24 @@ function estimateReadTime($text)
                                     </div>
 
                                     <div class="mil-mt60 mil-up share-wrapper-responsive" style="border-top: 1px solid #222; padding-top: 30px; display: flex; justify-content: space-between; align-items: center;">
-
+                                        
                                         <a href="blog.php" class="mil-link mil-a2"><i class="fas fa-arrow-left"></i> Back To Blog</a>
-
+                                        
                                         <div class="share-container">
                                             <span style="color: #666; font-size: 14px; margin-right: 10px;">Share:</span>
-
+                                            
                                             <a href="https://api.whatsapp.com/send?text=<?= $share_title . ' ' . $share_url ?>" target="_blank" class="share-btn">
                                                 <i class="fab fa-whatsapp"></i>
                                             </a>
-
+                                            
                                             <a href="https://www.facebook.com/sharer/sharer.php?u=<?= $share_url ?>" target="_blank" class="share-btn">
                                                 <i class="fab fa-facebook-f"></i>
                                             </a>
-
+                                            
                                             <a href="https://twitter.com/intent/tweet?text=<?= $share_title ?>&url=<?= $share_url ?>" target="_blank" class="share-btn">
                                                 <i class="fab fa-twitter"></i>
                                             </a>
-
+                                            
                                             <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= $share_url ?>&title=<?= $share_title ?>" target="_blank" class="share-btn">
                                                 <i class="fab fa-linkedin-in"></i>
                                             </a>
@@ -161,7 +162,7 @@ function estimateReadTime($text)
                                             </button>
                                         </div>
                                     </div>
-                                </div>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -179,7 +180,7 @@ function estimateReadTime($text)
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <div class="swiper-container mil-blog-slider">
                                 <div class="swiper-wrapper mil-c-swipe mil-c-light">
                                     <?php while ($row = mysqli_fetch_assoc($result3)) { ?>
@@ -190,13 +191,13 @@ function estimateReadTime($text)
                                                 </div>
                                                 <div class="card-body-modern">
                                                     <div class="card-meta-modern">
-                                                        <span style="color: #ffb400;">Article</span>
+                                                        <span style="color: #ffb400;">Article</span> 
                                                         <span>•</span>
                                                         <span><?= estimateReadTime($row['heading']); ?></span>
                                                     </div>
-
+                                                    
                                                     <h4 class="card-title-modern"><?= $row['title']; ?></h4>
-
+                                                    
                                                     <div class="card-read-link">
                                                         Read Article <i class="fas fa-arrow-right" style="transform: rotate(-45deg); color: #ffb400;"></i>
                                                     </div>
@@ -245,7 +246,8 @@ function estimateReadTime($text)
     <script src="js/main.js"></script>
 
     <script>
-
+        // Progress Bar
+        window.onscroll = function() {myFunction()};
         function myFunction() {
             var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -261,15 +263,14 @@ function estimateReadTime($text)
             dummy.select();
             document.execCommand('copy');
             document.body.removeChild(dummy);
-
+            
             var btn = document.getElementById("copyBtn");
             btn.classList.add("copied");
-
+            
             setTimeout(function() {
                 btn.classList.remove("copied");
             }, 2000);
         }
     </script>
 </body>
-
 </html>
