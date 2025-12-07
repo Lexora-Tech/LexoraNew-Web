@@ -47,7 +47,18 @@ function estimateReadTime($text) {
     <title>Lexora Tech | <?= $blog['title']; ?></title>
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
-   
+   <style>
+     /* --- 1. DARK MODE BASE --- */
+ body { background-color: #000; color: #ccc; }
+
+/* --- 2. READING PROGRESS BAR --- */
+.read-progress-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: transparent; z-index: 9999;
+}
+.read-progress-bar {
+    height: 100%; background: #ffb400; width: 0%; transition: width 0.1s;
+}
+   </style>
 
 </head>
 
