@@ -143,7 +143,7 @@
                                                 <img src="https://images.unsplash.com/photo-1544256718-3bcf237f3974?q=80&w=1000&auto=format&fit=crop" alt="Employee Using Mental Health App">
                                             </div>
                                         </div>
-                                        <p class="text-center" style="font-size: 0.9rem; margin-top: -20px; color: var(--text-muted);">Mobile-first design ensuring privacy and ease of access.</p>
+                                       
                                     </div>
 
                                     <div class="mil-mb60 mil-up">

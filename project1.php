@@ -147,7 +147,7 @@
                                                 <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1000&auto=format&fit=crop" alt="Mobile Learning Interface">
                                             </div>
                                         </div>
-                                        <p class="text-center" style="font-size: 0.9rem; margin-top: -20px; color: var(--text-muted);">Fully responsive design optimized for mobile learning.</p>
+                
                                     </div>
 
                                     <div class="mil-mb60 mil-up">
