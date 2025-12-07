@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lexora - Advanced Medical AI Platform</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/animations.css">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- grid css -->
+    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
+    <!-- font awesome css -->
+    <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
+    <!-- swiper css -->
+    <link rel="stylesheet" href="css/plugins/swiper.min.css">
+    <!-- okai css -->
+    <link rel="stylesheet" href="css/style-stylish.css">
+    <title>Lexora Tech | Contact</title>
+    <!-- logo css -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
+
 </head>
 
 <body>
@@ -181,7 +192,6 @@
 
     <!-- Lexora Tech js -->
     <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3130344952697641"
     crossorigin="anonymous"></script>
 </body>

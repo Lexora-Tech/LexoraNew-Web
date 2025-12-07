@@ -1,0 +1,13 @@
+# Ignore uploads folder
+/uploads
+/includes/db.php
+
+# Common ignores
+*.log
+/node_modules
+/vendor
+.idea
+.DS_Store
+
+.404-stl.php
+
