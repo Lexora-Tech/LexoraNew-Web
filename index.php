@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 
-<head><base href="https://lexoratech.com/">
+<head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
     <!-- font awesome css -->
     <link rel="stylesheet" href="/css/plugins/fontawesome.min.css">
     <!-- swiper css -->
-    <link rel="stylesheet" href="/css/plugins/swiper.min.css">
+    <link rel="stylesheet" href="css/plugins/swiper.min.css">
     <!-- okai css -->
     <link rel="stylesheet" href="/css/style-stylish.css">
     <!-- page title -->
@@ -72,7 +72,7 @@
                     <div class="mil-hero-4 mil-up" id="top">
                         <div id="scene" class="mil-hero-scene">
                             <div class="mil-anim-frame" data-depth="0.25">
-                                <img src="img/shapes/6.png" alt="shapes" class="mil-hero-animation" data-depth="0.25">
+                                <img src="/img/shapes/6.png" alt="shapes" class="mil-hero-animation" data-depth="0.25">
                             </div>
                             <div class="mil-pad-frame" data-depth="0.35">
                                 <div class="mil-shape-pad"></div>
