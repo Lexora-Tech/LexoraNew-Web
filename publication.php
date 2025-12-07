@@ -2,10 +2,9 @@
 include("includes/db.php");
 
 // 1. Get the Blog ID
-$id = $_GET['id'];
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-// 2. INCREMENT VIEW COUNT (The Magic Part)
-// This runs instantly before loading the page content
+// 2. INCREMENT VIEW COUNT
 $update_views_sql = "UPDATE blogs SET views = views + 1 WHERE id = $id";
 mysqli_query($conn, $update_views_sql);
 
@@ -13,183 +12,193 @@ mysqli_query($conn, $update_views_sql);
 $result = mysqli_query($conn, "SELECT * FROM blogs WHERE id=$id");
 $blog = mysqli_fetch_assoc($result);
 
+// Redirect if blog not found
+if (!$blog) { header("Location: blog.php"); exit(); }
+
 // 4. Fetch Similar Blogs
-$result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMIT 8");
+$result3 = mysqli_query($conn, "SELECT * FROM blogs WHERE id != $id ORDER BY created_at DESC LIMIT 6");
+
+// --- HELPER: CURRENT URL FOR SHARING ---
+$current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$share_title = urlencode($blog['title']);
+$share_url = urlencode($current_url);
+
+// --- HELPER: ESTIMATE READ TIME ---
+function estimateReadTime($text) {
+    $word_count = str_word_count(strip_tags($text));
+    $minutes = floor($word_count / 200);
+    return max(1, $minutes) . ' min read';
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- grid css -->
     <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
-    <!-- font awesome css -->
     <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
-    <!-- swiper css -->
     <link rel="stylesheet" href="css/plugins/swiper.min.css">
-    <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
-    <!-- page title -->
+    
     <title>Lexora Tech | <?= $blog['title']; ?></title>
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
+
+   
 
 </head>
 
 <body>
 
-    <!-- wrapper -->
+    <div class="read-progress-container">
+        <div class="read-progress-bar" id="myBar"></div>
+    </div>
+
     <div id="smooth-wrapper" class="mil-page-wrapper">
-
-        <!-- cursor -->
         <div class="mil-cursor-follower"></div>
-        <!-- cursor end -->
+        <div class="mil-progress-track"><div class="mil-progress"></div></div>
 
-        <!-- scroll progress -->
-        <div class="mil-progress-track">
-            <div class="mil-progress"></div>
-        </div>
-        <!-- scroll progress end -->
+        <?php include "header.php"; ?>
 
-        <!-- fixed elements -->
-        <?php
-        include "header.php";
-        ?>
-        <!-- fixed elements end -->
-
-        <!-- page transition -->
         <div class="mil-transition-fade" id="swup">
             <div class="mil-transition-frame">
 
-                <!-- content -->
+            <link rel="stylesheet" href="css/publication.css">
+
                 <div id="smooth-content" class="mil-content">
 
-                    <!-- hero -->
-                    <div class="mil-hero-1 mil-sm-hero mil-stl mil-up" id="top">
-                        <div class="mil-overlay"></div>
-                        <div class="container mil-hero-main mil-relative mil-aic">
-                            <div class="mil-hero-text mil-scale-img" data-value-1="1.3" data-value-2="0.95">
-                                <div class="mil-text-pad"></div>
-                                <ul class="mil-breadcrumbs mil-mb60 mil-c-gone">
-                                    <li>
-                                        <a href="blog.php">Blog</a>
-                                    </li>
-                                    <li>
-                                        <a href="#.">publication</a>
-                                    </li>
-                                </ul>
-                                <!-- Title -->
-                                <h1 class="mil-display3 mil-rubber"><?= $blog['title']; ?></h1>
-                                <!-- Title -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- hero end -->
-
-                    <!-- publication -->
-                    <div class="mil-p-0-160">
+                    <div class="blog-hero mil-up">
                         <div class="container">
-                            <div class="row mil-jcc mil-aic">
-                                <div class="col-lg-12 mil-mb160">
-                                    <div class="mil-project-img mil-land mil-up">
-                                        <!-- cover img -->
-                                        <img src="uploads/<?= $blog['cover_image']; ?>" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                        <!-- cover img  -->
-                                    </div>
-                                </div>
-                                <div class="col-lg-8">
-                                    <!-- Heading -->
-                                    <p class="mil-text-xl mil-m1 mil-mb60 mil-up"><?= $blog['heading']; ?></p>
-                                    <!-- Heading -->
-
-                                    <!-- Heading Brief -->
-                                    <p class="mil-text-xl mil-mb90 mil-up"><?= $blog['headingbrief']; ?></p>
-                                    <!-- Heading Brief -->
-                                    <div class="row mil-mb60">
-                                        <div class="col-lg-6">
-                                            <div class="mil-project-img mil-land mil-up mil-mb30">
-                                                <img src="uploads/<?= $blog['image1']; ?>" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="mil-project-img mil-land mil-up mil-mb30">
-                                                <img src="uploads/<?= $blog['image2']; ?>" alt="project" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
-                                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-lg-10">
+                                    <div class="text-center">
+                                        <div class="blog-meta-badge">Article</div>
+                                        <h1 class="blog-title-main"><?= $blog['title']; ?></h1>
+                                        
+                                        <div class="blog-info-row justify-content-center">
+                                            <span><i class="far fa-calendar"></i> <?= date("M d, Y", strtotime($blog['created_at'])) ?></span>
+                                            <span><i class="far fa-clock"></i> <?= estimateReadTime($blog['p1'] . $blog['p2']); ?></span>
+                                            <span><i class="far fa-eye"></i> <?= $blog['views']; ?> Views</span>
                                         </div>
                                     </div>
-                                    <!--    Paragraph One -->
-                                    <p class="mil-text-xl mil-mb30 mil-up"><?= $blog['p1']; ?></p>
-                                    <!--    Paragraph One -->
-
-                                    <!-- Paragraph Two -->
-                                    <p class="mil-text-xl mil-mb90 mil-up"><?= $blog['p2']; ?></p>
-                                    <!-- Paragraph Two -->
-
-
-                                    <h3 class="mil-head4 mil-mb30 mil-up">Conclusion</h3>
-                                    <!-- Conclusion -->
-                                    <p class="mil-text-xl mil-up"><?= $blog['conclusion']; ?></p>
-                                    <!--   Conclusion -->
+                                    
+                                    <div class="mil-scale-img" data-value-1="1.1" data-value-2="1">
+                                        <img src="uploads/<?= $blog['cover_image']; ?>" alt="<?= $blog['title']; ?>" class="main-cover-img">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- publication end -->
 
-                    <!-- blog -->
-                    <div class="mil-p-0-160">
+                    <div class="mil-p-0-100">
                         <div class="container">
-                            <div class="row mil-aie mil-mb30">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8 content-wrapper">
+                                    
+                                    <p class="blog-text-lead mil-up"><?= $blog['headingbrief']; ?></p>
+
+                                    <div class="mil-mb60 mil-up">
+                                        <h3 class="mil-mb30" style="color: #fff;"><?= $blog['heading']; ?></h3>
+                                        <p><?= $blog['p1']; ?></p>
+                                    </div>
+
+                                    <div class="row mil-mb60 mil-up">
+                                        <div class="col-md-6">
+                                            <img src="uploads/<?= $blog['image1']; ?>" alt="Detail 1" class="content-image">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="uploads/<?= $blog['image2']; ?>" alt="Detail 2" class="content-image">
+                                        </div>
+                                    </div>
+
+                                    <div class="mil-mb60 mil-up">
+                                        <p><?= $blog['p2']; ?></p>
+                                    </div>
+
+                                    <div class="conclusion-box mil-up">
+                                        <h4 class="conclusion-title">Conclusion</h4>
+                                        <p class="mil-mb0"><?= $blog['conclusion']; ?></p>
+                                    </div>
+
+                                    <div class="mil-mt60 mil-up share-wrapper-responsive" style="border-top: 1px solid #222; padding-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+                                        
+                                        <a href="blog.php" class="mil-link mil-a2"><i class="fas fa-arrow-left"></i> Back To Blog</a>
+                                        
+                                        <div class="share-container">
+                                            <span style="color: #666; font-size: 14px; margin-right: 10px;">Share:</span>
+                                            
+                                            <a href="https://api.whatsapp.com/send?text=<?= $share_title . ' ' . $share_url ?>" target="_blank" class="share-btn">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
+                                            
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?= $share_url ?>" target="_blank" class="share-btn">
+                                                <i class="fab fa-facebook-f"></i>
+                                            </a>
+                                            
+                                            <a href="https://twitter.com/intent/tweet?text=<?= $share_title ?>&url=<?= $share_url ?>" target="_blank" class="share-btn">
+                                                <i class="fab fa-twitter"></i>
+                                            </a>
+                                            
+                                            <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?= $share_url ?>&title=<?= $share_title ?>" target="_blank" class="share-btn">
+                                                <i class="fab fa-linkedin-in"></i>
+                                            </a>
+
+                                            <button onclick="copyLink()" class="share-btn copy-btn" id="copyBtn">
+                                                <i class="fas fa-link"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mil-p-0-160" style="background: #0b0b0b; padding-top: 100px;">
+                        <div class="container">
+                            <div class="row mil-aie mil-mb60">
                                 <div class="col-md-6">
-                                    <h2 class="mil-head1 mil-mb60 mil-up">Similar <span class="mil-a2">Publications</span></h2>
+                                    <h2 class="mil-head1 mil-up" style="color: #fff;">Similar <span class="mil-a2">Reads</span></h2>
                                 </div>
                                 <div class="col-md-6">
-                                    <p class="mil-stylized mil-m1 mil-tar mil-768-tal mil-mb60 mil-up"><a href="blog.php" class="mil-arrow-link mil-c-gone">View all publications</a></p>
+                                    <div class="mil-nl-nav mil-up">
+                                        <div class="mil-slider-btn mil-nl-prev" style="border-color: #333;"></div>
+                                        <div class="mil-slider-btn mil-nl-next" style="border-color: #333;"></div>
+                                    </div>
                                 </div>
                             </div>
+                            
                             <div class="swiper-container mil-blog-slider">
                                 <div class="swiper-wrapper mil-c-swipe mil-c-light">
-
                                     <?php while ($row = mysqli_fetch_assoc($result3)) { ?>
-                                        <!-- card -->
                                         <div class="swiper-slide">
-                                            <div class="mil-blog-card">
-                                                <div class="mil-cover mil-up">
-                                                    <div class="mil-hover-frame">
-                                                        <img src="uploads/<?= $row['cover_image']; ?>" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                            <a href="publication.php?id=<?= $row['id']; ?>" class="lexora-card">
+                                                <div class="card-img-wrap">
+                                                    <img src="uploads/<?= $row['cover_image']; ?>" alt="cover">
+                                                </div>
+                                                <div class="card-body-modern">
+                                                    <div class="card-meta-modern">
+                                                        <span style="color: #ffb400;">Article</span> 
+                                                        <span>•</span>
+                                                        <span><?= estimateReadTime($row['heading']); ?></span>
                                                     </div>
-                                                    <div class="mil-badges">
-                                                        <div class="mil-date"><?= date("M d, Y", strtotime($row['created_at'])) ?></div>
+                                                    
+                                                    <h4 class="card-title-modern"><?= $row['title']; ?></h4>
+                                                    
+                                                    <div class="card-read-link">
+                                                        Read Article <i class="fas fa-arrow-right" style="transform: rotate(-45deg); color: #ffb400;"></i>
                                                     </div>
                                                 </div>
-                                                <a href="publication.php?id=<?= $row['id']; ?>" class="mil-descr mil-c-gone">
-                                                    <div class="mil-text-frame">
-                                                        <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up"><?= $row['title']; ?></h4>
-                                                        <p class="mil-text-md mil-max-2row-text mil-up"><?= $row['heading']; ?></p>
-                                                    </div>
-                                                    <div class="mil-up mil-768-gone">
-                                                        <div class="mil-stylized-btn">
-                                                            <i class="fal fa-arrow-up"></i>
-                                                            <span>Read more</span>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
+                                            </a>
                                         </div>
-                                        <!-- card -->
                                     <?php } ?>
-
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- blog end -->
 
-                    <!-- subscribe -->
                     <div class="container">
                         <div class="mil-half-container mil-stl mil-reverse mil-up">
                             <div class="mil-text-box mil-g-m4 mil-p-160-160">
@@ -207,54 +216,50 @@ $result3 = mysqli_query($conn, "SELECT * FROM blogs ORDER BY created_at ASC LIMI
                                 </div>
                             </div>
                         </div>
-                        <div class="row mil-aic mil-jcb mil-no-g">
-                            <div class="col-lg-6">
-                                <div class="mil-button-pad mil-a1 mil-jst" style="display: block"></div>
-                            </div>
-                            <div class="col-lg-6 mil-992-gone">
-                                <div class="mil-text-pad">
-                                    <p class="mil-text-sm mil-up">By clicking the submit button, you agree to the <br><a href="contact.php" class="mil-text-link mil-a2 mil-c-gone">rules for processing personal data</a>.</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <!-- subscribe end -->
 
-                    <!-- footer -->
-                    <?php
-                    include "footer.php";
-                    ?>
-                    <!-- footer end -->
+                    <?php include "footer.php"; ?>
 
                 </div>
-                <!-- content -->
-
             </div>
         </div>
-        <!-- page transition -->
-
     </div>
-    <!-- wrapper end -->
 
-    <!-- swup js -->
     <script src="js/plugins/swup.min.js"></script>
-    <!-- gsap js -->
     <script src="js/plugins/gsap.min.js"></script>
-    <!-- scroll smoother -->
     <script src="js/plugins/ScrollSmoother.min.js"></script>
-    <!-- scroll trigger js -->
     <script src="js/plugins/ScrollTrigger.min.js"></script>
-    <!-- scroll to js -->
     <script src="js/plugins/ScrollTo.min.js"></script>
-    <!-- swiper js -->
     <script src="js/plugins/swiper.min.js"></script>
-    <!-- parallax js -->
     <script src="js/plugins/parallax.js"></script>
-
-    <!-- Lexora Tech js -->
     <script src="js/main.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3130344952697641"
-        crossorigin="anonymous"></script>
-</body>
 
+    <script>
+        // Progress Bar
+        window.onscroll = function() {myFunction()};
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        }
+
+        // Copy Link Function
+        function copyLink() {
+            var dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = window.location.href;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            
+            var btn = document.getElementById("copyBtn");
+            btn.classList.add("copied");
+            
+            setTimeout(function() {
+                btn.classList.remove("copied");
+            }, 2000);
+        }
+    </script>
+</body>
 </html>

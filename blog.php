@@ -1,43 +1,48 @@
 <?php
+// --- DISABLE BROWSER CACHING ---
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+
 include("includes/db.php");
 
-// --- 1. CONFIGURATION & PAGINATION ---
-$limit = 10; // Limit to 10 posts per page
+// --- 1. CONFIGURATION ---
+$limit = 9; 
 $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
 $offset = ($page - 1) * $limit;
 
 // --- 2. SEARCH LOGIC ---
 $search_term = "";
 $where_clause = "";
+$is_search_active = false; // Flag to control layout order
 
-if (isset($_GET['search']) && !empty($_GET['search'])) {
-    $search_term = mysqli_real_escape_string($conn, $_GET['search']);
+if (isset($_GET['search']) && trim($_GET['search']) !== '') {
+    $search_term = mysqli_real_escape_string($conn, trim($_GET['search']));
     $where_clause = "WHERE title LIKE '%$search_term%' OR heading LIKE '%$search_term%'";
+    $is_search_active = true;
 }
 
-// --- 3. FETCH TOTAL COUNT (For Pagination) ---
+// --- 3. FETCH DATA ---
 $count_sql = "SELECT COUNT(*) as total FROM blogs $where_clause";
 $count_query = mysqli_query($conn, $count_sql);
 $count_data = mysqli_fetch_assoc($count_query);
 $total_records = $count_data['total'];
 $total_pages = ceil($total_records / $limit);
 
-// --- 4. FETCH LATEST BLOGS (With Limit) ---
-// Used for the main grid
 $latest_query = "SELECT * FROM blogs $where_clause ORDER BY created_at DESC LIMIT $offset, $limit";
 $result_latest = mysqli_query($conn, $latest_query);
 
-// --- 5. FETCH POPULAR BLOGS (For Slider) ---
-// Used for the top slider (ordered by views)
-$popular_query = "SELECT * FROM blogs ORDER BY views DESC LIMIT 8";
+$popular_query = "SELECT * FROM blogs ORDER BY views DESC LIMIT 10";
 $result_popular = mysqli_query($conn, $popular_query);
 
-// Helper for pagination links
+function estimateReadTime($text) {
+    $word_count = str_word_count(strip_tags($text));
+    return max(1, floor($word_count / 200)) . ' min read';
+}
+
 function pageUrl($pageNum, $search) {
     $url = "?page=" . $pageNum;
-    if (!empty($search)) {
-        $url .= "&search=" . urlencode($search);
-    }
+    if (!empty($search)) { $url .= "&search=" . urlencode($search); }
     return $url;
 }
 ?>
@@ -46,264 +51,184 @@ function pageUrl($pageNum, $search) {
 <html lang="zxx">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- grid css -->
     <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
-    <!-- font awesome css -->
     <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
-    <!-- swiper css -->
     <link rel="stylesheet" href="css/plugins/swiper.min.css">
-    <!-- okai css -->
     <link rel="stylesheet" href="css/style-stylish.css">
-    <!-- page title -->
-    <title>Lexora Tech | Blog</title>
+    <title>Lexora Tech | Insights & News</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
 
-    <style>
-        /* Custom Search Bar Styles */
-        .blog-search-form {
-            position: relative;
-            max-width: 500px;
-            margin-top: 40px;
-        }
-        .blog-search-form input {
-            width: 100%;
-            padding: 15px 20px;
-            padding-right: 60px;
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 50px;
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(10px);
-            font-size: 16px;
-            transition: 0.3s;
-            outline: none;
-        }
-        .blog-search-form input:focus {
-            background: #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-color: #ffb400;
-        }
-        .blog-search-form button {
-            position: absolute;
-            right: 5px;
-            top: 5px;
-            height: 46px;
-            width: 46px;
-            border-radius: 50%;
-            border: none;
-            background: #ffb400;
-            color: #000;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .blog-search-form button:hover {
-            transform: scale(1.05);
-        }
-        
-        /* Pagination Active State Override */
-        .mil-blog-pagination ul li.mil-active a {
-            background-color: #ffb400;
-            color: #000;
-            border-color: #ffb400;
-        }
-        
-        /* Empty State */
-        .no-results {
-            text-align: center;
-            padding: 60px 0;
-            width: 100%;
-            color: #999;
-        }
-    </style>
+    
 
 </head>
 
 <body>
 
-    <!-- wrapper -->
     <div id="smooth-wrapper" class="mil-page-wrapper">
-
-        <!-- cursor -->
         <div class="mil-cursor-follower"></div>
-        <!-- cursor end -->
+        <div class="mil-progress-track"><div class="mil-progress"></div></div>
 
-        <!-- scroll progress -->
-        <div class="mil-progress-track">
-            <div class="mil-progress"></div>
-        </div>
-        <!-- scroll progress end -->
-
-        <!-- fixed elements -->
         <?php include "header.php"; ?>
-        <!-- fixed elements end -->
 
-        <!-- page transition -->
         <div class="mil-transition-fade" id="swup">
             <div class="mil-transition-frame">
 
-                <!-- content -->
+            <link rel="stylesheet" href="css/blog.css">
+
                 <div id="smooth-content" class="mil-content">
 
-                    <!-- hero -->
                     <div class="mil-hero-1 mil-sm-hero mil-stl mil-up" id="top">
                         <div class="mil-overlay"></div>
                         <div class="container mil-hero-main mil-relative mil-aic">
-                            <div class="mil-hero-text mil-scale-img" data-value-1="1.3" data-value-2="0.95">
-                                <div class="mil-text-pad"></div>
+                            <div class="mil-hero-text">
                                 <ul class="mil-breadcrumbs mil-mb60 mil-c-gone">
-                                    <li>
-                                        <a href="index.php">Home</a>
-                                    </li>
-                                    <li>
-                                        <a href="#.">Blog</a>
-                                    </li>
+                                    <li><a href="index.php">Home</a></li>
+                                    <li><a href="#.">Blog</a></li>
                                 </ul>
-                                <h1 class="mil-display2 mil-rubber">Latest <span class="mil-a2">News</span></h1>
+                                <h1 class="mil-display2 mil-rubber">Latest <span class="mil-a2">Insights</span></h1>
                                 
-                                <!-- Search Bar -->
-                                
+                                <div class="search-trigger-wrapper" id="searchTriggerWrapper">
+                                    <div class="glass-trigger-btn" id="searchTriggerBtn">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                </div>
+
+                                <div class="hero-search-container" id="searchContainer">
+                                    <form id="searchForm" action="" method="GET" style="position: relative;">
+                                        <input type="text" id="searchInput" class="glass-search-input" name="search" placeholder="Search articles, news, tutorials..." value="<?php echo htmlspecialchars($search_term); ?>" autocomplete="off">
+                                        
+                                        <button type="button" class="glass-close-btn" id="closeSearchBtn">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+
+                                        <button type="submit" class="glass-search-btn"><i class="fas fa-search"></i></button>
+                                    </form>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                    <!-- hero end -->
 
-                    <!-- popular (Top Slider) -->
-                    <div class="mil-p-0-160">
-                        <div class="container">
-                            <div class="row mil-aie mil-mb30">
-                                <div class="col-md-6">
-                                    <h2 class="mil-head1 mil-mb60 mil-up">Popular <span class="mil-a2">Publications</span></h2>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mil-nl-nav mil-up mil-mb60">
-                                        <div class="mil-slider-btn mil-nl-prev mil-c-gone"></div>
-                                        <div class="mil-slider-btn mil-nl-next mil-c-gone"></div>
+                    <div class="sections-wrapper <?php echo $is_search_active ? 'results-first' : ''; ?>" id="sectionsWrapper">
+                        
+                        <div class="mil-p-0-160" id="trending-section" style="background: #000; padding-top: 100px;">
+                            <div class="container">
+                                <div class="row mil-aie mil-mb30">
+                                    <div class="col-md-6">
+                                        <h2 class="mil-head1 mil-mb60 mil-up mil-light-heading">Trending <span class="mil-a2">Now</span></h2>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mil-nl-nav mil-up mil-mb60">
+                                            <div class="mil-slider-btn mil-nl-prev mil-c-gone" style="border-color: #333;"></div>
+                                            <div class="mil-slider-btn mil-nl-next mil-c-gone" style="border-color: #333;"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="swiper-container mil-blog-slider">
-                                <div class="swiper-wrapper mil-c-swipe mil-c-light">
-
-                                    <?php while ($row = mysqli_fetch_assoc($result_popular)) { ?>
-                                        <!-- card -->
-                                        <div class="swiper-slide">
-                                            <div class="mil-blog-card">
-                                                <div class="mil-cover mil-up">
-                                                    <div class="mil-hover-frame">
-                                                        <img src="uploads/<?= $row['cover_image']; ?>" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                <div class="swiper-container mil-blog-slider">
+                                    <div class="swiper-wrapper mil-c-swipe mil-c-light">
+                                        <?php while ($row = mysqli_fetch_assoc($result_popular)) { ?>
+                                            <div class="swiper-slide">
+                                                <a href="publication.php?id=<?= $row['id']; ?>" class="lexora-card">
+                                                    <div class="card-img-wrap">
+                                                        <img src="uploads/<?= $row['cover_image']; ?>" alt="cover">
                                                     </div>
-                                                    <div class="mil-badges">
-                                                        <div class="mil-date"><?= date("M d, Y", strtotime($row['created_at'])) ?></div>
-                                                    </div>
-                                                </div>
-                                                <a href="publication.php?id=<?= $row['id']; ?>" class="mil-descr mil-c-gone">
-                                                    <div class="mil-text-frame">
-                                                        <h4 class="mil-head4 mil-max-2row-text mil-mb20 mil-up"><?= $row['title']; ?></h4>
-                                                        <p class="mil-text-md mil-max-2row-text mil-up"><?= $row['heading']; ?></p>
-                                                    </div>
-                                                    <div class="mil-up mil-768-gone">
-                                                        <div class="mil-stylized-btn">
-                                                            <i class="fal fa-arrow-up"></i>
-                                                            <span>Read more</span>
+                                                    <div class="card-body-modern" style="padding: 20px;">
+                                                         <div class="card-meta-modern">
+                                                            <span class="meta-highlight"><i class="far fa-calendar"></i></span> 
+                                                            <?= date("M d, Y", strtotime($row['created_at'])) ?>
                                                         </div>
+                                                        <h4 class="card-title-modern" style="font-size: 18px; margin-bottom:0;"><?= $row['title']; ?></h4>
                                                     </div>
                                                 </a>
                                             </div>
-                                        </div>
-                                        <!-- card -->
-                                    <?php } ?>
-
+                                        <?php } ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- popular end -->
 
-                    <!-- blog grid (Latest with Pagination) -->
-                    <div class="mil-p-0-100">
-                        <div class="container">
-                            <div class="row mil-aie mil-mb30">
-                                <div class="col-md-6">
-                                    <h2 class="mil-head1 mil-mb60 mil-up">
-                                        <?php echo empty($search_term) ? 'Latest <span class="mil-a2">Publications</span>' : 'Search Results'; ?>
-                                    </h2>
+                        <div class="mil-blog-grid-section" id="grid-section">
+                            <div class="container">
+                                <div class="row mil-aie mil-mb40">
+                                    <div class="col-md-12">
+                                        <h2 class="mil-head3 mil-up mil-light-heading" id="resultsHeading">
+                                            <?php echo empty($search_term) ? 'Recent Articles' : 'Search Results for: "' . $search_term . '"'; ?>
+                                        </h2>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-
-                                <?php 
-                                if (mysqli_num_rows($result_latest) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result_latest)) { 
-                                ?>
-                                    <!--  Start Latest Blog Post Card -->
-                                    <div class="col-lg-12">
-                                        <div class="mil-blog-card mil-type-2 mil-mb60">
-                                            <div class="mil-cover mil-up">
-                                                <div class="mil-hover-frame">
-                                                    <img src="uploads/<?= $row['cover_image']; ?>" alt="cover" class="mil-scale-img" data-value-1="1.15" data-value-2="1">
+                                
+                                <div class="row" id="blogGridContainer">
+                                    <?php 
+                                    if (mysqli_num_rows($result_latest) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result_latest)) { 
+                                    ?>
+                                        <div class="col-lg-4 col-md-6 mil-mb40">
+                                            <div class="lexora-card">
+                                                <div class="card-img-wrap">
+                                                    <img src="uploads/<?= $row['cover_image']; ?>" alt="cover">
                                                 </div>
-                                                <div class="mil-badges">
-                                                    <div class="mil-date"><?= date("M d, Y", strtotime($row['created_at'])) ?></div>
+                                                
+                                                <div class="card-body-modern">
+                                                    <div class="card-meta-modern">
+                                                        <span class="meta-highlight">Blog</span> 
+                                                        <span>•</span> 
+                                                        <span><?= estimateReadTime($row['heading']); ?></span>
+                                                    </div>
+                                                    <a href="publication.php?id=<?= $row['id']; ?>">
+                                                        <h4 class="card-title-modern"><?= $row['title']; ?></h4>
+                                                    </a>
+                                                    <p class="card-excerpt-modern"><?= substr(strip_tags($row['heading']), 0, 110); ?>...</p>
+                                                    <a href="publication.php?id=<?= $row['id']; ?>" class="card-link-modern">
+                                                        Read Article <i class="fas fa-arrow-right" style="transform: rotate(-45deg);"></i>
+                                                    </a>
                                                 </div>
                                             </div>
-                                            <a href="publication.php?id=<?= $row['id']; ?>" class="mil-descr mil-c-gone">
-                                                <div class="mil-text-frame">
-                                                    <h4 class="mil-head3 mil-max-2row-text mil-mb30 mil-up"><?= $row['title']; ?></h4>
-                                                    <p class="mil-text-md mil-max-2row-text mil-mb40 mil-up"><?= $row['heading']; ?></p>
-                                                    <div class="mil-up">
-                                                        <div class="mil-btn mil-a2 mil-c-gone">Read more</div>
-                                                    </div>
-                                                </div>
-                                            </a>
                                         </div>
-                                    </div>
-                                    <!--  End Latest Blog Post Card -->
-                                <?php 
+                                    <?php 
+                                        }
+                                    } else {
+                                        echo '<div class="col-12 no-results" style="padding: 100px 0; text-align:center; color: #666;"><h4 class="mil-head4 mil-light-heading">No articles found.</h4></div>';
                                     }
-                                } else {
-                                    echo '<div class="no-results mil-up"><h4 class="mil-head4">No articles found.</h4></div>';
-                                }
-                                ?>
+                                    ?>
+                                </div>
+
+                                <div id="searchLoader" class="search-loader">
+                                    <i class="fas fa-spinner fa-spin fa-2x"></i>
+                                </div>
 
                             </div>
                         </div>
-                    </div>
-                    <!-- blog end -->
 
-                    <!-- pagination -->
-                    <?php if ($total_pages > 1): ?>
-                    <div class="mil-p-0-160">
+                    </div>
+
+                    <div class="mil-blog-grid-section" style="padding-top: 0; padding-bottom: 20px;">
                         <div class="container">
-                            <div class="mil-blog-pagination">
+                            <div class="mil-blog-pagination" id="paginationContainer">
+                                <?php if ($total_pages > 1): ?>
                                 <ul>
-                                    <!-- Previous Button -->
                                     <?php if ($page > 1): ?>
-                                        <li><a href="<?= pageUrl($page - 1, $search_term) ?>"><i class="far fa-arrow-left"></i></a></li>
+                                        <li><a href="<?= pageUrl($page - 1, $search_term) ?>"><i class="fas fa-chevron-left"></i></a></li>
                                     <?php endif; ?>
 
-                                    <!-- Page Numbers -->
                                     <?php for ($i = 1; $i <= $total_pages; $i++): ?>
                                         <li class="<?= $i == $page ? 'mil-active' : '' ?>">
                                             <a href="<?= pageUrl($i, $search_term) ?>"><?= $i ?></a>
                                         </li>
                                     <?php endfor; ?>
 
-                                    <!-- Next Button -->
                                     <?php if ($page < $total_pages): ?>
-                                        <li><a href="<?= pageUrl($page + 1, $search_term) ?>"><i class="far fa-arrow-right"></i></a></li>
+                                        <li><a href="<?= pageUrl($page + 1, $search_term) ?>"><i class="fas fa-chevron-right"></i></a></li>
                                     <?php endif; ?>
                                 </ul>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
-                    <?php endif; ?>
-                    <!-- pagination end -->
-
-                    <!-- subscribe -->
+                    
                     <div class="container">
                         <div class="mil-half-container mil-stl mil-reverse mil-up">
                             <div class="mil-text-box mil-g-m4 mil-p-160-160">
@@ -321,50 +246,130 @@ function pageUrl($pageNum, $search) {
                                 </div>
                             </div>
                         </div>
-                        <div class="row mil-aic mil-jcb mil-no-g">
-                            <div class="col-lg-6">
-                                <div class="mil-button-pad mil-a1 mil-jst" style="display: block"></div>
-                            </div>
-                            <div class="col-lg-6 mil-992-gone">
-                                <div class="mil-text-pad">
-                                    <p class="mil-text-sm mil-up">By clicking the submit button, you agree to the <br><a href="contact.php" class="mil-text-link mil-a2 mil-c-gone">rules for processing personal data</a>.</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <!-- subscribe end -->
 
-                    <!-- footer -->
                     <?php include "footer.php"; ?>
-                    <!-- footer end -->
 
                 </div>
-                <!-- content -->
-
             </div>
         </div>
-        <!-- page transition -->
-
     </div>
-    <!-- wrapper end -->
 
-    <!-- swup js -->
     <script src="js/plugins/swup.min.js"></script>
-    <!-- gsap js -->
     <script src="js/plugins/gsap.min.js"></script>
-    <!-- scroll smoother -->
     <script src="js/plugins/ScrollSmoother.min.js"></script>
-    <!-- scroll trigger js -->
     <script src="js/plugins/ScrollTrigger.min.js"></script>
-    <!-- scroll to js -->
     <script src="js/plugins/ScrollTo.min.js"></script>
-    <!-- swiper js -->
     <script src="js/plugins/swiper.min.js"></script>
-    <!-- parallax js -->
     <script src="js/plugins/parallax.js"></script>
-
-    <!-- Lexora Tech js -->
     <script src="js/main.js"></script>
-</body>
 
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.getElementById('searchInput');
+        const searchForm = document.getElementById('searchForm');
+        
+        const triggerBtn = document.getElementById('searchTriggerBtn');
+        const triggerWrapper = document.getElementById('searchTriggerWrapper');
+        const searchContainer = document.getElementById('searchContainer');
+        const closeSearchBtn = document.getElementById('closeSearchBtn');
+
+        const gridContainer = document.getElementById('blogGridContainer');
+        const heading = document.getElementById('resultsHeading');
+        const paginationContainer = document.getElementById('paginationContainer');
+        const loader = document.getElementById('searchLoader');
+        const sectionsWrapper = document.getElementById('sectionsWrapper'); // New Wrapper
+        
+        let timeout = null;
+
+        if(triggerBtn && searchContainer) {
+            triggerBtn.addEventListener('click', function() {
+                triggerWrapper.style.display = 'none';
+                searchContainer.classList.add('active');
+                setTimeout(() => searchInput.focus(), 100);
+            });
+        }
+
+        if(closeSearchBtn) {
+            closeSearchBtn.addEventListener('click', function() {
+                searchContainer.classList.remove('active');
+                
+                if (searchInput.value.trim() !== '') {
+                    searchInput.value = '';
+                    performSearch(''); // Reset to Recent Blogs
+                }
+
+                setTimeout(() => {
+                    triggerWrapper.style.display = 'flex';
+                }, 300);
+            });
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        if(urlParams.has('search') && urlParams.get('search').trim() !== '') {
+            triggerWrapper.style.display = 'none';
+            searchContainer.classList.add('active');
+        }
+
+        const performSearch = (query) => {
+            loader.style.display = 'block';
+            gridContainer.style.opacity = '0.3'; 
+
+            if (query.trim() !== '') {
+                sectionsWrapper.classList.add('results-first');
+            } else {
+                sectionsWrapper.classList.remove('results-first');
+            }
+
+            const timestamp = new Date().getTime();
+            const fetchUrl = `?search=${encodeURIComponent(query)}&t=${timestamp}`;
+
+            fetch(fetchUrl)
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    
+                    const newGrid = doc.getElementById('blogGridContainer');
+                    if (newGrid) gridContainer.innerHTML = newGrid.innerHTML;
+
+                    const newHeading = doc.getElementById('resultsHeading');
+                    if (newHeading) heading.innerHTML = newHeading.innerHTML;
+
+                    const newPagination = doc.getElementById('paginationContainer');
+                    if (newPagination) paginationContainer.innerHTML = newPagination.innerHTML;
+                    else paginationContainer.innerHTML = '';
+
+                    const newUrl = query ? `?search=${encodeURIComponent(query)}` : window.location.pathname;
+                    window.history.pushState({path: newUrl}, '', newUrl);
+
+                    setTimeout(() => {
+                        if (typeof ScrollTrigger !== 'undefined') {
+                            ScrollTrigger.refresh();
+                        }
+                    }, 100); 
+                })
+                .catch(err => console.error('Search failed', err))
+                .finally(() => {
+                    loader.style.display = 'none';
+                    gridContainer.style.opacity = '1';
+                });
+        };
+
+        searchInput.addEventListener('input', function() {
+            clearTimeout(timeout);
+            const query = this.value;
+            timeout = setTimeout(() => {
+                performSearch(query);
+            }, 500);
+        });
+
+        searchForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            performSearch(searchInput.value);
+        });
+    });
+    </script>
+
+</body>
 </html>
