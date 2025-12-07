@@ -59,7 +59,7 @@ function estimateReadTime($text)
 
 <body>
 
-    <link rel="stylesheet" href="css/publication.css">
+    
 
     <div class="read-progress-container">
         <div class="read-progress-bar" id="myBar"></div>
@@ -76,7 +76,7 @@ function estimateReadTime($text)
         <div class="mil-transition-fade" id="swup">
             <div class="mil-transition-frame">
 
-
+            <link rel="stylesheet" href="css/publication.css">
 
                 <div id="smooth-content" class="mil-content">
 
