@@ -28,17 +28,23 @@ document.addEventListener("DOMContentLoaded", function () {
     register gsap plugins
 
     ------------------------------------------- */
-    gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin);
-    /* -------------------------------------------
+    // Register ScrollTrigger if not already done
+gsap.registerPlugin(ScrollTrigger);
 
-    ScrollSmoother
-
-    ------------------------------------------- */
-    ScrollSmoother.create({
-        smooth: 1,
-        effects: true,
-        smoothTouch: 0.1,
-    });
+// Create the reading progress animation
+ScrollTrigger.create({
+    trigger: "body",           // Track the whole page body
+    start: "top top",          // Start when top of page = top of viewport
+    end: "bottom bottom",      // End when bottom of page = bottom of viewport
+    onUpdate: (self) => {
+        // Update the width of the bar based on scroll progress (0 to 1)
+        gsap.to("#myBar", {
+            width: (self.progress * 100) + "%", 
+            duration: 0.1,    // Small lag for smoothness
+            ease: "none"
+        });
+    }
+});
 
     /* -------------------------------------------
 
