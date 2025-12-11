@@ -3,7 +3,7 @@ name: Deploy Website
 on:
   push:
     branches:
-      - main  # ⚠️ Change to 'master' if your branch is named master
+      - main
 
 jobs:
   web-deploy:
@@ -19,11 +19,14 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 21             # Use 21 for created FTP accounts (FTPES)
-          protocol: ftps       # Secure connection
-          server-dir: ./       # Uploads to the root of the folder you assigned this user
-          exclude: |           # Files to SKIP uploading
+          port: 21
+          protocol: ftps
+          server-dir: ./
+          timeout: 600000      # Increased timeout to 10 minutes
+          exclude: |           # ⚠️ STRICT EXCLUDES
             **/.git*
+            **/.git*/**
             **/.github*
+            **/node_modules/**
             README.md
             .gitignore
