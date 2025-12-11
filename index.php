@@ -254,7 +254,7 @@
                                     <div class="mil-counter-item mil-stl mil-mb30 mil-up">
                                         <h4 class="mil-up">100<span class="mil-a2">+</span></h4>
                                         <div class="mil-counter-text">
-                                            <h5 class="mil-head4 mil-m1 mil-up">completed </h5>
+                                            <h5 class="mil-head4 mil-m1 mil-up">completed Projects</h5>
                                         </div>
                                     </div>
                                 </div>
