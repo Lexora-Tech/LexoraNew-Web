@@ -17,21 +17,22 @@
 
     <style>
         /* --- PREMIUM CUSTOM STYLES --- */
-        
+
         /* 1. Glassmorphism Filter Bar - XL VERSION */
         .glass-filter-container {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            
+
             /* Bigger Container Dimensions */
-            border-radius: 80px; 
-            padding: 25px 40px; 
-            max-width: 1300px; 
-            
+            border-radius: 80px;
+            padding: 25px 40px;
+            max-width: 1300px;
+
             display: inline-flex;
             flex-wrap: wrap;
-            gap: 15px; /* More breathing room between buttons */
+            gap: 15px;
+            /* More breathing room between buttons */
             margin-bottom: 80px;
             justify-content: center;
         }
@@ -39,12 +40,13 @@
         .glass-btn {
             background: transparent;
             border: none;
-            color: #999; /* Slightly lighter grey for better contrast on dark */
-            
+            color: #999;
+            /* Slightly lighter grey for better contrast on dark */
+
             /* Bigger Buttons */
-            padding: 16px 35px; 
-            font-size: 16px; 
-            
+            padding: 16px 35px;
+            font-size: 16px;
+
             border-radius: 50px;
             font-family: 'Inter', sans-serif;
             font-weight: 500;
@@ -55,14 +57,16 @@
 
         .glass-btn:hover {
             color: #fff;
-            background: rgba(255,255,255,0.05);
-            transform: translateY(-2px); /* Subtle lift effect */
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+            /* Subtle lift effect */
         }
 
         .glass-btn.active {
             background: #fff;
             color: #000;
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15); /* Stronger glow */
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+            /* Stronger glow */
             font-weight: 600;
             transform: translateY(-2px);
         }
@@ -103,9 +107,18 @@
             height: 10px;
             border-radius: 50%;
         }
-        .dot-red { background: #ff5f56; }
-        .dot-yellow { background: #ffbd2e; }
-        .dot-green { background: #27c93f; }
+
+        .dot-red {
+            background: #ff5f56;
+        }
+
+        .dot-yellow {
+            background: #ffbd2e;
+        }
+
+        .dot-green {
+            background: #27c93f;
+        }
 
         .browser-address {
             margin-left: 15px;
@@ -197,7 +210,8 @@
         }
 
         .launch-btn:hover {
-            color: #2ed573; /* Green accent color */
+            color: #2ed573;
+            /* Green accent color */
         }
 
         .launch-icon {
@@ -208,7 +222,6 @@
         .browser-card:hover .launch-icon {
             transform: rotate(0deg) translateX(5px);
         }
-
     </style>
 
 </head>
@@ -217,7 +230,9 @@
 
     <div id="smooth-wrapper" class="mil-page-wrapper">
         <div class="mil-cursor-follower"></div>
-        <div class="mil-progress-track"><div class="mil-progress"></div></div>
+        <div class="mil-progress-track">
+            <div class="mil-progress"></div>
+        </div>
 
         <?php include "header.php"; ?>
 
@@ -233,7 +248,7 @@
                                     <span class="mil-link mil-mb30" style="color: #666; letter-spacing: 2px; text-transform: uppercase;">Lexora Tech Portfolio</span>
                                     <h1 class="mil-display2 mil-mb30" style="font-family: 'Inter', sans-serif; letter-spacing: -2px;">Digital <span style="color: #555;">Solutions.</span></h1>
                                     <p style="color: #999; font-size: 18px; line-height: 1.6; max-width: 600px;">
-                                        Enterprise-grade website templates designed for scalability, speed, and conversion. 
+                                        Enterprise-grade website templates designed for scalability, speed, and conversion.
                                         Select a category to view the live interactive prototype.
                                     </p>
                                 </div>
@@ -243,7 +258,7 @@
 
                     <div class="mil-p-0-130">
                         <div class="container">
-                            
+
                             <div class="mil-center mil-up">
                                 <div class="glass-filter-container">
                                     <button class="glass-btn active" onclick="filterProjects('all')">All</button>
@@ -264,12 +279,16 @@
                             </div>
 
                             <div class="row">
-                                
+
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item tourism mil-up">
                                     <a href="./demos/hospitality/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
@@ -286,11 +305,41 @@
                                     </a>
                                 </div>
 
+                                <div class="col-lg-4 col-md-6 mil-mb60 project-item tourism mil-up">
+                                    <a href="./demos/hospitality/projectTwo/index.php" target="_blank" class="browser-card-link">
+                                        <div class="browser-card">
+                                            <div class="browser-header">
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
+                                                <div class="browser-address"></div>
+                                            </div>
+                                            <div class="browser-body">
+                                               <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Villa at Dusk">
+                                            </div>
+                                            <div class="card-content">
+                                                <span class="card-category">Hospitality</span>
+                                                <h3 class="card-title">ELYSIAN Luxury Resort</h3>
+                                                <p class="card-desc">An exclusive sanctuary for holistic wellness retreats. Features private oceanfront villas and personalized hydrotherapy circuits.</p>
+                                                <div class="tech-stack"><span class="tech-tag">Booking Engine</span><span class="tech-tag">Map API</span></div>
+                                                <div class="launch-btn">Launch Preview <i class="fas fa-arrow-right launch-icon"></i></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item professional mil-up">
                                     <a href="./demos/medical/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
@@ -307,11 +356,46 @@
                                     </a>
                                 </div>
 
+
+                                <div class="col-lg-4 col-md-6 mil-mb60 project-item professional mil-up">
+                                    <a href="./demos/medical/projectTwo/index.php" target="_blank" class="browser-card-link">
+                                        <div class="browser-card">
+                                            <div class="browser-header">
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
+                                                <div class="browser-address"></div>
+                                            </div>
+                                            <div class="browser-body">
+                                              <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Clinic Hallway">
+                                            </div>
+                                            <div class="card-content">
+                                                <span class="card-category">Medical</span>
+                                                <h3 class="card-title">Medi care Plus</h3>
+                                                <p class="card-desc">Comprehensive hospital management system featuring electronic health records and doctor scheduling.</p>
+                                                <div class="tech-stack"><span class="tech-tag">Secure Forms</span><span class="tech-tag">Profile Mgmt</span></div>
+                                                <div class="launch-btn">Launch Preview <i class="fas fa-arrow-right launch-icon"></i></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+
+
+
+
+
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item trades mil-up">
                                     <a href="./demos/automotive/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
@@ -328,11 +412,43 @@
                                     </a>
                                 </div>
 
+                                <div class="col-lg-4 col-md-6 mil-mb60 project-item trades mil-up">
+                                    <a href="./demos/automotive/projectTwo/index.php" target="_blank" class="browser-card-link">
+                                        <div class="browser-card">
+                                            <div class="browser-header">
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
+                                                <div class="browser-address"></div>
+                                            </div>
+                                            <div class="browser-body">
+                                             <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Car Service">
+                                            </div>
+                                            <div class="card-content">
+                                                <span class="card-category">Automotive</span>
+                                                <h3 class="card-title">Slate Motors</h3>
+                                                <p class="card-desc">Digital showroom featuring 3D vehicle configurator and automated test drive scheduling.</p>
+                                                <div class="tech-stack"><span class="tech-tag">Geolocation</span><span class="tech-tag">Service API</span></div>
+                                                <div class="launch-btn">Launch Preview <i class="fas fa-arrow-right launch-icon"></i></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+
+
+
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item lifestyle mil-up">
                                     <a href="./demos/lifestyle/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
@@ -340,7 +456,7 @@
                                             </div>
                                             <div class="card-content">
                                                 <span class="card-category">Lifestyle</span>
-                                                <h3 class="card-title">Luxe Salon & Spa</h3>
+                                                <h3 class="card-title">Serenité</h3>
                                                 <p class="card-desc">High-performance visual gallery with Instagram feed integration and pricing tiers.</p>
                                                 <div class="tech-stack"><span class="tech-tag">Instagram API</span><span class="tech-tag">React</span></div>
                                                 <div class="launch-btn">Launch Preview <i class="fas fa-arrow-right launch-icon"></i></div>
@@ -353,15 +469,19 @@
                                     <a href="./demos/retail/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
-                                                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bakery">
+                                                <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Girl in White Knitwear">
                                             </div>
                                             <div class="card-content">
                                                 <span class="card-category">Retail</span>
-                                                <h3 class="card-title">Artisan Bakery</h3>
+                                                <h3 class="card-title">VELOUR.</h3>
                                                 <p class="card-desc">Digital catalog mode with seamless WhatsApp ordering integration for local commerce.</p>
                                                 <div class="tech-stack"><span class="tech-tag">WhatsApp API</span><span class="tech-tag">Catalog</span></div>
                                                 <div class="launch-btn">Launch Preview <i class="fas fa-arrow-right launch-icon"></i></div>
@@ -371,10 +491,14 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item realestate mil-up">
-                                    <a href="./demos/real-estate/projectOne/index.php" target="_blank" class="browser-card-link">
+                                    <a href="./demos/real-state/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
@@ -395,7 +519,11 @@
                                     <a href="./demos/education/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
@@ -403,7 +531,7 @@
                                             </div>
                                             <div class="card-content">
                                                 <span class="card-category">Education</span>
-                                                <h3 class="card-title">EduSphere LMS</h3>
+                                                <h3 class="card-title">Academia</h3>
                                                 <p class="card-desc">Complete Learning Management System for tuition centers. Includes video hosting, quiz modules, and student progress tracking.</p>
                                                 <div class="tech-stack"><span class="tech-tag">Video Streaming</span><span class="tech-tag">Student Portal</span></div>
                                                 <div class="launch-btn">Launch Preview <i class="fas fa-arrow-right launch-icon"></i></div>
@@ -416,7 +544,11 @@
                                     <a href="./demos/corporate/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
@@ -424,7 +556,7 @@
                                             </div>
                                             <div class="card-content">
                                                 <span class="card-category">Corporate</span>
-                                                <h3 class="card-title">NexGen Consulting</h3>
+                                                <h3 class="card-title">Nexus Consulting</h3>
                                                 <p class="card-desc">High-trust corporate profile with investor relation pages, secure client login areas, and financial data visualization.</p>
                                                 <div class="tech-stack"><span class="tech-tag">Data Viz</span><span class="tech-tag">Secure Login</span></div>
                                                 <div class="launch-btn">Launch Preview <i class="fas fa-arrow-right launch-icon"></i></div>
@@ -437,7 +569,11 @@
                                     <a href="./demos/dining/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
@@ -445,7 +581,7 @@
                                             </div>
                                             <div class="card-content">
                                                 <span class="card-category">Food & Dining</span>
-                                                <h3 class="card-title">The Urban Bistro</h3>
+                                                <h3 class="card-title">The Aurum</h3>
                                                 <p class="card-desc">Interactive digital menu with table reservation system integration and event booking capabilities.</p>
                                                 <div class="tech-stack"><span class="tech-tag">Reservations</span><span class="tech-tag">QR Menu</span></div>
                                                 <div class="launch-btn">Launch Preview <i class="fas fa-arrow-right launch-icon"></i></div>
@@ -458,7 +594,11 @@
                                     <a href="./demos/fitness/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
@@ -466,7 +606,7 @@
                                             </div>
                                             <div class="card-content">
                                                 <span class="card-category">Fitness</span>
-                                                <h3 class="card-title">IronPhysique Gym</h3>
+                                                <h3 class="card-title">APEX Fitness</h3>
                                                 <p class="card-desc">Membership portal with recurring payments, class schedule calendar, and BMI calculator tools.</p>
                                                 <div class="tech-stack"><span class="tech-tag">Membership</span><span class="tech-tag">Schedule API</span></div>
                                                 <div class="launch-btn">Launch Preview <i class="fas fa-arrow-right launch-icon"></i></div>
@@ -479,7 +619,11 @@
                                     <a href="./demos/non-profit/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
@@ -500,7 +644,11 @@
                                     <a href="./demos/creative/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
@@ -508,7 +656,7 @@
                                             </div>
                                             <div class="card-content">
                                                 <span class="card-category">Creative</span>
-                                                <h3 class="card-title">Momentum Studios</h3>
+                                                <h3 class="card-title">The Creative Studio</h3>
                                                 <p class="card-desc">Minimalist masonry gallery for photographers and agencies. Features client proofing area.</p>
                                                 <div class="tech-stack"><span class="tech-tag">Masonry Grid</span><span class="tech-tag">Lightbox</span></div>
                                                 <div class="launch-btn">Launch Preview <i class="fas fa-arrow-right launch-icon"></i></div>
@@ -521,7 +669,11 @@
                                     <a href="./demos/travel-agency/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
-                                                <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                                <div class="browser-dots">
+                                                    <div class="dot dot-red"></div>
+                                                    <div class="dot dot-yellow"></div>
+                                                    <div class="dot dot-green"></div>
+                                                </div>
                                                 <div class="browser-address"></div>
                                             </div>
                                             <div class="browser-body">
@@ -529,7 +681,7 @@
                                             </div>
                                             <div class="card-content">
                                                 <span class="card-category">Travel</span>
-                                                <h3 class="card-title">Wanderlust Tours</h3>
+                                                <h3 class="card-title">Voyageur</h3>
                                                 <p class="card-desc">Package booking system with itinerary builder, dynamic pricing, and destination guides.</p>
                                                 <div class="tech-stack"><span class="tech-tag">Itinerary</span><span class="tech-tag">Payment GW</span></div>
                                                 <div class="launch-btn">Launch Preview <i class="fas fa-arrow-right launch-icon"></i></div>
@@ -541,7 +693,11 @@
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item all mil-up">
                                     <div class="browser-card" style="opacity: 0.5;">
                                         <div class="browser-header">
-                                            <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
+                                            <div class="browser-dots">
+                                                <div class="dot dot-red"></div>
+                                                <div class="dot dot-yellow"></div>
+                                                <div class="dot dot-green"></div>
+                                            </div>
                                             <div class="browser-address"></div>
                                         </div>
                                         <div class="browser-body" style="background: #222; display: flex; align-items: center; justify-content: center;">
@@ -588,18 +744,26 @@
                 if (category === 'all' || item.classList.contains(category)) {
                     item.style.display = 'block';
                     // Small GSAP animation for smooth reveal
-                    gsap.fromTo(item, {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.4});
+                    gsap.fromTo(item, {
+                        opacity: 0,
+                        y: 20
+                    }, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.4
+                    });
                 } else {
                     item.style.display = 'none';
                 }
             });
-            
+
             // Refresh ScrollTrigger
             setTimeout(() => {
-                if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+                if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
             }, 500);
         }
     </script>
 
 </body>
+
 </html>
