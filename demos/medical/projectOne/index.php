@@ -443,7 +443,49 @@
             font-size: 1.5rem;
         }
 
-        /* --- 7. BOOKING FORM --- */
+        /* --- 7. FAQ SECTION --- */
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 24px 0;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s var(--ease);
+            color: var(--text-muted);
+            margin-top: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            margin-top: 16px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        /* --- 8. BOOKING FORM --- */
         .booking-section {
             position: relative;
             margin-top: 100px;
@@ -493,7 +535,7 @@
             box-shadow: 0 0 0 3px var(--primary-light);
         }
 
-        /* --- 8. FOOTER --- */
+        /* --- 9. FOOTER --- */
         .footer {
             border-top: 1px solid var(--border-color);
             padding: 80px 0 40px;
@@ -586,6 +628,7 @@
             <div class="nav-links">
                 <a href="#services" class="nav-link">Expertise</a>
                 <a href="#tech" class="nav-link">Technology</a>
+                <a href="#faq" class="nav-link">FAQ</a>
                 <a href="#book" class="nav-link">Patients</a>
             </div>
 
@@ -718,6 +761,57 @@
                     <img id="techImg" src="https://images.unsplash.com/photo-1551076882-68b47d190600?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                         alt="Tech Visual"
                         onerror="this.src='https://placehold.co/600x600/e2e8f0/64748b?text=Medical+Tech'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section-padding">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 60px;">
+                <span class="tag">FAQ</span>
+                <h2>Patient Resources</h2>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you accept major insurance plans?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we partner with most major providers including BlueCross, Aetna, Cigna, and UnitedHealthcare. Our billing team handles all pre-authorizations for you.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What should I bring to my first visit?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Please bring a valid photo ID, your insurance card, and any relevant medical records or prior imaging. We recommend arriving 15 minutes early.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is robotic surgery safe?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Robotic surgery is FDA-approved and widely used. It allows for smaller incisions, less pain, and faster recovery times compared to traditional surgery.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer emergency appointments?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we reserve daily slots for urgent care. Please call our dedicated emergency line or book online selecting "Urgent Care".</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -881,6 +975,19 @@
                     }, 1500);
                 });
             }
+
+            // 4. FAQ ACCORDION
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close others
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) otherItem.classList.remove('active');
+                    });
+                    item.classList.toggle('active');
+                });
+            });
         });
     </script>
 </body>
