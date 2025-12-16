@@ -1,482 +1,909 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA | Avant-Garde Dining</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    
+    <title>VELOUR | Modern Retail</title>
+
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@300,400,500,600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- 1. CORE VARIABLES --- */
+        /* --- 1. DESIGN SYSTEM --- */
         :root {
-            --bg: #050505;
-            --surface: #121212;
-            --surface-hover: #1a1a1a;
-            
-            --text-main: #ffffff;
-            --text-muted: #888888;
-            
-            --accent: #d1bfa7; /* Champagne Gold */
-            --accent-glow: rgba(209, 191, 167, 0.15);
-            
-            --border: rgba(255, 255, 255, 0.08);
-            
-            --font-sans: 'Manrope', sans-serif;
-            --font-serif: 'Playfair Display', serif;
-            
-            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --bg: #ffffff;
+            --text: #000000;
+            --accent: #2a2a2a;
+            --gray: #f4f4f4;
+            --border: #e5e5e5;
+
+            --font-head: 'Clash Display', sans-serif;
+            --font-body: 'General Sans', sans-serif;
+
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* --- 2. RESET & CURSOR --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; } /* Hide default cursor */
-        
-        html { scroll-behavior: smooth; }
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            font-weight: 300;
-            line-height: 1.6;
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.5;
             overflow-x: hidden;
         }
 
-        /* Custom Cursor */
-        .cursor-dot, .cursor-outline {
-            position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
-            border-radius: 50%; z-index: 9999; pointer-events: none;
-        }
-        .cursor-dot { width: 8px; height: 8px; background: white; }
-        .cursor-outline {
-            width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.5);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-        }
-        body:hover .cursor-outline { opacity: 1; }
-        
-        /* Hover State for Cursor */
-        body.hovering .cursor-outline {
-            width: 60px; height: 60px; background: rgba(255,255,255,0.1); border-color: transparent;
-            backdrop-filter: blur(2px);
-        }
-
         /* Typography */
-        h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; color: #fff; line-height: 1.1; }
-        h1 { font-size: clamp(4rem, 10vw, 8rem); letter-spacing: -0.02em; }
-        h2 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 20px; }
-        h3 { font-family: var(--font-sans); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent); margin-bottom: 15px; }
-        
-        p { color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem; max-width: 600px; }
-        .text-center { text-align: center; display: flex; flex-direction: column; align-items: center; }
-
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        ul { list-style: none; }
-
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
-        .section-padding { padding: 160px 0; }
-
-        /* --- 3. UI ELEMENTS --- */
-        
-        /* Magnetic Button */
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            padding: 20px 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 100px;
-            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: #fff;
-            transition: all 0.4s var(--ease); background: transparent; position: relative; overflow: hidden;
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-head);
+            font-weight: 600;
+            line-height: 1;
+            text-transform: uppercase;
         }
-        .btn::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: #fff; transform: translateY(100%); transition: transform 0.4s var(--ease); z-index: -1;
-        }
-        .btn:hover { color: #000; border-color: #fff; }
-        .btn:hover::before { transform: translateY(0); }
 
-        /* Smooth Reveal Class */
-        .reveal-text { opacity: 0; transform: translateY(40px); transition: 1.2s var(--ease); }
-        .reveal-text.active { opacity: 1; transform: translateY(0); }
+        h1 {
+            font-size: clamp(3rem, 10vw, 8rem);
+        }
 
-        /* --- 4. NAVIGATION (Minimal) --- */
-        .navbar {
-            position: fixed; top: 0; width: 100%; z-index: 100;
-            padding: 40px; display: flex; justify-content: space-between; align-items: center;
-            mix-blend-mode: difference; color: #fff;
+        h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
         }
-        .logo { font-family: var(--font-sans); font-weight: 600; font-size: 1.5rem; letter-spacing: 4px; }
-        
-        .nav-toggle {
-            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer;
-            display: flex; align-items: center; gap: 10px;
-        }
-        .hamburger { width: 30px; height: 1px; background: #fff; position: relative; transition: 0.3s; }
-        .hamburger::after { content: ''; position: absolute; top: 8px; right: 0; width: 20px; height: 1px; background: #fff; transition: 0.3s; }
-        
-        .nav-toggle:hover .hamburger { width: 25px; }
-        .nav-toggle:hover .hamburger::after { width: 30px; }
 
-        /* --- 5. HERO SECTION --- */
-        .hero {
-            height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
-            overflow: hidden; text-align: center;
-        }
-        .hero-bg { position: absolute; inset: 0; z-index: -1; opacity: 0.4; }
-        .hero-bg img { transform: scale(1.1); transition: transform 2s ease-out; }
-        .hero:hover .hero-bg img { transform: scale(1); }
-        
-        .hero-content { position: relative; z-index: 2; mix-blend-mode: normal; }
-        .hero-subtitle { display: block; font-size: 0.9rem; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 20px; opacity: 0.8; }
-
-        /* --- 6. ABOUT (Bento Grid) --- */
-        .bento-section { background: var(--bg); }
-        .bento-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 400px 300px;
-            gap: 20px;
-        }
-        .bento-card {
-            background: var(--surface); border: 1px solid var(--border); border-radius: 4px;
-            padding: 40px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
-            transition: 0.5s var(--ease);
-        }
-        .bento-card:hover { border-color: rgba(255,255,255,0.2); background: var(--surface-hover); }
-        
-        /* Layout modifications */
-        .card-lg { grid-column: span 2; }
-        .card-img { padding: 0; }
-        .card-img img { transition: 0.7s var(--ease); opacity: 0.7; }
-        .card-img:hover img { transform: scale(1.05); opacity: 1; }
-        
-        .bento-text h4 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 10px; }
-        .bento-text span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); }
-
-        /* --- 7. MENU (Horizontal Scroll) --- */
-        .menu-section { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .menu-scroll-container {
-            display: flex; gap: 80px; padding: 0 40px; overflow-x: auto;
-            scrollbar-width: none; cursor: grab;
-        }
-        .menu-scroll-container::-webkit-scrollbar { display: none; }
-        
-        .menu-group { min-width: 400px; padding: 100px 0; border-right: 1px solid var(--border); padding-right: 80px; }
-        .menu-group:last-child { border: none; }
-        
-        .menu-title { font-size: 3rem; font-family: var(--font-serif); margin-bottom: 40px; color: var(--accent); opacity: 0.5; }
-        
-        .dish { display: flex; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px; transition: 0.3s; }
-        .dish:hover { padding-left: 10px; border-bottom-color: var(--accent); }
-        .dish-name { font-size: 1.2rem; }
-        .dish-price { font-family: var(--font-serif); color: var(--text-muted); }
-        .dish-desc { display: block; font-size: 0.9rem; color: var(--text-muted); margin-top: 5px; }
-
-        /* --- 8. RESERVATION (Floating) --- */
-        .res-section { position: relative; height: 90vh; display: flex; align-items: center; justify-content: center; }
-        .res-bg { position: absolute; inset: 0; z-index: -1; }
-        .res-bg img { opacity: 0.2; }
-        
-        .res-modal {
-            background: rgba(18, 18, 18, 0.8); backdrop-filter: blur(20px);
-            padding: 80px; border: 1px solid var(--border); text-align: center;
-            max-width: 600px; width: 100%;
-        }
-        
-        .input-group { position: relative; margin-bottom: 40px; }
-        .input-field {
-            width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding: 15px 0; color: #fff; font-size: 1.2rem; outline: none; font-family: var(--font-serif); text-align: center;
+        a {
+            text-decoration: none;
+            color: inherit;
             transition: 0.3s;
         }
-        .input-field:focus { border-color: var(--accent); }
-        .input-field::placeholder { color: rgba(255,255,255,0.2); }
 
-        /* --- 9. FOOTER --- */
-        .footer { padding: 80px 40px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-end; }
-        .footer-brand { font-size: 8rem; font-family: var(--font-serif); line-height: 0.8; opacity: 0.1; }
-        .footer-links { text-align: right; }
-        .footer-links a { display: block; margin-bottom: 10px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
-        .footer-links a:hover { color: #fff; }
+        ul {
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* --- 2. BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: #000;
+            color: #fff;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            border: 1px solid #000;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* --- 3. NAVIGATION --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 20px 40px;
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-link {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+            text-underline-offset: 5px;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .icon-btn {
+            font-size: 1.2rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background: #000;
+            color: #fff;
+            width: 16px;
+            height: 16px;
+            font-size: 0.6rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-body);
+        }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 80px;
+            /* Offset for fixed header */
+        }
+
+        .hero-video {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            filter: brightness(0.8);
+        }
+
+        .hero-video img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+            mix-blend-mode: difference;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- 5. MARQUEE --- */
+        .marquee {
+            background: #000;
+            color: #fff;
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+        }
+
+        .marquee span {
+            margin-right: 50px;
+            font-family: var(--font-head);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        @keyframes scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* --- 6. CATEGORIES (Mosaic) --- */
+        .cat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background: #fff;
+            border-bottom: 1px solid #000;
+        }
+
+        .cat-item {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            group: cat;
+            cursor: pointer;
+        }
+
+        .cat-item img {
+            transition: 0.6s var(--ease);
+        }
+
+        .cat-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .cat-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-end;
+            padding: 40px;
+            transition: 0.3s;
+        }
+
+        .cat-item:hover .cat-overlay {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .cat-title {
+            color: #fff;
+            font-size: 2.5rem;
+        }
+
+        /* --- 7. PRODUCT SLIDER/GRID --- */
+        .products-header {
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px 20px;
+        }
+
+        .product-card {
+            cursor: pointer;
+        }
+
+        .p-img-box {
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: var(--gray);
+        }
+
+        .p-img-front {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            transition: opacity 0.3s;
+        }
+
+        .p-img-back {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .product-card:hover .p-img-front {
+            opacity: 0;
+        }
+
+        /* Show back image on hover */
+
+        .p-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #fff;
+            padding: 4px 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .add-btn {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #000;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transform: translateY(100%);
+            transition: 0.3s var(--ease);
+            z-index: 2;
+            border: none;
+            cursor: pointer;
+        }
+
+        .product-card:hover .add-btn {
+            transform: translateY(0);
+        }
+
+        .p-info h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            font-family: var(--font-body);
+        }
+
+        .p-price {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* --- 8. LOOKBOOK --- */
+        .lookbook {
+            background: var(--gray);
+            padding: 100px 0;
+        }
+
+        .lookbook-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .look-content h2 {
+            margin-bottom: 30px;
+            font-size: 3.5rem;
+        }
+
+        .look-content p {
+            max-width: 500px;
+            margin-bottom: 40px;
+            color: #555;
+        }
+
+        /* --- 9. CART SIDEBAR (Functional UI) --- */
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 450px;
+            height: 100%;
+            background: #fff;
+            z-index: 999;
+            transform: translateX(100%);
+            transition: 0.4s var(--ease);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-open .cart-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cart-open .cart-sidebar {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            padding: 30px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        .cart-footer {
+            padding: 30px;
+            border-top: 1px solid var(--border);
+            background: var(--gray);
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .cart-img {
+            width: 80px;
+            height: 100px;
+            background: #ddd;
+        }
+
+        .cart-details {
+            flex: 1;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-family: var(--font-head);
+            margin-bottom: 20px;
+        }
+
+        /* --- 10. FOOTER --- */
+        .footer {
+            background: #000;
+            color: #fff;
+            padding: 80px 40px 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .f-col h4 {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            color: #888;
+        }
+
+        .f-col a {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .f-col a:hover {
+            color: #888;
+        }
+
+        .newsletter-form {
+            display: flex;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            width: 100%;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background: transparent;
+            border: none;
+            color: #fff;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
 
         /* --- RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .navbar { padding: 20px; }
-            h1 { font-size: 3.5rem; }
-            .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-            .card-lg { grid-column: span 1; }
-            .bento-card { min-height: 300px; }
-            .menu-scroll-container { flex-direction: column; gap: 0; }
-            .menu-group { min-width: 100%; border: none; padding: 40px 0; border-bottom: 1px solid var(--border); }
-            .res-modal { padding: 40px 20px; width: 90%; }
-            .footer { flex-direction: column; align-items: center; text-align: center; gap: 40px; }
-            .footer-links { text-align: center; }
-            .footer-brand { font-size: 4rem; }
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .lookbook-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 3.5rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
-
     <nav class="navbar">
-        <a href="#" class="logo hover-trigger">AURA</a>
-        <div class="nav-toggle hover-trigger">
-            <span>Menu</span>
-            <div class="hamburger"></div>
+        <a href="#" class="logo">VELOUR.</a>
+
+        <ul class="nav-links">
+            <li><a href="#new" class="nav-link">New Arrivals</a></li>
+            <li><a href="#men" class="nav-link">Men</a></li>
+            <li><a href="#women" class="nav-link">Women</a></li>
+            <li><a href="#journal" class="nav-link">Editorial</a></li>
+        </ul>
+
+        <div class="nav-icons">
+            <div class="icon-btn"><i class="fas fa-search"></i></div>
+            <div class="icon-btn"><i class="far fa-user"></i></div>
+            <div class="icon-btn" onclick="toggleCart()">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
-                 alt="Fine Dining Atmosphere"
-                 onerror="this.src='https://placehold.co/1920x1080/050505/333?text=Aura'">
+        <div class="hero-video">
+            <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Fashion Campaign">
         </div>
-        
         <div class="hero-content">
-            <span class="hero-subtitle reveal-text">Culinary Architecture</span>
-            <h1 class="reveal-text">Sensory<br>Elegance</h1>
-            <div style="margin-top: 50px;" class="reveal-text">
-                <a href="#reserve" class="btn hover-trigger">Reserve Table</a>
-            </div>
+            <h1>The Autumn <br>Collection</h1>
+            <p>Elevated Essentials for the Modern Era</p>
+            <a href="#shop" class="btn btn-outline">Explore Campaign</a>
         </div>
     </header>
 
-    <section class="section-padding bento-section">
+    <div class="marquee">
+        <div class="marquee-content">
+            <span>Free Worldwide Shipping on Orders Over $200</span>
+            <span> • </span>
+            <span>New Arrivals Dropping Every Friday</span>
+            <span> • </span>
+            <span>Velour x Designer Collaboration Coming Soon</span>
+            <span> • </span>
+            <span>Free Worldwide Shipping on Orders Over $200</span>
+            <span> • </span>
+            <span>New Arrivals Dropping Every Friday</span>
+            <span> • </span>
+        </div>
+    </div>
+
+    <section class="cat-grid">
+        <div class="cat-item">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Women">
+            <div class="cat-overlay">
+                <h2 class="cat-title">Womenswear</h2>
+            </div>
+        </div>
+        <div class="cat-item">
+            <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Men">
+            <div class="cat-overlay">
+                <h2 class="cat-title">Menswear</h2>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop" class="section-padding">
         <div class="container">
-            <div class="text-center" style="margin-bottom: 80px;">
-                <h3>The Experience</h3>
-                <h2>Art on a Plate</h2>
+            <div class="products-header">
+                <h2>New Arrivals</h2>
+                <a href="#" style="text-transform: uppercase; border-bottom: 1px solid #000; font-size: 0.8rem;">View All Products</a>
             </div>
 
-            <div class="bento-grid">
-                <div class="bento-card bento-text reveal-text">
-                    <span>Philosophy</span>
-                    <p style="margin-top: 20px;">We deconstruct traditional cuisine to create something entirely new. A symphony of texture, temperature, and taste.</p>
-                    <a href="#" style="margin-top: auto; border-bottom: 1px solid var(--accent); width: max-content; padding-bottom: 5px;">Read Manifesto</a>
-                </div>
-
-                <div class="bento-card card-lg card-img reveal-text">
-                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
-                         alt="Plating" onerror="this.src='https://placehold.co/800x600/1a1a1a/444?text=Plating'">
-                </div>
-
-                <div class="bento-card card-img reveal-text">
-                    <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Wine" onerror="this.src='https://placehold.co/600x600/1a1a1a/444?text=Wine'">
-                </div>
-
-                <div class="bento-card card-lg bento-text reveal-text">
-                    <span>Sourcing</span>
-                    <h4>Local Roots,<br>Global Inspiration.</h4>
-                    <p style="margin: 0;">Our ingredients are sourced within 50 miles, yet our techniques traverse the globe.</p>
-                </div>
+            <div class="product-grid" id="productContainer">
             </div>
         </div>
     </section>
 
-    <section class="menu-section">
-        <div class="menu-scroll-container hover-trigger" id="menuContainer">
-            
-            <div class="menu-group">
-                <div class="menu-title">First</div>
-                <div class="dish">
-                    <div>
-                        <div class="dish-name">Oyster Pearl</div>
-                        <span class="dish-desc">Champagne foam, cucumber caviar.</span>
-                    </div>
-                    <div class="dish-price">24</div>
-                </div>
-                <div class="dish">
-                    <div>
-                        <div class="dish-name">Wagyu Carpaccio</div>
-                        <span class="dish-desc">Truffle emulsion, parmesan crisp.</span>
-                    </div>
-                    <div class="dish-price">32</div>
-                </div>
-                <div class="dish">
-                    <div>
-                        <div class="dish-name">Forest Mushroom</div>
-                        <span class="dish-desc">Pine needle smoke, soil.</span>
-                    </div>
-                    <div class="dish-price">28</div>
-                </div>
+    <section class="lookbook">
+        <div class="container lookbook-grid">
+            <div class="look-img">
+                <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Lookbook" style="height: 700px;">
             </div>
-
-            <div class="menu-group">
-                <div class="menu-title">Main</div>
-                <div class="dish">
-                    <div>
-                        <div class="dish-name">Black Cod</div>
-                        <span class="dish-desc">Miso glaze, charred leek.</span>
-                    </div>
-                    <div class="dish-price">48</div>
-                </div>
-                <div class="dish">
-                    <div>
-                        <div class="dish-name">Duck Breast</div>
-                        <span class="dish-desc">Cherry reduction, parsnip puree.</span>
-                    </div>
-                    <div class="dish-price">52</div>
-                </div>
-                <div class="dish">
-                    <div>
-                        <div class="dish-name">Venison Loin</div>
-                        <span class="dish-desc">Juniper berry, chocolate jus.</span>
-                    </div>
-                    <div class="dish-price">58</div>
-                </div>
+            <div class="look-content">
+                <span>The Journal</span>
+                <h2>Minimalism <br>Redefined.</h2>
+                <p>Discover the philosophy behind our latest collection. Focused on clean lines, sustainable fabrics, and timeless silhouettes that transcend seasons.</p>
+                <a href="#" class="btn">Read the Story</a>
             </div>
-
-            <div class="menu-group">
-                <div class="menu-title">Sweet</div>
-                <div class="dish">
-                    <div>
-                        <div class="dish-name">Gold Sphere</div>
-                        <span class="dish-desc">Dark chocolate, gold leaf, raspberry.</span>
-                    </div>
-                    <div class="dish-price">22</div>
-                </div>
-                <div class="dish">
-                    <div>
-                        <div class="dish-name">Texture of Lemon</div>
-                        <span class="dish-desc">Curd, foam, sorbet, dehydrated.</span>
-                    </div>
-                    <div class="dish-price">20</div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="reserve" class="res-section">
-        <div class="res-bg">
-            <img src="https://images.unsplash.com/photo-1550966871-3ed3c47e2ce2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
-                 alt="Atmosphere" onerror="this.src='https://placehold.co/1920x1080/000/fff?text=Dark'">
-        </div>
-        
-        <div class="res-modal reveal-text">
-            <h3>Reservations</h3>
-            <h2>Secure Your Seat</h2>
-            
-            <form id="resForm" style="margin-top: 50px;">
-                <div class="input-group">
-                    <input type="text" class="input-field hover-trigger" placeholder="Name" required>
-                </div>
-                <div class="input-group">
-                    <input type="date" class="input-field hover-trigger" required>
-                </div>
-                <div class="input-group">
-                    <select class="input-field hover-trigger" style="color: #888;">
-                        <option>2 Guests</option>
-                        <option>4 Guests</option>
-                        <option>6 Guests</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn hover-trigger" style="width: 100%;">Confirm Booking</button>
-            </form>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="footer-brand">AURA</div>
-        <div class="footer-links">
-            <a href="#" class="hover-trigger">Instagram</a>
-            <a href="#" class="hover-trigger">Opentable</a>
-            <a href="#" class="hover-trigger">Contact</a>
-            <p style="margin-top: 20px; font-size: 0.8rem; color: #444;">&copy; 2025 AURA Dining Group.</p>
+        <div class="footer-grid">
+            <div class="f-col">
+                <a href="#" class="logo" style="color: #fff; margin-bottom: 20px; display: block;">VELOUR.</a>
+                <p style="color: #888; margin-bottom: 20px;">Redefining luxury retail through digital innovation.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Subscribe to our newsletter">
+                    <button>Join</button>
+                </form>
+            </div>
+            <div class="f-col">
+                <h4>Shop</h4>
+                <a href="#">New Arrivals</a>
+                <a href="#">Men</a>
+                <a href="#">Women</a>
+                <a href="#">Accessories</a>
+            </div>
+            <div class="f-col">
+                <h4>Customer</h4>
+                <a href="#">Shipping & Returns</a>
+                <a href="#">FAQ</a>
+                <a href="#">Size Guide</a>
+                <a href="#">Track Order</a>
+            </div>
+            <div class="f-col">
+                <h4>Social</h4>
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">Pinterest</a>
+            </div>
+        </div>
+        <div style="border-top: 1px solid #333; padding-top: 20px; display: flex; justify-content: space-between; color: #555; font-size: 0.8rem;">
+            <span>&copy; 2025 VELOUR Retail.</span>
+            <span>Privacy Policy &nbsp; Terms</span>
         </div>
     </footer>
 
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Your Cart (<span id="cartHeaderCount">0</span>)</h3>
+            <span style="cursor: pointer; font-size: 1.5rem;" onclick="toggleCart()">&times;</span>
+        </div>
+        <div class="cart-body" id="cartItems">
+            <p style="text-align: center; color: #888; margin-top: 50px;">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <button class="btn" style="width: 100%; text-align: center;">Checkout</button>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            
-            // 1. Custom Cursor Logic
-            const cursorDot = document.getElementById("cursor-dot");
-            const cursorOutline = document.getElementById("cursor-outline");
+        // --- 1. DATA ---
+        const products = [{
+                id: 1,
+                name: "Oversized Wool Coat",
+                price: 280,
+                img1: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                img2: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: "New"
+            },
+            {
+                id: 2,
+                name: "Structured Blazer",
+                price: 195,
+                img1: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                img2: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: "Best Seller"
+            },
+            {
+                id: 3,
+                name: "Cashmere Sweater",
+                price: 150,
+                img1: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                img2: "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: ""
+            },
+            {
+                id: 4,
+                name: "Pleated Trousers",
+                price: 120,
+                img1: "https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                img2: "https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: "Sale"
+            },
+            {
+                id: 5,
+                name: "Leather Tote",
+                price: 350,
+                img1: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                img2: "https://images.unsplash.com/photo-1590874103328-987348d731db?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: ""
+            },
+            {
+                id: 6,
+                name: "Chelsea Boots",
+                price: 210,
+                img1: "https://images.unsplash.com/photo-1638247025967-b4e38f787b76?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                img2: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: ""
+            },
+            {
+                id: 7,
+                name: "Silk Scarf",
+                price: 85,
+                img1: "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                img2: "https://images.unsplash.com/photo-1601924994987-69e26d50dc26?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: ""
+            },
+            {
+                id: 8,
+                name: "Denim Jacket",
+                price: 140,
+                img1: "https://images.unsplash.com/photo-1544642899-f0d6e5f6ed6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                img2: "https://images.unsplash.com/photo-1516257984-b1b4d8c9430b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                badge: ""
+            }
+        ];
 
-            window.addEventListener("mousemove", (e) => {
-                const posX = e.clientX;
-                const posY = e.clientY;
+        let cart = [];
 
-                // Dot follows instantly
-                cursorDot.style.left = `${posX}px`;
-                cursorDot.style.top = `${posY}px`;
+        // --- 2. RENDER PRODUCTS ---
+        const productContainer = document.getElementById('productContainer');
 
-                // Outline follows with delay (animation)
-                cursorOutline.animate({
-                    left: `${posX}px`,
-                    top: `${posY}px`
-                }, { duration: 500, fill: "forwards" });
+        function renderProducts() {
+            productContainer.innerHTML = '';
+            products.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="p-img-box">
+                        ${p.badge ? `<span class="p-badge">${p.badge}</span>` : ''}
+                        <img src="${p.img1}" class="p-img-front" alt="${p.name}">
+                        <img src="${p.img2}" class="p-img-back" alt="${p.name}">
+                        <button class="add-btn" onclick="addToCart(${p.id})">Add to Cart - $${p.price}</button>
+                    </div>
+                    <div class="p-info">
+                        <h3>${p.name}</h3>
+                        <span class="p-price">$${p.price}.00</span>
+                    </div>
+                `;
+                productContainer.appendChild(card);
             });
+        }
 
-            // Hover interactions
-            const hoverTargets = document.querySelectorAll(".hover-trigger, a, button");
-            hoverTargets.forEach(el => {
-                el.addEventListener("mouseenter", () => document.body.classList.add("hovering"));
-                el.addEventListener("mouseleave", () => document.body.classList.remove("hovering"));
-            });
+        // --- 3. CART LOGIC ---
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCart();
+            toggleCart(); // Open cart automatically
+        }
 
-            // 2. Horizontal Scroll for Menu (Drag to scroll)
-            const slider = document.getElementById('menuContainer');
-            let isDown = false;
-            let startX;
-            let scrollLeft;
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
 
-            slider.addEventListener('mousedown', (e) => {
-                isDown = true;
-                slider.style.cursor = 'grabbing';
-                startX = e.pageX - slider.offsetLeft;
-                scrollLeft = slider.scrollLeft;
-            });
-            slider.addEventListener('mouseleave', () => { isDown = false; slider.style.cursor = 'grab'; });
-            slider.addEventListener('mouseup', () => { isDown = false; slider.style.cursor = 'grab'; });
-            slider.addEventListener('mousemove', (e) => {
-                if(!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - slider.offsetLeft;
-                const walk = (x - startX) * 2; // Scroll-fast
-                slider.scrollLeft = scrollLeft - walk;
-            });
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            const cartHeaderCount = document.getElementById('cartHeaderCount');
+            const cartTotal = document.getElementById('cartTotal');
 
-            // 3. Reveal Animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
+            // Update Counts
+            cartCount.innerText = cart.length;
+            cartHeaderCount.innerText = cart.length;
+
+            // Calc Total
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            cartTotal.innerText = `$${total.toFixed(2)}`;
+
+            // Render Items
+            cartItems.innerHTML = '';
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #888; margin-top: 50px;">Your cart is empty.</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    const el = document.createElement('div');
+                    el.className = 'cart-item';
+                    el.innerHTML = `
+                        <div class="cart-img" style="background-image: url('${item.img1}'); background-size: cover;"></div>
+                        <div class="cart-details">
+                            <div style="display:flex; justify-content:space-between;">
+                                <h4 style="font-size:0.9rem;">${item.name}</h4>
+                                <span style="cursor:pointer;" onclick="removeFromCart(${index})">&times;</span>
+                            </div>
+                            <p style="color:#888; font-size:0.8rem;">$${item.price}.00</p>
+                            <p style="color:#888; font-size:0.8rem; margin-top:5px;">Size: M</p>
+                        </div>
+                    `;
+                    cartItems.appendChild(el);
                 });
-            }, { threshold: 0.1 });
+            }
+        }
 
-            document.querySelectorAll('.reveal-text').forEach(el => observer.observe(el));
+        function toggleCart() {
+            document.body.classList.toggle('cart-open');
+        }
 
-            // 4. Form Submit
-            const form = document.getElementById('resForm');
-            if(form) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const btn = form.querySelector('button');
-                    const original = btn.innerText;
-                    btn.innerText = "Requesting...";
-                    btn.style.borderColor = "var(--accent)";
-                    btn.style.color = "var(--accent)";
-                    
-                    setTimeout(() => {
-                        btn.innerText = "Confirmed";
-                        btn.style.background = "#fff";
-                        btn.style.color = "#000";
-                        form.reset();
-                        setTimeout(() => {
-                            btn.innerText = original;
-                            btn.style.background = "transparent";
-                            btn.style.color = "#fff";
-                            btn.style.borderColor = "rgba(255,255,255,0.2)";
-                        }, 3000);
-                    }, 1500);
-                });
+        // --- 4. INIT ---
+        renderProducts();
+
+        // Navbar Scroll
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.padding = '15px 40px';
+            } else {
+                navbar.style.padding = '20px 40px';
             }
         });
     </script>
 </body>
-</html>
+
+</html> 

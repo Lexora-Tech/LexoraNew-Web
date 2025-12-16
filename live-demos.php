@@ -266,7 +266,7 @@
                             <div class="row">
                                 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item tourism mil-up">
-                                    <a href="demos/tourism-villa/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/hospitality/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
@@ -287,7 +287,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item professional mil-up">
-                                    <a href="demos/medical-pro/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/medical/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
@@ -308,7 +308,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item trades mil-up">
-                                    <a href="demos/auto-repair/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/automotive/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
@@ -329,7 +329,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item lifestyle mil-up">
-                                    <a href="demos/salon-elite/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/lifestyle/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
@@ -350,7 +350,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item ecommerce mil-up">
-                                    <a href="demos/kandy-bakes/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/retail/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
@@ -371,7 +371,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item realestate mil-up">
-                                    <a href="demos/real-estate/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/real-estate/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
@@ -392,7 +392,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item education mil-up">
-                                    <a href="demos/lms-edu/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/education/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
@@ -413,7 +413,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item corporate mil-up">
-                                    <a href="demos/finance-corp/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/corporate/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
@@ -434,7 +434,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item dining mil-up">
-                                    <a href="demos/restaurant/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/dining/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
@@ -455,7 +455,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item fitness mil-up">
-                                    <a href="demos/fitness-gym/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/fitness/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
@@ -476,7 +476,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item nonprofit mil-up">
-                                    <a href="demos/charity/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/non-profit/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
@@ -497,7 +497,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item creative mil-up">
-                                    <a href="demos/photography/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/creative/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
@@ -518,7 +518,7 @@
                                 </div>
 
                                 <div class="col-lg-4 col-md-6 mil-mb60 project-item travel mil-up">
-                                    <a href="demos/travel-agency/index.html" target="_blank" class="browser-card-link">
+                                    <a href="./demos/travel-agency/projectOne/index.php" target="_blank" class="browser-card-link">
                                         <div class="browser-card">
                                             <div class="browser-header">
                                                 <div class="browser-dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div>
