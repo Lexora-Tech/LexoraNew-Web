@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* ==================== CORE RESET ==================== */
         *,
         *::before,
         *::after {
@@ -26,7 +27,7 @@
         :root {
             --bg-body: #020203;
             --bg-card: #0A0A0C;
-            --bg-glass: rgba(20, 20, 25, 0.8);
+            --bg-glass: rgba(20, 20, 25, 0.85);
             --border-dim: rgba(255, 255, 255, 0.06);
             --border-highlight: rgba(255, 255, 255, 0.18);
             --text-main: #FFFFFF;
@@ -46,7 +47,6 @@
             font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             line-height: 1.6;
         }
 
@@ -224,6 +224,7 @@
             z-index: -1;
             pointer-events: none;
             mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
         }
 
         /* ==================== LAYOUT ==================== */
@@ -251,9 +252,9 @@
             animation-delay: 0.3s;
         }
 
-        @media (min-width: 768px) {
+        @media (max-width: 768px) {
             .showcase-header {
-                padding: 180px 0 80px;
+                padding: 110px 0 40px;
             }
         }
 
@@ -302,6 +303,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-wrap: balance;
+            padding: 0 10px;
         }
 
         .main-subtitle {
@@ -311,27 +313,25 @@
             max-width: 600px;
             margin: 0 auto;
             line-height: 1.7;
+            padding: 0 15px;
         }
 
-        /* ==================== FILTER DOCK ==================== */
+        /* ==================== FILTER DOCK WITH ARROWS ==================== */
         .filter-sticky-wrapper {
             position: sticky;
             top: 16px;
             z-index: 100;
             display: flex;
             justify-content: center;
+            align-items: center;
             margin-bottom: 60px;
             padding: 0 10px;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease forwards;
             animation-delay: 0.5s;
-        }
-
-        @media (min-width: 768px) {
-            .filter-sticky-wrapper {
-                margin-bottom: 80px;
-            }
+            max-width: 100%;
+            gap: 8px;
         }
 
         .filter-glass-dock {
@@ -341,26 +341,68 @@
             border: 1px solid var(--border-dim);
             padding: 8px;
             border-radius: 18px;
-            box-shadow:
-                0 20px 60px -15px rgba(0, 0, 0, 0.6),
-                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-            max-width: 100%;
-            overflow-x: auto;
+            box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+
+            /* Layout */
             display: flex;
-            gap: 4px;
+            gap: 6px;
+            overflow-x: auto;
+            white-space: nowrap;
+
+            /* Scroll behaviors */
             scrollbar-width: none;
             -ms-overflow-style: none;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+
+            max-width: 100%;
         }
 
         .filter-glass-dock::-webkit-scrollbar {
             display: none;
         }
 
+        /* Nav Arrow Buttons */
+        .nav-arrow-btn {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-dim);
+            color: var(--text-muted);
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            z-index: 2;
+        }
+
+        .nav-arrow-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-color: var(--border-highlight);
+        }
+
+        .nav-arrow-btn.hidden {
+            opacity: 0;
+            pointer-events: none;
+            width: 0;
+            padding: 0;
+            margin: 0;
+            border: none;
+            overflow: hidden;
+        }
+
         .dock-btn {
             background: transparent;
             border: none;
             color: var(--text-muted);
-            padding: 10px 18px;
+            padding: 10px 20px;
             font-size: 13px;
             font-family: 'Outfit', sans-serif;
             font-weight: 500;
@@ -370,6 +412,11 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+
+            flex-shrink: 0;
+            scroll-snap-align: start;
         }
 
         .dock-btn::before {
@@ -394,13 +441,26 @@
             background: #fff;
             color: #000;
             font-weight: 600;
-            box-shadow:
-                0 8px 25px rgba(255, 255, 255, 0.15),
-                0 0 0 1px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.2);
         }
 
         .dock-btn.active::before {
             display: none;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .filter-sticky-wrapper {
+                padding: 0 5px;
+                /* Minimal padding */
+            }
+
+            /* On very small screens, make arrows slightly smaller */
+            .nav-arrow-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
         }
 
         /* ==================== GRID ==================== */
@@ -438,7 +498,7 @@
             }
         }
 
-        /* Staggered animation delays */
+        /* Staggered delays */
         .project-item:nth-child(1) {
             animation-delay: 0.6s;
         }
@@ -479,40 +539,13 @@
             animation-delay: 1.5s;
         }
 
-        .project-item:nth-child(11) {
-            animation-delay: 1.6s;
-        }
-
-        .project-item:nth-child(12) {
-            animation-delay: 1.7s;
-        }
-
-        .project-item:nth-child(13) {
-            animation-delay: 1.8s;
-        }
-
-        .project-item:nth-child(14) {
-            animation-delay: 1.9s;
-        }
-
-        .project-item:nth-child(15) {
-            animation-delay: 2.0s;
-        }
-
-        .project-item:nth-child(16) {
-            animation-delay: 2.1s;
-        }
-
-        .project-item:nth-child(17) {
-            animation-delay: 2.2s;
-        }
-
         /* ==================== HYPER CARDS ==================== */
         .card-link {
             display: block;
             height: 100%;
             text-decoration: none;
             outline: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .card-link:focus-visible .hyper-card {
@@ -528,10 +561,7 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            transition:
-                transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-                box-shadow 0.5s ease,
-                border-color 0.5s ease;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease, border-color 0.5s ease;
             position: relative;
         }
 
@@ -548,9 +578,7 @@
 
         .hyper-card:hover {
             transform: translateY(-12px) scale(1.01);
-            box-shadow:
-                0 35px 70px -20px rgba(0, 0, 0, 0.7),
-                0 0 60px -10px rgba(0, 245, 255, 0.1);
+            box-shadow: 0 35px 70px -20px rgba(0, 0, 0, 0.7), 0 0 60px -10px rgba(0, 245, 255, 0.1);
             border-color: var(--border-highlight);
         }
 
@@ -558,7 +586,6 @@
             opacity: 1;
         }
 
-        /* Browser Chrome */
         .card-chrome {
             padding: 14px 18px;
             border-bottom: 1px solid var(--border-dim);
@@ -612,7 +639,6 @@
             max-width: 180px;
         }
 
-        /* Card Viewport */
         .card-viewport {
             height: 220px;
             overflow: hidden;
@@ -639,7 +665,6 @@
             filter: brightness(1.05) saturate(1.1);
         }
 
-        /* Card Info */
         .card-info {
             padding: 22px;
             display: flex;
@@ -689,7 +714,6 @@
             flex-grow: 1;
         }
 
-        /* Card Footer */
         .card-footer {
             margin-top: auto;
             display: flex;
@@ -748,7 +772,7 @@
             transform: rotate(0deg) translateX(4px);
         }
 
-        /* Coming Soon Overlay */
+        /* Coming Soon */
         .cs-overlay {
             position: absolute;
             inset: 0;
@@ -776,7 +800,7 @@
             border-style: dashed !important;
         }
 
-        /* ==================== SCROLL TO TOP ==================== */
+        /* Utilities */
         .scroll-top {
             position: fixed;
             bottom: 30px;
@@ -798,6 +822,7 @@
             z-index: 99;
             color: #fff;
             font-size: 16px;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .scroll-top.visible {
@@ -813,7 +838,6 @@
             box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
         }
 
-        /* ==================== NO RESULTS ==================== */
         .no-results {
             display: none;
             grid-column: 1 / -1;
@@ -824,6 +848,7 @@
 
         .no-results.visible {
             display: block;
+            animation: fadeInUp 0.5s ease;
         }
 
         .no-results i {
@@ -832,16 +857,10 @@
             opacity: 0.3;
         }
 
-        .no-results p {
-            font-size: 16px;
-        }
-
-        /* ==================== UTILITIES ==================== */
         .hidden {
             display: none !important;
         }
 
-        /* Touch device optimizations */
         @media (hover: none) {
             .hyper-card:hover {
                 transform: none;
@@ -858,7 +877,6 @@
             top: 30px;
             left: 40px;
             z-index: 1000;
-            /* High z-index to sit above content */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -876,7 +894,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Hover Effect - The "Glass" Glow */
         .back-nav-btn:hover {
             background: rgba(255, 255, 255, 0.1);
             border-color: var(--accent-cyan);
@@ -885,24 +902,26 @@
             box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
         }
 
-        .back-nav-btn i {
-            transition: transform 0.3s ease;
-        }
-
         .back-nav-btn:hover i {
             transform: translateX(-4px);
         }
 
-        /* Mobile: Hide text, show only arrow to save space */
         @media (max-width: 768px) {
             .back-nav-btn {
                 top: 20px;
                 left: 20px;
                 padding: 12px;
+                width: 44px;
+                height: 44px;
+                justify-content: center;
             }
 
             .back-nav-btn span {
                 display: none;
+            }
+
+            .back-nav-btn:hover i {
+                transform: none;
             }
         }
     </style>
@@ -910,7 +929,6 @@
 
 <body>
 
-    <!-- LOADER -->
     <div class="loader-wrapper" id="loader">
         <div class="loader-logo">LEXORA</div>
         <div class="loader-container">
@@ -925,33 +943,34 @@
         <div class="loader-text">Initializing Systems</div>
     </div>
 
-    <!-- AMBIENT EFFECTS -->
     <div class="ambient-light"></div>
     <div class="grid-overlay"></div>
 
-    <!-- MAIN CONTENT -->
     <main>
-
-        <a href="index.php" class="back-nav-btn">
-            <i class="fas fa-arrow-left"></i>
-            <span>Back To Lexora Web</span>
-        </a>
-
-
         <header class="showcase-header" id="top">
+            <a href="https://lexoratech.com/" class="back-nav-btn" aria-label="Back to Lexora Web">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back To Lexora Web</span>
+            </a>
             <div class="container">
                 <div class="hero-badge">Lexora Tech Portfolio</div>
                 <h1 class="main-title">Digital Architecture<br>Systems.</h1>
                 <p class="main-subtitle">
-                    Enterprise-grade interface libraries engineered for scalability.<br>
-                    Select a category to explore our high-fidelity prototypes.
+                    We Architect Immersive Digital Ecosystems For The Modern Web.<br>
+                    Explore Our Curated Collection Of Next-Generation Interfaces.
                 </p>
             </div>
         </header>
 
+
         <section class="container">
             <div class="filter-sticky-wrapper">
-                <nav class="filter-glass-dock" role="tablist" aria-label="Project categories">
+
+                <button id="scrollLeftBtn" class="nav-arrow-btn hidden" aria-label="Scroll Left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <nav class="filter-glass-dock" id="categoryDock" role="tablist" aria-label="Project categories">
                     <button class="dock-btn active" onclick="filterProjects('all')" role="tab" aria-selected="true">View All</button>
                     <button class="dock-btn" onclick="filterProjects('tourism')" role="tab">Hospitality</button>
                     <button class="dock-btn" onclick="filterProjects('professional')" role="tab">Medical</button>
@@ -969,12 +988,16 @@
                     <button class="dock-btn" onclick="filterProjects('legal')" role="tab">Legal</button>
                     <button class="dock-btn" onclick="filterProjects('saas')" role="tab">SaaS</button>
                 </nav>
+
+                <button id="scrollRightBtn" class="nav-arrow-btn" aria-label="Scroll Right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
             </div>
 
             <div class="projects-grid" id="projectsGrid">
-                <!-- Hospitality 1 -->
                 <article class="project-item tourism">
-                    <a href="./demos/hospitality/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/hospitality/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1000,9 +1023,8 @@
                     </a>
                 </article>
 
-                <!-- Hospitality 2 -->
                 <article class="project-item tourism">
-                    <a href="./demos/hospitality/projectTwo/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/hospitality/projectTwo/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1028,9 +1050,8 @@
                     </a>
                 </article>
 
-                <!-- Medical 1 -->
                 <article class="project-item professional">
-                    <a href="./demos/medical/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/medical/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1056,9 +1077,8 @@
                     </a>
                 </article>
 
-                <!-- Medical 2 -->
                 <article class="project-item professional">
-                    <a href="./demos/medical/projectTwo/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/medical/projectTwo/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1084,9 +1104,8 @@
                     </a>
                 </article>
 
-                <!-- Automotive 1 -->
                 <article class="project-item trades">
-                    <a href="./demos/automotive/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/automotive/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1112,9 +1131,8 @@
                     </a>
                 </article>
 
-                <!-- Automotive 2 -->
                 <article class="project-item trades">
-                    <a href="./demos/automotive/projectTwo/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/automotive/projectTwo/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1140,9 +1158,8 @@
                     </a>
                 </article>
 
-                <!-- Lifestyle -->
                 <article class="project-item lifestyle">
-                    <a href="./demos/lifestyle/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/lifestyle/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1168,9 +1185,8 @@
                     </a>
                 </article>
 
-                <!-- Retail -->
                 <article class="project-item ecommerce">
-                    <a href="./demos/retail/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/retail/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1196,9 +1212,8 @@
                     </a>
                 </article>
 
-                <!-- Real Estate -->
                 <article class="project-item realestate">
-                    <a href="./demos/real-state/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/real-state/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1224,9 +1239,8 @@
                     </a>
                 </article>
 
-                <!-- Education -->
                 <article class="project-item education">
-                    <a href="./demos/education/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/education/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1252,9 +1266,8 @@
                     </a>
                 </article>
 
-                <!-- Corporate -->
                 <article class="project-item corporate">
-                    <a href="./demos/corporate/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/corporate/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1280,9 +1293,8 @@
                     </a>
                 </article>
 
-                <!-- Dining -->
                 <article class="project-item dining">
-                    <a href="./demos/dining/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/dining/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1308,9 +1320,8 @@
                     </a>
                 </article>
 
-                <!-- Fitness -->
                 <article class="project-item fitness">
-                    <a href="./demos/fitness/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/fitness/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1336,9 +1347,8 @@
                     </a>
                 </article>
 
-                <!-- Non-Profit -->
                 <article class="project-item nonprofit">
-                    <a href="./demos/non-profit/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/non-profit/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1364,9 +1374,8 @@
                     </a>
                 </article>
 
-                <!-- Creative -->
                 <article class="project-item creative">
-                    <a href="./demos/creative/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/creative/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1392,9 +1401,8 @@
                     </a>
                 </article>
 
-                <!-- Travel -->
                 <article class="project-item travel">
-                    <a href="./demos/travel-agency/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
+                    <a href="https://demo.lexoratech.com/travel-agency/projectOne/index.php" target="_blank" class="card-link" rel="noopener">
                         <div class="hyper-card">
                             <div class="card-chrome">
                                 <div class="traffic-lights">
@@ -1420,7 +1428,6 @@
                     </a>
                 </article>
 
-                <!-- Legal - Coming Soon -->
                 <article class="project-item legal">
                     <div class="hyper-card coming-soon-card">
                         <div class="cs-overlay">
@@ -1443,7 +1450,6 @@
                     </div>
                 </article>
 
-                <!-- SaaS - Coming Soon -->
                 <article class="project-item saas">
                     <div class="hyper-card coming-soon-card">
                         <div class="cs-overlay">
@@ -1466,7 +1472,6 @@
                     </div>
                 </article>
 
-                <!-- No Results Message -->
                 <div class="no-results" id="noResults">
                     <i class="fas fa-search"></i>
                     <p>No projects found in this category.</p>
@@ -1475,7 +1480,6 @@
         </section>
     </main>
 
-    <!-- Scroll to Top -->
     <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
         <i class="fas fa-chevron-up"></i>
     </button>
@@ -1507,7 +1511,6 @@
 
         // ==================== FILTER PROJECTS ====================
         function filterProjects(category) {
-            // Update button states
             document.querySelectorAll('.dock-btn').forEach(btn => {
                 btn.classList.remove('active');
                 btn.setAttribute('aria-selected', 'false');
@@ -1515,32 +1518,34 @@
             event.target.classList.add('active');
             event.target.setAttribute('aria-selected', 'true');
 
+            // Scroll active button into view properly
+            event.target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+
             const items = document.querySelectorAll('.project-item');
             const noResults = document.getElementById('noResults');
             let visibleCount = 0;
 
             items.forEach((item, index) => {
                 const shouldShow = category === 'all' || item.classList.contains(category);
-
                 if (shouldShow) {
                     item.style.display = 'block';
                     item.style.opacity = '0';
                     item.style.transform = 'translateY(30px)';
-
-                    // Staggered animation
                     setTimeout(() => {
                         item.style.transition = 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
                         item.style.opacity = '1';
                         item.style.transform = 'translateY(0)';
                     }, visibleCount * 80);
-
                     visibleCount++;
                 } else {
                     item.style.display = 'none';
                 }
             });
 
-            // Show/hide no results message
             if (visibleCount === 0) {
                 noResults.classList.add('visible');
             } else {
@@ -1548,9 +1553,54 @@
             }
         }
 
+        // ==================== ARROW SCROLLING LOGIC ====================
+        const categoryDock = document.getElementById('categoryDock');
+        const scrollLeftBtn = document.getElementById('scrollLeftBtn');
+        const scrollRightBtn = document.getElementById('scrollRightBtn');
+
+        function updateScrollButtons() {
+            // Hide left button if at start
+            if (categoryDock.scrollLeft <= 5) {
+                scrollLeftBtn.classList.add('hidden');
+            } else {
+                scrollLeftBtn.classList.remove('hidden');
+            }
+
+            // Hide right button if at end
+            if (categoryDock.scrollLeft + categoryDock.clientWidth >= categoryDock.scrollWidth - 5) {
+                scrollRightBtn.classList.add('hidden');
+            } else {
+                scrollRightBtn.classList.remove('hidden');
+            }
+        }
+
+        // Scroll Left Event
+        scrollLeftBtn.addEventListener('click', () => {
+            categoryDock.scrollBy({
+                left: -200,
+                behavior: 'smooth'
+            });
+        });
+
+        // Scroll Right Event
+        scrollRightBtn.addEventListener('click', () => {
+            categoryDock.scrollBy({
+                left: 200,
+                behavior: 'smooth'
+            });
+        });
+
+        // Listen for manual scrolling to update buttons
+        categoryDock.addEventListener('scroll', updateScrollButtons);
+
+        // Update on load and resize
+        window.addEventListener('resize', updateScrollButtons);
+        // Initial check
+        updateScrollButtons();
+
+
         // ==================== SCROLL TO TOP ====================
         const scrollTopBtn = document.getElementById('scrollTop');
-
         window.addEventListener('scroll', () => {
             if (window.scrollY > 500) {
                 scrollTopBtn.classList.add('visible');
@@ -1558,7 +1608,6 @@
                 scrollTopBtn.classList.remove('visible');
             }
         });
-
         scrollTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -1571,7 +1620,6 @@
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1581,22 +1629,23 @@
             });
         }, observerOptions);
 
-        // Observe all project items for scroll animations
         document.querySelectorAll('.project-item').forEach(item => {
             observer.observe(item);
         });
 
-        // ==================== KEYBOARD NAVIGATION ====================
+        // ==================== KEYBOARD NAV ====================
         document.querySelectorAll('.dock-btn').forEach((btn, index, buttons) => {
             btn.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
                     e.preventDefault();
                     const next = buttons[(index + 1) % buttons.length];
                     next.focus();
+                    next.click(); // Auto-select on keyboard nav
                 } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
                     e.preventDefault();
                     const prev = buttons[(index - 1 + buttons.length) % buttons.length];
                     prev.focus();
+                    prev.click(); // Auto-select on keyboard nav
                 }
             });
         });

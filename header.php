@@ -82,6 +82,7 @@
                                             <a href="#.">Pages</a>
                                             <ul>
                                                 <li><a href="services.php">Services</a></li>
+                                                 <li><a href="live-demos.php">Live Demos</a></li>
                                                 <!--  <li><a href="team-stl.php">Team</a></li> -->
                                                 <li><a href="contact.php">Contact</a></li>
                                                 <li><a href="about.php">About Us</a></li>
