@@ -1,12 +1,12 @@
  <?php
   $host = 'localhost';
-  $db = 'magaqmco_lexoraadmin';
+/*   $db = 'magaqmco_lexoraadmin';
   $user = 'magaqmco_lexora';
-  $pass = 'Lexora12345@#';
+  $pass = 'Lexora12345@#'; */
 
-/*   $db = 'blog_system';
+  $db = 'blog_system';
   $user = 'root';
-  $pass = 'JapL050514'; */
+  $pass = 'JapL050514';
 
   $conn = new mysqli($host, $user, $pass, $db);
 
