@@ -189,7 +189,7 @@
                         </div>
                     </div>
 
-                    <div class="mil-p-100-100">
+               <!--      <div class="mil-p-100-100">
                         <div class="container">
                             <div class="row mil-aic mil-mb90">
                                 <div class="col-lg-6">
@@ -241,7 +241,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="mil-p-0-100">
                         <div class="container mil-tac">
