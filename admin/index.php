@@ -3,56 +3,32 @@ session_start();
 include("../includes/db.php");
 
 $error = "";
-$success = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // 1. Sanitize Username (prevent SQL Injection)
+    // 1. Sanitize Username
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     
-    // 2. Get Raw Password (DO NOT hash it yet)
+    // 2. Get Raw Password
     $password_raw = $_POST['password']; 
     
-    $action = $_POST['action'];
+    // --- SECURE LOGIN LOGIC ---
+    
+    // Select user by USERNAME only first
+    $sql = "SELECT * FROM admins WHERE username='$username'";
+    $result = mysqli_query($conn, $sql);
 
-    if ($action == "signup") {
-        // --- SECURE SIGNUP ---
-        
-        $check_sql = "SELECT * FROM admins WHERE username='$username'";
-        $check_result = mysqli_query($conn, $check_sql);
-
-        if (mysqli_num_rows($check_result) > 0) {
-            $error = "Username already taken.";
+    if ($row = mysqli_fetch_assoc($result)) {
+        // VERIFY: Check if raw password matches the stored hash
+        // Note: If you are using old MD5 passwords, change this line to: if (md5($password_raw) === $row['password']) {
+        if (password_verify($password_raw, $row['password'])) {
+            $_SESSION['admin'] = $username;
+            header("Location: ./dashboard.php");
+            exit();
         } else {
-            // 3. SECURE HASHING: This generates a random salt + hash
-            $hashed_password = password_hash($password_raw, PASSWORD_DEFAULT);
-
-            $insert_sql = "INSERT INTO admins (username, password) VALUES ('$username', '$hashed_password')";
-            if (mysqli_query($conn, $insert_sql)) {
-                $success = "Secure account created! Please login.";
-            } else {
-                $error = "Database error: " . mysqli_error($conn);
-            }
+            $error = "Invalid password.";
         }
-
     } else {
-        // --- SECURE LOGIN ---
-        
-        // 4. Select user by USERNAME only first
-        $sql = "SELECT * FROM admins WHERE username='$username'";
-        $result = mysqli_query($conn, $sql);
-
-        if ($row = mysqli_fetch_assoc($result)) {
-            // 5. VERIFY: Check if raw password matches the stored hash
-            if (password_verify($password_raw, $row['password'])) {
-                $_SESSION['admin'] = $username;
-                header("Location: ./dashboard.php");
-                exit();
-            } else {
-                $error = "Invalid password.";
-            }
-        } else {
-            $error = "User not found.";
-        }
+        $error = "User not found.";
     }
 }
 ?>
@@ -80,8 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             --text-muted: #94a3b8;
             --error-bg: rgba(239, 68, 68, 0.2);
             --error-text: #fca5a5;
-            --success-bg: rgba(34, 197, 94, 0.2);
-            --success-text: #86efac;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -264,13 +238,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             gap: 10px;
         }
         .error-msg { background: var(--error-bg); color: var(--error-text); border: 1px solid rgba(239, 68, 68, 0.2); }
-        .success-msg { background: var(--success-bg); color: var(--success-text); border: 1px solid rgba(34, 197, 94, 0.2); }
 
-        .toggle-text { text-align: center; margin-top: 25px; font-size: 0.9rem; color: var(--text-muted); }
-        .toggle-link { color: var(--primary); font-weight: 600; cursor: pointer; text-decoration: none; margin-left: 5px; }
-        .toggle-link:hover { text-decoration: underline; }
-
-        .back-home { text-align: center; margin-top: 15px; display: block; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.3s; opacity: 0.7; }
+        .back-home { text-align: center; margin-top: 25px; display: block; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.3s; opacity: 0.7; }
         .back-home:hover { color: #fff; opacity: 1; }
 
         @media (max-width: 900px) {
@@ -300,21 +269,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="login-side">
             <div class="login-header">
-                <h2 id="header-title">Welcome Back</h2>
-                <p id="header-desc">Please Enter Your Details To Sign In</p>
+                <h2>Welcome Back</h2>
+                <p>Please Enter Your Details To Sign In</p>
             </div>
 
             <?php if (!empty($error)): ?>
                 <div class="alert-msg error-msg"><i class="fas fa-exclamation-circle"></i> <?php echo $error; ?></div>
             <?php endif; ?>
 
-            <?php if (!empty($success)): ?>
-                <div class="alert-msg success-msg"><i class="fas fa-check-circle"></i> <?php echo $success; ?></div>
-            <?php endif; ?>
-
             <form method="POST" action="">
-                <input type="hidden" name="action" id="form_action" value="login">
-
                 <div class="form-group">
                     <label class="form-label">Username</label>
                     <div class="input-group">
@@ -331,47 +294,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
 
-                <button type="submit" class="btn-submit" id="submit-btn">
+                <button type="submit" class="btn-submit">
                     Sign In <i class="fas fa-arrow-right"></i>
                 </button>
-
-                <div class="toggle-text">
-                    <span id="toggle-msg">Don't have an account?</span>
-                    <span class="toggle-link" onclick="toggleMode()">Sign Up Now</span>
-                </div>
 
                 <a href="../index.php" class="back-home">Return To Website</a>
             </form>
         </div>
 
     </div>
-
-    <script>
-        function toggleMode() {
-            const actionInput = document.getElementById('form_action');
-            const title = document.getElementById('header-title');
-            const desc = document.getElementById('header-desc');
-            const btn = document.getElementById('submit-btn');
-            const msg = document.getElementById('toggle-msg');
-            const link = document.querySelector('.toggle-link');
-
-            if (actionInput.value === 'login') {
-                actionInput.value = 'signup';
-                title.innerText = 'Create Account';
-                desc.innerText = 'Register as a new Admin';
-                btn.innerHTML = 'Sign Up <i class="fas fa-user-plus"></i>';
-                msg.innerText = 'Already have an account?';
-                link.innerText = 'Login Here';
-            } else {
-                actionInput.value = 'login';
-                title.innerText = 'Welcome Back';
-                desc.innerText = 'Please Enter Your Details To Sign In';
-                btn.innerHTML = 'Sign In <i class="fas fa-arrow-right"></i>';
-                msg.innerText = "Don't have an account?";
-                link.innerText = 'Sign Up Now';
-            }
-        }
-    </script>
 
 </body>
 </html>
