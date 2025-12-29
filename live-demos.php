@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Lexora Tech - Enterprise-grade digital architecture and interface systems">
-    <meta name="theme-color" content="#020203">
-
-    <title>Lexora Tech | DEMOS</title>
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
-
+    <?php
+    $pageTitle = "Lexora Tech | Live Demos";
+    $pageDesc = "Explore our curated collection of digital architecture, next-gen interfaces, and live project demos.";
+    include "includes/head.php";
+    ?>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 

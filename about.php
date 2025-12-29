@@ -1,19 +1,11 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
-    <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
-    <link rel="stylesheet" href="css/plugins/swiper.min.css">
-    <link rel="stylesheet" href="css/style-stylish.css">
-    <title>Lexora Tech | About Us</title>
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
-
+    <?php
+    $pageTitle = "Lexora Tech | About Us";
+    $pageDesc = "Meet the team behind the magic. Lexora Tech is a group of passionate developers and strategists innovating the future.";
+    include "includes/head.php";
+    ?>
     <style>
         /* --- Modern Team Section Styles (No Images) --- */
         

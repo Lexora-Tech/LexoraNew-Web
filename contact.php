@@ -1,26 +1,12 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- grid css -->
-    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
-    <!-- font awesome css -->
-    <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
-    <!-- swiper css -->
-    <link rel="stylesheet" href="css/plugins/swiper.min.css">
-    <!-- okai css -->
-    <link rel="stylesheet" href="css/style-stylish.css">
-    <title>Lexora Tech | Contact</title>
-    <!-- logo css -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
-
+    <?php
+    $pageTitle = "Lexora Tech | Contact Us";
+    $pageDesc = "Get in touch with Lexora Tech. Call, write, or visit our office in Sri Lanka for your next digital project.";
+    include "includes/head.php";
+    ?>
 </head>
-
 <body>
 
     <!-- wrapper -->

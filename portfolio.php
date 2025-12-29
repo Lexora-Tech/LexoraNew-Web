@@ -1,22 +1,13 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
-    <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
-    <link rel="stylesheet" href="css/plugins/swiper.min.css">
-    <link rel="stylesheet" href="css/style-stylish.css">
-    <title>Lexora Tech | Projects</title>
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
-
-   
-
+    <?php
+    $pageTitle = "Lexora Tech | Portfolio";
+    $pageDesc = "A showcase of our selected works including high-performance web applications, POS systems, and digital experiences.";
+    include "includes/head.php";
+    $extraCss = '<link rel="stylesheet" href="css/portfolio.css">'; 
+    ?>
 </head>
-
 <body>
 
     <div id="smooth-wrapper" class="mil-page-wrapper">

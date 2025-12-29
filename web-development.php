@@ -1,27 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- grid css -->
-    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
-    <!-- font awesome css -->
-    <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
-    <!-- swiper css -->
-    <link rel="stylesheet" href="css/plugins/swiper.min.css">
-    <!-- okai css -->
-    <link rel="stylesheet" href="css/style-stylish.css">
-    <!-- page title -->
-    <title>Lexora Tech | Web Development</title>
-    <!-- logo css -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
-
+    <?php
+    $pageTitle = "Lexora Tech | Web Development";
+    $pageDesc = "Scalable, high-performance web solutions. We build custom websites and applications using React, Node.js, and Laravel.";
+    include "includes/head.php";
+    ?>
 </head>
-
 <body>
 
     <!-- wrapper -->

@@ -1,24 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- grid css -->
-    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
-    <!-- font awesome css -->
-    <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
-    <!-- swiper css -->
-    <link rel="stylesheet" href="css/plugins/swiper.min.css">
-    <!-- main style -->
-    <link rel="stylesheet" href="css/style-stylish.css">
-
-    <title>Lexora Tech | Terms & Conditions</title>
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
+    <?php
+    $pageTitle = "Lexora Tech | Terms & Conditions";
+    $pageDesc = "Read the terms and conditions governing the use of Lexora Tech's website and services.";
+    include "includes/head.php";
+    ?>
 </head>
-
 <body>
 
     <div id="smooth-wrapper" class="mil-page-wrapper">
