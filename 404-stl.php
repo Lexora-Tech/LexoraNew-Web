@@ -1,25 +1,12 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- grid css -->
-    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
-    <!-- font awesome css -->
-    <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
-    <!-- swiper css -->
-    <link rel="stylesheet" href="css/plugins/swiper.min.css">
-    <!-- okai css -->
-    <link rel="stylesheet" href="css/style-stylish.css">
-    <!-- page title -->
-    <title>Lexora Tech</title>
-
+    <?php
+    $pageTitle = "Lexora Tech | Page Not Found";
+    $pageDesc = "Oops! The page you are looking for does not exist. Return to the Lexora Tech homepage.";
+    include "includes/head.php";
+    ?>
 </head>
-
 <body>
 
     <!-- wrapper -->

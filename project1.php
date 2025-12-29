@@ -1,22 +1,13 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
-    <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
-    <link rel="stylesheet" href="css/plugins/swiper.min.css">
-    <link rel="stylesheet" href="css/style-stylish.css">
-    <title>Lexora Tech | Missed Lesson Project</title>
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
-    
-    
-
+    <?php
+    $pageTitle = "Lexora Tech | Missed Lesson Project";
+    $pageDesc = "Case Study: Missed Lesson System. A centralized digital platform ensuring educational continuity and safety for children in Sri Lanka.";
+    $extraCss = '<link rel="stylesheet" href="css/project1.css">';
+    include "includes/head.php";
+    ?>
 </head>
-
 <body>
 
     <div id="smooth-wrapper" class="mil-page-wrapper">

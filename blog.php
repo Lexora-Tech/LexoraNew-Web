@@ -44,24 +44,16 @@ function pageUrl($pageNum, $search) {
 ?>
 
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
-    <link rel="stylesheet" href="css/plugins/fontawesome.min.css">
-    <link rel="stylesheet" href="css/plugins/swiper.min.css">
-    <link rel="stylesheet" href="css/style-stylish.css">
-    <title>Lexora Tech | Insights & News</title>
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo/logo.png" />
-
-    
-
+    <?php
+    $pageTitle = "Lexora Tech | Insights & News";
+    $pageDesc = "Stay updated with the latest insights, news, and tutorials from Lexora Tech. Explore our blog for tech trends and digital solutions.";
+    // This moves your blog CSS into the head for faster loading
+    $extraCss = '<link rel="stylesheet" href="css/blog.css">'; 
+    include "includes/head.php";
+    ?>
 </head>
-
 <body>
 
     <div id="smooth-wrapper" class="mil-page-wrapper">
