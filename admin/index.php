@@ -2,57 +2,29 @@
 session_start();
 include("../includes/db.php");
 
-$error = "";
-$success = "";
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // 1. Sanitize Username (prevent SQL Injection)
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    
-    // 2. Get Raw Password (DO NOT hash it yet)
-    $password_raw = $_POST['password']; 
-    
-    $action = $_POST['action'];
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
 
-    if ($action == "signup") {
-        // --- SECURE SIGNUP ---
-        
-        $check_sql = "SELECT * FROM admins WHERE username='$username'";
-        $check_result = mysqli_query($conn, $check_sql);
+/*     $sql = "SELECT * FROM admins WHERE username='$username' AND password='$password'";
 
-        if (mysqli_num_rows($check_result) > 0) {
-            $error = "Username already taken.";
-        } else {
-            // 3. SECURE HASHING: This generates a random salt + hash
-            $hashed_password = password_hash($password_raw, PASSWORD_DEFAULT);
+    // ADD THIS TEMPORARILY:
+    echo "Type Username: " . $username . "<br>";
+    echo "Hashed Password: " . $password . "<br>";
+    echo "Running SQL: " . $sql;
+    exit(); */
 
-            $insert_sql = "INSERT INTO admins (username, password) VALUES ('$username', '$hashed_password')";
-            if (mysqli_query($conn, $insert_sql)) {
-                $success = "Secure account created! Please login.";
-            } else {
-                $error = "Database error: " . mysqli_error($conn);
-            }
-        }
 
+
+    $sql = "SELECT * FROM admins WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) == 1) {
+        $_SESSION['admin'] = $username;
+        header("Location: ./dashboard.php");
+        exit();
     } else {
-        // --- SECURE LOGIN ---
-        
-        // 4. Select user by USERNAME only first
-        $sql = "SELECT * FROM admins WHERE username='$username'";
-        $result = mysqli_query($conn, $sql);
-
-        if ($row = mysqli_fetch_assoc($result)) {
-            // 5. VERIFY: Check if raw password matches the stored hash
-            if (password_verify($password_raw, $row['password'])) {
-                $_SESSION['admin'] = $username;
-                header("Location: ./dashboard.php");
-                exit();
-            } else {
-                $error = "Invalid password.";
-            }
-        } else {
-            $error = "User not found.";
-        }
+        $error = "Invalid credentials. Please try again.";
     }
 }
 ?>
@@ -65,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Admin Portal | Lexora Tech</title>
     <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
     
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -80,8 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             --text-muted: #94a3b8;
             --error-bg: rgba(239, 68, 68, 0.2);
             --error-text: #fca5a5;
-            --success-bg: rgba(34, 197, 94, 0.2);
-            --success-text: #86efac;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -102,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             overflow: hidden;
         }
 
-        /* --- ORBS --- */
+        /* --- ANIMATED BACKGROUND ORBS --- */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -119,7 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             50% { transform: translate(30px, 50px); }
         }
 
-        /* --- GLASS CARD --- */
+        /* --- GLASS CARD CONTAINER --- */
         .glass-container {
             position: relative;
             z-index: 10;
@@ -136,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             overflow: hidden;
         }
 
-        /* --- LEFT SIDE --- */
+        /* --- LEFT SIDE (VISUAL) --- */
         .visual-side {
             flex: 1;
             padding: 60px;
@@ -180,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             width: fit-content;
         }
 
-        /* --- RIGHT SIDE --- */
+        /* --- RIGHT SIDE (LOGIN) --- */
         .login-side {
             flex: 1;
             padding: 60px;
@@ -190,11 +161,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             position: relative;
         }
 
-        .login-header { margin-bottom: 30px; }
+        .login-header { margin-bottom: 40px; }
         .login-header h2 { font-size: 2rem; font-weight: 600; color: #fff; margin-bottom: 10px; }
         .login-header p { color: var(--text-muted); }
 
-        .form-group { margin-bottom: 20px; }
+        /* Form Styling */
+        .form-group { margin-bottom: 24px; }
         .form-label { display: block; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 8px; margin-left: 4px; }
         
         .input-group { position: relative; }
@@ -229,6 +201,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         .input-field:focus + .input-icon { color: var(--primary); }
 
+        /* Button */
         .btn-submit {
             width: 100%;
             padding: 16px;
@@ -245,7 +218,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             align-items: center;
             gap: 10px;
             box-shadow: 0 4px 20px rgba(255, 180, 0, 0.2);
-            margin-top: 10px;
         }
 
         .btn-submit:hover {
@@ -254,7 +226,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
 
-        .alert-msg {
+        /* Error & Links */
+        .error-msg {
+            background: var(--error-bg);
+            color: var(--error-text);
             padding: 12px 16px;
             border-radius: 10px;
             font-size: 0.9rem;
@@ -262,17 +237,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             display: flex;
             align-items: center;
             gap: 10px;
+            border: 1px solid rgba(239, 68, 68, 0.2);
         }
-        .error-msg { background: var(--error-bg); color: var(--error-text); border: 1px solid rgba(239, 68, 68, 0.2); }
-        .success-msg { background: var(--success-bg); color: var(--success-text); border: 1px solid rgba(34, 197, 94, 0.2); }
 
-        .toggle-text { text-align: center; margin-top: 25px; font-size: 0.9rem; color: var(--text-muted); }
-        .toggle-link { color: var(--primary); font-weight: 600; cursor: pointer; text-decoration: none; margin-left: 5px; }
-        .toggle-link:hover { text-decoration: underline; }
+        .back-home {
+            text-align: center;
+            margin-top: 25px;
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .back-home:hover { color: #fff; }
 
-        .back-home { text-align: center; margin-top: 15px; display: block; color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: 0.3s; opacity: 0.7; }
-        .back-home:hover { color: #fff; opacity: 1; }
-
+        /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             .glass-container { flex-direction: column; height: auto; width: 95%; }
             .visual-side { display: none; }
@@ -283,38 +262,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
+    <!-- Background Orbs -->
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
 
     <div class="glass-container">
         
+        <!-- Left Side: Brand Visuals -->
         <div class="visual-side">
             <div class="visual-content">
-                <div class="glass-badge"><i class="fas fa-shield-alt"></i> Secure Admin Portal</div>
+                <div class="glass-badge">
+                    <i class="fas fa-shield-alt"></i> Admin Portal
+                </div>
                 <img src="../img/logo/logoWhite.png" alt="Lexora" style="height: 100px; margin-bottom: 30px; opacity: 0.9;">
                  <h1>Administration Center</h1>
                 <p>Experience Unparalleled Control Over Your Complex Digital Ecosystem Through Our Robust, Enterprise-Grade, And Fully Secure Administrative Interface.</p>
             </div>
         </div>
 
+        <!-- Right Side: Login Form -->
         <div class="login-side">
             <div class="login-header">
-                <h2 id="header-title">Welcome Back</h2>
-                <p id="header-desc">Please Enter Your Details To Sign In</p>
+                <h2>Welcome Back</h2>
+                <p>Please Enter Your Details To Sign In</p>
             </div>
 
-            <?php if (!empty($error)): ?>
-                <div class="alert-msg error-msg"><i class="fas fa-exclamation-circle"></i> <?php echo $error; ?></div>
-            <?php endif; ?>
-
-            <?php if (!empty($success)): ?>
-                <div class="alert-msg success-msg"><i class="fas fa-check-circle"></i> <?php echo $success; ?></div>
+            <?php if (isset($error)): ?>
+                <div class="error-msg">
+                    <i class="fas fa-exclamation-circle"></i> <?php echo $error; ?>
+                </div>
             <?php endif; ?>
 
             <form method="POST" action="">
-                <input type="hidden" name="action" id="form_action" value="login">
-
                 <div class="form-group">
                     <label class="form-label">Username</label>
                     <div class="input-group">
@@ -331,47 +311,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
 
-                <button type="submit" class="btn-submit" id="submit-btn">
+                <button type="submit" class="btn-submit">
                     Sign In <i class="fas fa-arrow-right"></i>
                 </button>
 
-                <div class="toggle-text">
-                    <span id="toggle-msg">Don't have an account?</span>
-                    <span class="toggle-link" onclick="toggleMode()">Sign Up Now</span>
-                </div>
-
-                <a href="../index.php" class="back-home">Return To Website</a>
+                <a href="../index.php" class="back-home">
+                    Return To Website
+                </a>
             </form>
         </div>
 
     </div>
-
-    <script>
-        function toggleMode() {
-            const actionInput = document.getElementById('form_action');
-            const title = document.getElementById('header-title');
-            const desc = document.getElementById('header-desc');
-            const btn = document.getElementById('submit-btn');
-            const msg = document.getElementById('toggle-msg');
-            const link = document.querySelector('.toggle-link');
-
-            if (actionInput.value === 'login') {
-                actionInput.value = 'signup';
-                title.innerText = 'Create Account';
-                desc.innerText = 'Register as a new Admin';
-                btn.innerHTML = 'Sign Up <i class="fas fa-user-plus"></i>';
-                msg.innerText = 'Already have an account?';
-                link.innerText = 'Login Here';
-            } else {
-                actionInput.value = 'login';
-                title.innerText = 'Welcome Back';
-                desc.innerText = 'Please Enter Your Details To Sign In';
-                btn.innerHTML = 'Sign In <i class="fas fa-arrow-right"></i>';
-                msg.innerText = "Don't have an account?";
-                link.innerText = 'Sign Up Now';
-            }
-        }
-    </script>
 
 </body>
 </html>
