@@ -113,7 +113,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <!-- <div class="col-lg-4">
                                     <div class="mil-service-card-lg mil-mb160">
                                         <h3 class="mil-head3 mil-mb60 mil-up">Marketing and SMM</h3>
                                         <p class="mil-text-md mil-shortened mil-mb60 mil-up">We drive engagement and growth through strategic marketing and social media management.</p>
@@ -130,7 +130,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="col-lg-4">
                                     <div class="mil-service-card-lg mil-mb160">
@@ -209,7 +209,7 @@
                             </div>
                             <div class="mil-image-box">
                                 <div class="mil-image-frame">
-                                    <img src="img/pages/5.png" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
+                                    <img src="img/home-4/5.png" alt="img" class="mil-scale-img" data-value-1="1.20" data-value-2="1">
                                 </div>
                             </div>
                         </div>

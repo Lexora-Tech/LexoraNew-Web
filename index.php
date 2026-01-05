@@ -159,7 +159,7 @@
                                                 </a>
                                             </div>
                                         </li>
-                                        <li class="mil-service-item mil-up">
+                                       <!--  <li class="mil-service-item mil-up">
                                             <div class="mil-item-text mil-mb30">
                                                 <h3 class="mil-head3 mil-mb30 mil-up">Marketing and SMM</h3>
                                                 <p class="mil-text-md mil-shortened mil-deco-text mil-max-3row-text mil-up">Creation of impactful advertising campaigns and marketing materials designed to increase brand visibility, engage target audiences, and drive customer acquisition.</p>
@@ -170,7 +170,7 @@
                                                     <span>Read more</span>
                                                 </a>
                                             </div>
-                                        </li>
+                                        </li> -->
                                         <li class="mil-service-item mil-768-mb60 mil-up">
                                             <div class="mil-item-text mil-mb30">
                                                 <h3 class="mil-head3 mil-mb30 mil-up">WEB Development</h3>
