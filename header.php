@@ -88,6 +88,7 @@
                                                 <!--  <li><a href="team-stl.php">Team</a></li> -->
                                                 <li><a href="contact.php">Contact</a></li>
                                                 <li><a href="about.php">About Us</a></li>
+                                                 <li><a href="lexora-workspace.php">Lexora Workspace</a></li>
                                                 <!-- <li><a href="">Publication</a></li>
                                                     <li><a href="">Blog</a></li> -->
 

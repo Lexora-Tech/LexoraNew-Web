@@ -469,7 +469,7 @@
             <div class="content-area">
 
                 <section class="featured-section">
-                    <a href="teleprompter/teleprompter.php" class="featured-card">
+                    <a href="https://apps.lexoratech.com/teleprompter/teleprompter.php" class="featured-card">
                         <div class="featured-mesh"></div>
                         <div class="featured-grid"></div>
                         <div class="featured-content">
@@ -537,7 +537,7 @@
 
                     <div class="tools-grid" id="toolsGrid">
 
-                        <a href="voicegen/voicegen.php" class="tool-card">
+                        <a href="https://apps.lexoratech.com/voicegen/voicegen.php" class="tool-card">
                             <div class="card-glass"></div>
                             <div class="card-border-glow"></div>
                             <div class="card-header">
@@ -555,7 +555,7 @@
                             <div class="card-mesh pink-mesh"></div>
                         </a>
 
-                        <a href="thumbgrab/thumbgrab.php" class="tool-card">
+                        <a href="https://apps.lexoratech.com/thumbgrab/thumbgrab.php" class="tool-card">
                             <div class="card-glass"></div>
                             <div class="card-border-glow"></div>
                             <div class="card-header">
@@ -573,7 +573,7 @@
                             <div class="card-mesh red-mesh"></div>
                         </a>
 
-                        <a href="qrcodegen/qrcodegen.php" class="tool-card">
+                        <a href="https://apps.lexoratech.com/qrcodegen/qrcodegen.php" class="tool-card">
                             <div class="card-glass"></div>
                             <div class="card-border-glow"></div>
                             <div class="card-header">
@@ -591,7 +591,7 @@
                             <div class="card-mesh green-mesh"></div>
                         </a>
 
-                        <a href="chromapick/chromapick.php" class="tool-card">
+                        <a href="https://apps.lexoratech.com/chromapick/chromapick.php" class="tool-card">
                             <div class="card-glass"></div>
                             <div class="card-border-glow"></div>
                             <div class="card-header">
@@ -609,7 +609,7 @@
                             <div class="card-mesh indigo-mesh"></div>
                         </a>
 
-                        <a href="lexorapdf/lexorapdf.php" class="tool-card">
+                        <a href="https://apps.lexoratech.com/lexorapdf/lexorapdf.php" class="tool-card">
                             <div class="card-glass"></div>
                             <div class="card-border-glow"></div>
                             <div class="card-header">
@@ -627,7 +627,7 @@
                             <div class="card-mesh blue-mesh"></div>
                         </a>
 
-                        <a href="securepass/securepass.php" class="tool-card">
+                        <a href="https://apps.lexoratech.com/securepass/securepass.php" class="tool-card">
                             <div class="card-glass"></div>
                             <div class="card-border-glow"></div>
                             <div class="card-header">
@@ -645,7 +645,7 @@
                             <div class="card-mesh yellow-mesh"></div>
                         </a>
 
-                        <a href="socialmock/socialmock.php" class="tool-card">
+                        <a href="https://apps.lexoratech.com/socialmock/socialmock.php" class="tool-card">
                             <div class="card-glass"></div>
                             <div class="card-border-glow"></div>
                             <div class="card-header">
@@ -663,7 +663,7 @@
                             <div class="card-mesh cyan-mesh"></div>
                         </a>
 
-                        <a href="focusflow/focusflow.php" class="tool-card">
+                        <a href="https://apps.lexoratech.com/focusflow/focusflow.php" class="tool-card">
                             <div class="card-glass"></div>
                             <div class="card-border-glow"></div>
                             <div class="card-header">
@@ -681,7 +681,7 @@
                             <div class="card-mesh violet-mesh"></div>
                         </a>
 
-                        <a href="quickconvert/quickconvert.php" class="tool-card">
+                        <a href="https://apps.lexoratech.com/quickconvert/quickconvert.php" class="tool-card">
                             <div class="card-glass"></div>
                             <div class="card-border-glow"></div>
                             <div class="card-header">
@@ -699,7 +699,7 @@
                             <div class="card-mesh orange-mesh"></div>
                         </a>
 
-                        <a href="imgoptim/imgoptim.php" class="tool-card">
+                        <a href="https://apps.lexoratech.com/imgoptim/imgoptim.php" class="tool-card">
                             <div class="card-glass"></div>
                             <div class="card-border-glow"></div>
                             <div class="card-header">
@@ -717,7 +717,7 @@
                             <div class="card-mesh teal-mesh"></div>
                         </a>
 
-                        <a href="codeformat/codeformat.php" class="tool-card">
+                        <a href="https://apps.lexoratech.com/codeformat/codeformat.php" class="tool-card">
                             <div class="card-glass"></div>
                             <div class="card-border-glow"></div>
                             <div class="card-header">
@@ -735,7 +735,7 @@
                             <div class="card-mesh purple-mesh"></div>
                         </a>
 
-                        <a href="diffcheck/diffcheck.php" class="tool-card">
+                        <a href="https://apps.lexoratech.com/diffcheck/diffcheck.php" class="tool-card">
                             <div class="card-glass"></div>
                             <div class="card-border-glow"></div>
                             <div class="card-header">
