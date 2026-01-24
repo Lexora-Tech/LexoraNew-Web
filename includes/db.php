@@ -1,7 +1,7 @@
  <?php
   $host = 'localhost';
-  $db = 'magaqmco_lexoraadmin';
-  $user = 'magaqmco_lexora';
+  $db = 'buwaggif_lexoraadmin';
+  $user = 'buwaggif_lexora';
   $pass = 'Lexora12345@#';
 
  /*  $db = 'blog_system';
