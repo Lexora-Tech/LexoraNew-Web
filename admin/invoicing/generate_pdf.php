@@ -1,9 +1,9 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-include("../../includes/auth.php");
-include("../../includes/db.php");
-require_once("../../vendor/autoload.php");
+include(__DIR__ . "/../../includes/auth.php");
+include(__DIR__ . "/../../includes/db.php");
+require_once(__DIR__ . "/../../vendor/autoload.php");
 
 if (!isset($_GET['type']) || !isset($_GET['id'])) {
     die("Missing parameters");

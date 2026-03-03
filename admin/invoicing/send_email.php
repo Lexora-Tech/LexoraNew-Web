@@ -1,7 +1,7 @@
 <?php
-include("../../includes/auth.php");
-include("../../includes/db.php");
-require_once("../../vendor/autoload.php");
+include(__DIR__ . "/../../includes/auth.php");
+include(__DIR__ . "/../../includes/db.php");
+require_once(__DIR__ . "/../../vendor/autoload.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
