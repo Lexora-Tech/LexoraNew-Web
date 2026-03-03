@@ -77,23 +77,15 @@ function buildDocumentPDF($conn, $type, $id)
         $textStartX = $logoX + $logoW + 5;
     }
 
-    // Company name
-    $pdf->SetXY($textStartX, 11);
+    // Company name only in header (contact details go to footer)
+    $pdf->SetXY($textStartX, 12);
     $pdf->SetFont('helvetica', 'B', 16);
     $pdf->SetTextColor(30, 30, 30);
     $pdf->Cell(70, 7, $company['company_name'], 0, 1, 'L');
-
-    // Company details
     $pdf->SetX($textStartX);
-    $pdf->SetFont('helvetica', '', 7.5);
-    $pdf->SetTextColor(130, 130, 130);
-    $line1Parts = array_filter([$company['company_email'] ?? '', $company['company_phone'] ?? '', $company['company_website'] ?? '']);
-    if ($line1Parts)
-        $pdf->Cell(80, 3.5, implode('  |  ', $line1Parts), 0, 1, 'L');
-    if ($company['company_address'] ?? '') {
-        $pdf->SetX($textStartX);
-        $pdf->Cell(80, 3.5, $company['company_address'], 0, 1, 'L');
-    }
+    $pdf->SetFont('helvetica', '', 8);
+    $pdf->SetTextColor(150, 150, 150);
+    $pdf->Cell(70, 4, 'Creative Design & Tech Solutions', 0, 1, 'L');
 
     // ─── Right side: Document type + number ───
     $pdf->SetXY(140, 10);
@@ -423,20 +415,56 @@ function buildDocumentPDF($conn, $type, $id)
 
     // ━━━━━━ FOOTER ━━━━━━
     $footerNote = $company['invoice_footer_note'] ?? '';
+    $pdf->Ln(8);
+
+    // Dark footer bar
+    $footY = $pdf->GetY();
+    $footH = 22;
+    // Ensure footer doesn't go past page
+    $pageH = $pdf->getPageHeight();
+    if ($footY + $footH + 4 > $pageH) {
+        $pdf->AddPage();
+        $footY = 20;
+    }
+    $pdf->SetFillColor(40, 40, 40);
+    $pdf->Rect(0, $footY, 210, $footH, 'F');
+    // Gold top border on footer
+    $pdf->SetFillColor(255, 180, 0);
+    $pdf->Rect(0, $footY, 210, 0.8, 'F');
+
+    // Footer left — company contact
+    $pdf->SetXY(18, $footY + 3);
+    $pdf->SetFont('helvetica', 'B', 8);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->Cell(80, 4, $company['company_name'] ?? 'Lexora Tech', 0, 1, 'L');
+    $pdf->SetX(18);
+    $pdf->SetFont('helvetica', '', 7);
+    $pdf->SetTextColor(180, 180, 180);
+    $footParts = array_filter([
+        ($company['company_email'] ?? ''),
+        ($company['company_phone'] ?? ''),
+    ]);
+    if ($footParts)
+        $pdf->Cell(90, 3.5, implode('  |  ', $footParts), 0, 1, 'L');
+    $pdf->SetX(18);
+    $footParts2 = array_filter([
+        ($company['company_website'] ?? ''),
+        ($company['company_address'] ?? ''),
+    ]);
+    if ($footParts2)
+        $pdf->Cell(90, 3.5, implode('  |  ', $footParts2), 0, 1, 'L');
+
+    // Footer right — thank you note
     if ($footerNote) {
-        $pdf->Ln(6);
-        $pdf->SetDrawColor(230, 230, 230);
-        $pdf->SetLineWidth(0.2);
-        $pdf->Line(18, $pdf->GetY(), 192, $pdf->GetY());
-        $pdf->Ln(4);
+        $pdf->SetXY(120, $footY + 6);
         $pdf->SetFont('helvetica', 'I', 7.5);
-        $pdf->SetTextColor(170, 170, 170);
-        $pdf->MultiCell(0, 4, $footerNote, 0, 'C');
+        $pdf->SetTextColor(200, 200, 200);
+        $pdf->MultiCell(72, 3.5, $footerNote, 0, 'R');
     }
 
-    // Bottom accent
+    // Bottom gold accent line
     $pdf->SetFillColor(255, 180, 0);
-    $pdf->Rect(0, $pdf->getPageHeight() - 2.5, 210, 2.5, 'F');
+    $pdf->Rect(0, $footY + $footH, 210, 2, 'F');
 
     return $pdf;
 }
@@ -623,6 +651,31 @@ function buildReceiptPDF($conn, $payment_id)
     // Bottom accent
     $pdf->SetFillColor(16, 185, 129);
     $pdf->Rect(0, $pdf->getPageHeight() - 2.5, 210, 2.5, 'F');
+
+    return $pdf;
+}
+?>  $pdf->SetFont('helvetica', 'B', 8);
+    $pdf->SetTextColor(255, 255, 255);
+    $pdf->Cell(80, 4, $company['company_name'] ?? 'Lexora Tech', 0, 1, 'L');
+    $pdf->SetX(18);
+    $pdf->SetFont('helvetica', '', 7);
+    $pdf->SetTextColor(180, 180, 180);
+    $fp = array_filter([($company['company_email'] ?? ''), ($company['company_phone'] ?? '')]);
+    if ($fp)
+        $pdf->Cell(90, 3.5, implode('  |  ', $fp), 0, 1, 'L');
+    $pdf->SetX(18);
+    $fp2 = array_filter([($company['company_website'] ?? ''), ($company['company_address'] ?? '')]);
+    if ($fp2)
+        $pdf->Cell(90, 3.5, implode('  |  ', $fp2), 0, 1, 'L');
+
+    $fnote = $company['invoice_footer_note'] ?? 'Thank you for your payment!';
+    $pdf->SetXY(120, $footY + 6);
+    $pdf->SetFont('helvetica', 'I', 7.5);
+    $pdf->SetTextColor(200, 200, 200);
+    $pdf->MultiCell(72, 3.5, $fnote, 0, 'R');
+
+    $pdf->SetFillColor(16, 185, 129);
+    $pdf->Rect(0, $footY + $footH, 210, 2, 'F');
 
     return $pdf;
 }
