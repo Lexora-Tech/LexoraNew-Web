@@ -161,6 +161,7 @@ function buildDocumentPDF($conn, $type, $id)
         $pdf->SetX(18);
         $pdf->Cell(80, 4.5, $addr, 0, 1, 'L');
     }
+    $leftColBottom = $pdf->GetY(); // track left column bottom
 
     // Right — Document details
     $pdf->SetXY(125, $yInfo);
@@ -186,8 +187,10 @@ function buildDocumentPDF($conn, $type, $id)
         $pdf->SetTextColor(30, 30, 30);
         $pdf->Cell(40, 5, $d[1], 0, 1, 'L');
     }
+    $rightColBottom = $pdf->GetY(); // track right column bottom
 
-    $pdf->Ln(8);
+    // Move Y past whichever column is taller + generous gap
+    $pdf->SetY(max($leftColBottom, $rightColBottom) + 10);
 
     // ━━━━━━ ITEMS TABLE ━━━━━━
     $tX = 18; // table start X
