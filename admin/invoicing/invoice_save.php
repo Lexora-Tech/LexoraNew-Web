@@ -53,7 +53,7 @@ if (isset($_POST['items']) && is_array($_POST['items'])) {
         $line_total = ($qty * $price) + ($qty * $price * $tax_r / 100) - $disc;
 
         $stmt = $conn->prepare("INSERT INTO invoice_items (item_type, parent_id, description, quantity, unit_price, tax_rate, discount, line_total, sort_order) VALUES ('invoice', ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isddddi", $id, $desc, $qty, $price, $tax_r, $disc, $line_total, $sort);
+        $stmt->bind_param("isdddddi", $id, $desc, $qty, $price, $tax_r, $disc, $line_total, $sort);
         $stmt->execute();
         $stmt->close();
         $sort++;

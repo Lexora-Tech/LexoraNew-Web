@@ -26,7 +26,7 @@ $invoice_number = "{$prefix}-{$dateStr}-{$seq}";
 
 // Create invoice from quotation
 $stmt = $conn->prepare("INSERT INTO invoices (invoice_number, quotation_id, customer_id, status, issue_date, due_date, subtotal, tax_amount, discount_amount, grand_total, currency, payment_terms, notes) VALUES (?, ?, ?, 'draft', CURDATE(), DATE_ADD(CURDATE(), INTERVAL 30 DAY), ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("siiddddss",
+$stmt->bind_param("siiddddsss",
     $invoice_number, $quo_id, $quotation['customer_id'],
     $quotation['subtotal'], $quotation['tax_amount'], $quotation['discount_amount'], $quotation['grand_total'],
     $quotation['currency'], $quotation['payment_terms'], $quotation['notes']

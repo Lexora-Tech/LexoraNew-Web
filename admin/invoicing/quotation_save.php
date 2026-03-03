@@ -39,7 +39,7 @@ else {
     $quotation_number = "{$prefix}-{$dateStr}-{$seq}";
 
     $stmt = $conn->prepare("INSERT INTO quotations (quotation_number, customer_id, status, issue_date, valid_until, subtotal, tax_amount, discount_amount, grand_total, payment_terms, notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sisssdddss", $quotation_number, $customer_id, $status, $issue_date, $valid_until, $subtotal, $tax_amount, $discount_amount, $grand_total, $payment_terms, $notes);
+    $stmt->bind_param("sisssddddss", $quotation_number, $customer_id, $status, $issue_date, $valid_until, $subtotal, $tax_amount, $discount_amount, $grand_total, $payment_terms, $notes);
     $stmt->execute();
     $id = $stmt->insert_id;
     $stmt->close();
@@ -57,7 +57,7 @@ if (isset($_POST['items']) && is_array($_POST['items'])) {
         $line_total = ($qty * $price) + ($qty * $price * $tax_r / 100) - $disc;
 
         $stmt = $conn->prepare("INSERT INTO invoice_items (item_type, parent_id, description, quantity, unit_price, tax_rate, discount, line_total, sort_order) VALUES ('quotation', ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isddddi", $id, $desc, $qty, $price, $tax_r, $disc, $line_total, $sort);
+        $stmt->bind_param("isdddddi", $id, $desc, $qty, $price, $tax_r, $disc, $line_total, $sort);
         $stmt->execute();
         $stmt->close();
         $sort++;
