@@ -1,5 +1,5 @@
-<?php 
-include("../includes/auth.php"); 
+<?php
+include("../includes/auth.php");
 // We removed the PHP $success check because JS handles it now
 ?>
 <!DOCTYPE html>
@@ -10,8 +10,9 @@ include("../includes/auth.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Blog | Lexora Admin</title>
     <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -40,40 +41,149 @@ include("../includes/auth.php");
             --border: #333333;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background: var(--bg-body); color: var(--text-main); transition: 0.3s ease; }
-        a { text-decoration: none; color: inherit; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: var(--bg-body);
+            color: var(--text-main);
+            transition: 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
         /* --- LAYOUT --- */
-        .dashboard-container { display: flex; min-height: 100vh; }
-        
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
         /* Sidebar */
         .sidebar {
-            width: var(--sidebar-width); background: var(--bg-sidebar); color: #fff; position: fixed; height: 100vh;
-            left: 0; top: 0; z-index: 100; display: flex; flex-direction: column; padding: 20px;
-            border-right: 1px solid rgba(255,255,255,0.05); transition: 0.3s ease;
+            width: var(--sidebar-width);
+            background: var(--bg-sidebar);
+            color: #fff;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s ease;
         }
-        .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; padding: 0 10px; }
-        .brand img { height: 32px; width: auto; }
-        .brand span { font-size: 18px; font-weight: 700; color: #fff; }
-        .menu-label { font-size: 12px; text-transform: uppercase; color: #666; margin-bottom: 10px; padding-left: 10px; font-weight: 600; }
-        .nav-item { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border-radius: 8px; color: #a0a0a0; transition: 0.3s; margin-bottom: 5px; }
-        .nav-item:hover, .nav-item.active { background: rgba(255, 180, 0, 0.1); color: var(--primary); }
-        .nav-item i { width: 20px; text-align: center; font-size: 16px; }
-        
-        .main-content { flex: 1; margin-left: var(--sidebar-width); display: flex; flex-direction: column; }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+
+        .brand img {
+            height: 32px;
+            width: auto;
+        }
+
+        .brand span {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .menu-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: #a0a0a0;
+            transition: 0.3s;
+            margin-bottom: 5px;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(255, 180, 0, 0.1);
+            color: var(--primary);
+        }
+
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            display: flex;
+            flex-direction: column;
+        }
 
         /* Header */
         header {
-            height: var(--header-height); background: var(--bg-card); border-bottom: 1px solid var(--border);
-            display: flex; align-items: center; justify-content: space-between; padding: 0 30px; position: sticky; top: 0; z-index: 90;
+            height: var(--header-height);
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            position: sticky;
+            top: 0;
+            z-index: 90;
         }
-        .header-title h2 { font-size: 20px; font-weight: 600; }
-        .user-profile { display: flex; align-items: center; gap: 10px; }
-        .avatar { width: 35px; height: 35px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-weight: bold; }
+
+        .header-title h2 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .avatar {
+            width: 35px;
+            height: 35px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+        }
 
         /* --- FORM LAYOUT --- */
-        .content-wrapper { padding: 30px; max-width: 1400px; margin: 0 auto; width: 100%; }
+        .content-wrapper {
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
 
         .form-grid {
             display: grid;
@@ -86,17 +196,36 @@ include("../includes/auth.php");
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
         }
 
-        .card-header { margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
-        .card-header h3 { font-size: 16px; font-weight: 700; color: var(--text-main); }
+        .card-header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .card-header h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
 
         /* Inputs */
-        .form-group { margin-bottom: 20px; }
-        .form-label { display: block; font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 8px; }
-        
-        .form-input, .form-textarea {
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-textarea {
             width: 100%;
             background: var(--bg-body);
             border: 1px solid var(--border);
@@ -108,12 +237,17 @@ include("../includes/auth.php");
             outline: none;
         }
 
-        .form-input:focus, .form-textarea:focus {
+        .form-input:focus,
+        .form-textarea:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(255, 180, 0, 0.1);
         }
 
-        .form-textarea { min-height: 120px; resize: vertical; line-height: 1.6; }
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+            line-height: 1.6;
+        }
 
         /* Image Upload Zones */
         .upload-zone {
@@ -132,17 +266,39 @@ include("../includes/auth.php");
             justify-content: center;
             overflow: hidden;
         }
-        
-        .upload-zone.small { height: 140px; }
 
-        .upload-zone:hover { border-color: var(--primary); background: rgba(255, 180, 0, 0.05); }
+        .upload-zone.small {
+            height: 140px;
+        }
 
-        .upload-icon { font-size: 24px; color: var(--text-muted); margin-bottom: 10px; }
-        .upload-text { font-size: 12px; color: var(--text-muted); }
-        .upload-input { display: none; }
+        .upload-zone:hover {
+            border-color: var(--primary);
+            background: rgba(255, 180, 0, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 24px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .upload-text {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .upload-input {
+            display: none;
+        }
 
         .preview-img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
         }
 
         /* Buttons & Progress */
@@ -154,28 +310,89 @@ include("../includes/auth.php");
         }
 
         .btn-submit {
-            background: var(--primary); color: #000; padding: 12px 30px; border-radius: 8px; 
-            font-weight: 700; border: none; cursor: pointer; transition: 0.3s;
-            display: flex; align-items: center; gap: 8px;
+            background: var(--primary);
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .btn-submit:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+        .btn-submit:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
 
         .progress-container {
-            flex: 1; height: 6px; background: var(--border); border-radius: 10px; overflow: hidden; display: none;
+            flex: 1;
+            height: 6px;
+            background: var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            display: none;
         }
-        .progress-bar { height: 100%; background: var(--primary); width: 0%; transition: width 0.3s; }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s;
+        }
 
         /* Toast */
-        .toast-container { position: fixed; bottom: 30px; right: 30px; z-index: 2000; }
-        .toast { background: #333; color: #fff; padding: 15px 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 10px; animation: slideIn 0.3s ease; }
-        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2000;
+        }
+
+        .toast {
+            background: #333;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
 
         /* Responsive */
         @media (max-width: 900px) {
-            .form-grid { grid-template-columns: 1fr; }
-            .sidebar { transform: translateX(-100%); }
-            .sidebar.active { transform: translateX(0); }
-            .main-content { margin-left: 0; }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
         }
     </style>
 </head>
@@ -183,10 +400,10 @@ include("../includes/auth.php");
 <body>
 
     <div class="dashboard-container">
-        
+
         <aside class="sidebar" id="sidebar">
             <div class="brand">
-                 <img src="../img/logo/logo.jpg" alt="Logo">
+                <img src="../img/logo/logo.jpg" alt="Logo">
                 <span>Lexora Admin</span>
             </div>
 
@@ -201,11 +418,25 @@ include("../includes/auth.php");
                 <i class="fas fa-plus-circle"></i> <span>Add New</span>
             </a>
 
+            <div class="menu-label" style="margin-top: 20px;">Billing</div>
+            <a href="invoicing/billing_dashboard.php" class="nav-item">
+                <i class="fas fa-chart-pie"></i> <span>Overview</span>
+            </a>
+            <a href="invoicing/quotations.php" class="nav-item">
+                <i class="fas fa-file-invoice"></i> <span>Quotations</span>
+            </a>
+            <a href="invoicing/invoices.php" class="nav-item">
+                <i class="fas fa-file-invoice-dollar"></i> <span>Invoices</span>
+            </a>
+            <a href="invoicing/customers.php" class="nav-item">
+                <i class="fas fa-users"></i> <span>Customers</span>
+            </a>
+
             <div class="menu-label" style="margin-top: 20px;">System</div>
             <a href="settings.php" class="nav-item">
                 <i class="fas fa-cog"></i> <span>Settings</span>
             </a>
-             <a href="quote_requests.php" class="nav-item">
+            <a href="quote_requests.php" class="nav-item">
                 <i class="fas fa-envelope"></i> <span>Inquiries</span>
             </a>
 
@@ -217,63 +448,72 @@ include("../includes/auth.php");
         </aside>
 
         <div class="main-content">
-            
+
             <header>
                 <div class="header-left" style="display:flex; align-items:center;">
-                    <i class="fas fa-bars" id="menuToggle" style="font-size:24px; cursor:pointer; margin-right:15px; display:none;"></i>
+                    <i class="fas fa-bars" id="menuToggle"
+                        style="font-size:24px; cursor:pointer; margin-right:15px; display:none;"></i>
                     <div class="header-title">
                         <h2>Create New Blog</h2>
                     </div>
                 </div>
 
                 <div class="user-profile">
-                    <div class="avatar"><?php echo strtoupper(substr($_SESSION['admin'], 0, 1)); ?></div>
+                    <div class="avatar">
+                        <?php echo strtoupper(substr($_SESSION['admin'], 0, 1)); ?>
+                    </div>
                 </div>
             </header>
 
             <div class="content-wrapper">
-                
+
                 <form id="blog-form" action="upload.php" method="POST" enctype="multipart/form-data">
                     <div class="form-grid">
-                        
+
                         <div class="card">
                             <div class="card-header">
                                 <h3><i class="fas fa-pen-nib"></i> Blog Content</h3>
                             </div>
-                            
+
                             <div class="form-group">
                                 <label class="form-label">Main Title</label>
-                                <input type="text" name="title" class="form-input" placeholder="Enter an engaging title..." required>
+                                <input type="text" name="title" class="form-input"
+                                    placeholder="Enter an engaging title..." required>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Sub-Heading</label>
-                                <input type="text" name="heading" class="form-input" placeholder="Secondary heading..." required>
+                                <input type="text" name="heading" class="form-input" placeholder="Secondary heading..."
+                                    required>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Brief Description (Excerpt)</label>
-                                <textarea name="headingbrief" class="form-textarea" style="min-height:80px;" placeholder="Short summary for the blog card..." required></textarea>
+                                <textarea name="headingbrief" class="form-textarea" style="min-height:80px;"
+                                    placeholder="Short summary for the blog card..." required></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Content Section 1</label>
-                                <textarea name="p1" class="form-textarea" placeholder="Write your first paragraph here..." required></textarea>
+                                <textarea name="p1" class="form-textarea"
+                                    placeholder="Write your first paragraph here..." required></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Content Section 2</label>
-                                <textarea name="p2" class="form-textarea" placeholder="Write your second paragraph here..." required></textarea>
+                                <textarea name="p2" class="form-textarea"
+                                    placeholder="Write your second paragraph here..." required></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label">Conclusion / Closing</label>
-                                <textarea name="conclusion" class="form-textarea" style="min-height:80px;" placeholder="Final thoughts..." required></textarea>
+                                <textarea name="conclusion" class="form-textarea" style="min-height:80px;"
+                                    placeholder="Final thoughts..." required></textarea>
                             </div>
                         </div>
 
                         <div style="display: flex; flex-direction: column; gap: 30px;">
-                            
+
                             <div class="card">
                                 <div class="card-header">
                                     <h3><i class="fas fa-image"></i> Media Assets</h3>
@@ -282,7 +522,8 @@ include("../includes/auth.php");
                                 <div class="form-group">
                                     <label class="form-label">Cover Image (Main)</label>
                                     <label class="upload-zone" id="zone-cover">
-                                        <input type="file" name="cover_image" class="upload-input" accept="image/*" required onchange="handlePreview(this, 'preview-cover', 'zone-cover')">
+                                        <input type="file" name="cover_image" class="upload-input" accept="image/*"
+                                            required onchange="handlePreview(this, 'preview-cover', 'zone-cover')">
                                         <i class="fas fa-cloud-upload-alt upload-icon"></i>
                                         <span class="upload-text">Click to Upload Cover</span>
                                         <img id="preview-cover" class="preview-img">
@@ -293,7 +534,8 @@ include("../includes/auth.php");
                                     <div class="form-group">
                                         <label class="form-label">Image 1</label>
                                         <label class="upload-zone small" id="zone-1">
-                                            <input type="file" name="image1" class="upload-input" accept="image/*" required onchange="handlePreview(this, 'preview-1', 'zone-1')">
+                                            <input type="file" name="image1" class="upload-input" accept="image/*"
+                                                required onchange="handlePreview(this, 'preview-1', 'zone-1')">
                                             <i class="fas fa-plus upload-icon"></i>
                                             <span class="upload-text">Upload</span>
                                             <img id="preview-1" class="preview-img">
@@ -302,7 +544,8 @@ include("../includes/auth.php");
                                     <div class="form-group">
                                         <label class="form-label">Image 2</label>
                                         <label class="upload-zone small" id="zone-2">
-                                            <input type="file" name="image2" class="upload-input" accept="image/*" required onchange="handlePreview(this, 'preview-2', 'zone-2')">
+                                            <input type="file" name="image2" class="upload-input" accept="image/*"
+                                                required onchange="handlePreview(this, 'preview-2', 'zone-2')">
                                             <i class="fas fa-plus upload-icon"></i>
                                             <span class="upload-text">Upload</span>
                                             <img id="preview-2" class="preview-img">
@@ -318,12 +561,12 @@ include("../includes/auth.php");
                                 <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
                                     Make sure all details are correct before publishing.
                                 </p>
-                                
+
                                 <div class="form-actions" style="flex-direction: column; align-items: stretch;">
                                     <div id="progressContainer" class="progress-container">
                                         <div id="progressBar" class="progress-bar"></div>
                                     </div>
-                                    
+
                                     <button type="submit" class="btn-submit" style="justify-content: center;">
                                         <i class="fas fa-paper-plane"></i> Publish Blog
                                     </button>
@@ -344,7 +587,7 @@ include("../includes/auth.php");
         // Sidebar Mobile Toggle
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
-        if(window.innerWidth <= 768) menuToggle.style.display = 'block';
+        if (window.innerWidth <= 768) menuToggle.style.display = 'block';
         menuToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
 
         // Theme Logic
@@ -354,11 +597,11 @@ include("../includes/auth.php");
         function handlePreview(input, previewId, zoneId) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     const img = document.getElementById(previewId);
                     img.src = e.target.result;
                     img.style.display = 'block';
-                    
+
                     // Add border to zone to show active state
                     document.getElementById(zoneId).style.borderColor = 'var(--primary)';
                 }
@@ -384,14 +627,14 @@ include("../includes/auth.php");
         const progressContainer = document.getElementById('progressContainer');
         const progressBar = document.getElementById('progressBar');
 
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
             const formData = new FormData(form);
             const xhr = new XMLHttpRequest();
 
             xhr.open('POST', 'upload.php', true);
 
-            xhr.upload.onprogress = function(event) {
+            xhr.upload.onprogress = function (event) {
                 if (event.lengthComputable) {
                     progressContainer.style.display = 'block';
                     const percent = Math.round((event.loaded / event.total) * 100);
@@ -399,13 +642,13 @@ include("../includes/auth.php");
                 }
             };
 
-            xhr.onload = function() {
+            xhr.onload = function () {
                 if (xhr.status === 200) {
                     // Success Handling
                     showToast("Blog published successfully!", "success");
-                    
+
                     // Redirect after 1.5 seconds
-                    setTimeout(function() {
+                    setTimeout(function () {
                         window.location.href = "dashboard.php";
                     }, 1500);
 
@@ -420,4 +663,5 @@ include("../includes/auth.php");
         });
     </script>
 </body>
+
 </html>

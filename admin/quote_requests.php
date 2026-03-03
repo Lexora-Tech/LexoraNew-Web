@@ -27,7 +27,8 @@ function getInitials($name)
     <title>Inquiries | Lexora Admin</title>
     <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -795,24 +796,43 @@ function getInitials($name)
             <a href="dashboard.php" class="nav-item"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
             <a href="all_blogs.php" class="nav-item"><i class="fas fa-layer-group"></i> <span>All Blogs</span></a>
             <a href="add_blog.php" class="nav-item"><i class="fas fa-plus-circle"></i> <span>Add New</span></a>
+            <div class="menu-label" style="margin-top: 20px;">Billing</div>
+            <a href="invoicing/billing_dashboard.php" class="nav-item">
+                <i class="fas fa-chart-pie"></i> <span>Overview</span>
+            </a>
+            <a href="invoicing/quotations.php" class="nav-item">
+                <i class="fas fa-file-invoice"></i> <span>Quotations</span>
+            </a>
+            <a href="invoicing/invoices.php" class="nav-item">
+                <i class="fas fa-file-invoice-dollar"></i> <span>Invoices</span>
+            </a>
+            <a href="invoicing/customers.php" class="nav-item">
+                <i class="fas fa-users"></i> <span>Customers</span>
+            </a>
+
             <div class="menu-label" style="margin-top: 20px;">System</div>
             <a href="settings.php" class="nav-item"><i class="fas fa-cog"></i> <span>Settings</span></a>
             <a href="#" class="nav-item active"><i class="fas fa-envelope"></i> <span>Inquiries</span></a>
             <div class="sidebar-footer" style="margin-top: auto;">
-                <a href="logout.php" class="nav-item" style="color: var(--danger);"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+                <a href="logout.php" class="nav-item" style="color: var(--danger);"><i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span></a>
             </div>
         </aside>
 
         <div class="main-content">
             <header>
                 <div class="header-left" style="display:flex; align-items:center;">
-                    <i class="fas fa-bars" id="menuToggle" style="font-size:24px; cursor:pointer; margin-right:15px; display:none;"></i>
+                    <i class="fas fa-bars" id="menuToggle"
+                        style="font-size:24px; cursor:pointer; margin-right:15px; display:none;"></i>
                     <h2>Quote Requests</h2>
                 </div>
                 <div style="display: flex; align-items: center; gap: 20px;">
-                    <label class="theme-switch"><input type="checkbox" id="themeToggle"><span class="slider"></span></label>
+                    <label class="theme-switch"><input type="checkbox" id="themeToggle"><span
+                            class="slider"></span></label>
                     <div class="user-profile">
-                        <div class="avatar"><?php echo strtoupper(substr($_SESSION['admin'], 0, 1)); ?></div>
+                        <div class="avatar">
+                            <?php echo strtoupper(substr($_SESSION['admin'], 0, 1)); ?>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -833,56 +853,73 @@ function getInitials($name)
                             </thead>
                             <tbody>
                                 <?php if ($count > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        $servicesArray = array_filter(explode(",", $row['services']));
-                                        $serviceCount = count($servicesArray);
-                                        $statusClass = 'status-new';
-                                        $statusLabel = 'New Lead';
-                                        if ($row['status'] == 'replied') {
-                                            $statusClass = 'status-replied';
-                                            $statusLabel = 'Replied';
-                                        }
-                                        if ($row['status'] == 'closed') {
-                                            $statusClass = 'status-closed';
-                                            $statusLabel = 'Closed';
-                                        }
-                                ?>
-                                        <tr id="row-<?= $row['id'] ?>">
-                                            <td>
-                                                <div class="client-cell">
-                                                    <div class="client-avatar"><?= getInitials($row['name']) ?></div>
-                                                    <div class="client-details"><span class="client-name"><?= htmlspecialchars($row['name']) ?></span><span class="client-email"><?= htmlspecialchars($row['email']) ?></span></div>
-                                                </div>
-                                            </td>
-                                            <td><span class="badge <?= $statusClass ?>"><i class="fas fa-circle" style="font-size: 6px;"></i> <?= $statusLabel ?></span></td>
-                                            <td style="font-weight: 500; font-size: 15px;"><?= htmlspecialchars($row['company']) ?: '<span style="color:var(--text-muted)">-</span>' ?></td>
-                                            <td><span class="budget-tag"><?= htmlspecialchars($row['budget']) ?></span></td>
-                                            <td>
-                                                <div class="service-count"><i class="fas fa-layer-group"></i> <?= $serviceCount ?> Services</div>
-                                            </td>
-                                            <td>
-                                                <div class="action-cell" style="justify-content: flex-end;">
-                                                    <button class="btn-icon view-trigger"
-                                                        data-id="<?= $row['id'] ?>"
-                                                        data-name="<?= htmlspecialchars($row['name']) ?>"
-                                                        data-email="<?= htmlspecialchars($row['email']) ?>"
-                                                        data-phone="<?= htmlspecialchars($row['phone']) ?>"
-                                                        data-company="<?= htmlspecialchars($row['company']) ?>"
-                                                        data-budget="<?= htmlspecialchars($row['budget']) ?>"
-                                                        data-message="<?= htmlspecialchars($row['message']) ?>"
-                                                        data-services="<?= htmlspecialchars($row['services']) ?>"
-                                                        data-status="<?= htmlspecialchars($row['status']) ?>"
-                                                        data-notes="<?= htmlspecialchars($row['admin_notes']) ?>">
-                                                        <i class="fas fa-eye"></i>
-                                                    </button>
-                                                    <button class="btn-icon delete delete-trigger" data-id="<?= $row['id'] ?>"><i class="fas fa-trash"></i></button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                <?php }
-                                } else {
-                                    echo "<tr><td colspan='6' style='text-align:center; padding: 60px; color:var(--text-muted);'>No inquiries found.</td></tr>";
-                                } ?>
+    while ($row = mysqli_fetch_assoc($result)) {
+        $servicesArray = array_filter(explode(",", $row['services']));
+        $serviceCount = count($servicesArray);
+        $statusClass = 'status-new';
+        $statusLabel = 'New Lead';
+        if ($row['status'] == 'replied') {
+            $statusClass = 'status-replied';
+            $statusLabel = 'Replied';
+        }
+        if ($row['status'] == 'closed') {
+            $statusClass = 'status-closed';
+            $statusLabel = 'Closed';
+        }
+?>
+                                <tr id="row-<?= $row['id']?>">
+                                    <td>
+                                        <div class="client-cell">
+                                            <div class="client-avatar">
+                                                <?= getInitials($row['name'])?>
+                                            </div>
+                                            <div class="client-details"><span class="client-name">
+                                                    <?= htmlspecialchars($row['name'])?>
+                                                </span><span class="client-email">
+                                                    <?= htmlspecialchars($row['email'])?>
+                                                </span></div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge <?= $statusClass?>"><i class="fas fa-circle"
+                                                style="font-size: 6px;"></i>
+                                            <?= $statusLabel?>
+                                        </span></td>
+                                    <td style="font-weight: 500; font-size: 15px;">
+                                        <?= htmlspecialchars($row['company']) ?: '<span style="color:var(--text-muted)">-</span>'?>
+                                    </td>
+                                    <td><span class="budget-tag">
+                                            <?= htmlspecialchars($row['budget'])?>
+                                        </span></td>
+                                    <td>
+                                        <div class="service-count"><i class="fas fa-layer-group"></i>
+                                            <?= $serviceCount?> Services
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="action-cell" style="justify-content: flex-end;">
+                                            <button class="btn-icon view-trigger" data-id="<?= $row['id']?>"
+                                                data-name="<?= htmlspecialchars($row['name'])?>"
+                                                data-email="<?= htmlspecialchars($row['email'])?>"
+                                                data-phone="<?= htmlspecialchars($row['phone'])?>"
+                                                data-company="<?= htmlspecialchars($row['company'])?>"
+                                                data-budget="<?= htmlspecialchars($row['budget'])?>"
+                                                data-message="<?= htmlspecialchars($row['message'])?>"
+                                                data-services="<?= htmlspecialchars($row['services'])?>"
+                                                data-status="<?= htmlspecialchars($row['status'])?>"
+                                                data-notes="<?= htmlspecialchars($row['admin_notes'])?>">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn-icon delete delete-trigger"
+                                                data-id="<?= $row['id']?>"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php
+    }
+}
+else {
+    echo "<tr><td colspan='6' style='text-align:center; padding: 60px; color:var(--text-muted);'>No inquiries found.</td></tr>";
+}?>
                             </tbody>
                         </table>
                     </div>
@@ -905,9 +942,12 @@ function getInitials($name)
                     </div>
                 </div>
                 <div class="info-cards">
-                    <div class="info-card budget"><span class="info-label">Budget</span><span class="info-value" id="modalBudget"></span></div>
-                    <div class="info-card"><span class="info-label">Email</span><span class="info-value" id="modalEmail"></span></div>
-                    <div class="info-card"><span class="info-label">Phone</span><span class="info-value" id="modalPhone"></span></div>
+                    <div class="info-card budget"><span class="info-label">Budget</span><span class="info-value"
+                            id="modalBudget"></span></div>
+                    <div class="info-card"><span class="info-label">Email</span><span class="info-value"
+                            id="modalEmail"></span></div>
+                    <div class="info-card"><span class="info-label">Phone</span><span class="info-value"
+                            id="modalPhone"></span></div>
                 </div>
                 <span class="section-label">Services</span>
                 <div class="tags-container" id="modalServices"></div>
@@ -918,8 +958,10 @@ function getInitials($name)
             <!-- RIGHT: REPLY FORM -->
             <div class="crm-sidebar">
                 <div class="modal-tabs">
-                    <button class="tab-btn active" onclick="switchTab('email')"><i class="fas fa-paper-plane"></i> Compose Reply</button>
-                    <button class="tab-btn" onclick="switchTab('admin')"><i class="fas fa-edit"></i> Status & Notes</button>
+                    <button class="tab-btn active" onclick="switchTab('email')"><i class="fas fa-paper-plane"></i>
+                        Compose Reply</button>
+                    <button class="tab-btn" onclick="switchTab('admin')"><i class="fas fa-edit"></i> Status &
+                        Notes</button>
                 </div>
 
                 <!-- TAB 1: EMAIL FORM -->
@@ -939,13 +981,16 @@ function getInitials($name)
 
                         <div class="input-group">
                             <label>Subject</label>
-                            <input type="text" name="subject" id="replySubject" class="form-control" value="Re: Project Inquiry - Lexora Tech">
+                            <input type="text" name="subject" id="replySubject" class="form-control"
+                                value="Re: Project Inquiry - Lexora Tech">
                         </div>
                         <div class="input-group" style="flex:1; display:flex; flex-direction:column;">
                             <label>Message Body</label>
-                            <textarea name="message" id="replyBody" class="form-control" style="height: 300px; resize: vertical;"></textarea>
+                            <textarea name="message" id="replyBody" class="form-control"
+                                style="height: 300px; resize: vertical;"></textarea>
                         </div>
-                        <button type="submit" id="sendBtn" class="btn-send"><i class="fas fa-paper-plane"></i> Send Email</button>
+                        <button type="submit" id="sendBtn" class="btn-send"><i class="fas fa-paper-plane"></i> Send
+                            Email</button>
                     </form>
                 </div>
 
@@ -963,9 +1008,12 @@ function getInitials($name)
                         </div>
                         <div class="input-group">
                             <label>Internal Notes</label>
-                            <textarea name="admin_notes" id="notesInput" class="form-control" placeholder="Add private notes about this client..." style="min-height: 250px;"></textarea>
+                            <textarea name="admin_notes" id="notesInput" class="form-control"
+                                placeholder="Add private notes about this client..."
+                                style="min-height: 250px;"></textarea>
                         </div>
-                        <button type="button" id="saveStatusBtn" class="btn-save"><i class="fas fa-save"></i> Save Changes</button>
+                        <button type="button" id="saveStatusBtn" class="btn-save"><i class="fas fa-save"></i> Save
+                            Changes</button>
                     </form>
                 </div>
             </div>
@@ -1079,7 +1127,7 @@ www.lexoratech.com`;
         // --- VIEW MODAL LOGIC ---
         const viewModal = document.getElementById('viewModal');
         document.querySelectorAll('.view-trigger').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 const data = this.dataset;
 
                 // Store data for templates
@@ -1129,7 +1177,7 @@ www.lexoratech.com`;
         document.getElementById('closeViewModal').onclick = () => viewModal.style.display = 'none';
 
         // --- SEND REPLY AJAX ---
-        document.getElementById('replyForm').addEventListener('submit', function(e) {
+        document.getElementById('replyForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const btn = document.getElementById('sendBtn');
             const originalText = btn.innerHTML;
@@ -1138,9 +1186,9 @@ www.lexoratech.com`;
 
             const formData = new FormData(this);
             fetch('send_reply.php', {
-                    method: 'POST',
-                    body: formData
-                })
+                method: 'POST',
+                body: formData
+            })
                 .then(res => res.text())
                 .then(data => {
                     if (data.trim() === 'success') {
@@ -1155,14 +1203,14 @@ www.lexoratech.com`;
         });
 
         // --- SAVE STATUS AJAX ---
-        document.getElementById('saveStatusBtn').addEventListener('click', function() {
+        document.getElementById('saveStatusBtn').addEventListener('click', function () {
             const btn = this;
             btn.innerHTML = 'Saving...';
             const formData = new FormData(document.getElementById('statusForm'));
             fetch('update_quote.php', {
-                    method: 'POST',
-                    body: formData
-                })
+                method: 'POST',
+                body: formData
+            })
                 .then(res => res.text())
                 .then(data => {
                     if (data.trim() === 'success') {
@@ -1179,7 +1227,7 @@ www.lexoratech.com`;
         let deleteId = null;
         const deleteModal = document.getElementById('deleteModal');
         document.querySelectorAll('.delete-trigger').forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 deleteId = this.getAttribute('data-id');
                 deleteModal.style.display = 'flex';
             });

@@ -6,7 +6,7 @@ include("../includes/db.php");
 $search_term = "";
 
 // UPDATE: Added LIMIT 12 to show only recent posts by default
-$sql = "SELECT * FROM blogs ORDER BY created_at DESC LIMIT 12"; 
+$sql = "SELECT * FROM blogs ORDER BY created_at DESC LIMIT 12";
 
 if (isset($_GET['search']) && !empty($_GET['search'])) {
     $search_term = mysqli_real_escape_string($conn, $_GET['search']);
@@ -28,9 +28,11 @@ $view_data = mysqli_fetch_assoc($view_query);
 $real_total_views = $view_data['total_views'] ? $view_data['total_views'] : 0;
 
 // Helper to format numbers
-function format_number($n) {
-    if ($n < 1000) return $n;
-    $suffix = ['','k','M','G','T'];
+function format_number($n)
+{
+    if ($n < 1000)
+        return $n;
+    $suffix = ['', 'k', 'M', 'G', 'T'];
     $power = floor(log($n, 1000));
     return round($n / (1000 ** $power), 1) . $suffix[$power];
 }
@@ -43,14 +45,16 @@ function format_number($n) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Lexora Tech</title>
     <link rel="shortcut icon" type="image/x-icon" href="../img/logo/logo.png" />
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- VARIABLES & RESET --- */
         :root {
-            --primary: #ffb400; /* Lexora Gold */
+            --primary: #ffb400;
+            /* Lexora Gold */
             --primary-hover: #e5a300;
             --bg-body: #f8f9fa;
             --bg-sidebar: #121212;
@@ -73,11 +77,28 @@ function format_number($n) {
             --border: #333333;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        
-        body { background: var(--bg-body); color: var(--text-main); transition: 0.3s ease; overflow-x: hidden; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background: var(--bg-body);
+            color: var(--text-main);
+            transition: 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
 
         /* --- LAYOUT STRUCTURE --- */
         .dashboard-container {
@@ -98,7 +119,7 @@ function format_number($n) {
             display: flex;
             flex-direction: column;
             padding: 20px;
-            border-right: 1px solid rgba(255,255,255,0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.3s ease;
         }
 
@@ -110,10 +131,27 @@ function format_number($n) {
             padding: 0 10px;
         }
 
-        .brand img { height: 32px; width: auto; }
-        .brand span { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
+        .brand img {
+            height: 32px;
+            width: auto;
+        }
 
-        .menu-label { font-size: 12px; text-transform: uppercase; color: #666; margin-bottom: 10px; padding-left: 10px; font-weight: 600; letter-spacing: 1px; }
+        .brand span {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .menu-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 10px;
+            padding-left: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
 
         .nav-item {
             display: flex;
@@ -126,14 +164,23 @@ function format_number($n) {
             margin-bottom: 5px;
         }
 
-        .nav-item:hover, .nav-item.active {
+        .nav-item:hover,
+        .nav-item.active {
             background: rgba(255, 180, 0, 0.1);
             color: var(--primary);
         }
 
-        .nav-item i { width: 20px; text-align: center; font-size: 16px; }
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
 
-        .sidebar-footer { margin-top: auto; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
         /* --- MAIN CONTENT AREA --- */
         .main-content {
@@ -157,8 +204,15 @@ function format_number($n) {
             z-index: 90;
         }
 
-        .header-left h2 { font-size: 20px; font-weight: 600; }
-        .date-display { font-size: 13px; color: var(--text-muted); }
+        .header-left h2 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .date-display {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
 
         /* Updated Search Box to Form */
         .search-box {
@@ -171,20 +225,73 @@ function format_number($n) {
             border: 1px solid var(--border);
             width: 300px;
         }
-        .search-button { background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 0; font-size: 14px; }
-        .search-box input { border: none; background: transparent; outline: none; color: var(--text-main); width: 100%; }
-        .search-box:focus-within { border-color: var(--primary); }
 
-        .header-right { display: flex; align-items: center; gap: 20px; }
+        .search-button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0;
+            font-size: 14px;
+        }
 
-        .user-profile { display: flex; align-items: center; gap: 10px; cursor: pointer; }
-        .avatar { width: 35px; height: 35px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-weight: bold; }
-        .user-info { display: flex; flex-direction: column; line-height: 1.2; }
-        .user-name { font-size: 14px; font-weight: 600; }
-        .user-role { font-size: 11px; color: var(--text-muted); }
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            color: var(--text-main);
+            width: 100%;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--primary);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .avatar {
+            width: 35px;
+            height: 35px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .user-role {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
 
         /* --- DASHBOARD WIDGETS --- */
-        .content-wrapper { padding: 30px; }
+        .content-wrapper {
+            padding: 30px;
+        }
 
         .stats-grid {
             display: grid;
@@ -203,8 +310,12 @@ function format_number($n) {
             gap: 20px;
             transition: 0.3s;
         }
-        
-        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--primary); }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border-color: var(--primary);
+        }
 
         .stat-icon {
             width: 50px;
@@ -216,17 +327,57 @@ function format_number($n) {
             font-size: 20px;
         }
 
-        .stat-icon.blue { background: rgba(37, 99, 235, 0.1); color: #2563eb; }
-        .stat-icon.green { background: rgba(16, 185, 129, 0.1); color: #10b981; }
-        .stat-icon.gold { background: rgba(255, 180, 0, 0.1); color: #ffb400; }
+        .stat-icon.blue {
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+        }
 
-        .stat-info h4 { font-size: 24px; font-weight: 700; margin-bottom: 2px; }
-        .stat-info p { font-size: 13px; color: var(--text-muted); }
+        .stat-icon.green {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .stat-icon.gold {
+            background: rgba(255, 180, 0, 0.1);
+            color: #ffb400;
+        }
+
+        .stat-info h4 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .stat-info p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
 
         /* --- BLOG GRID --- */
-        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .btn-add { background: var(--primary); color: #000; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
-        .btn-add:hover { background: var(--primary-hover); transform: translateY(-2px); }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-add {
+            background: var(--primary);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-add:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
 
         .card-grid {
             display: grid;
@@ -244,19 +395,32 @@ function format_number($n) {
         }
 
         .blog-card:hover {
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
             transform: translateY(-5px);
         }
 
-        .card-image-wrapper { position: relative; height: 180px; overflow: hidden; }
-        .card-cover { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .blog-card:hover .card-cover { transform: scale(1.05); }
-        
+        .card-image-wrapper {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .card-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .blog-card:hover .card-cover {
+            transform: scale(1.05);
+        }
+
         .card-badge {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0, 0, 0, 0.7);
             color: #fff;
             padding: 4px 10px;
             border-radius: 20px;
@@ -264,10 +428,35 @@ function format_number($n) {
             backdrop-filter: blur(4px);
         }
 
-        .card-body { padding: 20px; }
-        .blog-date { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; display: block; }
-        .blog-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--text-main); line-height: 1.4; }
-        .blog-brief { font-size: 14px; color: var(--text-muted); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 20px; }
+        .card-body {
+            padding: 20px;
+        }
+
+        .blog-date {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .blog-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
+        .blog-brief {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
 
         .card-footer {
             padding: 15px 20px;
@@ -275,50 +464,198 @@ function format_number($n) {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0,0,0,0.02);
+            background: rgba(0, 0, 0, 0.02);
         }
 
-        .actions { display: flex; gap: 10px; }
-        .btn-icon { width: 32px; height: 32px; border-radius: 6px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); color: var(--text-muted); transition: 0.3s; cursor: pointer; background: var(--bg-card); }
-        .btn-icon:hover { color: var(--primary); border-color: var(--primary); }
-        .btn-icon.delete:hover { color: var(--danger); border-color: var(--danger); }
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            transition: 0.3s;
+            cursor: pointer;
+            background: var(--bg-card);
+        }
+
+        .btn-icon:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-icon.delete:hover {
+            color: var(--danger);
+            border-color: var(--danger);
+        }
 
         /* --- THEME TOGGLE --- */
-        .theme-switch { position: relative; width: 40px; height: 20px; cursor: pointer; }
-        .theme-switch input { display: none; }
-        .slider { position: absolute; inset: 0; background: #ccc; border-radius: 20px; transition: .4s; }
-        .slider:before { content: ""; position: absolute; height: 16px; width: 16px; left: 2px; bottom: 2px; background: white; border-radius: 50%; transition: .4s; }
-        input:checked + .slider { background: var(--primary); }
-        input:checked + .slider:before { transform: translateX(20px); }
+        .theme-switch {
+            position: relative;
+            width: 40px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .theme-switch input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 0;
+            background: #ccc;
+            border-radius: 20px;
+            transition: .4s;
+        }
+
+        .slider:before {
+            content: "";
+            position: absolute;
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background: white;
+            border-radius: 50%;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background: var(--primary);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
 
         /* --- MODAL & TOAST --- */
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
-        .modal-content { background: var(--bg-card); padding: 30px; border-radius: 16px; width: 90%; max-width: 400px; text-align: center; border: 1px solid var(--border); }
-        .modal-btns { margin-top: 20px; display: flex; justify-content: center; gap: 15px; }
-        .btn-modal { padding: 10px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; }
-        .btn-yes { background: var(--danger); color: #fff; }
-        .btn-no { background: var(--border); color: var(--text-main); }
-        
-        .toast-container { position: fixed; bottom: 30px; right: 30px; z-index: 2000; display: flex; flex-direction: column; gap: 10px; }
-        .toast { background: #333; color: #fff; padding: 15px 20px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 10px; animation: slideIn 0.3s ease; }
-        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .modal-btns {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn-modal {
+            padding: 10px 25px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-yes {
+            background: var(--danger);
+            color: #fff;
+        }
+
+        .btn-no {
+            background: var(--border);
+            color: var(--text-main);
+        }
+
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background: #333;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .sidebar { transform: translateX(-100%); position: fixed; }
-            .sidebar.active { transform: translateX(0); }
-            .main-content { margin-left: 0; }
-            .search-box { display: none; }
-            .menu-toggle { display: block; font-size: 24px; cursor: pointer; margin-right: 15px; }
+            .sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .search-box {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+                font-size: 24px;
+                cursor: pointer;
+                margin-right: 15px;
+            }
         }
-        @media (min-width: 769px) { .menu-toggle { display: none; } }
+
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
     </style>
 </head>
 
 <body>
 
     <div class="dashboard-container">
-        
+
         <aside class="sidebar" id="sidebar">
             <div class="brand">
                 <img src="../img/logo/logo.jpg" alt="Logo">
@@ -327,13 +664,27 @@ function format_number($n) {
 
             <div class="menu-label">Main Menu</div>
             <a href="#" class="nav-item active">
-              <i class="fas fa-tachometer-alt"></i> <span>Dashboard</span>
+                <i class="fas fa-tachometer-alt"></i> <span>Dashboard</span>
             </a>
             <a href="all_blogs.php" class="nav-item">
                 <i class="fas fa-layer-group"></i> <span>All Blogs</span>
             </a>
             <a href="add_blog.php" class="nav-item">
                 <i class="fas fa-plus-circle"></i> <span>Add New</span>
+            </a>
+
+            <div class="menu-label" style="margin-top: 20px;">Billing</div>
+            <a href="invoicing/billing_dashboard.php" class="nav-item">
+                <i class="fas fa-chart-pie"></i> <span>Overview</span>
+            </a>
+            <a href="invoicing/quotations.php" class="nav-item">
+                <i class="fas fa-file-invoice"></i> <span>Quotations</span>
+            </a>
+            <a href="invoicing/invoices.php" class="nav-item">
+                <i class="fas fa-file-invoice-dollar"></i> <span>Invoices</span>
+            </a>
+            <a href="invoicing/customers.php" class="nav-item">
+                <i class="fas fa-users"></i> <span>Customers</span>
             </a>
 
             <div class="menu-label" style="margin-top: 20px;">System</div>
@@ -352,23 +703,26 @@ function format_number($n) {
         </aside>
 
         <div class="main-content">
-            
+
             <header>
                 <div class="header-left" style="display:flex; align-items:center;">
                     <i class="fas fa-bars menu-toggle" id="menuToggle"></i>
                     <div>
                         <h2>Dashboard</h2>
-                        <span class="date-display"><?php echo date("l, F j, Y"); ?></span>
+                        <span class="date-display">
+                            <?php echo date("l, F j, Y"); ?>
+                        </span>
                     </div>
                 </div>
 
                 <div class="header-right">
-                    
+
                     <form class="search-box" method="GET" action="">
                         <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
-                        <input type="text" name="search" placeholder="Search blogs..." value="<?= htmlspecialchars($search_term) ?>">
+                        <input type="text" name="search" placeholder="Search blogs..."
+                            value="<?= htmlspecialchars($search_term)?>">
                     </form>
-                    
+
                     <label class="theme-switch">
                         <input type="checkbox" id="themeToggle">
                         <span class="slider"></span>
@@ -376,7 +730,9 @@ function format_number($n) {
 
                     <div class="user-profile">
                         <div class="user-info">
-                            <span class="user-name"><?php echo $_SESSION['admin']; ?></span>
+                            <span class="user-name">
+                                <?php echo $_SESSION['admin']; ?>
+                            </span>
                             <span class="user-role">Administrator</span>
                         </div>
                         <div class="avatar">
@@ -387,14 +743,16 @@ function format_number($n) {
             </header>
 
             <div class="content-wrapper">
-                
+
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-icon gold">
                             <i class="fas fa-file-alt"></i>
                         </div>
                         <div class="stat-info">
-                            <h4><?php echo $total_blogs_stat; ?></h4>
+                            <h4>
+                                <?php echo $total_blogs_stat; ?>
+                            </h4>
                             <p>Total Blogs</p>
                         </div>
                     </div>
@@ -403,7 +761,9 @@ function format_number($n) {
                             <i class="fas fa-eye"></i>
                         </div>
                         <div class="stat-info">
-                            <h4><?php echo format_number($real_total_views); ?></h4>
+                            <h4>
+                                <?php echo format_number($real_total_views); ?>
+                            </h4>
                             <p>Total Views</p>
                         </div>
                     </div>
@@ -419,56 +779,71 @@ function format_number($n) {
                 </div>
 
                 <div class="section-header">
-                    <h3><?php echo empty($search_term) ? "Recent Publications" : "Search Results for '" . htmlspecialchars($search_term) . "'"; ?></h3>
+                    <h3>
+                        <?php echo empty($search_term) ? "Recent Publications" : "Search Results for '" . htmlspecialchars($search_term) . "'"; ?>
+                    </h3>
                     <a href="add_blog.php" class="btn-add">
                         <i class="fas fa-plus"></i> Create Blog
                     </a>
                 </div>
 
-                <?php if(mysqli_num_rows($result) == 0): ?>
-                    <div style="text-align:center; padding:40px; color:var(--text-muted);">
-                        <i class="fas fa-folder-open" style="font-size:30px; margin-bottom:10px; display:block;"></i>
-                        No blogs found.
-                    </div>
-                <?php else: ?>
-                    <div class="card-grid">
-                        <?php 
-                        mysqli_data_seek($result, 0);
-                        while ($row = mysqli_fetch_assoc($result)) { 
-                        ?>
-                            <div class="blog-card">
-                                <div class="card-image-wrapper">
-                                    <span class="card-badge">Published</span>
-                                    <img src="../uploads/<?= htmlspecialchars($row['cover_image'], ENT_QUOTES) ?>" class="card-cover">
+                <?php if (mysqli_num_rows($result) == 0): ?>
+                <div style="text-align:center; padding:40px; color:var(--text-muted);">
+                    <i class="fas fa-folder-open" style="font-size:30px; margin-bottom:10px; display:block;"></i>
+                    No blogs found.
+                </div>
+                <?php
+else: ?>
+                <div class="card-grid">
+                    <?php
+    mysqli_data_seek($result, 0);
+    while ($row = mysqli_fetch_assoc($result)) {
+?>
+                    <div class="blog-card">
+                        <div class="card-image-wrapper">
+                            <span class="card-badge">Published</span>
+                            <img src="../uploads/<?= htmlspecialchars($row['cover_image'], ENT_QUOTES)?>"
+                                class="card-cover">
+                        </div>
+                        <div class="card-body">
+                            <span class="blog-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <?= date("M d, Y", strtotime($row['created_at']))?>
+                                <span style="float:right; font-size:11px; opacity:0.7;">
+                                    <i class="fas fa-eye"></i>
+                                    <?= format_number($row['views'])?>
+                                </span>
+                            </span>
+                            <h4 class="blog-title">
+                                <?= htmlspecialchars($row['title'])?>
+                            </h4>
+                            <p class="blog-brief">
+                                <?= htmlspecialchars($row['headingbrief'])?>
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <div style="font-size:12px; color:var(--text-muted);">ID: #
+                                <?= $row['id']?>
+                            </div>
+                            <div class="actions">
+                                <a href="edit_blog.php?id=<?= $row['id']?>" class="btn-icon" title="Edit">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <div class="btn-icon delete" title="Delete" data-id="<?= $row['id']?>">
+                                    <i class="fas fa-trash"></i>
                                 </div>
-                                <div class="card-body">
-                                    <span class="blog-date">
-                                        <i class="far fa-calendar-alt"></i> <?= date("M d, Y", strtotime($row['created_at'])) ?>
-                                        <span style="float:right; font-size:11px; opacity:0.7;">
-                                            <i class="fas fa-eye"></i> <?= format_number($row['views']) ?>
-                                        </span>
-                                    </span>
-                                    <h4 class="blog-title"><?= htmlspecialchars($row['title']) ?></h4>
-                                    <p class="blog-brief"><?= htmlspecialchars($row['headingbrief']) ?></p>
-                                </div>
-                                <div class="card-footer">
-                                    <div style="font-size:12px; color:var(--text-muted);">ID: #<?= $row['id'] ?></div>
-                                    <div class="actions">
-                                        <a href="edit_blog.php?id=<?= $row['id'] ?>" class="btn-icon" title="Edit">
-                                            <i class="fas fa-pen"></i>
-                                        </a>
-                                        <div class="btn-icon delete" title="Delete" data-id="<?= $row['id'] ?>">
-                                            <i class="fas fa-trash"></i>
-                                        </div>
-                                        <div class="btn-icon share-btn" title="Share" data-link="publication.php?id=<?= $row['id'] ?>">
-                                            <i class="fas fa-share-alt"></i>
-                                        </div>
-                                    </div>
+                                <div class="btn-icon share-btn" title="Share"
+                                    data-link="publication.php?id=<?= $row['id']?>">
+                                    <i class="fas fa-share-alt"></i>
                                 </div>
                             </div>
-                        <?php } ?>
+                        </div>
                     </div>
-                <?php endif; ?>
+                    <?php
+    }?>
+                </div>
+                <?php
+endif; ?>
 
             </div>
         </div>
@@ -478,7 +853,8 @@ function format_number($n) {
 
     <div class="modal" id="deleteModal">
         <div class="modal-content">
-            <i class="fas fa-exclamation-circle" style="font-size: 40px; color: var(--danger); margin-bottom: 15px;"></i>
+            <i class="fas fa-exclamation-circle"
+                style="font-size: 40px; color: var(--danger); margin-bottom: 15px;"></i>
             <h3 style="margin-bottom: 10px;">Delete Blog?</h3>
             <p style="color: var(--text-muted); margin-bottom: 20px;">This action cannot be undone. Are you sure?</p>
             <div class="modal-btns">
@@ -492,8 +868,8 @@ function format_number($n) {
         // Sidebar Toggle for Mobile
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
-        
-        if(menuToggle){
+
+        if (menuToggle) {
             menuToggle.addEventListener('click', () => {
                 sidebar.classList.toggle('active');
             });
@@ -502,7 +878,7 @@ function format_number($n) {
         // Theme Toggle Logic
         const themeToggle = document.getElementById("themeToggle");
         const body = document.body;
-        
+
         // Check saved theme
         if (localStorage.getItem("theme") === "dark") {
             body.classList.add("dark");
@@ -537,7 +913,7 @@ function format_number($n) {
         });
 
         // Close modal on outside click
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             const modal = document.getElementById('deleteModal');
             if (event.target == modal) {
                 modal.style.display = "none";
@@ -561,10 +937,10 @@ function format_number($n) {
         document.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', async (e) => {
                 e.preventDefault();
-                
+
                 // 1. Get the original long URL
                 const longUrl = window.location.origin + "/" + btn.getAttribute('data-link');
-                
+
                 // 2. Show loading toast
                 showToast("Generating short link...");
 
@@ -601,4 +977,5 @@ function format_number($n) {
         });
     </script>
 </body>
+
 </html>
