@@ -90,7 +90,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mail->addAddress($to_email);
                 $mail->isHTML(true);
                 $mail->Subject = $subject;
-                $mail->Body = nl2br(htmlspecialchars($body));
+
+                // ── Build branded HTML email ──
+                $cn = htmlspecialchars($company['company_name'] ?? 'Lexora Tech');
+                $cw = htmlspecialchars($company['company_website'] ?? '');
+                $ce = htmlspecialchars($company['company_email'] ?? '');
+                $cu = htmlspecialchars($doc['customer_name'] ?? '');
+                $dn = htmlspecialchars($doc_number);
+                $ac = ($type === 'receipt') ? '#10b981' : '#ffb400';
+                $bc = ($type === 'receipt') ? '#f0fdf4' : '#fffbeb';
+                $sl = ($type === 'receipt') ? 'Amount Received' : 'Total Amount';
+                $am = ($type === 'receipt') ? 'LKR ' . number_format($doc['amount'], 2) : 'LKR ' . number_format($doc['grand_total'], 2);
+                $dt = date("M d, Y", strtotime($doc[$type === 'receipt' ? 'payment_date' : 'issue_date']));
+                $ex = '';
+                if ($type === 'invoice' && ($doc['due_date'] ?? ''))
+                    $ex = '<tr><td style="padding:5px 0;color:#888;font-size:13px;">Due Date</td><td style="text-align:right;font-weight:600;font-size:13px;">' . date("M d, Y", strtotime($doc['due_date'])) . '</td></tr>';
+                elseif ($type === 'quotation' && ($doc['valid_until'] ?? ''))
+                    $ex = '<tr><td style="padding:5px 0;color:#888;font-size:13px;">Valid Until</td><td style="text-align:right;font-weight:600;font-size:13px;">' . date("M d, Y", strtotime($doc['valid_until'])) . '</td></tr>';
+                elseif ($type === 'receipt')
+                    $ex = '<tr><td style="padding:5px 0;color:#888;font-size:13px;">Invoice</td><td style="text-align:right;font-weight:600;font-size:13px;">' . htmlspecialchars($doc['invoice_number'] ?? '') . '</td></tr>';
+
+                $hb = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head>';
+                $hb .= '<body style="margin:0;padding:0;font-family:Arial,sans-serif;background:#f4f4f5;">';
+                $hb .= '<table width="100%" style="background:#f4f4f5;padding:30px 0;"><tr><td align="center">';
+                $hb .= '<table width="600" style="max-width:600px;width:100%;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.06);">';
+                $hb .= '<tr><td style="height:5px;background:' . $ac . ';"></td></tr>';
+                $hb .= '<tr><td style="padding:25px 35px 15px;border-bottom:1px solid #f0f0f0;"><table width="100%"><tr>';
+                $hb .= '<td style="font-size:20px;font-weight:700;color:#1a1a1a;">' . $cn . '</td>';
+                $hb .= '<td style="text-align:right;"><span style="background:' . $ac . ';color:#fff;font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;">' . strtoupper($doc_label) . '</span></td>';
+                $hb .= '</tr></table></td></tr>';
+                $hb .= '<tr><td style="padding:28px 35px 8px;"><p style="margin:0;font-size:15px;color:#1a1a1a;">Dear <strong>' . $cu . '</strong>,</p></td></tr>';
+                $hb .= '<tr><td style="padding:8px 35px 22px;"><p style="margin:0;font-size:14px;color:#555;line-height:1.7;">' . nl2br(htmlspecialchars($body)) . '</p></td></tr>';
+                $hb .= '<tr><td style="padding:0 35px 25px;"><table width="100%" style="background:#fafafa;border:1px solid #eee;border-radius:10px;" cellpadding="0" cellspacing="0">';
+                $hb .= '<tr><td style="padding:16px 20px;font-size:13px;color:#555;"><table width="100%" cellpadding="0" cellspacing="0">';
+                $hb .= '<tr><td style="padding:5px 0;color:#888;font-size:13px;">' . $doc_label . ' #</td><td style="text-align:right;font-weight:700;color:#1a1a1a;font-size:13px;">' . $dn . '</td></tr>';
+                $hb .= '<tr><td style="padding:5px 0;color:#888;font-size:13px;">Date</td><td style="text-align:right;font-weight:600;font-size:13px;">' . $dt . '</td></tr>';
+                $hb .= $ex;
+                $hb .= '</table></td></tr>';
+                $hb .= '<tr><td style="border-top:2px solid ' . $ac . ';padding:14px 20px;background:' . $bc . ';"><table width="100%"><tr>';
+                $hb .= '<td style="font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:#888;font-weight:600;">' . $sl . '</td>';
+                $hb .= '<td style="text-align:right;font-size:22px;font-weight:800;color:' . $ac . ';">' . $am . '</td>';
+                $hb .= '</tr></table></td></tr></table></td></tr>';
+                $hb .= '<tr><td style="padding:5px 35px 28px;"><p style="margin:0;font-size:12px;color:#aaa;font-style:italic;">The complete document is attached as a PDF.</p></td></tr>';
+                $hb .= '<tr><td style="background:#1a1a1a;padding:20px 35px;"><table width="100%"><tr>';
+                $hb .= '<td style="font-size:13px;font-weight:600;color:#fff;">' . $cn . '</td>';
+                $hb .= '<td style="text-align:right;font-size:12px;color:#888;">' . $cw . '</td>';
+                $hb .= '</tr></table><p style="margin:8px 0 0;font-size:11px;color:#666;">Questions? Contact us at ' . $ce . '</p></td></tr>';
+                $hb .= '</table></td></tr></table></body></html>';
+
+                $mail->Body = $hb;
                 $mail->AltBody = $body;
 
                 // Generate & attach PDF using shared builder
@@ -580,8 +628,8 @@ endif; ?>
         </div>
     </div>
     <script>
-const menuToggle=document.getElementById('menuToggle'),side.getElementById('sidebar');if(menuToggle)menuToggle.addEventListener('click',()=>sidebar.classList.toggle('active'));
-const themeToggle=document.getElementById("themeToggle");if(localStorage.getItem("theme")==="dark"){document.body.classList.add("dark");themeToggle.checked=true;}themeToggle.addEventListener("change",()=>{if(themeToggle.checked){document.body.classList.add("dark");localStorage.setItem("theme","dark");}else{document.body.classList.remove("dark");localStorage.setItem("theme","light");}});
+        const menuToggle = document.getElementById('menuToggle'), side.getElementById('sidebar'); if (menuToggle) menuToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
+        const themeToggle = document.getElementById("themeToggle"); if (localStorage.getItem("theme") === "dark") { document.body.classList.add("dark"); themeToggle.checked = true; } themeToggle.addEventListener("change", () => { if (themeToggle.checked) { document.body.classList.add("dark"); localStorage.setItem("theme", "dark"); } else { document.body.classList.remove("dark"); localStorage.setItem("theme", "light"); } });
     </script>
 </body>
 
