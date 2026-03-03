@@ -1,6 +1,6 @@
 <?php
-include("../../includes/auth.php");
-include("../../includes/db.php");
+include(__DIR__ . "/../../includes/auth.php");
+include(__DIR__ . "/../../includes/db.php");
 
 $search = '';
 $sql = "SELECT q.*, c.name as customer_name FROM quotations q LEFT JOIN customers c ON q.customer_id = c.id ORDER BY q.created_at DESC";

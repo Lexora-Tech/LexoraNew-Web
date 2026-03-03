@@ -1,6 +1,6 @@
 <?php
-include("../../includes/auth.php");
-include("../../includes/db.php");
+include(__DIR__ . "/../../includes/auth.php");
+include(__DIR__ . "/../../includes/db.php");
 
 $editing = false;
 $customer = ['name' => '', 'email' => '', 'phone' => '', 'company' => '', 'address' => '', 'city' => '', 'country' => '', 'tax_id' => '', 'notes' => ''];

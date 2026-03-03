@@ -1,6 +1,6 @@
 <?php
-include("../../includes/auth.php");
-include("../../includes/db.php");
+include(__DIR__ . "/../../includes/auth.php");
+include(__DIR__ . "/../../includes/db.php");
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: invoices.php");

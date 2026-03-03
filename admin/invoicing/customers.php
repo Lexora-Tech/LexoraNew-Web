@@ -1,6 +1,6 @@
 <?php
-include("../../includes/auth.php");
-include("../../includes/db.php");
+include(__DIR__ . "/../../includes/auth.php");
+include(__DIR__ . "/../../includes/db.php");
 
 $search = '';
 $sql = "SELECT * FROM customers ORDER BY created_at DESC";

@@ -1,6 +1,6 @@
 <?php
-include("../../includes/auth.php");
-include("../../includes/db.php");
+include(__DIR__ . "/../../includes/auth.php");
+include(__DIR__ . "/../../includes/db.php");
 
 $editing = false;
 $invoice = ['customer_id' => '', 'status' => 'draft', 'issue_date' => date('Y-m-d'), 'due_date' => date('Y-m-d', strtotime('+30 days')), 'payment_terms' => '', 'notes' => '', 'amount_paid' => 0];

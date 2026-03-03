@@ -2,9 +2,9 @@
 include(__DIR__ . "/../../includes/auth.php");
 include(__DIR__ . "/../../includes/db.php");
 require_once(__DIR__ . "/../../vendor/autoload.php");
+require_once(__DIR__ . "/pdf_builder.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 if (!isset($_GET['type']) || !isset($_GET['id'])) {
@@ -12,17 +12,26 @@ if (!isset($_GET['type']) || !isset($_GET['id'])) {
     exit();
 }
 
-$type = $_GET['type'];
+$type = $_GET['type']; // 'quotation', 'invoice', or 'receipt'
 $id = intval($_GET['id']);
 $error = '';
 $success = '';
 
-// Get company settings (SMTP)
+// Get company settings
 $cs_q = mysqli_query($conn, "SELECT * FROM company_settings WHERE id=1");
 $company = mysqli_fetch_assoc($cs_q);
+if (!$company)
+    $company = ['company_name' => 'Lexora Tech', 'company_email' => 'info@lexoratech.com', 'smtp_host' => '', 'smtp_port' => 587, 'smtp_username' => '', 'smtp_password' => '', 'smtp_encryption' => 'tls', 'smtp_from_name' => 'Lexora Tech', 'smtp_from_email' => 'info@lexoratech.com'];
 
-// Get document & customer info
-if ($type === 'quotation') {
+// Get document info
+if ($type === 'receipt') {
+    $q = mysqli_query($conn, "SELECT p.*, i.invoice_number, i.grand_total, i.amount_paid, c.name as customer_name, c.email as customer_email FROM payments p JOIN invoices i ON p.invoice_id=i.id LEFT JOIN customers c ON i.customer_id=c.id WHERE p.id=$id");
+    $doc = mysqli_fetch_assoc($q);
+    $doc_number = 'REC-' . str_pad($id, 6, '0', STR_PAD_LEFT);
+    $doc_label = 'Payment Receipt';
+    $redirect = "invoice_view.php?id=" . ($doc['invoice_id'] ?? '');
+}
+elseif ($type === 'quotation') {
     $q = mysqli_query($conn, "SELECT q.*, c.name as customer_name, c.email as customer_email FROM quotations q LEFT JOIN customers c ON q.customer_id=c.id WHERE q.id=$id");
     $doc = mysqli_fetch_assoc($q);
     $doc_number = $doc['quotation_number'] ?? '';
@@ -42,6 +51,15 @@ if (!$doc) {
     exit();
 }
 
+// Build email defaults
+$default_subject = "$doc_label $doc_number from " . ($company['company_name'] ?? 'Lexora Tech');
+if ($type === 'receipt') {
+    $default_body = "Dear " . ($doc['customer_name'] ?? '') . ",\n\nThank you for your payment. Please find your payment receipt attached.\n\nReceipt: $doc_number\nAmount: LKR " . number_format($doc['amount'], 2) . "\nInvoice: " . ($doc['invoice_number'] ?? '') . "\n\nThank you for your business!\n\nBest regards,\n" . ($company['company_name'] ?? 'Lexora Tech');
+}
+else {
+    $default_body = "Dear " . ($doc['customer_name'] ?? '') . ",\n\nPlease find attached " . strtolower($doc_label) . " $doc_number for your review.\n\nTotal Amount: LKR " . number_format($doc['grand_total'], 2) . "\n\nIf you have any questions, please don't hesitate to contact us.\n\nBest regards,\n" . ($company['company_name'] ?? 'Lexora Tech');
+}
+
 // Process sending
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $to_email = $_POST['to_email'] ?? '';
@@ -53,10 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Email and subject are required.';
     }
     else {
-        // Check SMTP settings
         $smtp_host = $company['smtp_host'] ?? '';
         if (empty($smtp_host)) {
-            $error = 'SMTP not configured. Go to Billing Settings (company_settings table) and fill in SMTP details.';
+            $error = 'SMTP not configured. Edit the company_settings table in phpMyAdmin to add your SMTP details (smtp_host, smtp_port, smtp_username, smtp_password).';
         }
         else {
             try {
@@ -73,103 +90,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $mail->addAddress($to_email);
                 $mail->isHTML(true);
                 $mail->Subject = $subject;
-                $mail->Body = nl2br($body);
+                $mail->Body = nl2br(htmlspecialchars($body));
+                $mail->AltBody = $body;
 
-                // Attach PDF
+                // Generate & attach PDF using shared builder
                 if ($attach_pdf) {
-                    // Generate PDF inline
-                    $pdf = new \TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
-                    $pdf->setPrintHeader(false);
-                    $pdf->setPrintFooter(false);
-                    $pdf->SetMargins(20, 20, 20);
-                    $pdf->AddPage();
-
-                    // Company Header
-                    $pdf->SetFont('helvetica', 'B', 20);
-                    $pdf->SetTextColor(255, 180, 0);
-                    $pdf->Cell(0, 10, $company['company_name'] ?? 'Lexora Tech', 0, 1, 'L');
-
-                    // Doc title
-                    $pdf->SetFont('helvetica', 'B', 14);
-                    $pdf->SetTextColor(30, 41, 59);
-                    $pdf->Cell(85, 8, strtoupper($doc_label), 0, 0, 'L');
-                    $pdf->Cell(85, 8, $doc_number, 0, 1, 'R');
-                    $pdf->SetDrawColor(255, 180, 0);
-                    $pdf->SetLineWidth(0.6);
-                    $pdf->Line(20, $pdf->GetY(), 190, $pdf->GetY());
-                    $pdf->Ln(6);
-
-                    // Customer
-                    $pdf->SetFont('helvetica', 'B', 9);
-                    $pdf->SetTextColor(100, 100, 100);
-                    $pdf->Cell(85, 5, 'BILL TO', 0, 1, 'L');
-                    $pdf->SetFont('helvetica', '', 10);
-                    $pdf->SetTextColor(30, 41, 59);
-                    $pdf->Cell(0, 5, $doc['customer_name'] ?? 'N/A', 0, 1, 'L');
-                    $pdf->Cell(0, 5, $doc['customer_email'] ?? '', 0, 1, 'L');
-                    $pdf->Ln(4);
-
-                    // Dates
-                    $pdf->SetFont('helvetica', '', 10);
-                    $pdf->Cell(0, 5, 'Date: ' . date("M d, Y", strtotime($doc['issue_date'])), 0, 1, 'L');
-                    $pdf->Cell(0, 5, 'Status: ' . ucfirst($doc['status']), 0, 1, 'L');
-                    $pdf->Ln(6);
-
-                    // Items table
-                    $items_q2 = mysqli_query($conn, "SELECT * FROM invoice_items WHERE item_type='$type' AND parent_id=$id ORDER BY sort_order ASC");
-                    $pdf->SetFillColor(255, 180, 0);
-                    $pdf->SetTextColor(0, 0, 0);
-                    $pdf->SetFont('helvetica', 'B', 9);
-                    $pdf->Cell(10, 7, '#', 1, 0, 'C', true);
-                    $pdf->Cell(70, 7, 'Description', 1, 0, 'L', true);
-                    $pdf->Cell(20, 7, 'Qty', 1, 0, 'C', true);
-                    $pdf->Cell(25, 7, 'Price', 1, 0, 'R', true);
-                    $pdf->Cell(20, 7, 'Tax %', 1, 0, 'C', true);
-                    $pdf->Cell(25, 7, 'Total', 1, 1, 'R', true);
-
-                    $pdf->SetFont('helvetica', '', 9);
-                    $pdf->SetTextColor(50, 50, 50);
-                    $n = 1;
-                    while ($it = mysqli_fetch_assoc($items_q2)) {
-                        $pdf->Cell(10, 6, $n, 1, 0, 'C');
-                        $pdf->Cell(70, 6, $it['description'], 1, 0, 'L');
-                        $pdf->Cell(20, 6, number_format($it['quantity'], 2), 1, 0, 'C');
-                        $pdf->Cell(25, 6, number_format($it['unit_price'], 2), 1, 0, 'R');
-                        $pdf->Cell(20, 6, number_format($it['tax_rate'], 2) . '%', 1, 0, 'C');
-                        $pdf->Cell(25, 6, number_format($it['line_total'], 2), 1, 1, 'R');
-                        $n++;
+                    if ($type === 'receipt') {
+                        $pdf = buildReceiptPDF($conn, $id);
                     }
-
-                    $pdf->Ln(4);
-                    $pdf->SetFont('helvetica', 'B', 12);
-                    $pdf->SetTextColor(255, 180, 0);
-                    $pdf->Cell(120, 8, '', 0, 0);
-                    $pdf->Cell(25, 8, 'TOTAL:', 0, 0, 'R');
-                    $pdf->Cell(25, 8, 'LKR ' . number_format($doc['grand_total'], 2), 0, 1, 'R');
-
-                    // Save to temp file
-                    $tempPdf = tempnam(sys_get_temp_dir(), 'lexora_') . '.pdf';
-                    $pdf->Output($tempPdf, 'F');
-                    $mail->addAttachment($tempPdf, $doc_number . '.pdf', 'base64', 'application/pdf');
+                    else {
+                        $pdf = buildDocumentPDF($conn, $type, $id);
+                    }
+                    if ($pdf) {
+                        $tempPdf = tempnam(sys_get_temp_dir(), 'lexora_') . '.pdf';
+                        $pdf->Output($tempPdf, 'F');
+                        $mail->addAttachment($tempPdf, $doc_number . '.pdf', 'base64', 'application/pdf');
+                    }
                 }
 
                 $mail->send();
 
-                // Update status to 'sent'
-                if ($type === 'quotation' && $doc['status'] === 'draft') {
+                // Auto-update status from draft to sent
+                if ($type === 'quotation' && ($doc['status'] ?? '') === 'draft') {
                     $conn->query("UPDATE quotations SET status='sent' WHERE id=$id");
                 }
-                elseif ($type === 'invoice' && $doc['status'] === 'draft') {
+                elseif ($type === 'invoice' && ($doc['status'] ?? '') === 'draft') {
                     $conn->query("UPDATE invoices SET status='sent' WHERE id=$id");
                 }
 
+                // Cleanup temp PDF
                 if (isset($tempPdf) && file_exists($tempPdf))
                     unlink($tempPdf);
 
                 $success = 'Email sent successfully!';
             }
             catch (Exception $e) {
-                $error = 'Failed to send email: ' . $mail->ErrorInfo;
+                $error = 'Failed to send: ' . $mail->ErrorInfo;
             }
         }
     }
@@ -438,8 +394,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         .form-textarea {
-            min-height: 150px;
-            resize: vertical
+            min-height: 180px;
+            resize: vertical;
+            font-family: 'Plus Jakarta Sans', sans-serif
         }
 
         .checkbox-group {
@@ -553,6 +510,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="customers.php" class="nav-item"><i class="fas fa-users"></i> <span>Customers</span></a>
             <div class="menu-label" style="margin-top:20px;">System</div>
             <a href="../settings.php" class="nav-item"><i class="fas fa-cog"></i> <span>Settings</span></a>
+            <a href="../quote_requests.php" class="nav-item"><i class="fas fa-envelope"></i> <span>Inquiries</span></a>
             <div class="sidebar-footer"><a href="../logout.php" class="nav-item" style="color:var(--danger);"><i
                         class="fas fa-sign-out-alt"></i> <span>Logout</span></a></div>
         </aside>
@@ -603,27 +561,15 @@ endif; ?>
                     <div class="form-group">
                         <label class="form-label">Subject *</label>
                         <input type="text" name="subject" class="form-input"
-                            value="<?= $doc_label?> <?= htmlspecialchars($doc_number)?> from <?= htmlspecialchars($company['company_name'] ?? 'Lexora Tech')?>"
-                            required>
+                            value="<?= htmlspecialchars($default_subject)?>" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Message</label>
-                        <textarea name="body" class="form-textarea">Dear <?= htmlspecialchars($doc['customer_name'] ?? '')?>,
-
-Please find attached <?= strtolower($doc_label)?> <?= htmlspecialchars($doc_number)?> for your review.
-
-Total Amount: LKR <?= number_format($doc['grand_total'], 2)?>
-
-If you have any questions, please don't hesitate to contact us.
-
-Best regards,
-<?= htmlspecialchars($company['company_name'] ?? 'Lexora Tech')?></textarea>
+                        <textarea name="body" class="form-textarea"><?= htmlspecialchars($default_body)?></textarea>
                     </div>
                     <div class="form-group">
-                        <label class="checkbox-group">
-                            <input type="checkbox" name="attach_pdf" checked>
-                            <span>Attach PDF</span>
-                        </label>
+                        <label class="checkbox-group"><input type="checkbox" name="attach_pdf" checked><span>Attach PDF
+                                (full document with bank details)</span></label>
                     </div>
                     <div class="btn-row">
                         <a href="<?= $redirect?>" class="btn-secondary">Cancel</a>
@@ -634,8 +580,8 @@ Best regards,
         </div>
     </div>
     <script>
-        const menuToggle = document.getElementById('menuToggle'), sidebar = document.getElementById('sidebar'); if (menuToggle) menuToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
-        const themeToggle = document.getElementById("themeToggle"); if (localStorage.getItem("theme") === "dark") { document.body.classList.add("dark"); themeToggle.checked = true; } themeToggle.addEventListener("change", () => { if (themeToggle.checked) { document.body.classList.add("dark"); localStorage.setItem("theme", "dark"); } else { document.body.classList.remove("dark"); localStorage.setItem("theme", "light"); } });
+const menuToggle=document.getElementById('menuToggle'),side.getElementById('sidebar');if(menuToggle)menuToggle.addEventListener('click',()=>sidebar.classList.toggle('active'));
+const themeToggle=document.getElementById("themeToggle");if(localStorage.getItem("theme")==="dark"){document.body.classList.add("dark");themeToggle.checked=true;}themeToggle.addEventListener("change",()=>{if(themeToggle.checked){document.body.classList.add("dark");localStorage.setItem("theme","dark");}else{document.body.classList.remove("dark");localStorage.setItem("theme","light");}});
     </script>
 </body>
 

@@ -1,6 +1,6 @@
 <?php
-include("../../includes/auth.php");
-include("../../includes/db.php");
+include(__DIR__ . "/../../includes/auth.php");
+include(__DIR__ . "/../../includes/db.php");
 
 if (!isset($_GET['id'])) {
     header("Location: invoices.php");
@@ -627,6 +627,9 @@ endforeach; ?>
 endif; ?>
                 </div>
                 <div class="action-bar">
+                    <a href="add_payment.php?invoice_id=<?= $id?>" class="btn-action primary"
+                        style="background:var(--success);color:#fff;"><i class="fas fa-money-bill-wave"></i> Record
+                        Payment</a>
                     <a href="invoice_form.php?id=<?= $id?>" class="btn-action primary"><i class="fas fa-pen"></i>
                         Edit</a>
                     <a href="generate_pdf.php?type=invoice&id=<?= $id?>" class="btn-action outline" target="_blank"><i

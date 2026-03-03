@@ -1,6 +1,6 @@
 <?php
-include("../../includes/auth.php");
-include("../../includes/db.php");
+include(__DIR__ . "/../../includes/auth.php");
+include(__DIR__ . "/../../includes/db.php");
 
 $search = '';
 $sql = "SELECT i.*, c.name as customer_name FROM invoices i LEFT JOIN customers c ON i.customer_id=c.id ORDER BY i.created_at DESC";
@@ -610,9 +610,12 @@ else:
                                                 title="View"><i class="fas fa-eye"></i></a>
                                             <a href="invoice_form.php?id=<?= $row['id']?>" class="btn-icon"
                                                 title="Edit"><i class="fas fa-pen"></i></a>
-                                            <a href="generate_pdf.php?type=invoice&id=<?= $row['id']?>"
-                                                class="btn-icon" title="PDF" target="_blank"><i
-                                                    class="fas fa-file-pdf"></i></a>
+                                            <a href="add_payment.php?invoice_id=<?= $row['id']?>" class="btn-icon"
+                                                title="Record Payment"
+                                                style="color:var(--success);border-color:var(--success);"><i
+                                                    class="fas fa-money-bill-wave"></i></a>
+                                            <a href="generate_pdf.php?type=invoice&id=<?= $row['id']?>" class="btn-icon"
+                                                title="PDF" target="_blank"><i class="fas fa-file-pdf"></i></a>
                                             <a href="send_email.php?type=invoice&id=<?= $row['id']?>" class="btn-icon"
                                                 title="Send Email"><i class="fas fa-paper-plane"></i></a>
                                             <div class="btn-icon delete" data-id="<?= $row['id']?>" title="Delete"><i
@@ -647,7 +650,7 @@ endif; ?>
         document.getElementById('confirmNo').addEventListener('click', () => { document.getElementById('deleteModal').style.display = 'none'; });
         document.getElementById('confirmYes').addEventListener('click', () => { window.location.href = `invoice_delete.php?id=${deleteId}`; });
         window.onclick = function (e) { if (e.target == document.getElementById('deleteModal')) document.getElementById('deleteModal').style.display = 'none'; };
-<?php if  (isset($_GET['msg'])): ?> function showToast(m) { const c = document.getElementById('toastContainer'), t = document.createElement('div'); t.className = 'toast'; t.innerHTML = `<i class="fas fa-check-circle" style="color:#10b981"></i> ${m}`; c.appendChild(t); setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, 3000); }showToast("<?= htmlspecialchars($_GET['msg'])?>");<?php
+<?php if(isset($_GET['msg'])): ?> function showToast(m) { const c = document.getElementById('toastContainer'), t = document.createElement('div'); t.className = 'toast'; t.innerHTML = `<i class="fas fa-check-circle" style="color:#10b981"></i> ${m}`; c.appendChild(t); setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, 3000); }showToast("<?= htmlspecialchars($_GET['msg'])?>");<?php
 endif; ?>
     </script>
 </body>
