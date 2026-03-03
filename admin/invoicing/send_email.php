@@ -77,14 +77,79 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 // Attach PDF
                 if ($attach_pdf) {
-                    ob_start();
-                    $pdf_url = "http://localhost/LexoraNew-Web/admin/invoicing/generate_pdf.php?type=$type&id=$id";
-                    // Generate PDF to temp file
-                    $tempPdf = tempnam(sys_get_temp_dir(), 'lexora_');
-                    // Use internal PDF generation
-                    include_once("generate_pdf_internal.php");
-                    $pdfContent = generatePDFContent($conn, $type, $id);
-                    file_put_contents($tempPdf, $pdfContent);
+                    // Generate PDF inline
+                    $pdf = new \TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
+                    $pdf->setPrintHeader(false);
+                    $pdf->setPrintFooter(false);
+                    $pdf->SetMargins(20, 20, 20);
+                    $pdf->AddPage();
+
+                    // Company Header
+                    $pdf->SetFont('helvetica', 'B', 20);
+                    $pdf->SetTextColor(255, 180, 0);
+                    $pdf->Cell(0, 10, $company['company_name'] ?? 'Lexora Tech', 0, 1, 'L');
+
+                    // Doc title
+                    $pdf->SetFont('helvetica', 'B', 14);
+                    $pdf->SetTextColor(30, 41, 59);
+                    $pdf->Cell(85, 8, strtoupper($doc_label), 0, 0, 'L');
+                    $pdf->Cell(85, 8, $doc_number, 0, 1, 'R');
+                    $pdf->SetDrawColor(255, 180, 0);
+                    $pdf->SetLineWidth(0.6);
+                    $pdf->Line(20, $pdf->GetY(), 190, $pdf->GetY());
+                    $pdf->Ln(6);
+
+                    // Customer
+                    $pdf->SetFont('helvetica', 'B', 9);
+                    $pdf->SetTextColor(100, 100, 100);
+                    $pdf->Cell(85, 5, 'BILL TO', 0, 1, 'L');
+                    $pdf->SetFont('helvetica', '', 10);
+                    $pdf->SetTextColor(30, 41, 59);
+                    $pdf->Cell(0, 5, $doc['customer_name'] ?? 'N/A', 0, 1, 'L');
+                    $pdf->Cell(0, 5, $doc['customer_email'] ?? '', 0, 1, 'L');
+                    $pdf->Ln(4);
+
+                    // Dates
+                    $pdf->SetFont('helvetica', '', 10);
+                    $pdf->Cell(0, 5, 'Date: ' . date("M d, Y", strtotime($doc['issue_date'])), 0, 1, 'L');
+                    $pdf->Cell(0, 5, 'Status: ' . ucfirst($doc['status']), 0, 1, 'L');
+                    $pdf->Ln(6);
+
+                    // Items table
+                    $items_q2 = mysqli_query($conn, "SELECT * FROM invoice_items WHERE item_type='$type' AND parent_id=$id ORDER BY sort_order ASC");
+                    $pdf->SetFillColor(255, 180, 0);
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetFont('helvetica', 'B', 9);
+                    $pdf->Cell(10, 7, '#', 1, 0, 'C', true);
+                    $pdf->Cell(70, 7, 'Description', 1, 0, 'L', true);
+                    $pdf->Cell(20, 7, 'Qty', 1, 0, 'C', true);
+                    $pdf->Cell(25, 7, 'Price', 1, 0, 'R', true);
+                    $pdf->Cell(20, 7, 'Tax %', 1, 0, 'C', true);
+                    $pdf->Cell(25, 7, 'Total', 1, 1, 'R', true);
+
+                    $pdf->SetFont('helvetica', '', 9);
+                    $pdf->SetTextColor(50, 50, 50);
+                    $n = 1;
+                    while ($it = mysqli_fetch_assoc($items_q2)) {
+                        $pdf->Cell(10, 6, $n, 1, 0, 'C');
+                        $pdf->Cell(70, 6, $it['description'], 1, 0, 'L');
+                        $pdf->Cell(20, 6, number_format($it['quantity'], 2), 1, 0, 'C');
+                        $pdf->Cell(25, 6, number_format($it['unit_price'], 2), 1, 0, 'R');
+                        $pdf->Cell(20, 6, number_format($it['tax_rate'], 2) . '%', 1, 0, 'C');
+                        $pdf->Cell(25, 6, number_format($it['line_total'], 2), 1, 1, 'R');
+                        $n++;
+                    }
+
+                    $pdf->Ln(4);
+                    $pdf->SetFont('helvetica', 'B', 12);
+                    $pdf->SetTextColor(255, 180, 0);
+                    $pdf->Cell(120, 8, '', 0, 0);
+                    $pdf->Cell(25, 8, 'TOTAL:', 0, 0, 'R');
+                    $pdf->Cell(25, 8, 'LKR ' . number_format($doc['grand_total'], 2), 0, 1, 'R');
+
+                    // Save to temp file
+                    $tempPdf = tempnam(sys_get_temp_dir(), 'lexora_') . '.pdf';
+                    $pdf->Output($tempPdf, 'F');
                     $mail->addAttachment($tempPdf, $doc_number . '.pdf', 'base64', 'application/pdf');
                 }
 

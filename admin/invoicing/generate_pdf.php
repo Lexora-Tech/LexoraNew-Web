@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include("../../includes/auth.php");
 include("../../includes/db.php");
 require_once("../../vendor/autoload.php");
@@ -257,5 +259,7 @@ if ($footerNote) {
 }
 
 // Output
+if (ob_get_length())
+    ob_clean();
 $pdf->Output($doc_number . '.pdf', 'I');
 ?>
