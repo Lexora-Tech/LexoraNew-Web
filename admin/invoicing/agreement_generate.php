@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 /**
  * Auto-generate a Service Agreement from an Invoice
  * Creates a draft agreement pre-filled with invoice data + default clause templates
