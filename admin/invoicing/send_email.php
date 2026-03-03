@@ -12,7 +12,7 @@ if (!isset($_GET['type']) || !isset($_GET['id'])) {
     exit();
 }
 
-$type = $_GET['type']; // 'quotation', 'invoice', or 'receipt'
+$type = $_GET['type']; // 'quotation', 'invoice', 'receipt', or 'agreement'
 $id = intval($_GET['id']);
 $error = '';
 $success = '';
@@ -37,6 +37,15 @@ elseif ($type === 'quotation') {
     $doc_number = $doc['quotation_number'] ?? '';
     $doc_label = 'Quotation';
     $redirect = "quotation_view.php?id=$id";
+}
+elseif ($type === 'agreement') {
+    $q = mysqli_query($conn, "SELECT a.*, c.name as customer_name, c.email as customer_email, i.invoice_number, i.grand_total, i.currency FROM service_agreements a LEFT JOIN customers c ON a.customer_id=c.id LEFT JOIN invoices i ON a.invoice_id=i.id WHERE a.id=$id");
+    $doc = mysqli_fetch_assoc($q);
+    $doc_number = $doc['agreement_number'] ?? '';
+    $doc_label = 'Service Agreement';
+    $doc['grand_total'] = $doc['grand_total'] ?? 0;
+    $doc['issue_date'] = $doc['effective_date'] ?? date('Y-m-d');
+    $redirect = "agreement_view.php?id=$id";
 }
 else {
     $q = mysqli_query($conn, "SELECT i.*, c.name as customer_name, c.email as customer_email FROM invoices i LEFT JOIN customers c ON i.customer_id=c.id WHERE i.id=$id");
@@ -146,6 +155,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if ($type === 'receipt') {
                         $pdf = buildReceiptPDF($conn, $id);
                     }
+                    elseif ($type === 'agreement') {
+                        $pdf = buildAgreementPDF($conn, $id);
+                    }
                     else {
                         $pdf = buildDocumentPDF($conn, $type, $id);
                     }
@@ -164,6 +176,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 }
                 elseif ($type === 'invoice' && ($doc['status'] ?? '') === 'draft') {
                     $conn->query("UPDATE invoices SET status='sent' WHERE id=$id");
+                }
+                elseif ($type === 'agreement' && ($doc['status'] ?? '') === 'draft') {
+                    $conn->query("UPDATE service_agreements SET status='sent' WHERE id=$id");
                 }
 
                 // Cleanup temp PDF
@@ -556,6 +571,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="quotations.php" class="nav-item"><i class="fas fa-file-invoice"></i> <span>Quotations</span></a>
             <a href="invoices.php" class="nav-item"><i class="fas fa-file-invoice-dollar"></i> <span>Invoices</span></a>
             <a href="customers.php" class="nav-item"><i class="fas fa-users"></i> <span>Customers</span></a>
+            <a href="agreements.php" class="nav-item"><i class="fas fa-file-contract"></i> <span>Agreements</span></a>
             <div class="menu-label" style="margin-top:20px;">System</div>
             <a href="../settings.php" class="nav-item"><i class="fas fa-cog"></i> <span>Settings</span></a>
             <a href="../quote_requests.php" class="nav-item"><i class="fas fa-envelope"></i> <span>Inquiries</span></a>

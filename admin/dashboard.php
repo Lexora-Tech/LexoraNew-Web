@@ -686,6 +686,9 @@ function format_number($n)
             <a href="invoicing/customers.php" class="nav-item">
                 <i class="fas fa-users"></i> <span>Customers</span>
             </a>
+            <a href="invoicing/agreements.php" class="nav-item">
+                <i class="fas fa-file-contract"></i> <span>Agreements</span>
+            </a>
 
             <div class="menu-label" style="margin-top: 20px;">System</div>
             <a href="settings.php" class="nav-item">

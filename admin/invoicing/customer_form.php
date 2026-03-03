@@ -391,6 +391,7 @@ if (isset($_GET['id'])) {
             <a href="quotations.php" class="nav-item"><i class="fas fa-file-invoice"></i> <span>Quotations</span></a>
             <a href="invoices.php" class="nav-item"><i class="fas fa-file-invoice-dollar"></i> <span>Invoices</span></a>
             <a href="customers.php" class="nav-item active"><i class="fas fa-users"></i> <span>Customers</span></a>
+            <a href="agreements.php" class="nav-item"><i class="fas fa-file-contract"></i> <span>Agreements</span></a>
             <div class="menu-label" style="margin-top:20px;">System</div>
             <a href="../settings.php" class="nav-item"><i class="fas fa-cog"></i> <span>Settings</span></a>
             <a href="../quote_requests.php" class="nav-item"><i class="fas fa-envelope"></i> <span>Inquiries</span></a>

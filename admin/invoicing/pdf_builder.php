@@ -665,14 +665,14 @@ $pdf->Cell(80, 4, $company['company_name'] ?? 'Lexora Tech', 0, 1, 'L');
 $pdf->SetX(18);
 $pdf->SetFont('helvetica', '', 7);
 $pdf->SetTextColor(180, 180, 180);
-$fp = array_filter([($company['company_email']  ??  ''), ($company['company_phone']  ??  '')]);
+$fp = array_filter([($company['company_email'] ?? ''), ($company['company_phone'] ?? '')]);
 if ($fp)
-       
+
 $pdf->Cell(90, 3.5, implode(' | ', $fp), 0, 1, 'L');
 $pdf->SetX(18);
-$fp2 = array_filter([($company['company_website']  ??  ''), ($company['company_address']  ??  '')]);
+$fp2 = array_filter([($company['company_website'] ?? ''), ($company['company_address'] ?? '')]);
 if ($fp2)
-       
+
 $pdf->Cell(90, 3.5, implode(' | ', $fp2), 0, 1, 'L');
 
 $fnote = $company['invoice_footer_note'] ?? 'Thank you for your payment!';
@@ -680,5 +680,245 @@ $pdf->SetXY(120, $footY + 6);
 $pdf->SetFont('helvetica', 'I', 7.5);
 $pdf->SetTextColor(200, 200, 200);
 $pdf->MultiCell(72, 3.5, $fnote, 0, 'R');
+$pdf->SetFillColor(16, 185, 129);
+$pdf->Rect(0, $footY + $footH, 210, $accentH, 'F');
 
-$p
+return $pdf;
+}
+
+
+// ═══════════════════════════════════════════════════
+// SERVICE AGREEMENT PDF
+// ═══════════════════════════════════════════════════
+function buildAgreementPDF($conn, $agreement_id) {
+$aq = mysqli_query($conn, "SELECT a.*, c.name as customer_name, c.email as customer_email, c.phone as customer_phone,
+c.company as customer_company, c.address as customer_address, c.city as customer_city, c.country as customer_country,
+i.invoice_number, i.grand_total, i.currency FROM service_agreements a LEFT JOIN customers c ON a.customer_id=c.id LEFT
+JOIN invoices i ON a.invoice_id=i.id WHERE a.id=" . intval($agreement_id));
+$agr = mysqli_fetch_assoc($aq);
+if (!$agr) return null;
+
+$cs = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM company_settings WHERE id=1"));
+if (!$cs) $cs = ['company_name'=>'Lexora
+Tech','company_email'=>'','company_phone'=>'','company_address'=>'','company_website'=>'','invoice_footer_note'=>''];
+
+$pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
+$pdf->SetCreator('Lexora Tech');
+$pdf->SetTitle('Agreement ' . $agr['agreement_number']);
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
+$pdf->SetMargins(0, 0, 0);
+$pdf->SetAutoPageBreak(true, 30);
+$pdf->AddPage();
+
+// ─── Gold accent top ───
+$pdf->SetFillColor(255, 180, 0);
+$pdf->Rect(0, 0, 210, 3, 'F');
+
+// ─── Dark header section ───
+$pdf->SetFillColor(30, 30, 30);
+$pdf->Rect(0, 3, 210, 35, 'F');
+
+$logo = getLogoPath();
+if ($logo) {
+$pdf->Image($logo, 18, 8, 14, 14, '', '', '', true, 300, '', false, false, 0, 'CM', false, false);
+}
+
+$pdf->SetXY(18, 12);
+$pdf->SetFont('helvetica', 'B', 20);
+$pdf->SetTextColor(255, 255, 255);
+$pdf->Cell(174, 10, 'SERVICE AGREEMENT', 0, 1, 'C');
+$pdf->SetX(18);
+$pdf->SetFont('helvetica', '', 10);
+$pdf->SetTextColor(255, 180, 0);
+$pdf->Cell(174, 5, $agr['agreement_number'], 0, 1, 'C');
+
+// Gold accent under header
+$pdf->SetFillColor(255, 180, 0);
+$pdf->Rect(0, 38, 210, 1.5, 'F');
+
+$pdf->SetY(46);
+$m = 22; // left margin for text
+
+// ─── Effective date ───
+$pdf->SetX($m);
+$pdf->SetFont('helvetica', '', 9);
+$pdf->SetTextColor(60, 60, 60);
+$effDate = $agr['effective_date'] ? date("F d, Y", strtotime($agr['effective_date'])) : '_______________';
+$pdf->MultiCell(166, 5, 'This Service Agreement (the "Agreement") is entered into as of ' . $effDate . ' (the "Effective
+Date") between the following parties:', 0, 'L');
+$pdf->Ln(4);
+
+// ─── Parties ───
+$sNum = 1;
+$pdf->SetX($m);
+$pdf->SetFont('helvetica', 'B', 10);
+$pdf->SetTextColor(255, 180, 0);
+$pdf->Cell(166, 6, $sNum . '. PARTIES', 0, 1, 'L');
+$pdf->SetDrawColor(255, 180, 0);
+$pdf->SetLineWidth(0.4);
+$pdf->Line($m, $pdf->GetY(), $m + 30, $pdf->GetY());
+$pdf->Ln(4);
+
+// Provider
+$pdf->SetX($m);
+$pdf->SetFont('helvetica', 'B', 8);
+$pdf->SetTextColor(130, 130, 130);
+$pdf->Cell(80, 4, 'SERVICE PROVIDER', 0, 1, 'L');
+$pdf->SetX($m);
+$pdf->SetFont('helvetica', 'B', 10);
+$pdf->SetTextColor(30, 30, 30);
+$pdf->Cell(80, 5, $cs['company_name'], 0, 1, 'L');
+$pdf->SetFont('helvetica', '', 8.5);
+$pdf->SetTextColor(80, 80, 80);
+foreach (array_filter([$cs['company_email']??'', $cs['company_phone']??'', $cs['company_address']??'']) as $l) {
+$pdf->SetX($m); $pdf->Cell(80, 4, $l, 0, 1, 'L');
+}
+$pdf->Ln(3);
+
+// Client
+$pdf->SetX($m);
+$pdf->SetFont('helvetica', 'B', 8);
+$pdf->SetTextColor(130, 130, 130);
+$pdf->Cell(80, 4, 'CLIENT', 0, 1, 'L');
+$pdf->SetX($m);
+$pdf->SetFont('helvetica', 'B', 10);
+$pdf->SetTextColor(30, 30, 30);
+$pdf->Cell(80, 5, $agr['customer_name'] ?? '', 0, 1, 'L');
+$pdf->SetFont('helvetica', '', 8.5);
+$pdf->SetTextColor(80, 80, 80);
+$custLines = array_filter([$agr['customer_company']??'', $agr['customer_email']??'', $agr['customer_phone']??'']);
+$addr = trim(($agr['customer_address']??'') . ($agr['customer_city']?', '.$agr['customer_city']:'') .
+($agr['customer_country']?', '.$agr['customer_country']:''), ', ');
+if ($addr) $custLines[] = $addr;
+foreach ($custLines as $l) { $pdf->SetX($m); $pdf->Cell(80, 4, $l, 0, 1, 'L'); }
+$pdf->Ln(5);
+
+// ─── Helper to render sections ───
+$sections = [];
+$sNum++;
+if ($agr['scope_of_services']) $sections[] = [$sNum++, 'SCOPE OF SERVICES', $agr['scope_of_services']];
+
+// Timeline
+$timeline = 'Project Start Date: ' . ($agr['project_start_date'] ? date("F d, Y", strtotime($agr['project_start_date']))
+: 'TBD');
+$timeline .= "\nProject End Date: " . ($agr['project_end_date'] ? date("F d, Y", strtotime($agr['project_end_date'])) :
+'TBD');
+$sections[] = [$sNum++, 'PROJECT TIMELINE', $timeline];
+
+if ($agr['payment_terms_text']) $sections[] = [$sNum++, 'PAYMENT TERMS', $agr['payment_terms_text']];
+if ($agr['late_payment_policy']) $sections[] = [$sNum++, 'LATE PAYMENT POLICY', $agr['late_payment_policy']];
+if ($agr['confidentiality_clause']) $sections[] = [$sNum++, 'CONFIDENTIALITY', $agr['confidentiality_clause']];
+if ($agr['ip_clause']) $sections[] = [$sNum++, 'INTELLECTUAL PROPERTY', $agr['ip_clause']];
+if ($agr['termination_clause']) $sections[] = [$sNum++, 'TERMINATION', $agr['termination_clause']];
+if ($agr['liability_clause']) $sections[] = [$sNum++, 'LIMITATION OF LIABILITY', $agr['liability_clause']];
+if ($agr['governing_law']) $sections[] = [$sNum++, 'GOVERNING LAW', $agr['governing_law']];
+if ($agr['dispute_resolution']) $sections[] = [$sNum++, 'DISPUTE RESOLUTION', $agr['dispute_resolution']];
+if ($agr['force_majeure']) $sections[] = [$sNum++, 'FORCE MAJEURE', $agr['force_majeure']];
+if ($agr['amendments_clause']) $sections[] = [$sNum++, 'AMENDMENTS', $agr['amendments_clause']];
+if ($agr['custom_notes']) $sections[] = [$sNum++, 'ADDITIONAL NOTES', $agr['custom_notes']];
+
+foreach ($sections as $sec) {
+$pdf->SetX($m);
+$pdf->SetFont('helvetica', 'B', 10);
+$pdf->SetTextColor(255, 180, 0);
+$pdf->Cell(166, 6, $sec[0] . '. ' . $sec[1], 0, 1, 'L');
+$pdf->SetDrawColor(255, 180, 0);
+$pdf->SetLineWidth(0.4);
+$pdf->Line($m, $pdf->GetY(), $m + 30, $pdf->GetY());
+$pdf->Ln(3);
+$pdf->SetX($m);
+$pdf->SetFont('helvetica', '', 9);
+$pdf->SetTextColor(60, 60, 60);
+$pdf->MultiCell(166, 5, $sec[2], 0, 'L');
+$pdf->Ln(4);
+}
+
+// ─── Signatures ───
+$pdf->Ln(5);
+$pdf->SetX($m);
+$pdf->SetFont('helvetica', 'B', 10);
+$pdf->SetTextColor(255, 180, 0);
+$pdf->Cell(166, 6, 'SIGNATURES', 0, 1, 'L');
+$pdf->SetDrawColor(255, 180, 0);
+$pdf->Line($m, $pdf->GetY(), $m + 30, $pdf->GetY());
+$pdf->Ln(3);
+$pdf->SetX($m);
+$pdf->SetFont('helvetica', '', 9);
+$pdf->SetTextColor(60, 60, 60);
+$pdf->MultiCell(166, 5, 'IN WITNESS WHEREOF, the parties have executed this Agreement as of the Effective Date.', 0,
+'L');
+$pdf->Ln(15);
+
+// Provider signature
+$sigY = $pdf->GetY();
+$pdf->SetDrawColor(30, 30, 30);
+$pdf->SetLineWidth(0.5);
+$pdf->Line($m, $sigY, $m + 70, $sigY);
+$pdf->SetXY($m, $sigY + 2);
+$pdf->SetFont('helvetica', 'B', 9);
+$pdf->SetTextColor(30, 30, 30);
+$pdf->Cell(70, 4, $agr['company_signatory_name'] ?? $cs['company_name'], 0, 1, 'L');
+$pdf->SetX($m);
+$pdf->SetFont('helvetica', '', 8);
+$pdf->SetTextColor(130, 130, 130);
+$pdf->Cell(70, 4, ($agr['company_signatory_title'] ?? 'Director') . ', ' . $cs['company_name'], 0, 1, 'L');
+
+// Client signature
+$pdf->Line(120, $sigY, 190, $sigY);
+$pdf->SetXY(120, $sigY + 2);
+$pdf->SetFont('helvetica', 'B', 9);
+$pdf->SetTextColor(30, 30, 30);
+$pdf->Cell(70, 4, $agr['client_signature_name'] ?: ($agr['customer_name'] ?? ''), 0, 1, 'L');
+$pdf->SetXY(120, $pdf->GetY());
+$pdf->SetFont('helvetica', '', 8);
+$pdf->SetTextColor(130, 130, 130);
+$clientLabel = 'Client';
+if ($agr['customer_company']) $clientLabel .= ', ' . $agr['customer_company'];
+$pdf->Cell(70, 4, $clientLabel, 0, 1, 'L');
+
+$pdf->Ln(5);
+$pdf->SetX($m);
+$pdf->SetFont('helvetica', '', 8);
+$pdf->SetTextColor(130, 130, 130);
+$pdf->Cell(80, 4, 'Date: _______________', 0, 0, 'L');
+$pdf->Cell(86, 4, 'Date: _______________', 0, 1, 'L');
+
+// ─── Footer (pinned to bottom) ───
+$footH = 22;
+$accentH = 2;
+$pageH = $pdf->getPageHeight();
+$footY = $pageH - $footH - $accentH;
+if ($pdf->GetY() + 5 > $footY) {
+$pdf->AddPage();
+$footY = $pageH - $footH - $accentH;
+}
+$pdf->SetFillColor(40, 40, 40);
+$pdf->Rect(0, $footY, 210, $footH, 'F');
+$pdf->SetFillColor(255, 180, 0);
+$pdf->Rect(0, $footY, 210, 0.8, 'F');
+$pdf->SetXY(18, $footY + 3);
+$pdf->SetFont('helvetica', 'B', 8);
+$pdf->SetTextColor(255, 255, 255);
+$pdf->Cell(80, 4, $cs['company_name'] ?? 'Lexora Tech', 0, 1, 'L');
+$pdf->SetX(18);
+$pdf->SetFont('helvetica', '', 7);
+$pdf->SetTextColor(180, 180, 180);
+$fp = array_filter([($cs['company_email']??''), ($cs['company_phone']??'')]);
+if ($fp) $pdf->Cell(90, 3.5, implode(' | ', $fp), 0, 1, 'L');
+$pdf->SetX(18);
+$fp2 = array_filter([($cs['company_website']??''), ($cs['company_address']??'')]);
+if ($fp2) $pdf->Cell(90, 3.5, implode(' | ', $fp2), 0, 1, 'L');
+$fnote = $cs['invoice_footer_note'] ?? '';
+if ($fnote) {
+$pdf->SetXY(120, $footY + 6);
+$pdf->SetFont('helvetica', 'I', 7.5);
+$pdf->SetTextColor(200, 200, 200);
+$pdf->MultiCell(72, 3.5, $fnote, 0, 'R');
+}
+$pdf->SetFillColor(255, 180, 0);
+$pdf->Rect(0, $footY + $footH, 210, $accentH, 'F');
+
+return $pdf;
+}
+?>

@@ -14,7 +14,6 @@ $type = $_GET['type'];
 $id = intval($_GET['id']);
 
 if ($type === 'receipt') {
-    // Payment receipt
     $pdf = buildReceiptPDF($conn, $id);
     if (!$pdf)
         die("Payment not found");
@@ -23,8 +22,16 @@ if ($type === 'receipt') {
         ob_clean();
     $pdf->Output($receipt_no . '.pdf', 'I');
 }
+elseif ($type === 'agreement') {
+    $pdf = buildAgreementPDF($conn, $id);
+    if (!$pdf)
+        die("Agreement not found");
+    $agr = mysqli_fetch_assoc(mysqli_query($conn, "SELECT agreement_number FROM service_agreements WHERE id=$id"));
+    if (ob_get_length())
+        ob_clean();
+    $pdf->Output(($agr['agreement_number'] ?? 'Agreement') . '.pdf', 'I');
+}
 else {
-    // Quotation or Invoice
     $pdf = buildDocumentPDF($conn, $type, $id);
     if (!$pdf)
         die("Document not found");

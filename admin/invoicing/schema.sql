@@ -143,3 +143,62 @@ CREATE TABLE IF NOT EXISTS `company_settings` (
 -- Insert default company settings row
 INSERT INTO `company_settings` (`id`, `company_name`, `company_email`, `company_website`, `default_payment_terms`, `invoice_footer_note`)
 VALUES (1, 'Lexora Tech', 'info@lexoratech.com', 'https://lexoratech.com', 'Payment due within 30 days of invoice date.', 'Thank you for your business! — Lexora Tech');
+
+-- 7. SERVICE AGREEMENTS TABLE
+CREATE TABLE IF NOT EXISTS `service_agreements` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `agreement_number` varchar(50) NOT NULL,
+  `invoice_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `status` enum('draft','sent','signed','cancelled') DEFAULT 'draft',
+  `effective_date` date DEFAULT NULL,
+  `project_start_date` date DEFAULT NULL,
+  `project_end_date` date DEFAULT NULL,
+  `scope_of_services` text DEFAULT NULL,
+  `payment_terms_text` text DEFAULT NULL,
+  `late_payment_policy` text DEFAULT NULL,
+  `confidentiality_clause` text DEFAULT NULL,
+  `ip_clause` text DEFAULT NULL,
+  `termination_clause` text DEFAULT NULL,
+  `liability_clause` text DEFAULT NULL,
+  `governing_law` text DEFAULT NULL,
+  `dispute_resolution` text DEFAULT NULL,
+  `force_majeure` text DEFAULT NULL,
+  `amendments_clause` text DEFAULT NULL,
+  `custom_notes` text DEFAULT NULL,
+  `client_signature_name` varchar(255) DEFAULT NULL,
+  `client_signature_date` date DEFAULT NULL,
+  `company_signatory_name` varchar(255) DEFAULT NULL,
+  `company_signatory_title` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `agreement_number` (`agreement_number`),
+  KEY `invoice_id` (`invoice_id`),
+  KEY `customer_id` (`customer_id`),
+  KEY `status` (`status`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- 8. AGREEMENT TEMPLATES TABLE
+CREATE TABLE IF NOT EXISTS `agreement_templates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `template_name` varchar(255) NOT NULL,
+  `clause_key` varchar(50) NOT NULL,
+  `clause_content` text NOT NULL,
+  `is_default` tinyint(1) DEFAULT 1,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `clause_key` (`clause_key`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Seed default agreement templates
+INSERT INTO `agreement_templates` (`template_name`, `clause_key`, `clause_content`, `is_default`) VALUES
+('Default Late Payment', 'late_payment_policy', 'If payment is not received within the agreed timeframe, a late fee of 2% per month shall be applied to the outstanding balance. The Service Provider reserves the right to suspend services until all overdue payments are settled in full.', 1),
+('Default Confidentiality', 'confidentiality_clause', 'Both parties agree to keep confidential all proprietary information, trade secrets, business strategies, and technical data disclosed during the course of this agreement. This obligation shall survive the termination of this agreement for a period of two (2) years.', 1),
+('Default IP Clause', 'ip_clause', 'All intellectual property, including but not limited to source code, designs, graphics, documentation, and other deliverables created under this agreement shall become the exclusive property of the Client upon receipt of full payment. Until full payment is received, the Service Provider retains all rights to the deliverables.', 1),
+('Default Termination', 'termination_clause', 'Either party may terminate this agreement by providing thirty (30) days written notice to the other party. In the event of termination, the Client shall pay for all services rendered and expenses incurred up to the date of termination. The Service Provider shall deliver all completed work to the Client upon termination.', 1),
+('Default Liability', 'liability_clause', 'The Service Provider\'s total liability under this agreement shall not exceed the total amount paid by the Client for the services. In no event shall either party be liable for any indirect, incidental, special, consequential, or punitive damages, regardless of the cause of action.', 1),
+('Default Governing Law', 'governing_law', 'This agreement shall be governed by and construed in accordance with the laws of the Democratic Socialist Republic of Sri Lanka, without regard to its conflict of law provisions.', 1),
+('Default Dispute Resolution', 'dispute_resolution', 'Any disputes arising out of or in connection with this agreement shall first be attempted to be resolved through good faith negotiation between the parties. If the dispute cannot be resolved within thirty (30) days, it shall be submitted to mediation, and if mediation fails, to the courts of competent jurisdiction in Sri Lanka.', 1),
+('Default Force Majeure', 'force_majeure', 'Neither party shall be liable for any failure or delay in performing their obligations under this agreement where such failure or delay results from circumstances beyond the reasonable control of that party, including but not limited to acts of God, natural disasters, war, terrorism, pandemic, government actions, power failures, or internet disruptions.', 1),
+('Default Amendments', 'amendments_clause', 'This agreement may only be amended or modified by a written document signed by both parties. No waiver of any provision of this agreement shall constitute a waiver of any other provision, nor shall any waiver constitute a continuing waiver.', 1);

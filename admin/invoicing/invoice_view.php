@@ -14,6 +14,10 @@ if (!$inv) {
     exit();
 }
 
+// Check if a service agreement exists for this invoice
+$agr_check = mysqli_query($conn, "SELECT id, agreement_number FROM service_agreements WHERE invoice_id=$id");
+$existing_agr = ($agr_check && mysqli_num_rows($agr_check) > 0) ? mysqli_fetch_assoc($agr_check) : null;
+
 $items = [];
 $items_q = mysqli_query($conn, "SELECT * FROM invoice_items WHERE item_type='invoice' AND parent_id=$id ORDER BY sort_order ASC");
 while ($it = mysqli_fetch_assoc($items_q))
@@ -484,6 +488,7 @@ function getStatusBadge($s)
             <a href="invoices.php" class="nav-item active"><i class="fas fa-file-invoice-dollar"></i>
                 <span>Invoices</span></a>
             <a href="customers.php" class="nav-item"><i class="fas fa-users"></i> <span>Customers</span></a>
+            <a href="agreements.php" class="nav-item"><i class="fas fa-file-contract"></i> <span>Agreements</span></a>
             <div class="menu-label" style="margin-top:20px;">System</div>
             <a href="../settings.php" class="nav-item"><i class="fas fa-cog"></i> <span>Settings</span></a>
             <a href="../quote_requests.php" class="nav-item"><i class="fas fa-envelope"></i> <span>Inquiries</span></a>
@@ -636,6 +641,17 @@ endif; ?>
                             class="fas fa-file-pdf"></i> Download PDF</a>
                     <a href="send_email.php?type=invoice&id=<?= $id?>" class="btn-action outline"><i
                             class="fas fa-paper-plane"></i> Send Email</a>
+                    <?php if ($existing_agr): ?>
+                    <a href="agreement_view.php?id=<?= $existing_agr['id']?>" class="btn-action outline"
+                        style="border-color:#8b5cf6;color:#8b5cf6;"><i class="fas fa-file-contract"></i> View
+                        Agreement</a>
+                    <?php
+else: ?>
+                    <a href="agreement_generate.php?invoice_id=<?= $id?>" class="btn-action primary"
+                        style="background:#8b5cf6;color:#fff;"><i class="fas fa-file-contract"></i> Generate
+                        Agreement</a>
+                    <?php
+endif; ?>
                     <a href="invoices.php" class="btn-action outline"><i class="fas fa-arrow-left"></i> Back</a>
                 </div>
             </div>
