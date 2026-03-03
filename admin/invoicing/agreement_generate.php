@@ -33,7 +33,7 @@ $scopeLines = [];
 $n = 1;
 while ($it = mysqli_fetch_assoc($items_q)) {
     $cur = $inv['currency'] ?? 'LKR';
-    $scopeLines[] = "$n. " . $it['description'] . " — Qty: " . number_format($it['quantity'], 2) . " × " . $cur . " " . number_format($it['unit_price'], 2);
+    $scopeLines[] = "$n. " . $it['description'] . " - Qty: " . number_format($it['quantity'], 2) . " x " . $cur . " " . number_format($it['unit_price'], 2);
     $n++;
 }
 $scope = implode("\n", $scopeLines);
@@ -50,8 +50,10 @@ $payTerms .= "\nDue Date: " . ($inv['due_date'] ? date("F d, Y", strtotime($inv[
 // Fetch default clause templates
 $defaults = [];
 $tq = mysqli_query($conn, "SELECT clause_key, clause_content FROM agreement_templates WHERE is_default=1");
-while ($t = mysqli_fetch_assoc($tq)) {
-    $defaults[$t['clause_key']] = $t['clause_content'];
+if ($tq) {
+    while ($t = mysqli_fetch_assoc($tq)) {
+        $defaults[$t['clause_key']] = $t['clause_content'];
+    }
 }
 
 // Generate agreement number
@@ -64,33 +66,44 @@ $agreement_number = "AGR-{$dateStr}-{$seq}";
 // Fetch company settings for signatory
 $cs = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM company_settings WHERE id=1"));
 
-// Insert draft agreement
-$stmt = $conn->prepare("INSERT INTO service_agreements (agreement_number, invoice_id, customer_id, status, effective_date, project_start_date, project_end_date, scope_of_services, payment_terms_text, late_payment_policy, confidentiality_clause, ip_clause, termination_clause, liability_clause, governing_law, dispute_resolution, force_majeure, amendments_clause, company_signatory_name, company_signatory_title) VALUES (?, ?, ?, 'draft', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
+// Prepare all variables (bind_param requires variables by reference)
 $effective = $inv['issue_date'] ?? date('Y-m-d');
 $startDate = $inv['issue_date'] ?? date('Y-m-d');
 $endDate = $inv['due_date'] ?: date('Y-m-d', strtotime('+3 months'));
 $compName = $cs['company_name'] ?? 'Lexora Tech';
 $compTitle = 'Director';
+$custId = intval($inv['customer_id']);
+$d_late = isset($defaults['late_payment_policy']) ? $defaults['late_payment_policy'] : '';
+$d_conf = isset($defaults['confidentiality_clause']) ? $defaults['confidentiality_clause'] : '';
+$d_ip = isset($defaults['ip_clause']) ? $defaults['ip_clause'] : '';
+$d_term = isset($defaults['termination_clause']) ? $defaults['termination_clause'] : '';
+$d_liab = isset($defaults['liability_clause']) ? $defaults['liability_clause'] : '';
+$d_gov = isset($defaults['governing_law']) ? $defaults['governing_law'] : '';
+$d_disp = isset($defaults['dispute_resolution']) ? $defaults['dispute_resolution'] : '';
+$d_force = isset($defaults['force_majeure']) ? $defaults['force_majeure'] : '';
+$d_amend = isset($defaults['amendments_clause']) ? $defaults['amendments_clause'] : '';
+
+// Insert draft agreement
+$stmt = $conn->prepare("INSERT INTO service_agreements (agreement_number, invoice_id, customer_id, status, effective_date, project_start_date, project_end_date, scope_of_services, payment_terms_text, late_payment_policy, confidentiality_clause, ip_clause, termination_clause, liability_clause, governing_law, dispute_resolution, force_majeure, amendments_clause, company_signatory_name, company_signatory_title) VALUES (?, ?, ?, 'draft', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 $stmt->bind_param("siissssssssssssssss",
     $agreement_number,
     $invoice_id,
-    $inv['customer_id'],
+    $custId,
     $effective,
     $startDate,
     $endDate,
     $scope,
     $payTerms,
-    $defaults['late_payment_policy'] ?? '',
-    $defaults['confidentiality_clause'] ?? '',
-    $defaults['ip_clause'] ?? '',
-    $defaults['termination_clause'] ?? '',
-    $defaults['liability_clause'] ?? '',
-    $defaults['governing_law'] ?? '',
-    $defaults['dispute_resolution'] ?? '',
-    $defaults['force_majeure'] ?? '',
-    $defaults['amendments_clause'] ?? '',
+    $d_late,
+    $d_conf,
+    $d_ip,
+    $d_term,
+    $d_liab,
+    $d_gov,
+    $d_disp,
+    $d_force,
+    $d_amend,
     $compName,
     $compTitle
 );
